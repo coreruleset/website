@@ -1,0 +1,40 @@
+######################## custom scripts & styles ####################
+
+# Add custom assets relative to /static or via https
+logo_on_white: "/images/logo/crs.svg"
+logo_on_black: "/img/logo-w.svg"
+custom_js: []
+custom_css: []
+
+######################## custom config ####################
+
+### default social share image (can also be set per lang) ###
+images: ["/img/social-share.png"]
+
+github:
+  repo_url: "https://github.com/coreruleset/website/blob/master"
+  show_edit_link: true
+
+social_links:
+  devstats: ""
+  discord: ""
+  facebook: ""
+  flickr: ""
+  github: "https://github.com/coreruleset"
+  instagram: ""
+  landscape: ""
+  linkedin: "https://www.linkedin.com/company/owasp-coreruleset"
+  mastodon: ""
+  pinterest: ""
+  rss: ""
+  slack: "https://owasp.slack.com/archives/CBKGH8A5P"
+  stackoverflow: ""
+  threads: ""
+  twitter: "https://twitter.com/coreruleset"
+  x: "https://x.com/coreruleset"
+  youtube: "https://www.youtube.com/channel/UCIoIEzbm34kczIvVyPGYBfg"
+
+# Makes the header sticky on tall screens
+sticky_header: true
+# Enable search in header UI
+show_search: true
