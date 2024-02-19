@@ -3,6 +3,7 @@ author: Christian Folini
 date: "2021-11-15T17:42:45+01:00"
 title: Privacy Policy
 url: /privacy-policy
+noindex: true
 ---
 
 Our project is part of the Open Worldwide Application Security Project (OWASP). This privacy policy will explain how our project uses the personal data we collect from you when you use our website.

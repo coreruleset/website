@@ -3,17 +3,10 @@ author: Walter Hop
 categories:
   - Blog
 date: '2017-08-10T12:48:47+02:00'
-guid: https://coreruleset.org/?p=234
-id: 234
 permalink: /20170810/modsecurity-version-2-9-2-released/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: ModSecurity version 2.9.2 released
 url: /2017/08/10/modsecurity-version-2-9-2-released/
 ---
-
 
 Trustwave has released [ModSecurity version 2.9.2](https://www.trustwave.com/Resources/SpiderLabs-Blog/Announcing-ModSecurity-version-2-9-2/).
 

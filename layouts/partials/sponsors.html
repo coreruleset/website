@@ -1,0 +1,27 @@
+<h3>Call for Sponsors</h3>
+
+We are looking for more Gold and Silver sponsors, not the least because we have big plans 
+and we need support to make it happen. If you think that would be a win-win opportunity for 
+your company or organization, then please get in touch with our sponsoring contact 
+CRS co-lead Christian Folini via firstname dot lastname at coreruleset dot org.
+
+{{ range $name, $kind := .Site.Data.sponsors }}
+<h3>{{  strings.FirstUpper $name }} Sponsors</h3>
+
+<div class="columns-2">
+{{ range $kind }}
+<div class="">
+    <img
+        caption="{{ .caption }}"
+        width="300"
+        height="150"
+        loading="lazy"
+        src="{{ .logo }}"
+        link="{{ .link }}"
+    />
+</div>
+{{ end }}
+</div>
+{{ end }}
+
+

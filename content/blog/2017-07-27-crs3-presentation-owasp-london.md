@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2017-07-27T17:44:30+02:00'
-guid: https://coreruleset.org/?p=162
-id: 162
 permalink: /20170727/crs3-presentation-owasp-london/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: CRS3 presentation at OWASP London
 url: /2017/07/27/crs3-presentation-owasp-london/
 ---

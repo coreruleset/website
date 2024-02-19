@@ -1,0 +1,57 @@
+---
+hero1:
+  other: CRS Project
+
+hero2:
+  other: ""
+
+subhero:
+  other: The first line of defense
+
+explainerText:
+  other: |
+    The **OWASP® CRS** is a set of generic attack detection rules for use with 
+    [ModSecurity](https://www.modsecurity.org/) or compatible web application firewalls. 
+    The CRS aims to protect web applications from a wide range of attacks, 
+    including the OWASP Top Ten, with a minimum of false alerts. 
+    The CRS provides protection against many common attack categories.
+
+explainerButton:
+  other: About
+
+sectionTitle:
+  other: Getting Started
+
+sectionTitle1:
+  other: New Features in CRS 4
+
+
+sectionText1:
+  other: |
+    CRS 4 includes many coverage improvements, plus the following new features:
+      - Plug-in architecture allowing official and 3rd party plugins to integrate into CRS
+      - Early-Blocking option
+      - Over 500 individual rule bypasses closed following a big Bug Bounty project
+      - New web shell detection
+      - Full RE2/Hyperscan compatibility for better performance
+      - Support for HTTP/3
+      - More granular reporting options
+sectionButton1:
+  other: Download
+
+sectionTitle2:
+  other: Community
+sectionText2:
+  other: Discussions, email lists, and more.
+sectionButton2:
+  other: Community
+
+sectionTitle3:
+  other: Getting Started
+sectionText3:
+  other: Code, examples, and more.
+sectionButton3:
+  other: Getting Started
+
+social_link_title:
+  other: Follow us on social media

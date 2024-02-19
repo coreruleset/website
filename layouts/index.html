@@ -1,0 +1,55 @@
+{{ define "main" }}
+  <div class="columns hero-grid">
+    <div class="hero-grid__col1">
+      <h1 class="title">
+        {{ i18n "hero1" }}
+      </h1>
+
+      <h2 class="subhero">{{ i18n "subhero" }}</h2>
+
+      <p class="shortened-width">{{ i18n "explainerText" | markdownify }}</p>
+
+      <a href="/about/about-us" class="button">{{ i18n "explainerButton" }}</a>
+    </div>
+
+    <div class="hero-grid__col2">
+      <img
+        width="585"
+        height="530"
+        src="{{ "/images/undraw_safe_re_kiil.png" | relURL }}"
+        alt="People collaborating"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </div>
+
+  <h3 class="h4">{{ i18n "sectionTitle" | markdownify }}</h3>
+
+  <div class="cards columns-3 box-grid">
+    <div class="card">
+      <h2>{{ i18n "sectionTitle1" }}</h2>
+      <p>{{ i18n "sectionText1" | markdownify }}</p>
+      <a href="/community/get-started/" class="button">{{ i18n "sectionButton1" }}</a>
+    </div>
+
+    <div class="card">
+      <h2>{{ i18n "sectionTitle2" }}</h2>
+      <p>{{ i18n "sectionText2" | markdownify }}</p>
+      <a href="/download/" class="button"
+        >{{ i18n "sectionButton2" }}</a
+      >
+    </div>
+
+    <div class="card">
+      <h2>{{ i18n "sectionTitle3" }}</h2>
+      <p>{{ i18n "sectionText3" | markdownify }}</p>
+      <a href="/about/members/" class="button">{{ i18n "sectionButton3" }}</a>
+    </div>
+  </div>
+
+  <hr />
+
+  {{ partial "sponsors.html" . }}
+
+{{ end }}

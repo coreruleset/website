@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2017-08-15T13:48:36+02:00'
-guid: https://coreruleset.org/?p=280
-id: 280
 permalink: /20170815/crs-project-news-august-2017/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: CRS Project News August 2017
 url: /2017/08/15/crs-project-news-august-2017/
 ---

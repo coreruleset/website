@@ -1,0 +1,8 @@
+# example authors data, the key is github username.
+dune73:
+  name: Christian Folini
+  twitter: ChrFolini
+  company: netnea
+fzipi:
+  name: Felipe Zipitria
+

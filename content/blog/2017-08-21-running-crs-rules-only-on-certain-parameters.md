@@ -3,13 +3,7 @@ author: Alessandro Monachesi
 categories:
   - Blog
 date: '2017-08-21T22:48:36+02:00'
-guid: https://coreruleset.org/?p=409
-id: 409
 permalink: /20170821/running-crs-rules-only-on-certain-parameters/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: Running CRS rules only on certain parameters
 url: /2017/08/21/running-crs-rules-only-on-certain-parameters/
 ---

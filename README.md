@@ -42,3 +42,17 @@ Then check your edits on http://localhost:1313/.
 ## Sending changes for review
 
 Once you are happy with your local changes, please send a PR.
+
+## Drawings
+
+All illustrations are coming from https://undraw.co/, unless explicitly noted. Their license is as follows:
+
+Copyright 2024 Katerina Limpitsouni
+
+All images, assets and vectors published on unDraw can be used for free. You can use them for noncommercial and commercial purposes. You do not need to ask permission from or provide credit to the creator or unDraw.
+
+More precisely, unDraw grants you an nonexclusive, worldwide copyright license to download, copy, modify, distribute, perform, and use the assets provided from unDraw for free, including for commercial purposes, without permission from or attributing the creator or unDraw. This license does not include the right to compile assets, vectors or images from unDraw to replicate a similar or competing service, in any form or distribute the assets in packs or otherwise. This extends to automated and non-automated ways to link, embed, scrape, search or download the assets included on the website without our consent.
+
+## Favicon
+
+Favicons were generated using https://realfavicongenerator.net.

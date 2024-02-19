@@ -3,13 +3,7 @@ author: Chaim Sanders
 categories:
   - Blog
 date: '2017-08-10T21:28:14+02:00'
-guid: https://coreruleset.org/?p=266
-id: 266
 permalink: /20170810/testing-wafs-ftw-version-1-0-released/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: Testing WAFs, FTW Version 1.0 released
 url: /2017/08/10/testing-wafs-ftw-version-1-0-released/
 ---
