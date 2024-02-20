@@ -1,8 +1,8 @@
 ######################## custom scripts & styles ####################
 
 # Add custom assets relative to /static or via https
-logo_on_white: "{{ .Site.BaseURL }}/images/logo/horizontal.svg"
-logo_on_black: "{{ .Site.BaseURL }}/images/logo/horizontal.svg"
+logo_on_white: "images/logo/horizontal.svg"
+logo_on_black: "images/logo/horizontal.svg"
 custom_js: []
 custom_css: []
 
