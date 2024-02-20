@@ -1,10 +1,10 @@
 {
-  "name": "dot-org-hugo-theme",
+  "name": "crs-website",
   "version": "1.0.0",
   "description": "",
   "main": "none.js",
   "scripts": {
-    "build": "hugo --theme=dot-org-hugo-theme",
+    "build": "hugo --theme=dot-org-hugo-theme --configDir=config --gc --minify --cleanDestinationDir",
     "start": "hugo serve --logLevel info --configDir=config --buildDrafts --buildFuture --ignoreCache --disableFastRender --gc  --printI18nWarnings --printMemoryUsage --printPathWarnings --printUnusedTemplates --templateMetrics --templateMetricsHints",
     "dev": "npm run dev:start",
     "dev:start": "hugo serve --logLevel info --configDir=config --themesDir=../.. --buildDrafts --buildFuture --ignoreCache --disableFastRender --gc  --printI18nWarnings --printMemoryUsage --printPathWarnings --printUnusedTemplates --templateMetrics --templateMetricsHints",
@@ -13,15 +13,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cncf/dot-org-hugo-theme"
+    "url": "https://github.com/coreruleset/website"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cncf/dot-org-hugo-theme/issues"
+    "url": "https://github.com/coreruleset/website/issues"
   },
-  "homepage": "https://github.com/cncf/dot-org-hugo-theme#readme",
+  "homepage": "https://github.com/coreruleset/website#readme",
   "dependencies": {
     "autoprefixer": "^10.4.17",
     "hugo-extended": "^0.123.0",
