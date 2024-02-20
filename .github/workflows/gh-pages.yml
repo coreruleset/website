@@ -57,7 +57,8 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          npm run build
+          hugo --gc --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
           npx -y pagefind --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
