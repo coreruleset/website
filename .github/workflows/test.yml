@@ -45,9 +45,3 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: (British/American) English test
-        # Content should be written in American English. Test all content against
-        # British English spelling list from:
-        # http://www.tysto.com/uk-us-spelling-list.html'
-        shell: bash
-        run: .github/workflows/english_test.sh

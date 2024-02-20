@@ -58,7 +58,7 @@ jobs:
           HUGO_ENV: production
         run: |
           npm run build
-          npx -y pagefind --site public --baseurl ${{ steps.pages.outputs.base_url }}
+          npx -y pagefind --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
