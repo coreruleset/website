@@ -1,6 +1,8 @@
 {{- $source := "scss/styles.scss" }}
 {{- $target := "css/styles.css" }}
-{{ $options := (dict "targetPath" $target "vars" site.Params.style "transpiler" "dartsass") }}
+{{- $fontsPath := printf "%sfonts" .Site.BaseURL }}
+{{ $vars := merge site.Params.style (dict "fonts-path" $fontsPath) }}
+{{ $options := (dict "targetPath" $target "vars" $vars "transpiler" "dartsass") }}
 {{ if eq hugo.Environment "production" }}
     {{ $options = merge $options (dict "outputStyle" "compressed" "enableSourceMap" false) }}
 {{ else }}

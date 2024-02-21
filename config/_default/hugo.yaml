@@ -25,7 +25,3 @@ privacy:
   vimeo:
     enableDNT: true
 
-######################## custom scripts & styles ####################
-params:
-  style:
-    fonts_path: 'website/fonts'
