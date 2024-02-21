@@ -1,9 +1,9 @@
 ---
 hero1:
-  other: CRS Project
+  other: OWASP
 
 hero2:
-  other: ""
+  other: CRS Project
 
 subhero:
   other: The first line of defense
