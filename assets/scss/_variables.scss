@@ -1,3 +1,6 @@
+@use "hugo:vars" as h;
+$fonts-path : h.$fonts-path;
+
 // Define CSS variables
 :root {
   --condensed-font-family: "Oswald", "Impact", "Arial Black", sans-serif, -apple-system, BlinkMacSystemFont, Roboto,

@@ -1,3 +1,4 @@
+---
 ######################## default configuration ####################
 # Your theme name
 theme: "dot-org-hugo-theme"
@@ -23,3 +24,8 @@ privacy:
     privacyEnhanced: true
   vimeo:
     enableDNT: true
+
+######################## custom scripts & styles ####################
+params:
+  style:
+    fonts_path: 'website/fonts'
