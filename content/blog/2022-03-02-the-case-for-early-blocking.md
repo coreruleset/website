@@ -26,7 +26,6 @@ Now, would not it be neat to block the request at end of phase 1? That's *Early 
 With the nightly builds and the dev-branch on github, look at the crs-setup.conf file. There is a rule 900120 that carries a config item for early blocking. Enable this rule (commented out by default) and *Early Blocking* is effective immediately.
 
 ```
-<pre class="wp-block-code">```
 SecAction \
     "id:900120,\
     phase:1,\
@@ -34,7 +33,6 @@ SecAction \
     pass,\
     t:none,\
     setvar:tx.early_blocking=1"
-```
 ```
 
 #### Why is *Early Blocking* useful?
@@ -48,7 +46,7 @@ Let's look at a scanner pinging your IP address with an HTTP request.
 Here is such a request in the access log:
 
 ```
-<pre class="wp-block-preformatted">103.203.57.xxx - - [2022-02-24 09:20:22.454279] "GET / HTTP/1.1" 301 199 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36" … 3 0
+103.203.57.xxx - - [2022-02-24 09:20:22.454279] "GET / HTTP/1.1" 301 199 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36" … 3 0
 ```
 
 Nothing very bad about this request, probably lying about the user agent and an anomaly score of 3 near the end of the line. So what rule did this request trigger; there are very few rules scoring 3 after all?
@@ -56,7 +54,7 @@ Nothing very bad about this request, probably lying about the user agent and an 
 Here is the alert message:
 
 ```
-<pre class="wp-block-preformatted">[2022-02-28 09:20:22.456699] [-:error] 103.203.57.xxx:35078 YhyFxmMmf45xiCZBeqtbaQAAAAA [client 103.203.57.xxx] ModSecurity: Warning. Pattern match "(?:^([\\d.]+|\\[[\\da-f:]+\\]|[\\da-f:]+)(:[\\d]+)?$)" at REQUEST_HEADERS:Host. [file "/etc/apache2/crs/rules/REQUEST-920-PROTOCOL-ENFORCEMENT.conf"] [line "760"] [id "920350"] [msg "Host header is a numeric IP address"] [data "82.220.26.xxx"] [severity "WARNING"] [ver "OWASP_CRS/3.4.0-dev"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-protocol"] [tag "paranoia-level/1"] [tag "OWASP_CRS"] [tag "capec/1000/210/272"] [tag "PCI/6.5.10"] [hostname "www.example.com"] [uri "/"] [unique_id "YhyFxmMmf45xiCZBeqtbaQAAAAA"]
+[2022-02-28 09:20:22.456699] [-:error] 103.203.57.xxx:35078 YhyFxmMmf45xiCZBeqtbaQAAAAA [client 103.203.57.xxx] ModSecurity: Warning. Pattern match "(?:^([\\d.]+|\\[[\\da-f:]+\\]|[\\da-f:]+)(:[\\d]+)?$)" at REQUEST_HEADERS:Host. [file "/etc/apache2/crs/rules/REQUEST-920-PROTOCOL-ENFORCEMENT.conf"] [line "760"] [id "920350"] [msg "Host header is a numeric IP address"] [data "82.220.26.xxx"] [severity "WARNING"] [ver "OWASP_CRS/3.4.0-dev"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-protocol"] [tag "paranoia-level/1"] [tag "OWASP_CRS"] [tag "capec/1000/210/272"] [tag "PCI/6.5.10"] [hostname "www.example.com"] [uri "/"] [unique_id "YhyFxmMmf45xiCZBeqtbaQAAAAA"]
 ```
 
 So the scanner used a numeric IP (-&gt; `82.220.26.xxx`) as HTTP host header and CRS barked. In the dev branch of CRS, this rule and all the rules that can run in phase 1. So at the end of phase 1, we know this is a client who uses a numeric host header as IP address. There are a few situations where this is acceptable, but it's against the RFC and it is not allowed on this server. But without early blocking the request would continue.
@@ -66,7 +64,7 @@ In the access log, we saw that the request got a 301, a redirect to a different 
 So in fact the malicious request is directed to the desired URI. This redirect works with the Location HTTP response header:
 
 ```
-<pre class="wp-block-preformatted">Location: https://www.example.com/anything/index.html
+Location: https://www.example.com/anything/index.html
 ```
 
 So with the initial request, the scanner did not know whom he was talking to. It was simply probing IP addresses. But now we are responding with this information (actually a slight case of information leakage) and unless the scanner is very stupid it will pick up the fully qualified domain name and use it in the subsequent request as HTTP host header. So the attacker will issue a new request with valid semantics and we won't be able to detect it in phase 1 anymore.
@@ -80,7 +78,7 @@ So CRS identifies an attacker, redirect interferes and before the request can be
 With *Early Blocking*, the access log entry of the request looks as follows:
 
 ```
-<pre class="wp-block-preformatted">45.146.165.37 - - [2022-02-28 06:36:28.459660] "GET / HTTP/1.1" 403 199 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36" "-" … 3 0
+45.146.165.37 - - [2022-02-28 06:36:28.459660] "GET / HTTP/1.1" 403 199 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36" "-" … 3 0
 ```
 
 So the request is now blocked, no redirect, no fuss, only the minimal number of alerts (-&gt; 1!). That's the desired outcome.
