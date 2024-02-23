@@ -3,15 +3,7 @@ author: Walter Hop
 categories:
   - Blog
 date: '2020-06-18T20:39:56+02:00'
-guid: https://coreruleset.org/?p=1153
-id: 1153
 permalink: /20200618/owasp-modsecurity-core-rule-set-v3-3-0-release-candidate-2-available/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: OWASP ModSecurity Core Rule Set v3.3.0 Release Candidate 2 available
 url: /2020/06/18/owasp-modsecurity-core-rule-set-v3-3-0-release-candidate-2-available/
 ---
@@ -73,5 +65,5 @@ Please use the CRS GitHub (<https://github.com/coreruleset/coreruleset>), our sl
 
 Our current timeline is to seek public feedback for the next 1.5 weeks, followed by a release on June 29th. We look forward to hearing your feedback!
 
-Sincerely,  
+Sincerely,
 Walter Hop, release manager, on behalf of the Core Rule Set development team

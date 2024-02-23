@@ -3,18 +3,10 @@ author: Christian Folini
 categories:
   - Blog
 date: '2020-06-08T21:13:59+02:00'
-guid: https://coreruleset.org/?p=1147
-id: 1147
 permalink: /20200608/overhauling-the-crs-tags/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CAPEC
   - Tagging
-theme-transparent-header-meta:
-  - default
 title: Overhauling the CRS Tags
 url: /2020/06/08/overhauling-the-crs-tags/
 ---
@@ -22,8 +14,8 @@ url: /2020/06/08/overhauling-the-crs-tags/
 
 Tagging rules is a great feature of ModSecurity since it allows you to add information to your ModSec alert messages. In my tutorial on [Embedding ModSec over at netnea.com](https://www.netnea.com/cms/apache-tutorial-6_embedding-modsecurity/), I use the tag feature in the default action to add a tag to every alert message from a given service. I do this as follows:
 
-```
-<pre class="wp-block-preformatted">SecDefaultAction "phase:2,pass,log,tag:'Local Lab Service'"
+```apacheconf
+SecDefaultAction "phase:2,pass,log,tag:'Local Lab Service'"
 ```
 
 One of my customers uses a shortcut URI as the tag. So when an alert pops up, the SoC person can click on the tag, the URI is being expanded (redirection service) and she ends up on a wiki page giving her all the infos about a given service with purpose, architecture, host IDs, security classification and contact information.
@@ -41,7 +33,6 @@ How can tags be outdated? That's easy: We tagged some of the rules with the IDs 
 Here is an overview over all the tags currently set in the rules together with their occurrence count:
 
 ```
-<pre class="wp-block-code">```
 245 application-multi
 213 OWASP_CRS
 203 platform-multi
@@ -172,7 +163,6 @@ Here is an overview over all the tags currently set in the rules together with t
   1 attack-injection-nodejs
   1 anomaly-evaluation
 ```
-```
 
 I guess you understand how this feels inconsistent to me. The WASC classification is really oudated, since the project died down many years ago. Top Ten is a moving target and thus not ideal. The CAPITAL letter tags we made up are not systematically applied and do not follow an accepted taxonomy. There is some value in the use of PCI tags I think and the lowercase tags used by our project actually bear some value on their own. But most of the rest should be replaced with something better, ideally with wider acceptance and following a real standard. This would be beneficial, since you could then do proper reporting based on the CRS tags and automatically end up with a document that could help other projects (Hint: OWASP Top Ten).
 
@@ -196,7 +186,7 @@ I admit I am not happy with the seemingly erratic use of the ID name space, but 
 How would we tags this? The discussions are not completely over yet, but this is the latest proposal for the tagging you would see in the alert message:
 
 ```
-<pre class="wp-block-preformatted">   … [tag "capec:513/153/267/120"] …
+ … [tag "capec:513/153/267/120"] …
 ```
 
 So the notation is very sparse (we need to save space), but it identifies as CAPEC and the hierarchy is described in the same way that URIs use slashes to lead you down a path (just do not think of the slash as an OR here).  

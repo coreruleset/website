@@ -3,17 +3,9 @@ author: Walter Hop
 categories:
   - Blog
 date: '2020-05-27T16:05:24+02:00'
-guid: https://coreruleset.org/?p=1142
-id: 1142
 permalink: /20200527/owasp-modsecurity-core-rule-set-v3-3-0-release-candidate-1-available/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - Release
-theme-transparent-header-meta:
-  - default
 title: OWASP ModSecurity Core Rule Set v3.3.0 Release Candidate 1 available
 url: /2020/05/27/owasp-modsecurity-core-rule-set-v3-3-0-release-candidate-1-available/
 ---
@@ -26,7 +18,7 @@ The OWASP ModSecurity Core Rule Set team is proud to announce the release candid
 
 This release packages many changes, such as:
 
-- <span style="font-size: 1rem;">New rule to detect LDAP injection</span>
+- New rule to detect LDAP injection
 - New HTTP Splitting rule
 - Block backup files ending with ~ in filename
 - Detect ffuf, Semrush and WFuzz scanners
@@ -44,5 +36,5 @@ Please use the CRS GitHub (<https://github.com/coreruleset/coreruleset>), our sl
 
 Our current timeline is to seek public feedback for the next two weeks, followed by an RC2 (if needed) and subsequently a release on June 16th. We look forward to hearing your feedback!  
   
-Sincerely,   
+Sincerely,
 Walter Hop, release manager, on behalf of the Core Rule Set development team

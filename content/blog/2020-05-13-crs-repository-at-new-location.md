@@ -3,19 +3,10 @@ author: Christian Folini
 categories:
   - Blog
 date: '2020-05-13T22:12:06+02:00'
-guid: https://coreruleset.org/?p=1129
-id: 1129
 permalink: /20200513/crs-repository-at-new-location/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: CRS Repository at New Location
 url: /2020/05/13/crs-repository-at-new-location/
 ---
-
 
 We have successfully migrated our GitHub repository to a new location at  
   

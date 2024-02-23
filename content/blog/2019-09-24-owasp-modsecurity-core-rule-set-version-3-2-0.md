@@ -3,15 +3,7 @@ author: Walter Hop
 categories:
   - Blog
 date: '2019-09-24T11:13:43+02:00'
-guid: https://coreruleset.org/?p=1080
-id: 1080
 permalink: /20190924/owasp-modsecurity-core-rule-set-version-3-2-0/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: 'Announcement: OWASP ModSecurity Core Rule Set Version 3.2.0'
 url: /2019/09/24/owasp-modsecurity-core-rule-set-version-3-2-0/
 ---
@@ -42,5 +34,5 @@ Our desire is to see the Core Rule Set project used as a baseline security featu
 
 Please use the CRS GitHub (<https://github.com/coreruleset/coreruleset>), our slack channel ([\#coreruleset](https://owasp.slack.com/archives/CBKGH8A5P) on [owasp.slack.com](http://owasp.slack.com)), or the Core Rule Set mailing list to tell us about your experiences, including false positives or other issues with this release candidate.
 
-Sincerely,   
+Sincerely,
 Walter Hop, release manager, on behalf of the Core Rule Set development team

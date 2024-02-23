@@ -3,17 +3,9 @@ author: Walter Hop
 categories:
   - Blog
 date: '2020-07-01T20:26:37+02:00'
-guid: https://coreruleset.org/?p=1161
-id: 1161
 permalink: /20200701/owasp-modsecurity-core-rule-set-v3-3-0-available/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - Release
-theme-transparent-header-meta:
-  - default
 title: OWASP ModSecurity Core Rule Set v3.3.0 available
 url: /2020/07/01/owasp-modsecurity-core-rule-set-v3-3-0-available/
 ---

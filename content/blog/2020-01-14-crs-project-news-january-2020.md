@@ -3,17 +3,9 @@ author: Christian Folini
 categories:
   - Blog
 date: '2020-01-14T08:12:50+01:00'
-guid: https://coreruleset.org/?p=1107
-id: 1107
 permalink: /20200114/crs-project-news-january-2020/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CRS-News
-theme-transparent-header-meta:
-  - default
 title: CRS Project News January 2020
 url: /2020/01/14/crs-project-news-january-2020/
 ---
@@ -30,7 +22,7 @@ Link: <https://sourceforge.net/p/mod-security/mailman/message/36899090/>
 
 - AWS is offering CRS as option in their Managed Rules offering <https://aws.amazon.com/blogs/aws/announcing-aws-managed-rules-for-aws-waf/>
 - Gitlab uses CRS for their enterprise customers  
-    <https://about.gitlab.com/2019/09/22/gitlab-12-3-released/#web-application-firewall-for-kubernetes-ingress>   
+    <https://about.gitlab.com/2019/09/22/gitlab-12-3-released/#web-application-firewall-for-kubernetes-ingress>
     We have established contact with the GitLab engineering teamContact with their engineering team established. Planning to have regular talks.
 - Midsized Swiss Bank Acrevis uses CRS; a setup engineered by our Franziska Bühler <https://www.netzwoche.ch/news/2019-11-11/open-source-in-der-bankenwelt>
 - CRS has reached the certification level as a Best Practice <https://github.com/coreruleset/coreruleset/issues/502>
@@ -43,8 +35,7 @@ Link: <https://sourceforge.net/p/mod-security/mailman/message/36899090/>
     <https://www.youtube.com/watch?v=ZbTmpJldwPY>   
     An extended version of this talk will be presented at OWASP AppSecCali in January 2020.
 - Web Application Firewall (WAF) Evasion Techniques #3 <https://www.secjuice.com/web-application-firewall-waf-evasion/>
-- CRS on DevSlopPixi by our Franziska Bühler   
-    \\* <https://coreruleset.org/20190909/how-the-crs-protects-the-vulnerable-web-application-pixi-by-owasp-devslop/>  
+- [CRS on DevSlopPixi]({{< ref "blog/2019-09-09-how-the-crs-protects-the-vulnerable-web-application-pixi-by-owasp-devslop.md" >}}) by our Franziska Bühler 
     \\* <https://dev.to/devslop/devslop-s-pixi-crs-pipeline-4bie>
 - The LiteSpeed team has done an extensive speed test covering the fast ModSecurity 2 on Apache and the slower ModSecurity 3 on Nginx (we knew about that). But it's impressive how their commercial webserver is really faster. <https://blog.litespeedtech.com/2019/12/02/modsecurity-performance-apache-nginx-litespeed>
 - A presentation on ModSecurity and ELK <https://xeraa.net/talks/secure-your-code-injections-and-logging/>
