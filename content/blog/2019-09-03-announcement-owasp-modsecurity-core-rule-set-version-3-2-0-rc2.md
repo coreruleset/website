@@ -3,18 +3,10 @@ author: Walter Hop
 categories:
   - Blog
 date: '2019-09-03T13:51:47+02:00'
-guid: https://coreruleset.org/?p=1021
-id: 1021
 permalink: /20190903/announcement-owasp-modsecurity-core-rule-set-version-3-2-0-rc2/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - '3.2'
   - Release
-theme-transparent-header-meta:
-  - default
 title: 'Announcement: OWASP ModSecurity Core Rule Set Version 3.2.0-RC2'
 url: /2019/09/03/announcement-owasp-modsecurity-core-rule-set-version-3-2-0-rc2/
 ---

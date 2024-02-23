@@ -3,13 +3,7 @@ author: Chaim Sanders
 categories:
   - Blog
 date: '2017-12-12T16:20:35+01:00'
-guid: https://coreruleset.org/?p=613
-id: 613
 permalink: /20171212/crs-project-news-december-2017/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: CRS Project News December 2017
 url: /2017/12/12/crs-project-news-december-2017/
 ---
@@ -32,7 +26,7 @@ Our agenda from before the chat is available [here](https://github.com/corerules
 - Using t:lowercase versus (?i) performance and best practice. 
     - There is currently no definitive answer
     - A benchmark can be done using ModSecurity debug logs
-    - @<span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c8 user hasUserParent link" role="button" title="spartantri (~spartantr@cio13-4-78-227-109-215.fbx.proxad.net)">spartantri will reach out to contacts to determine best approach for measuring and update us next meeting.</span>
+    - @spartantri will reach out to contacts to determine best approach for measuring and update us next meeting.
 - There are an excessive amount of open PRs and Issues 
     - All but three PRs have been assigned reviewers, we have to make a dent this month.
 - The Java rules, that are a key feature of 3.1 need some attention 
@@ -45,8 +39,8 @@ Our agenda from before the chat is available [here](https://github.com/corerules
     - It is not
 - Travis and FTW PRs assigned to csanders
 - \#957 rule split Move part to PL3 to prevent JSON false positives
-- <div class="row messageRow sameAuthor chat type_buffer_msg userParent" data-bid="8485418" data-cid="358098" data-eid="1512423322605864" data-msgid="1512423322605864" data-name="lifeforms_" data-time="1512423324544.864" data-usermask="~walter@nagorno.karabakh.nl" id="e8485418_1512423322605864"><span class="message"><span class="content">PR #896 awaiting</span></span><span class="g"> </span><span class="message"><span class="content">fgs update on the PR we</span></span><span class="message"><span class="content"> think if the comments were taken into account it would be a quick and nice merge,</span></span><span class="g"> </span><span class="message"><span class="content">but for now it's stalled</span></span></div>
-- Fizipi resolved the conflict <span class="message"><span class="content">896 </span></span>resolving the conflict on this one
+- PR #896 awaiting fgs update on the PR we think if the comments were taken into account it would be a quick and nice merge, but for now it's stalled
+- Fzipi resolved the conflict 896 resolving the conflict on this one
 
 The next community chats will be held on the following dates:
 
@@ -56,7 +50,7 @@ The next community chats will be held on the following dates:
 
 Some nice new blog posts have come out on coreruleset.org
 
-- [Core Rule Set Project Won a German OSBAR Award!](https://coreruleset.org/wp-admin/post.php?post=604&action=edit)
-- [How You Can Help the CRS Project](https://coreruleset.org/wp-admin/post.php?post=601&action=edit)
-- [The Top 5 Ways CRS Can Help You Fight the OWASP Top 10](https://coreruleset.org/wp-admin/post.php?post=586&action=edit)
-- [Disassembling SQLi Rules](https://coreruleset.org/wp-admin/post.php?post=563&action=edit)
+- [Core Rule Set Project Won a German OSBAR Award!]({{< ref "blog/2017-12-07-core-rule-set-project-winning-osbar-award.md" >}})
+- [How You Can Help the CRS Project]({{< ref "blog/2017-09-13-how-you-can-help-the-crs-project.md" >}})
+- [The Top 5 Ways CRS Can Help You Fight the OWASP Top 10]({{< ref "blog/2017-11-21-top-5-ways-crs-can-help-you-fight-owasp-top-10.md" >}})
+- [Disassembling SQLi Rules]({{< ref "blog/2017-11-09-disassembling-sqli-rules.md" >}})

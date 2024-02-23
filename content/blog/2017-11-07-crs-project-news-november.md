@@ -3,17 +3,10 @@ author: Chaim Sanders
 categories:
   - Blog
 date: '2017-11-07T01:46:59+01:00'
-guid: https://coreruleset.org/?p=556
-id: 556
 permalink: /20171107/crs-project-news-november/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: CRS Project News November
 url: /2017/11/07/crs-project-news-november/
 ---
-
 
 This is the CRS newsletter covering the period from Early October until today.
 
@@ -25,12 +18,12 @@ We held our monthly community chat. We had quite a few people stop by. Special t
 - franbuehler
 - emphazer
 - spartantri
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c11 user hasUserParent link" role="button" title="luketheduke (~luke@61.33.198.178.dynamic.wline.res.cust.swisscom.ch)">luketheduke</span>
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c20 user hasUserParent link" role="button" title="techair (sid28663@gateway/web/irccloud.com/x-grzwsqvvethioxoc)">techair</span>
+- luketheduke
+- techair
 - jose\_
 - airween
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c20 user hasUserParent link" role="button" title="athmane (~athmane@fedora/athmane)">athmane</span>
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c14 user hasUserParent link" role="button" title="bostrt (bostrt@redhat/rbost)">bostrt</span>
+- athmane
+- bostrt
 
 During the chat we discussed the following
 

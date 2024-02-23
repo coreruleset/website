@@ -3,25 +3,16 @@ author: Christian Folini
 categories:
   - Blog
 date: '2019-01-24T16:37:11+01:00'
-guid: https://coreruleset.org/?p=931
-id: 931
 permalink: /20190124/crs-project-news-january-2019/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CRS-News
-theme-transparent-header-meta:
-  - default
 title: CRS Project News January 2019
 url: /2019/01/24/crs-project-news-january-2019/
 ---
 
-
 We are back with the CRS project news. We're attending the Cloudfest Hackathon in March in Germany and we have plans for another CRS Community Summit at the new OWASP AppSec Global conference in Tel Aviv at the end of May (formerly OWASP AppSecEU).
 
-### **What has happened in recent weeks**
+### What has happened in recent weeks
 
 - We have reached 1500 stars on GitHub and adding more every day in a nice exponential curve. This makes us one of the most popular OWASP projects on GitHub.  
     Link: [https://seladb.github.io/StarTrack-js/?u=SpiderLabs&amp;r=owasp-modsecurity-crs](https://seladb.github.io/StarTrack-js/?u=SpiderLabs&r=owasp-modsecurity-crs)
@@ -67,4 +58,4 @@ When we stated development had picked up nicely after the release 3.1 the statem
 - CRS committer Federico Schwindt proposed to add REQUEST\_URI\_RAW to the list of rule targets for the JAVA rules in 944.  
     Link: <https://github.com/coreruleset/coreruleset/issues/1287>
 - CRS committer Christoph Hansen wants to make sure the % symbol is always allowed in SOAP requests. However, this might also allow for bypasses using this route.  
-    Link: <https://github.com/coreruleset/coreruleset/issues/1286><div aria-selected="true" class="Box-row Box-row--focus-gray p-0 js-navigation-item js-issue-row selectable read navigation-focus" data-id="398954126" id="issue_1287"></div>
+    Link: <https://github.com/coreruleset/coreruleset/issues/1286>

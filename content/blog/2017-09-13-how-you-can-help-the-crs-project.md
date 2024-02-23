@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2017-09-13T20:35:50+02:00'
-guid: https://coreruleset.org/?p=515
-id: 515
 permalink: /20170913/how-you-can-help-the-crs-project/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - ProjectSupport
 title: How You Can Help the CRS Project
@@ -49,4 +43,4 @@ So that is an overview where we could use some help. I am sure there will be som
 
 **\[EDIT\]: Very useful comment below from Walter Hop. In fact I thought the same thing when I read through several github comments on the weekend.**
 
-![](/assets/uploads/2017/08/christian-folini-2017-450x450.png) Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

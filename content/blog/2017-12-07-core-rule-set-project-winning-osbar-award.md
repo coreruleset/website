@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2017-12-07T16:03:43+01:00'
-guid: https://coreruleset.org/?p=604
-id: 604
 permalink: /20171207/core-rule-set-project-winning-osbar-award/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - ModSecurity
   - OSBAR
@@ -20,7 +14,7 @@ url: /2017/12/07/core-rule-set-project-winning-osbar-award/
 
 The OWASP ModSecurity Core Rule Set Project is very excited about winning one of the OSBAR awards of the [German Open Source Business Alliance](http://osb-alliance.de/). The prize is awarded to projects, start-ups and outstanding ideas from the open source environment. The increased attention should make it easier for the award winners to attract users, developers and supporters.
 
-<figure aria-describedby="caption-attachment-608" class="wp-caption alignright" id="attachment_608" style="width: 225px">![](/images/2017/12/osbar-225x300.jpeg)<figcaption class="wp-caption-text" id="caption-attachment-608">*CRS hackers Christian Folini and Franziska Bühler with the OSBAR award trophy (photo Fridolin Zurlinden)*</figcaption></figure>
+{{< figure width="225px" src="images/2017/12/osbar-225x300.jpeg" caption="CRS hackers Christian Folini and Franziska Bühler with the OSBAR award trophy (photo Fridolin Zurlinden)" >}}
 
 [ModSecurity](https://modsecurity.org) is a Web Application Firewall (WAF) with open source code that is also widely used in commercial products. The award-winning CRS project develops a set of about 150 generic rules for use with ModSecurity and related solutions. The CRS project was founded more than ten years ago and is now run as a flagship project by the Foundation Open Web Application Security Project ([OWASP](https://owasp.org)). The rules are available under license from the Apache Foundation and are also used in several commercial WAF solutions (where that is not always advertised).
 
@@ -30,4 +24,4 @@ ModSecurity was able to establish itself globally as the only open source offeri
 
 People interested in getting their feet wet with CRS will find [documentation](https://coreruleset.org/installation/) and [videos](https://www.youtube.com/watch?v=eO9gBAmKS58) here on the site, as well as an extensive set of [tutorials](https://www.netnea.com/cms/apache-tutorials/) and also [public courses](https://www.feistyduck.com/training/modsecurity-training-course) (February in Zurich and Frankfurt in March).
 
-![](/assets/uploads/2017/08/christian-folini-2017-450x450.png) Christian Folini / twitter [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

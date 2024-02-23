@@ -80,4 +80,4 @@ And here is the group photo from the community summit.
 
 <figure aria-describedby="caption-attachment-788" class="wp-caption aligncenter" id="attachment_788" style="width: 1024px">[![Group Photo from the CRS Community Summit 2018 in London](/images/2018/07/Group-Photo-1-small-1024x731.jpg)](/images/2018/07/Group-Photo-1-small.jpg)<figcaption class="wp-caption-text" id="caption-attachment-788">*Group Photo from the CRS Community Summit 2018 in London*</figcaption></figure>
 
-![](/assets/uploads/2017/08/christian-folini-2017-450x450.png) Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

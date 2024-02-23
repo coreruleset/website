@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2017-11-21T16:36:31+01:00'
-guid: https://coreruleset.org/?p=586
-id: 586
 permalink: /20171121/top-5-ways-crs-can-help-you-fight-owasp-top-10/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - Cross-Site-Scripting
   - Logging
@@ -109,4 +103,4 @@ Finally, let me tell you a about a little known feature: If you are afraid ModSe
 
 Thanks for reading. If you are interested in CRS, I suggest you follow the project on twitter at [@coreruleset](https://twitter.com/coreruleset) or you come here more often for future blog posts.
 
-![](/assets/uploads/2017/08/christian-folini-2017-450x450.png) Christian Folini / twitter [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

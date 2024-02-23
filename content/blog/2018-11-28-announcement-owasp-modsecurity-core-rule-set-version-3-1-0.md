@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2018-11-28T23:08:03+01:00'
-guid: https://coreruleset.org/?p=846
-id: 846
 permalink: /20181128/announcement-owasp-modsecurity-core-rule-set-version-3-1-0/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: 'Announcement: OWASP ModSecurity Core Rule Set Version 3.1.0'
 url: /2018/11/28/announcement-owasp-modsecurity-core-rule-set-version-3-1-0/
 ---
@@ -21,16 +15,16 @@ A wee bit over 2 years in the making, this major release represents a big step f
 
 Key features include:
 
-\* A new set of rules defending against Java injections  
-\* Initial set of file upload checks  
-\* Add built-in exceptions for Dokuwiki, Owncloud, Nextcloud and CPanel  
-\* Easier handling of the paranoia mode  
-\* Many false positives fixed  
-\* Successful source code archaeology with regular expressions  
-\* Detailed rule cleanup for easier maintenance  
-\* Speed improvements via the removal of unneeded regex capture groups  
-\* Regression tests for rules, Travis support  
-\* CRS docker image based on Ubuntu
+* A new set of rules defending against Java injections  
+* Initial set of file upload checks  
+* Add built-in exceptions for Dokuwiki, Owncloud, Nextcloud and CPanel  
+* Easier handling of the paranoia mode  
+* Many false positives fixed  
+* Successful source code archaeology with regular expressions  
+* Detailed rule cleanup for easier maintenance  
+* Speed improvements via the removal of unneeded regex capture groups  
+* Regression tests for rules, Travis support  
+* CRS docker image based on Ubuntu
 
 For a complete list of new features and the changes in this release, see the CHANGES document:  
 <https://github.com/coreruleset/coreruleset/blob/v3.1/dev/CHANGES>
@@ -41,7 +35,7 @@ CRS 3.1 requires an Apache/IIS/NGINX web server with ModSecurity 2.8.0 or higher
 
 Our GitHub repository is the preferred way to download and update CRS:
 
-```
+```bash
 $> wget https://github.com/coreruleset/coreruleset/archive/v3.1.0.tar.gz
 ```
 

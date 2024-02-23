@@ -73,15 +73,19 @@ Fore more `docker run` examples and a complete list of possible environment vari
 
 The documentation of the CRS variables can be found in the current `crs-setup.conf.example`. At the time of this writing, this is <https://github.com/coreruleset/coreruleset/blob/v3.2/dev/crs-setup.conf.example>.
 
-Let's have a look what we do in the `docker run` command above:  
-We start our CRS container with a paranoia\_level of 1, an inbound\_anomaly\_score\_threshold of 5 and an outbound\_anomaly\_score\_threshold of 5. These are internal configuration variables of the CRS that we configure here on the command line. Our values are mostly default values, but for the sake of clarity, we will do it anyway.  
-Then we tell the CRS to allow only GET and POST methods by setting the tx.allowed\_methods CRS variable.  
-The application allows for uploading images. We don't want to allow pictures larger than 5 MB. We achieve this by setting the tx.max\_file\_size variable to 5,242,880 bytes.  
-As our application leaks sensitive information in a .conf file, we forbid access to this file extension. The default value of restricted\_extensions is a long list of extensions that already contains .conf. Nevertheless, we explicitly set the value .conf for this blog post, as an example. But it's absolutely ok to not touch this value and to let the default value with numerous extensions take effect.  
-The listening port 8001 of the Apache Reverse Proxy can be set using the Docker environment variable PORT. This means the Apache inside the Docker container will run under the port 8001.  
-We also either need to use port mapping `--port 8001:8001` or make this listening port available on the Docker host with `--expose`. In some CI/CD environments, port mapping can not be used. Instead, we would then use `--expose`.  
-But here, we map port 8001 from inside the container to port 8001 on our Docker host. Apache, with the Core Rule Set, can thus be called under port 8001 on the Docker host. [CIS Docker Benchmark](https://www.cisecurity.org/cis-benchmarks/) recommends ensuring that container ports are not mapped to host port numbers below 1024.  
-Instead of mapping every interface (0.0.0.0) with `--publish 8001:8001` we could also use an explicit IP address here. That would be more secure, especially on productive systems.  
+Let's have a look what we do in the `docker run` command above:
+
+We start our CRS container with a `paranoia_level` of 1, an `inbound_anomaly_score_threshold` of 5 and an `outbound_anomaly_score_threshold` of 5. These are internal configuration variables of the CRS that we configure here on the command line. Our values are mostly default values, but for the sake of clarity, we will do it anyway.
+
+Then we tell the CRS to allow only GET and POST methods by setting the `tx.allowed_methods` CRS variable.  
+The application allows for uploading images. We don't want to allow pictures larger than 5 MB. We achieve this by setting the `tx.max_file_size` variable to 5,242,880 bytes.
+
+As our application leaks sensitive information in a .conf file, we forbid access to this file extension. The default value of `restricted_extensions` is a long list of extensions that already contains .conf. Nevertheless, we explicitly set the value` .conf` for this blog post, as an example. But it's absolutely ok to not touch this value and to let the default value with numerous extensions take effect.
+
+The listening port 8001 of the Apache Reverse Proxy can be set using the Docker environment variable PORT. This means the Apache inside the Docker container will run under the port 8001.
+We also either need to use port mapping `--port 8001:8001` or make this listening port available on the Docker host with `--expose`. In some CI/CD environments, port mapping can not be used. Instead, we would then use `--expose`.
+But here, we map port 8001 from inside the container to port 8001 on our Docker host. Apache, with the Core Rule Set, can thus be called under port 8001 on the Docker host. [CIS Docker Benchmark](https://www.cisecurity.org/cis-benchmarks/) recommends ensuring that container ports are not mapped to host port numbers below 1024.
+Instead of mapping every interface (0.0.0.0) with `--publish 8001:8001` we could also use an explicit IP address here. That would be more secure, especially on productive systems.
 
 The backend application listens on the IP address 192.168.1.129 and on port 8000. This can be configured with the Docker environment variable BACKEND=http://192.168.1.129:8000. We can not use the localhosts IP address 127.0.0.1 here, but the real IP address of the application because this localhost would be inside the container and can not be use to address the application outside the container.
 
@@ -134,11 +138,13 @@ We also check what happened to the blocked .conf file. This request can no longe
 
 The corresponding log entries can be found here:
 
+```
 [2018-11-30 15:21:53.786966] [-:error] 172.17.0.1:39830 W-6ykartDdny6dEbaKB05gAAAJE [client 172.17.0.1] ModSecurity: Warning. String match within ".conf/" at TX:extension. [file "/etc/apache2/modsecurity.d/owasp-crs/rules/REQUEST-920-PROTOCOL-ENFORCEMENT.conf"] [line "1069"] [id "920440"] [msg "URL file extension is restricted by policy"] [data ".conf"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-protocol"] [tag "OWASP_CRS/POLICY/EXT_RESTRICTED"] [tag "WASCTC/WASC-15"] [tag "OWASP_TOP_10/A7"] [tag "PCI/6.5.10"] [hostname "localhost"] [uri "/server.conf"] [unique_id "W-6ykartDdny6dEbaKB05gAAAJE"]
 [2018-11-30 15:21:53.791227] [-:error] 172.17.0.1:39830 W-6ykartDdny6dEbaKB05gAAAJE [client 172.17.0.1] ModSecurity: Access denied with code 403 (phase 2). Operator GE matched 5 at TX:anomaly_score. [file "/etc/apache2/modsecurity.d/owasp-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf"] [line "93"] [id "949110"] [msg "Inbound Anomaly Score Exceeded (Total Score: 5)"] [severity "CRITICAL"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-generic"] [hostname "localhost"] [uri "/server.conf"] [unique_id "W-6ykartDdny6dEbaKB05gAAAJE"]
 [2018-11-30 15:21:53.792642] [-:error] 172.17.0.1:39830 W-6ykartDdny6dEbaKB05gAAAJE [client 172.17.0.1] ModSecurity: Warning. Operator GE matched 5 at TX:inbound_anomaly_score. [file "/etc/apache2/modsecurity.d/owasp-crs/rules/RESPONSE-980-CORRELATION.conf"] [line "86"] [id "980130"] [msg "Inbound Anomaly Score Exceeded (Total Inbound Score: 5 - SQLI=0,XSS=0,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): URL file extension is restricted by policy; individual paranoia level scores: 5, 0, 0, 0"] [tag "event-correlation"] [hostname "localhost"] [uri "/error/403.html"] [unique_id "W-6ykartDdny6dEbaKB05gAAAJE"]
+```
 
-- CRS rule 920440 now states that our configured file extension .conf is not allowed: \[msg "URL file extension is restricted by policy"\] \[data ".conf"\]
+- CRS rule 920440 now states that our configured file extension .conf is not allowed: `[msg "URL file extension is restricted by policy"] [data ".conf"]`
 - In rule 949110, we see that the request was blocked because of the too high Inbound Anomaly Score of 5. And in rule 980130 we see again the details.
 
 As mentioned earlier, this `docker cat` approach to analyzing logs is just one example of many possible approaches. Other log handling practices may be more compliant or more in line with current best practices.

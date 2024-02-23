@@ -3,17 +3,9 @@ author: Christian Folini
 categories:
   - Blog
 date: '2019-08-07T22:45:43+02:00'
-guid: https://coreruleset.org/?p=1002
-id: 1002
 permalink: /20190807/crs-project-news-august-2019/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CRS-News
-theme-transparent-header-meta:
-  - default
 title: CRS Project News August 2019
 url: /2019/08/07/crs-project-news-august-2019/
 ---
@@ -37,7 +29,7 @@ Life is interfering and the rhythm of the CRS news is not what I would like it t
 - The pressing ReDoS problems that resulted in 5 (!) CVEs issued against CRS could be solved with the release of 3.1.1 that is functionally equivalent to 3.1.0 and does not suffer from the problems. We also found out, that 4 of the 5 CVEs were bogus and the 5th is only exploitable in few installations. We are talking to Mitre, but they have not really be very forthcoming so far.  
     A word of caution: This does not mean that there are no more ReDoS problems in CRS. We are working through the rules and we think we have identified most problematic rules, but ReDoS is nasty as long as you run on PCRE and we are not quite ready to support an alternative engine like RE2 (but we are working on it; see below).  
     Link:  
-    <https://coreruleset.org/20190627/announcement-owasp-modsecurity-core-rule-set-version-3-1-1/>.
+    <{{< ref "blog/2019-06-27-announcement-owasp-modsecurity-core-rule-set-version-3-1-1.md" >}}>.
 - There is a new, bi-monthly CRS / ModSecurity Meetup in Bern, Switzerland. The first edition ran on June 26 2019 and we got 14 people together in the room.  
     Link:  
     <https://www.meetup.com/CRS-ModSecurity-Meetup-Bern/>  
@@ -97,9 +89,3 @@ Life is interfering and the rhythm of the CRS news is not what I would like it t
 - Not much more of much importance is in the queue. We have been very active with merging those last few weeks. There are just a few bugfixes here and there plus more tests.
 
 *News assembled by Christian Folini, CRS Co-Lead.*
-
-```
-<pre class="wp-block-code">```
-
-```
-```

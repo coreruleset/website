@@ -31,9 +31,9 @@ This is the CRS newsletter covering the period from July until today.
         The idea is now a PR to add the sources to util/regexp-assemble. This would then allow us to consolidate / optimize the regular expressions.
     - Believe it or not: We got the new logo for the project. As we kind of expected it took longer than expected, but it's done now and it sure looks cool. Expect a separate announcement very soon.  
         This also holds true for the website which is ready and only waits for the logo for the real announcement.
-    - OWASP London invited me to present my CRS3 intro presentation that I held in Belfast for AppSecEU. This took place on July 27 and according to the audience it was a big success. Here are a few photos taken after the presentation when I signed the new ModSecurity Handbook and then in the pub nearby:[![](/assets/uploads/2017/08/crs_news_2017-08-photo-1.jpeg)](https://twitter.com/ChrFolini/status/892686195133739009)[![](/assets/uploads/2017/08/crs_news_2017-08-photo-2.jpeg)](https://twitter.com/OWASPLondon/status/890693408683163648)
+    - OWASP London invited me to present my CRS3 intro presentation that I held in Belfast for AppSecEU. This took place on July 27 and according to the audience it was a big success. Here are a few photos taken after the presentation when I signed the new ModSecurity Handbook and then in the pub nearby:[![](/images/2017/08/crs_news_2017-08-photo-1.jpeg)](https://twitter.com/ChrFolini/status/892686195133739009)[![](/images/2017/08/crs_news_2017-08-photo-2.jpeg)](https://twitter.com/OWASPLondon/status/890693408683163648)
 
-**Upcoming Stuff**
+## Upcoming Stuff
 
 - OWASP Switzerland is also hosting CRS introduction talk. This is happening on Wednesday, August 16 in Zurich at 6pm.  
     Here are the details:  
@@ -44,4 +44,4 @@ This is the CRS newsletter covering the period from July until today.
 
 I have been on a holiday for two weeks and it is likely, I overlooked things on the mailinglists and on github. Feel free to speak up and respond to this message highlighting the omissions.
 
-![](/assets/uploads/2017/08/christian-folini-2017-450x450.png) Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

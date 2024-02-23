@@ -3,13 +3,7 @@ author: Christian Folini
 categories:
   - Blog
 date: '2019-04-25T15:29:15+02:00'
-guid: https://coreruleset.org/?p=965
-id: 965
 permalink: /20190425/regular-expression-dos-weaknesses-in-crs/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - DDoS
   - DoS
@@ -41,7 +35,7 @@ Pattern matching is a CPU intense task and given CRS is heavily based on regular
 
 #### How does ModSecurity deal with it?
 
-Traditionally, the ModSecurity engine has PCRE limits that prevent the fall into the rabbit hole. These are the [<tt>SecPcreMatchLimit</tt>](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-(v2.x)#SecPcreMatchLimit) and [<tt>SecPcreMatchLimitRecursion</tt>](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-(v2.x)#secpcrematchlimitrecursion) directives. That means that with ModSecurity 2.x, the regex processor stops after a configurable number of matches. You have probably seen the PCRE limit error message in your logs. That is this ReDoS prevention mechanism at work. This mechanism is not without disadvantages, but it is quite successful with preventing ReDoS. More details can be found in the [ModSecurity Handbook 2nd Ed.](https://www.feistyduck.com/books/modsecurity-handbook/), page 185f.
+Traditionally, the ModSecurity engine has PCRE limits that prevent the fall into the rabbit hole. These are the [SecPcreMatchLimit](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-(v2.x)#SecPcreMatchLimit) and [SecPcreMatchLimitRecursion](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-(v2.x)#secpcrematchlimitrecursion) directives. That means that with ModSecurity 2.x, the regex processor stops after a configurable number of matches. You have probably seen the PCRE limit error message in your logs. That is this ReDoS prevention mechanism at work. This mechanism is not without disadvantages, but it is quite successful with preventing ReDoS. More details can be found in the [ModSecurity Handbook 2nd Ed.](https://www.feistyduck.com/books/modsecurity-handbook/), page 185f.
 
 There have been previous issues with ReDoS in CRS, but given that ModSecurity provided a safety belt, we have not given it much priority so far.
 

@@ -3,24 +3,16 @@ author: Christian Folini
 categories:
   - Blog
 date: '2017-12-14T09:40:01+01:00'
-guid: https://coreruleset.org/?p=616
-id: 616
 permalink: /20171214/practical-ftw-testing-the-core-rule-set-or-any-other-waf/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - ftw
   - testing
-theme-transparent-header-meta:
-  - default
 title: 'Practical FTW: Testing the Core Rule Set or Any Other WAF'
 url: /2017/12/14/practical-ftw-testing-the-core-rule-set-or-any-other-waf/
 ---
 
 
-Back in August and September, Chaim Sanders [introduced](https://coreruleset.org/20170810/testing-wafs-ftw-version-1-0-released/) [FTW](https://coreruleset.org/20170915/writing-ftw-test-cases-for-owasp-crs/), a Framework to Test WAFs via two blost posts. Existing unit testing frameworks are not really suitable for this purpose as they do not grant you enough control over the requests and the ability to look at the WAF log that needs to be bolted on. Chaim teamed with Zack Allen and Christian Peron from Fastly to create this. So FTW was developed with exactly our use case in mind. Time to really understand this and to start using it.
+Back in August and September, Chaim Sanders [introduced]({{< ref "blog/2017-08-10-testing-wafs-ftw-version-1-0-released.md" >}}) [FTW]({{< ref "blog/2017-09-15-writing-ftw-test-cases-for-owasp-crs.md" >}}), a Framework to Test WAFs via two blost posts. Existing unit testing frameworks are not really suitable for this purpose as they do not grant you enough control over the requests and the ability to look at the WAF log that needs to be bolted on. Chaim teamed with Zack Allen and Christian Peron from Fastly to create this. So FTW was developed with exactly our use case in mind. Time to really understand this and to start using it.
 
 Chaim's two blog posts address the inner working of the software. He described the YAML format used to define the tests, but I somehow missed the user perspective: How do I install and run this? So that's the goal of this blog post.
 
@@ -36,7 +28,7 @@ to settle this. Then you are ready for ftw. You can install ftw via pypi / pip o
 
 So here is what works for me:
 
-```
+```bash
 $> git clone https://github.com/coreruleset/coreruleset.git
 ...
 $> cd owasp-modsecurity-crs
@@ -51,7 +43,7 @@ Also creating executable in /tmp/owasp-modsecurity-crs/env/bin/python
 Installing setuptools, pkg_resources, pip, wheel...done.
 ```
 
-```
+```bash
 (env) $> pip install -r requirements.txt
 Collecting ftw==1.1.0 (from -r requirements.txt (line 1))
 Collecting python-dateutil==2.6.0 (from ftw==1.1.0->-r requirements.txt (line 1))
@@ -74,7 +66,7 @@ The next line from above brings the pip command to install the required packages
 
 And then we start the CRS equipped webserver on localhost and call FTW for the first time!
 
-```
+```bash
 (env) $> py.test CRS_Tests.py --ruledir=tests
 
 ===================================================================== test session starts =====================================================================
@@ -94,7 +86,7 @@ py.test is the main call to the pytest unit testing framework. So ftw is based o
 
 Right beneath tests, there is a file test.yaml. It contains an example test:
 
-```
+```yaml
 (env) $> cat tests/test.yaml
  ---
  meta:
@@ -123,7 +115,7 @@ This test tells ftw to make a call to a webserver / ModSecurity / CRS installati
 
 The output we have seen above was a bit sparse. Let's add verbosity with a "-v" flag. And then we should also add the "-s" flag that instructs pytest to hide shell STDOUT and STDERR. So let's add this to our standard call:
 
-```
+```bash
 (env) $> py.test -sv CRS_Tests.py --ruledir=tests
  ===================================================================== test session starts =====================================================================
  platform linux2 -- Python 2.7.12+, pytest-2.9.1, py-1.4.34, pluggy-0.3.1 -- /tmp/owasp-modsecurity-crs/util/regression-tests/env/bin/python2
@@ -141,7 +133,7 @@ So now we received an additional line of output telling us that the test 920273-
 
 The path to the error log is defined in config.py. Let's take a look at this file:
 
-```
+```bash
 (env) $> cat config.py
 # Location of Apache Error Log
 log_location_linux = '/apache/logs/error.log'
@@ -177,7 +169,7 @@ In fact the CRS development tree we are using comes with over 400 test calls. Th
 
 The test requests are organised in a file tree by their rule id. We can call them one after the other, but we can also instruct ftw to load all tests from a file tree recursively:
 
-```
+```bash
 (env) $> py.test -sv CRS_Tests.py --ruledir=tests/REQUEST-941-APPLICATION-ATTACK-XSS
  ===================================================================== test session starts =====================================================================
  platform linux2 -- Python 2.7.12+, pytest-2.9.1, py-1.4.34, pluggy-0.3.1 -- /tmp/owasp-modsecurity-crs/util/regression-tests/env/bin/python2
@@ -235,9 +227,9 @@ CRS_Tests.py::test_crs[ruleset0-941320.yaml -- 941320-1] PASSED
 
 That's a lot of requests. And an odd way of ordering numbers. You should also note that the prefix to the filename with the tests (-&gt; rulesetXX) is a consolidated version of the tests that FTW generates prior to running them. So it kind of loads all the tests, consolidates them into single batch and then runs them one after the other.
 
-There is another command line option that may come in handy: running individual tests selectively: -k
+There is another command line option that may come in handy: running individual tests selectively: `-k`
 
-```
+```bash
 (env) $> py.test -sv CRS_Tests.py --ruledir=tests/REQUEST-941-APPLICATION-ATTACK-XSS -k 941100
  ===================================================================== test session starts =====================================================================
  platform linux2 -- Python 2.7.12+, pytest-2.9.1, py-1.4.34, pluggy-0.3.1 -- /tmp/owasp-modsecurity-crs/util/regression-tests/env/bin/python2
@@ -260,7 +252,7 @@ Note the new line near the bottom where ftw explains how it filtered the tests.
 
 And finally, there is an option to run the tests not only from one folder, but from a complete file tree in a recursive way.
 
-```
+```bash
 (env) $> py.test -sv CRS_Tests.py --ruledir_recurse=tests
  ===================================================================== test session starts =====================================================================
  platform linux2 -- Python 2.7.12+, pytest-2.9.1, py-1.4.34, pluggy-0.3.1 -- /tmp/owasp-modsecurity-crs/util/regression-tests/env/bin/python2
@@ -295,7 +287,7 @@ CRS_Tests.py::test_crs[ruleset0-Example_Tests -- 920272-3] PASSED
 
 We are now seeing quite a few failed tests. This has nothing to do with ftw or the CRS, it's the tests that are not yet written correctly. User [@azhao155](https://github.com/azhao155) is very active with fixing these to give us better coverage (and he could use some help with this task). Because of these errors, our continuos integration setup on github does not call all the tests. Instead, Travis only covers those we known to be working:
 
-<figure aria-describedby="caption-attachment-618" class="wp-caption aligncenter" id="attachment_618" style="width: 967px">[![](/images/2017/12/tmp.png)](/images/2017/12/tmp.png)<figcaption class="wp-caption-text" id="caption-attachment-618">Not all tests are executed by Travis so far. The 920xxx rules are skipped as of this writing.</figcaption></figure>
+{{< figure width="967px" src="images/2017/12/tmp.png" caption="Not all tests are executed by Travis so far. The 920xxx rules are skipped as of this writing" >}}
 
 As soon as we have all of them sorted out, we can get include all of them and start to cover those rules where a test is not yet in place.
 
@@ -313,4 +305,4 @@ I would like to have some documentation on how to install this in order to run w
 
 And I get the feeling we need a concept on how to write and organize the tests. We have a lot of them already, but I somehow lack the overview and the guideline for a best practice. Maybe a table would be enough for the overview, but how many tests do we need per rule? How do we name them consistently? So maybe it takes more experience and more thinking. And finally, we need to make sure all the existing tests really work. It is namely the latter part where the community could step in and give us a hand. With the information found above and the previous blog posts about test writing, the information is now all in place and you could get hacking immediately.
 
-![](/assets/uploads/2017/08/christian-folini-2017-450x450.png) Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

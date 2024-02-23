@@ -57,4 +57,4 @@ It is likely the code will be converted to spaces and many small issues will be 
 - The sales on the two Apache / ModSecurity / CRS courses in October are doing well. There are 3-4 seats free for London (October 4-5) and a single seat for Zurich (October 11-12).  
      <https://www.feistyduck.com/training/modsecurity-training-course>
 
-![](/images/2017/08/christian-folini-2017-450x450.png) Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)
+{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

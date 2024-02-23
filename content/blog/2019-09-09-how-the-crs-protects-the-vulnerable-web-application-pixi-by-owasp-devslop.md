@@ -3,17 +3,9 @@ author: Franziska Buehler
 categories:
   - Blog
 date: '2019-09-09T10:37:38+02:00'
-guid: https://coreruleset.org/?p=1031
-id: 1031
 permalink: /20190909/how-the-crs-protects-the-vulnerable-web-application-pixi-by-owasp-devslop/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - DevSlop
-theme-transparent-header-meta:
-  - default
 title: How the CRS protects the vulnerable web application Pixi by OWASP DevSlop
 url: /2019/09/09/how-the-crs-protects-the-vulnerable-web-application-pixi-by-owasp-devslop/
 ---
@@ -33,8 +25,7 @@ Setup
 
 To start Pixi and the CRS in front of it, I use the official [docker-compose.yaml](https://github.com/coreruleset/coreruleset/blob/v3.2.0-rc2/util/docker/docker-compose.yaml) provided by the Core Rule Set and I add the Pixi part below the CRS part:
 
-```
-<pre class="wp-block-code">```
+```dockerfile
 # This docker-compose file starts owasp/modsecurity-crs
 
 version: "3"
@@ -84,18 +75,17 @@ services:
       - "127.0.0.1:8000:8000"
       - "127.0.0.1:8090:8090"
 ```
-```
 
-The image owasp/modsecurity-crs is the new official OWASP ModSecurity Core Rule Set container image. It supports the TLS and PROXY mode per default.  
+The image `owasp/modsecurity-crs` is the new official OWASP ModSecurity Core Rule Set container image. It supports the TLS and PROXY mode per default.  
 We use the standard installation, the Paranoia Level 1 and an inbound anomaly threshold of 5 and outbound anomaly threshold of 4. The backend, Pixi, runs on port 8000 and we set the PROXYLOCATION env var to the service app with port 8000. The CRS Reverse Proxy listens on port 80 and 443.
 
 I will use port 80 for demonstration, but it's very easy to mount a valid TLS server certificate into the container and provide proper TLS.
 
-Pixis Vulnerabilities
+### Pixis Vulnerabilities
 
 Let's now dive into Pixi's weaknesses:
 
-Authentication bypass
+#### Authentication bypass
 
 With a simple Mongo DB injection, the authentication can be bypassed. For further reading about this class of vulnerabilities, see [here](https://www.owasp.org/index.php/Testing_for_NoSQL_injection).
 
@@ -103,17 +93,20 @@ Unfortunately, I can not show this vulnerability. As soon as I replay this reque
 
 When I replay the request through the CRS, Pixi doesn't die anymore, because CRS blocks the request at Paranoia Level 1:
 
-<figure class="wp-block-image is-resized">![](/images/2019/09/Authentication_Bypass_Request-1024x664.png)<figcaption>Authentication Bypass: ZAP Request Editor</figcaption></figure><figure class="wp-block-image">![](/images/2019/09/Authentication_Bypass_Response-1024x663.png)<figcaption>Authentication Bypass: ZAP Response</figcaption></figure>The logfile tells us that the MongoDB injection was detected (id: 942290). It says that the access was denied (id: 949110) and that the Inbound Anomaly Score of the request at PL1 was 5 (id: 980130). The last two log file entries (id: 949110 and 980130) always occur with a blocked request.
+{{< figure src="images/2019/09/Authentication_Bypass_Request-1024x664.png" caption="Authentication Bypass: ZAP Request Editor" >}}
+ images/2019/09/Authentication_Bypass_Response-1024x663.png)<figcaption>Authentication Bypass: ZAP Response</figcaption></figure>The logfile tells us that the MongoDB injection was detected (id: 942290). It says that the access was denied (id: 949110) and that the Inbound Anomaly Score of the request at PL1 was 5 (id: 980130). The last two log file entries (id: 949110 and 980130) always occur with a blocked request.
 
-\[Mon Sep 09 07:40:47.839300 2019\] \[:error\] \[pid 44:tid 139999475324672\] \[client 192.168.0.1:59602\] \[client 192.168.0.1\] ModSecurity: Warning. Pattern match "(?i:(?:\\\\\\\\\[\\\\\\\\$(?:ne|eq|lte?|gte?|n?in|mod|all|size|exists|type|slice|x?or|div|like|between|and)\\\\\\\\\]))" at ARGS\_NAMES:pass\[$ne\]. \[file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"\] \[line "367"\] \[**id "942290"**\] \[**msg "Finds basic MongoDB SQL injection attempts"**\] \[data "Matched Data: \[$ne\] found within ARGS\_NAMES:pass\[$ne\]: pass\[$ne\]"\] \[severity "CRITICAL"\] \[ver "OWASP\_CRS/3.2.0"\] \[tag "application-multi"\] \[tag "language-multi"\] \[tag "platform-multi"\] \[tag "attack-sqli"\] \[tag "OWASP\_CRS"\] \[tag "OWASP\_CRS/WEB\_ATTACK/SQL\_INJECTION"\] \[tag "WASCTC/WASC-19"\] \[tag "OWASP\_TOP\_10/A1"\] \[tag "OWASP\_AppSensor/CIE1"\] \[tag "PCI/6.5.2"\] \[hostname "localhost"\] \[uri "/login"\] \[unique\_id "XXYB-5tiXQGQt80jpPMnxgAAAJc"\], referer: http://localhost:80/login
+```
+[Mon Sep 09 07:40:47.839300 2019] [:error] [pid 44:tid 139999475324672] [client 192.168.0.1:59602] [client 192.168.0.1] ModSecurity: Warning. Pattern match "(?i:(?:\\\\\\\\[\\\\\\\\$(?:ne|eq|lte?|gte?|n?in|mod|all|size|exists|type|slice|x?or|div|like|between|and)\\\\\\\\]))" at ARGS_NAMES:pass[$ne]. [file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"] [line "367"] [**id "942290"**] [**msg "Finds basic MongoDB SQL injection attempts"**] [data "Matched Data: [$ne] found within ARGS_NAMES:pass[$ne]: pass[$ne]"] [severity "CRITICAL"] [ver "OWASP_CRS/3.2.0"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-sqli"] [tag "OWASP_CRS"] [tag "OWASP_CRS/WEB_ATTACK/SQL_INJECTION"] [tag "WASCTC/WASC-19"] [tag "OWASP_TOP_10/A1"] [tag "OWASP_AppSensor/CIE1"] [tag "PCI/6.5.2"] [hostname "localhost"] [uri "/login"] [unique_id "XXYB-5tiXQGQt80jpPMnxgAAAJc"], referer: http://localhost:80/login
 
-\[Mon Sep 09 07:40:47.845881 2019\] \[:error\] \[pid 44:tid 139999475324672\] \[client 192.168.0.1:59602\] \[client 192.168.0.1\] ModSecurity: Access denied with code 403 (phase 2). Operator GE matched 5 at TX:anomaly\_score. \[file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf"\] \[line "91"\] \[**id "949110"**\] \[**msg "Inbound Anomaly Score Exceeded (Total Score: 5)"**\] \[severity "CRITICAL"\] \[tag "application-multi"\] \[tag "language-multi"\] \[tag "platform-multi"\] \[tag "attack-generic"\] \[hostname "localhost"\] \[uri "/login"\] \[unique\_id "XXYB-5tiXQGQt80jpPMnxgAAAJc"\], referer: http://localhost:80/login
+[Mon Sep 09 07:40:47.845881 2019] [:error] [pid 44:tid 139999475324672] [client 192.168.0.1:59602] [client 192.168.0.1] ModSecurity: Access denied with code 403 (phase 2). Operator GE matched 5 at TX:anomaly_score. [file "/etc/modsecurity.d/owasp-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf"] [line "91"] [**id "949110"**] [**msg "Inbound Anomaly Score Exceeded (Total Score: 5)"**] [severity "CRITICAL"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-generic"] [hostname "localhost"] [uri "/login"] [unique_id "XXYB-5tiXQGQt80jpPMnxgAAAJc"], referer: http://localhost:80/login
 
-\[Mon Sep 09 07:40:47.849314 2019\] \[:error\] \[pid 44:tid 139999475324672\] \[client 192.168.0.1:59602\] \[client 192.168.0.1\] ModSecurity: Warning. Operator GE matched 5 at TX:inbound\_anomaly\_score. \[file "/etc/modsecurity.d/owasp-crs/rules/RESPONSE-980-CORRELATION.conf"\] \[line "86"\] \[**id "980130"**\] \[msg "Inbound Anomaly Score Exceeded (Total Inbound Score: 5 - SQLI=5,XSS=0,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): **individual paranoia level scores: 5, 0, 0, 0**"\] \[tag "event-correlation"\] \[hostname "localhost"\] \[uri "/login"\] \[unique\_id "XXYB-5tiXQGQt80jpPMnxgAAAJc"\], referer: http://localhost:80/login
+[Mon Sep 09 07:40:47.849314 2019] [:error] [pid 44:tid 139999475324672] [client 192.168.0.1:59602] [client 192.168.0.1] ModSecurity: Warning. Operator GE matched 5 at TX:inbound_anomaly_score. [file "/etc/modsecurity.d/owasp-crs/rules/RESPONSE-980-CORRELATION.conf"] [line "86"] [**id "980130"**] [msg "Inbound Anomaly Score Exceeded (Total Inbound Score: 5 - SQLI=5,XSS=0,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): **individual paranoia level scores: 5, 0, 0, 0**"] [tag "event-correlation"] [hostname "localhost"] [uri "/login"] [unique_id "XXYB-5tiXQGQt80jpPMnxgAAAJc"], referer: http://localhost:80/login
+```
 
 As the logfiles are a bit hard to read, I will shorten the output of the next vulnerabilities and use Christian Folini's alias `melidmsg`. For further information about his aliases, see Christian's [tutorials](https://www.netnea.com/cms/apache-tutorials/).
 
-Angular Constructor Injection
+### Angular Constructor Injection
 
 Under special circumstances an Angular template injection is possible. This can happen when client side security checks are disabled (that must not be disabled). For further reading, please see [here](http://blog.portswigger.net/2016/01/xss-without-html-client-side-template.html).
 

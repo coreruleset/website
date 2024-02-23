@@ -3,15 +3,7 @@ author: Walter Hop
 categories:
   - Blog
 date: '2019-08-26T10:44:51+02:00'
-guid: https://coreruleset.org/?p=1013
-id: 1013
 permalink: /20190826/optimizing-regular-expressions/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: How the CRS optimizes regular expressions
 url: /2019/08/26/optimizing-regular-expressions/
 ---
@@ -19,8 +11,8 @@ url: /2019/08/26/optimizing-regular-expressions/
 
 As many of you have noticed, the Core Rule Set contains very complex regular expressions. See for example [rule 942480](https://github.com/coreruleset/coreruleset/blob/v3.2/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf#L1234):
 
-```
-<pre class="wp-block-preformatted">(?i:(?:\b(?:(?:s(?:elect\b.{1,100}?\b(?:(?:(?:length|count)\b.{1,100}?|.*?\bdump\b.*)\bfrom|to(?:p\b.{1,100}?\bfrom|_(?:numbe|cha)r)|(?:from\b.{1,100}?\bwher|data_typ)e|instr)|ys_context)|in(?:to\b\W*?\b(?:dump|out)file|sert\b\W*?\binto|ner\b\W*?\bjoin)|...
+```text
+(?i:(?:\b(?:(?:s(?:elect\b.{1,100}?\b(?:(?:(?:length|count)\b.{1,100}?|.*?\bdump\b.*)\bfrom|to(?:p\b.{1,100}?\bfrom|_(?:numbe|cha)r)|(?:from\b.{1,100}?\bwher|data_typ)e|instr)|ys_context)|in(?:to\b\W*?\b(?:dump|out)file|sert\b\W*?\binto|ner\b\W*?\bjoin)|...
 ```
 
 These regular expressions are assembled from a list of simpler regular expressions for efficiency reasons. See [regexp-942480.data](https://github.com/coreruleset/coreruleset/blob/v3.2/dev/util/regexp-assemble/regexp-942480.data) for the source expressions which were combined to form this expression.
@@ -37,29 +29,29 @@ If you don't have Perl, you will need to install it. The easiest Perl distributi
 
 Now install Regexp::Assemble. If you used ActivePerl, you can use the following command:
 
-```
-<pre class="wp-block-preformatted">ppm install regexp-assemble
+```sh
+ppm install regexp-assemble
 ```
 
 If you use another Perl distribution, the command will usually be:
 
-```
-<pre class="wp-block-preformatted">cpan install Regexp::Assemble
+```sh
+cpan install Regexp::Assemble
 ```
 
 #### Assembling a rule
 
 Once you have Perl and Regexp::Assemble installed, all you need is a little script in our code repository under [util/regexp-assemble/regexp-assemble-v2.pl](https://github.com/coreruleset/coreruleset/blob/v3.2/dev/util/regexp-assemble/regexp-assemble-v2.pl). On Unix-like systems, you can use it as follows:
 
-```
-<pre class="wp-block-preformatted">cd util/regexp-assemble
+```sh
+cd util/regexp-assemble
 ./regexp-assemble-v2.pl regexp-942480.data
 ```
 
 If your perl interpreter cannot be found, you may need to precede the script name with the command `perl`:
 
-```
-<pre class="wp-block-preformatted">perl regexp-assemble-v2.pl regexp-942480.data
+```sh
+perl regexp-assemble-v2.pl regexp-942480.data
 ```
 
 The script will take either standard input or an input file with each line containing a regular expression, and prints out the optimized expression.

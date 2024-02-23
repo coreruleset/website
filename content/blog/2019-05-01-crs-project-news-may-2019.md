@@ -3,19 +3,11 @@ author: Christian Folini
 categories:
   - Blog
 date: '2019-05-01T12:34:59+02:00'
-guid: https://coreruleset.org/?p=979
-id: 979
 permalink: /20190501/crs-project-news-may-2019/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CRS-News
   - DoS
   - ReDoS
-theme-transparent-header-meta:
-  - default
 title: CRS Project News May 2019
 url: /2019/05/01/crs-project-news-may-2019/
 ---
@@ -29,13 +21,13 @@ We are back with the CRS project news. There was not too much to talk about in r
     problem. Usually, it is no big deal as ModSecurity 2 used to protect from  
     this type of attack. However, this protection is gone with ModSecurity 3.  
     Somdev Sangwan had 5 (!) CVE against CRS created. Yet we came to the  
-    conclusion, that only one of them (-&gt; CVE-2019-11387) is directly  
+    conclusion, that only one of them (👉 CVE-2019-11387) is directly  
     exploitable and only on ModSecurity 3 at paranoia level 2 or higher. The problem is situation in two separate rules. We are now working on a solution for this issue.  
     Links:  
     <https://nvd.nist.gov/vuln/detail/CVE-2019-11387>  
     <https://github.com/coreruleset/coreruleset/issues/1359>  
     <https://portswigger.net/daily-swig/unpatched-modsecurity-crs-vulnerabilities-leave-web-servers-open-to-denial-of-service-attacks>  
-    <https://coreruleset.org/20190425/regular-expression-dos-weaknesses-in-crs/>
+    <{{< ref "blog/2019-04-25-regular-expression-dos-weaknesses-in-crs.md" >}}>
 - CRS contributor Airween has made a big effort to make sure that ModSecurity 3 passes the CRS test suite. He fixed several ModSec bugs along the way (not all of them merged yet) and he has been 100% successful with ModSec3 in combination with the Apache connector. With the nginx connector, he is really close.  
     Please note that this means, that none of the released ModSec 3 versions  
     are able to pass the CRS 3 test suite so far.

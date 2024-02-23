@@ -3,23 +3,14 @@ author: Christian Folini
 categories:
   - Blog
 date: '2019-02-28T09:57:50+01:00'
-guid: https://coreruleset.org/?p=954
-id: 954
 permalink: /20190228/crs-project-news-february-2019/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: CRS Project News February 2019
 url: /2019/02/28/crs-project-news-february-2019/
 ---
 
-
 We are back with the CRS project news. The news are running very, very late in the month as I've been held up with other projects.
 
-### **What has happened in recent weeks**
+### What has happened in recent weeks
 
 - Miyuru Sankalpa has started to publish a transformed GeoIP database in the legacy format readable by ModSecurity 2.x under a creative commons. This seems to be based on the MaxMind databases and it is not clear of MaxMind endorses this initiative.  
     Link: <https://www.miyuru.lk/geoiplegacy>

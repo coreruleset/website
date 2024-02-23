@@ -25,7 +25,7 @@ If the user enters an SQL fragment into the URL, then the SQL injection vulnerab
 
 So I want to use the Core Rule Set, but disable the SQL injection rules unless the input is the SearchTerm argument:
 
-```
+```apacheconf
 Include modsecurity/crs-setup.conf
 Include crs/*.conf
 
@@ -52,7 +52,7 @@ The “942” in the filename gives you a hint that all the rules in that file a
 
 An example rule in the file is 942100, which checks for SQL injection using the libinjection library:
 
-```
+```apacheconf
 SecRule REQUEST_COOKIES|!REQUEST_COOKIES:/__utm/|REQUEST_COOKIES_NAMES|REQUEST_HEADERS:User-Agent|REQUEST_HEADERS:Referer|ARGS_NAMES|ARGS|XML:/* "@detectSQLi" \
 "msg:'SQL Injection Attack Detected via libinjection',\
 Id:942100,\
@@ -65,7 +65,7 @@ The SQL injection rules are numbered from 942100-94299, and most of them scan ac
 
 Putting this information together, we remove these collections from scanning for the SQL injection rules numbered 942100-942999:
 
-```
+```apacheconf
 SecRuleUpdateTargetByID 942100-942999 "!REQUEST_COOKIES"
 SecRuleUpdateTargetByID 942100-942999 "!REQUEST_COOKIES_NAMES"
 SecRuleUpdateTargetByID 942100-942999 "!ARGS_NAMES"

@@ -3,17 +3,9 @@ author: Christian Folini
 categories:
   - Blog
 date: '2018-12-26T13:13:28+01:00'
-guid: https://coreruleset.org/?p=921
-id: 921
 permalink: /20181226/crs-project-news-december-2018/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CRS-News
-theme-transparent-header-meta:
-  - default
 title: CRS Project News December 2018
 url: /2018/12/26/crs-project-news-december-2018/
 ---
@@ -23,11 +15,11 @@ I hope everybody has a few calm days to finish the year. CRS is finishing the ye
 
 ### **What has happened in recent weeks**
 
-- CRS 3.1 has been released bringing new rules to detect Java injections and an easier way to deal with paranoia levels. More changesin the announcement.  
-    Link: <https://coreruleset.org/20181128/announcement-owasp-modsecurity-core-rule-set-version-3-1-0/>
+- CRS 3.1 has been released bringing new rules to detect Java injections and an easier way to deal with paranoia levels. More changes in the announcement.  
+    Link: {{< ref "blog/2018-11-28-announcement-owasp-modsecurity-core-rule-set-version-3-1-0.md" >}}
 - CRS Co-Lead Christian Folini taught two CRS crash courses together with David Jardin from Siwecos in Bern and Zurich, Switzerland. The course was sponsored by Switch (The Swiss NIC) and addressed internet hosters. One result was a new initiative to run a workshop at the Cloudfest conference in late March to come up with a CRS profile that works for internet hosters. There will be a separate announcement, when we know more.
 - CRS committer Franziska Bühler pubished a blog post introducing the extensions for the official CRS docker container that she developed. The extensions allow you to configure a CRS container including the backend connection from the command line.  
-    Link: <https://coreruleset.org/20181212/core-rule-set-docker-image/>
+    Link: {{< ref "content/blog/2018-12-12-core-rule-set-docker-image.md" >}}
 - CRS Co-Lead Christian published an asciinema demo video illustrating Franziska's work.  
     Link: <https://asciinema.org/a/0JDnaO1Wi42sIYpgJzoYbCdtn>
 - The American company Gridvision published a success story how they secured their WordPress setup with CRS.  
@@ -41,7 +33,7 @@ With the 3.1 release out the door, the development for 3.2 was immediately reviv
 
 - CRS committer Federico Schwindt continued his work to drop unneeded capture groups, which results in better performance and better readability.all around.  
     Link: [https://github.com/coreruleset/coreruleset/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+%22capture+groups%22](https://github.com/coreruleset/coreruleset/pulls?utf8=%E2%9C%93&q=is%3Apr+%22capture+groups%22)
-- CRS Co-Lead Walter Hop reacted to the publication by TheMiddle (see above) very quickly and provided a pull request to get rid of a particularly nasty bypass where an attacker would use the PHP get\_defined\_functions() functionality to enumerate dangerous calls without naming them explicitly.  
+- CRS Co-Lead Walter Hop reacted to the publication by TheMiddle (see above) very quickly and provided a pull request to get rid of a particularly nasty bypass where an attacker would use the PHP `get_defined_functions()` functionality to enumerate dangerous calls without naming them explicitly.  
     Link: <https://github.com/coreruleset/coreruleset/pull/1268>
 - CRS contributor TheMiddle wrote a pull request to add the "application/xss-auditor-report" content type to the list of permitted content types.  
     Link: <https://github.com/coreruleset/coreruleset/pull/1243>
