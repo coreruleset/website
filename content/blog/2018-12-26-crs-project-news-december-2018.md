@@ -19,7 +19,7 @@ I hope everybody has a few calm days to finish the year. CRS is finishing the ye
     Link: {{< ref "blog/2018-11-28-announcement-owasp-modsecurity-core-rule-set-version-3-1-0.md" >}}
 - CRS Co-Lead Christian Folini taught two CRS crash courses together with David Jardin from Siwecos in Bern and Zurich, Switzerland. The course was sponsored by Switch (The Swiss NIC) and addressed internet hosters. One result was a new initiative to run a workshop at the Cloudfest conference in late March to come up with a CRS profile that works for internet hosters. There will be a separate announcement, when we know more.
 - CRS committer Franziska Bühler pubished a blog post introducing the extensions for the official CRS docker container that she developed. The extensions allow you to configure a CRS container including the backend connection from the command line.  
-    Link: {{< ref "content/blog/2018-12-12-core-rule-set-docker-image.md" >}}
+    Link: {{< ref "blog/2018-12-12-core-rule-set-docker-image.md" >}}
 - CRS Co-Lead Christian published an asciinema demo video illustrating Franziska's work.  
     Link: <https://asciinema.org/a/0JDnaO1Wi42sIYpgJzoYbCdtn>
 - The American company Gridvision published a success story how they secured their WordPress setup with CRS.  
