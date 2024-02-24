@@ -23,7 +23,8 @@ sectionTitle:
   other: Getting Started
 
 sectionTitle1:
-  other: New Features in CRS 4
+  other: |
+    New Features in CRS 4
 
 
 sectionText1:
@@ -32,7 +33,7 @@ sectionText1:
       - Plug-in architecture allowing official and 3rd party plugins to integrate into CRS
       - Early-Blocking option
       - Over 500 individual rule bypasses closed following a big Bug Bounty project
-      - New web shell detection
+      - :new: Web shell detection
       - Full RE2/Hyperscan compatibility for better performance
       - Support for HTTP/3
       - More granular reporting options
@@ -40,18 +41,44 @@ sectionButton1:
   other: Download
 
 sectionTitle2:
-  other: Community
+  other: Supported Attack Categories
 sectionText2:
-  other: Discussions, email lists, and more.
+  other: |
+    - SQL Injection (SQLi)
+    - Cross Site Scripting (XSS)
+    - Local File Inclusion (LFI)
+    - Remote File Inclusion (RFI)
+    - PHP Code Injection
+    - Java Code Injection
+    - HTTPoxy
+    - Shellshock
+    - Unix/Windows Shell Injection
+    - Session Fixation
+    - Scanner/Bot Detection
+    - Metadata/Error Leakages
+
 sectionButton2:
-  other: Community
+  other: Getting Started
 
 sectionTitle3:
-  other: Getting Started
+  other: Community
 sectionText3:
-  other: Code, examples, and more.
+  other: |
+    :wave: Be part of a vibrant and welcoming community.
+
+    :call_me_hand: We are always looking for new contributors and maintainers. 
+
+    :world_map: Join us on Slack for discussions, see GitHub for our projects, or follow
+    us on Twitter.
+
 sectionButton3:
-  other: Getting Started
+  other: Community
 
 social_link_title:
   other: Follow us on social media
+
+videoUnsupported:
+  other: Your browser does not support the video tag.
+
+by:
+  other: By
