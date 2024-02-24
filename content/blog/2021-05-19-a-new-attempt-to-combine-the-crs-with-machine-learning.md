@@ -1,25 +1,16 @@
 ---
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2021-05-19T09:24:47+02:00'
-guid: https://coreruleset.org/?p=1368
-id: 1368
 permalink: /20210519/a-new-attempt-to-combine-the-crs-with-machine-learning/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - AI
   - machinelearning
   - ML
-theme-transparent-header-meta:
-  - default
 title: A new attempt to combine the CRS with machine learning
 url: /2021/05/19/a-new-attempt-to-combine-the-crs-with-machine-learning/
 ---
-
 
 *The following is a contributing blog post by Floriane Gilliéron. You can reach Floriane via firstname dot lastname at gmail.com.*
 
@@ -41,23 +32,25 @@ The chaining of the ML rule (i.e “SecRuleScript”) to the one originally pres
 
 This project was obviously not the first one aiming at combining ModSecurity and machine learning. The work of Rodrigo Martinez and Juan Diego Campo [cited during the first CRS Community Summit in London](https://coreruleset.org/20180712/reporting-from-the-first-crs-community-summit-in-london/) in 2018 was very helpful for writing the Lua script, especially in understanding how to retrieve the ModSecurity variables. Their repo can be found at <https://gitlab.fing.edu.uy/gsi/modsec-ml/-/tree/master>.
 
-`SecRule TX:ANOMALY_SCORE "@ge %{tx.inbound_anomaly_score_threshold}" \`  
- "id:949110,\\  
- phase:2,\\  
- deny,\\  
- t:none,\\  
- msg:'Inbound Anomaly Score Exceeded (Total Score: %{TX.ANOMALY\_SCORE})',\\  
- tag:'application-multi',\\  
- tag:'language-multi',\\  
- tag:'platform-multi',\\  
- tag:'attack-generic',\\  
- ver:'OWASP\_CRS/3.3.0',\\  
- severity:'CRITICAL',\\  
- setvar:'tx.inbound\_anomaly\_score=%{tx.anomaly\_score}', \\  
+```
+SecRule TX:ANOMALY_SCORE "@ge %{tx.inbound_anomaly_score_threshold}" \`  
+ "id:949110,\  
+ phase:2,\  
+ deny,\  
+ t:none,\  
+ msg:'Inbound Anomaly Score Exceeded (Total Score: %{TX.ANOMALY\_SCORE})',\  
+ tag:'application-multi',\  
+ tag:'language-multi',\  
+ tag:'platform-multi',\  
+ tag:'attack-generic',\  
+ ver:'OWASP\_CRS/3.3.0',\  
+ severity:'CRITICAL',\  
+ setvar:'tx.inbound\_anomaly\_score=%{tx.anomaly\_score}', \  
  chain"  
  SecRuleScript /path/to/script.lua
+```
 
-### The ML methodology 
+### The ML methodology
 
 #### Type of ML model
 
@@ -67,7 +60,7 @@ Considering this, the type of machine learning techniques to use for this proble
 
 The ML model chosen for this project was the Isolation Forest, which had better and more stable performances than the other tested ones, among which the One Class SVM. It works by randomly building multiple decision trees and is well suited for mixed types of data (continuous/discrete/boolean).
 
-### Data collection and processing 
+### Data collection and processing
 
 The ML model was trained using real-world traffic recorded on the production environment of a web application over a period of two weeks. As the WAF was set in non-blocking mode, only warnings were issued by the CRS. These warnings were manually sorted between actual attacks and false alerts. Most of the false alerts came from encrypted/encoded payloads such as SAML that triggered pattern match rules. The normal examples used to train the anomaly detection ML model were thus made of requests that didn’t result in a warning from the CRS and of warnings that were actually false alerts.
 
@@ -77,7 +70,7 @@ Data had to be transformed to be used by the Isolation Forest model. To this end
 
 Unfortunately, the ML model developed for this project was not able to do better than the classical way of dealing with false alerts when using the CRS: rule exclusion/tuning. By disabling just one of the rules, 95% of the false alerts that worried so much the initiators of the project could be removed. While ML was also able to correctly detect these false alerts, it was not able to detect the remaining 5%. Furthermore, ML missed many attacks, around a third of those present in the evaluation set, while the rule disabling did not reduce the number of detected attacks in the evaluation set. Further considering the time and efforts needed to build, deploy and maintain a machine learning model, this leaves no argument in favor of ML.
 
-### Conclusion 
+### Conclusion
 
 The mitigated results of machine learning in reducing the false alerts of the CRS could be explained by the simplicity of the model used. Using only 26 numerical features may not allow to characterize a request well enough to grasp the difference between a normal request and an attack. Using deep learning methods such as an auto-encoder, that can take as input the whole request, could be an option to explore. Nevertheless, one should keep in mind that machine learning (even if it’s trendy) is not always the answer, and that simpler solutions such as rule exclusion/tuning can also get the job done.
 

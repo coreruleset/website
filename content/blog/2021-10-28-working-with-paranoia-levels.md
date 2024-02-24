@@ -1,19 +1,11 @@
 ---
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2021-10-28T20:54:15+02:00'
-guid: https://coreruleset.org/?p=1448
-id: 1448
 permalink: /20211028/working-with-paranoia-levels/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - Paranoia Levels
-theme-transparent-header-meta:
-  - default
 title: Working with Paranoia Levels
 url: /2021/10/28/working-with-paranoia-levels/
 ---
@@ -21,7 +13,7 @@ url: /2021/10/28/working-with-paranoia-levels/
 
 Paranoia Levels are an essential concept when working with the Core Rule Set. This blog post will explain the concept behind Paranoia Levels and how you can work with them on a practical level.
 
-#### Introduction to Paranoia Levels 
+#### Introduction to Paranoia Levels
 
 In essence, the Paranoia Level (PL) allows you to define how aggressive the Core Rule Set is. Very often, I explain this with the help of a dog. In the default installation, you get a family dog that is really easy going. It is a breed that causes no trouble. Bring your neighbour's kids and have them pull the dog by its tail and he won't bite.
 
@@ -84,7 +76,8 @@ So there is a better way. Let's think of the Paranoia Level as the Blocking Para
 
 Now let's introduce an additional Paranoia Level: the Executing Paranoia Level. This PL is equal to (this is the default) or higher than the Blocking Paranoia Level. If the Executing Paranoia Level is higher, you execute rules that might trigger false positives, but even if they do, these alerts will not count towards the Anomaly Threshold used to make the blocking decision.
 
-<figure class="wp-block-image size-full is-resized">![](/images/2021/10/executing-paranoia-level-1.png)<figcaption>*Scheme with Blocking Paranoia Level at 1 and Executing Paranoia Level 2*</figcaption></figure>So the Executing Paranoia Level allows you to run a higher Paranoia Level and to trigger false positives in production. You can then tune them away with the help of rule exclusions and, when you are ready, finally raise the Blocking Paranoia Level to match the level of the Executing Paranoia Level. This gives you more flexibility and a secure way to raise the Paranoia Level in production without risking new false alarms to bite your users.
+{{< figure src="images/2021/10/executing-paranoia-level-1.png" caption="Scheme with Blocking Paranoia Level at 1 and Executing Paranoia Level 2" >}}>
+So the Executing Paranoia Level allows you to run a higher Paranoia Level and to trigger false positives in production. You can then tune them away with the help of rule exclusions and, when you are ready, finally raise the Blocking Paranoia Level to match the level of the Executing Paranoia Level. This gives you more flexibility and a secure way to raise the Paranoia Level in production without risking new false alarms to bite your users.
 
 By the way, you can always lower the Paranoia Level (or Blocking Paranoia Level, if you will) and you will get fewer false positives, or none. The way the rule set is constructed, lowering the Paranoia Level always means fewer or no false positives; raising the Paranoia Level is likely to bring more false positives.
 
@@ -95,7 +88,7 @@ The description above is all you need to know to run CRS successfully. However, 
 Let's say your customers are mostly local customers or they are limited to a certain region of the world that you can define via GeoIP (IP address-based geolocation). You do not want to exclude the rest of the world (your customers go on holiday from time to time), but you think a request coming from the far end of the planet is suspicious. One way to deal with this would be to assign a higher Paranoia Level to HTTP requests coming from said GeoLocation. Or rather
 
 ```
-<pre class="wp-block-preformatted">If GeoLocation == Local
+If GeoLocation == Local
   set PL=1
 Else
   set PL=2

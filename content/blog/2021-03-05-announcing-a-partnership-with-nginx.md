@@ -1,17 +1,9 @@
 ---
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2021-03-05T14:57:47+01:00'
-guid: https://coreruleset.org/?p=1336
-id: 1336
 permalink: /20210305/announcing-a-partnership-with-nginx/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: Announcing a partnership with NGINX
 url: /2021/03/05/announcing-a-partnership-with-nginx/
 ---

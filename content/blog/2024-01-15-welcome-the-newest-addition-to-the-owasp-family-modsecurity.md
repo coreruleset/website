@@ -5,7 +5,7 @@ ast-site-content-layout:
   - default
 astra-migrate-meta-layouts:
   - set
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2024-01-15T13:32:16+01:00'

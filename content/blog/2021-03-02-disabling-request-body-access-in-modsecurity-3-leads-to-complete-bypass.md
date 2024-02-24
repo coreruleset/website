@@ -1,23 +1,15 @@
 ---
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2021-03-02T12:22:10+01:00'
-guid: https://coreruleset.org/?p=1327
-id: 1327
 permalink: /20210302/disabling-request-body-access-in-modsecurity-3-leads-to-complete-bypass/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - ModSec3
   - ModSecurity
   - ModSecurity-NGINX connector
   - SecRequestBodyAccess
   - security
-theme-transparent-header-meta:
-  - default
 title: Disabling Request Body Access in ModSecurity 3 Leads to Complete Bypass
 url: /2021/03/02/disabling-request-body-access-in-modsecurity-3-leads-to-complete-bypass/
 ---
@@ -73,7 +65,7 @@ On a functional level, this would not change a thing since it would be the same 
 
 The plan was then to release this as 3.3.1 and making it clear in the release notes, that this was mainly for users affected by the ModSecurity vulnerability in question.
 
-Or so we thought. But then reality hit and we had to stop the release process after the first release candidate [3.3.1-RC1](https://github.com/coreruleset/coreruleset/releases/tag/v3.3.1-rc1). So our master branch on github has many, many rules in phase 1 now, but we are not yet in a position to release this with full support.   
+Or so we thought. But then reality hit and we had to stop the release process after the first release candidate [3.3.1-RC1](https://github.com/coreruleset/coreruleset/releases/tag/v3.3.1-rc1). So our master branch on github has many, many rules in phase 1 now, but we are not yet in a position to release this with full support.
   
 Let's talk about why!
 
@@ -83,8 +75,7 @@ ModSecurity rules can reside in the server context of the webserver configuratio
 
 A typical configuration is the following:
 
-```
-<pre class="wp-block-code">```
+```apacheconf
 ...
 
 Include /path/to/crs/rules/*.conf
@@ -102,7 +93,6 @@ Include /path/to/crs/rules/*.conf
    </Proxy>
 
 </VirtualHost>
-```
 ```
 
 With this setup, you disable ModSecurity for an individual container. The catch: this only works from phase 2. This means that phase 1 is executed just fine and then when phase 2 starts, the ModSecurity engine stops and the request is allowed access.
@@ -131,14 +121,12 @@ While investigating the problem, we also discovered an oddity that can be used a
 
 Here is how it looks:
 
-```
-<pre class="wp-block-code">```
+```nginxconf
 ...
 
     error_page 404 /error_404.html
 
 ...
-```
 ```
 
 In case you have configured the error\_page directive in your configuration, then the workaround for this bug is already in place and you do not even notice the bug it's there.

@@ -5,7 +5,7 @@ ast-site-content-layout:
   - default
 astra-migrate-meta-layouts:
   - set
-author: Andrew Howe
+author: RedXanadu
 categories:
   - Blog
 date: '2023-10-26T22:42:38+02:00'

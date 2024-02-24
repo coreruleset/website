@@ -1,21 +1,12 @@
 ---
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2021-06-28T15:49:11+02:00'
-guid: https://coreruleset.org/?p=1380
-id: 1380
 permalink: /20210628/upcoming-crs-security-releases/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: Upcoming CRS Security Releases
 url: /2021/06/28/upcoming-crs-security-releases/
 ---
-
 
 A security problem with the OWASP ModSecurity Core Rule Set has been brought to our attention recently. The CRS team is now working on a fix that will be released on Wednesday as 3.1.2, 3.2.1 and 3.3.2.  
   

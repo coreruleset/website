@@ -1,15 +1,9 @@
 ---
-author: Chaim Sanders
+author: csanders-git
 categories:
   - Blog
 date: '2018-03-14T06:37:37+01:00'
-guid: https://coreruleset.org/?p=671
-id: 671
 permalink: /20180314/crs-project-news-march-2018/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: CRS Project News March 2018
 url: /2018/03/14/crs-project-news-march-2018/
 ---
@@ -20,14 +14,14 @@ This is the CRS newsletter covering the period from Early February until today.
 We held our monthly community chat. We had quite a few people stop by.
 
 - csanders
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c19 user hasUserParent link" role="button" title="lifeforms (~walter@nagorno.karabakh.nl)">lifeforms</span>
+- lifeforms
 - franbuehler
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c2 user hasUserParent link" role="button" title="emphazer (3e8fef11@gateway/web/freenode/ip.62.143.239.17)">emphazer</span>
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c0 user hasUserParent link" role="button" title="dune73 (~dune73@93-94-243-179.static.monzoon.net)">dune73</span>
+- emphazer
+- dune73
 - agi
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c4 user hasUserParent link" role="button" title="squared (~squared@24.114.221.218)">squared</span>
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c4 user hasUserParent link" role="button" title="fzipi_ (~fzipi@190.64.49.27)">fzipi\_</span>
-- <span aria-controls="memberContextMenu" aria-haspopup="true" class="buffer bufferLink author c8 user hasUserParent link" role="button" title="spartantri (~spartan@37.171.48.140)">spartantri</span>
+- squared
+- fzipi
+- spartantri
 
 Our agenda from before the chat is available [here](https://github.com/coreruleset/coreruleset/issues/1026). During the chat we discussed the following:
 
@@ -37,7 +31,7 @@ A blog about the current CI process will be created for next month.
 
 Issue #[990](https://github.com/coreruleset/coreruleset/issues/990) status : Only issue was with FTW failing tests, this has since been fixed. This was merged.
 
-CRS Summit at AppSec EU: <span class="message"><span class="content"> The proposed CRS Summit will be on July 4, 4pm in London, the closing day of the trainings, the night before the real conference starts.</span></span>
+CRS Summit at AppSec EU: 
 
 Dune73, Tin Zaw, and csanders-git submitted CFPs to AppSec EU.
 

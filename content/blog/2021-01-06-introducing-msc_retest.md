@@ -1,26 +1,17 @@
 ---
-author: Christian Folini
+author: dune73
 categories:
   - Blog
 date: '2021-01-06T12:25:13+01:00'
 excerpt: This blog post is about msc_retest, a small family of tools that let you performance test the regular expression engine used inside various ModSecurity versions. As of this writing, the engine is PCRE, but we expect more options in the future.
-guid: https://coreruleset.org/?p=1306
-id: 1306
 permalink: /20210106/introducing-msc_retest/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - Ervin Hegedüs
   - msc_retest
   - performance
-theme-transparent-header-meta:
-  - default
 title: Introducing msc_retest
 url: /2021/01/06/introducing-msc_retest/
 ---
-
 
 Debugging CRS and more generally debugging ModSecurity can be nasty. False Positives are the worst, but also nagging performance problems can spoil the fun. Sometimes you have network problems or the whole architecture is botched. But equally often it's simply your server or ModSecurity that's misbehaving.
 
@@ -46,42 +37,32 @@ Here is how I installed it:
 
 Download:
 
-```
-<pre class="wp-block-code">```
+```sh
 $> git clone https://github.com/digitalwave/msc_retest.git
-```
 ```
 
 Prepare configure:
 
-```
-<pre class="wp-block-code">```
+```sh
 $> autoreconf --install
-```
 ```
 
 Run configure:
 
-```
-<pre class="wp-block-code">```
+```sh
 $> configure
-```
 ```
 
 Compilation:
 
-```
-<pre class="wp-block-code">```
+```sh
 $> make
-```
 ```
 
 Installation:
 
-```
-<pre class="wp-block-code">```
+```sh
 $> sudo make install
-```
 ```
 
 ### How do you use it?
@@ -90,8 +71,9 @@ As previously mentioned, there are two tools, pcre4msc2 and pcre4msc3 in this pa
 
 Here is a basic call with the ModSec2 variant:
 
-```
-<pre class="wp-block-preformatted">$> echo "foo" > pattern.txt<br></br>$> echo "hello fool" | pcre4msc2 pattern.txt<br></br>pattern.txt - time elapsed: 0.000012, match value: SUBJECT MATCHED 1 TIME
+```sh
+$> echo "foo" > pattern.txt
+$> echo "hello fool" | pcre4msc2 pattern.txtpattern.txt - time elapsed: 0.000012, match value: SUBJECT MATCHED 1 TIME
 ```
 
 So the execution of the regular expression took 12 microseconds and brought one match.
@@ -155,8 +137,18 @@ There are various important pieces of information in this output. The match limi
   
 Finally, there is an option in both scripts that lets you execute it n times in series:
 
-```
-<pre class="wp-block-preformatted">$> echo "hello fool" | pcre4msc2 -n 10 -j pattern.txt<br></br>pattern.txt - time elapsed: 0.000007, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME<br></br>pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME
+```sh
+$> echo "hello fool" | pcre4msc2 -n 10 -j pattern.txt
+pattern.txt - time elapsed: 0.000007, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000001, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME
+pattern.txt - time elapsed: 0.000000, match value: SUBJECT MATCHED 1 TIME
 ```
 
 As you can see, the first execution takes substantially longer than the subsequent ones. It's the same on the webserver. So if you want to have hard data, execution in a loop like this is mandatory. What is not so nice is that the calls were so fast, the elapsed time is reported as zero. That is of course not the case, but it points to the fact, that microseconds are not granular enough to measure the time, at least not on my machine. Ervin is currently adding support for timing in nanoseconds. That should definitely do the trick in this regard.
@@ -174,7 +166,7 @@ To sum this up: We are looking to replace a look-around dialect expression so pe
 Let me sum this up. Here is the old regular expression:
 
 ```
-<pre class="wp-block-preformatted">(?<!&(?:[aAoOuUyY]uml)|&(?:[aAeEiIoOuU]circ)|&(?:[eEiIoOuUyY]acute)|&(?:[aAeEiIoOuU]grave)|&(?:[cC]cedil)|&(?:[aAnNoO]tilde)|&(?:amp)|&(?:apos));|['\"=]
+(?<!&(?:[aAoOuUyY]uml)|&(?:[aAeEiIoOuU]circ)|&(?:[eEiIoOuUyY]acute)|&(?:[aAeEiIoOuU]grave)|&(?:[cC]cedil)|&(?:[aAnNoO]tilde)|&(?:amp)|&(?:apos));|['\"=]
 ```
 
 This uses a negative-look-behind (-&gt; see the *?&lt;!* at the beginning of the regex) that we want to avoid.
@@ -182,7 +174,7 @@ This uses a negative-look-behind (-&gt; see the *?&lt;!* at the beginning of the
 And we here is the new rule proposed in the pull request:
 
 ```
-<pre class="wp-block-preformatted">(?:(?:^|[^lceps])|(?:^|[^mi])l|(?:^|[^r])c|(?:^|[^tvd])e|(?:^|[^m])p|(?:^|[ô])s|(?:^|[û])ml|(?:^|[î])rc|(?:^|[û])te|(?:^|[â])ve|(?:^|[^d])il|(?:^|[^l])de|(?:^|[â])mp|(?:^|[^p])os|(?:^|[âAoOuUyY])uml|(?:^|[^c])irc|(?:^|[^c])ute|(?:^|[^r])ave|(?:^|[ê])dil|(?:^|[î])lde|(?:^|[^&])amp|(?:^|[â])pos|(?:^|[^&])[aAoOuUyY]uml|(?:^|[âAeEiIoOuU])circ|(?:^|[â])cute|(?:^|[^g])rave|(?:^|[^c])edil|(?:^|[^t])ilde|(?:^|[^&])apos|(?:^|[^&])[aAeEiIoOuU]circ|(?:^|[êEiIoOuUyY])acute|(?:^|[âAeEiIoOuU])grave|(?:^|[^cC])cedil|(?:^|[âAnNoO])tilde|(?:^|[^&])[eEiIoOuUyY]acute|(?:^|[^&])[aAeEiIoOuU]grave|(?:^|[^&])[cC]cedil|(?:^|[^&])[aAnNoO]tilde);|['\"=]
+(?:(?:^|[^lceps])|(?:^|[^mi])l|(?:^|[^r])c|(?:^|[^tvd])e|(?:^|[^m])p|(?:^|[ô])s|(?:^|[û])ml|(?:^|[î])rc|(?:^|[û])te|(?:^|[â])ve|(?:^|[^d])il|(?:^|[^l])de|(?:^|[â])mp|(?:^|[^p])os|(?:^|[âAoOuUyY])uml|(?:^|[^c])irc|(?:^|[^c])ute|(?:^|[^r])ave|(?:^|[ê])dil|(?:^|[î])lde|(?:^|[^&])amp|(?:^|[â])pos|(?:^|[^&])[aAoOuUyY]uml|(?:^|[âAeEiIoOuU])circ|(?:^|[â])cute|(?:^|[^g])rave|(?:^|[^c])edil|(?:^|[^t])ilde|(?:^|[^&])apos|(?:^|[^&])[aAeEiIoOuU]circ|(?:^|[êEiIoOuUyY])acute|(?:^|[âAeEiIoOuU])grave|(?:^|[^cC])cedil|(?:^|[âAnNoO])tilde|(?:^|[^&])[eEiIoOuUyY]acute|(?:^|[^&])[aAeEiIoOuU]grave|(?:^|[^&])[cC]cedil|(?:^|[^&])[aAnNoO]tilde);|['\"=]
 ```
 
 That does more or less the same thing, but it's substantially more complex.
@@ -192,7 +184,6 @@ Our job is now to check out the performance of the two variants. And since this 
 I want to run a few thousands of matches with this. To get some close-to-real-world data, I am going to use the following file names; all found on my local machine with the exception of the last one. The last one is meant to trigger the rule. It's taken from the unit tests of the rule.
 
 ```
-<pre class="wp-block-code">```
 525-190160_Example_Offerte_11-02-2019.docx
 Rahmenvertrag ZZZ 2015-2017.pdf
 Eintragung der Übertragung.pdf
@@ -204,12 +195,10 @@ IdNumbering.csv
 ZZZ_Kommunikationsvorgehen_V.02.docx
 zzz&auml;zzz
 ```
-```
 
 Here is my script to execute the tests. It runs 10 times 100K requests for every parameter with every invocation of the script. I think this is better than doing a single run with 1M calls, since it balances out the execution on a multi-user system with a ton of tasks in the background (and you never know what the host is doing).
 
-```
-<pre class="wp-block-code">```
+```sh
 for I in {1..10}; do
   cat filenames.txt | while read FILENAME; do echo "$FILENAME" | pcre4msc2 -n 100000 old-regex.txt; done >> modsec2-nojit-old-pattern.txt
   cat filenames.txt | while read FILENAME; do echo "$FILENAME" | pcre4msc2 -n 100000 new-regex.txt; done >> modsec2-nojit-new-pattern.txt
@@ -220,14 +209,12 @@ for I in {1..10}; do
   cat filenames.txt | while read FILENAME; do echo "$FILENAME" | pcre4msc3 -n 100000 new-regex.txt; done >> modsec3-withjit-new-pattern.txt
 done
 ```
-```
 
 This results in a file with 10 million executions each. For the analysis, I am simply summing up the elapsed time. You could argue, that mean or median would be more useful, but the numbers can be very small, and they are easier to read without dividing them by one million.
 
 Here you are:
 
-```
-<pre class="wp-block-code">```
+```sh
 $> ls modsec2-nojit-old-pattern.txt modsec2-nojit-new-pattern.txt modsec2-withjit-old-pattern.txt modsec2-withjit-new-pattern.txt modsec3-withjit-old-pattern.txt modsec3-withjit-new-pattern.txt | while read F; do printf "%32s : %f\n" "$F" $(egrep -o "[0-9]+\.[0-9]{6}" $F | awk "{ SUM += \$1 } END { print SUM }"); done
 
    modsec2-nojit-new-pattern.txt : 630.129000
@@ -237,17 +224,14 @@ $> ls modsec2-nojit-old-pattern.txt modsec2-nojit-new-pattern.txt modsec2-withji
  modsec3-withjit-new-pattern.txt : 56.225600
  modsec3-withjit-old-pattern.txt : 5.979850
 ```
-```
 
 Let's put this in a more comprehensive form:
 
 ```
-<pre class="wp-block-code">```
                                 OLD REGEX    NEW REGEX
    modsec2-nojit-pattern.txt :   1.014460   630.129000
  modsec2-withjit-pattern.txt :   0.937687    38.511100
  modsec3-withjit-pattern.txt :   5.979850    56.225600
-```
 ```
 
 I am astonished by the difference that JIT is making on ModSec2. Not so much with the old pattern. But with the more complex new pattern, it's quite staggering. I have to admit that I underestimated the big role JIT is playing. The fact that ModSec3 is nowhere near ModSec2 in terms of throughput is no surprise though. [We have been aware of this for several years.](https://github.com/SpiderLabs/ModSecurity/issues/1734) The good news here is that the difference between the old and the new regex is not so big on ModSec3.
