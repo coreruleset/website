@@ -10,8 +10,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  name: Receiver
-
+  ## Receives events from remote repos
   repository_dispatch:
     types: [documentation]
 
