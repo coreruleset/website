@@ -5,7 +5,7 @@ ast-site-content-layout:
   - default
 astra-migrate-meta-layouts:
   - set
-author: Alessandro Monachesi
+author: amonachesi
 categories:
   - Blog
 date: '2023-01-17T18:54:57+01:00'

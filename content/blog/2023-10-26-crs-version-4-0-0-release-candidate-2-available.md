@@ -1,23 +1,9 @@
 ---
-adv-header-id-meta:
-  - ''
-ast-site-content-layout:
-  - default
-astra-migrate-meta-layouts:
-  - set
 author: RedXanadu
 categories:
   - Blog
 date: '2023-10-26T22:42:38+02:00'
-footnotes:
-  - ''
-guid: https://coreruleset.org/?p=2294
-id: 2294
 permalink: /20231026/crs-version-4-0-0-release-candidate-2-available/
-stick-header-meta:
-  - ''
-theme-transparent-header-meta:
-  - ''
 title: CRS version 4.0.0 release candidate 2 available
 url: /2023/10/26/crs-version-4-0-0-release-candidate-2-available/
 ---

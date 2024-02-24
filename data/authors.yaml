@@ -1,3 +1,4 @@
+---
 # example authors data, the key is github username.
 dune73:
   name: Christian Folini
@@ -9,10 +10,11 @@ lifeforms:
   name: Walter Hop
 csanders-git:
   name: Chaim Sanders
-  name: Alessandro Monachesi
 RedXanadu:
   name: Andrew Howe
 airween:
   name: Ervin Hegedüs
 franbuehler:
   name: Franziska Buehler
+amonachesi:
+  name: Alessandro Monachesi
