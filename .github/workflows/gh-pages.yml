@@ -60,7 +60,8 @@ jobs:
         run: |
           hugo --gc --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
-          hugo -s subsite/docs --baseURL "${{ steps.pages.outputs.base_url }}/docs/" -d ./public/docs
+          hugo -s subsite/docs --baseURL "${{ steps.pages.outputs.base_url }}/docs/"
+          mv subsite/docs/public public/docs
           npx -y pagefind --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
