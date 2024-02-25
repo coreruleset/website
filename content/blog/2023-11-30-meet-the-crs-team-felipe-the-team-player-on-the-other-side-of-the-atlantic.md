@@ -1,25 +1,11 @@
 ---
-adv-header-id-meta:
-  - ''
-ast-site-content-layout:
-  - default
-astra-migrate-meta-layouts:
-  - set
 author: amonachesi
 categories:
   - Blog
 date: '2023-11-30T06:00:00+01:00'
-footnotes:
-  - ''
-guid: https://coreruleset.org/?p=2362
-id: 2362
 permalink: /20231130/meet-the-crs-team-felipe-the-team-player-on-the-other-side-of-the-atlantic/
-stick-header-meta:
-  - ''
 tags:
   - developer portrait
-theme-transparent-header-meta:
-  - ''
 title: 'Meet the CRS team: Felipe, the team player on the other side of the Atlantic'
 url: /2023/11/30/meet-the-crs-team-felipe-the-team-player-on-the-other-side-of-the-atlantic/
 ---
@@ -27,7 +13,9 @@ url: /2023/11/30/meet-the-crs-team-felipe-the-team-player-on-the-other-side-of-t
 
 #### *As a South American, Felipe Zipitría has a special status in the CRS core team. The sociable Uruguayan played basketball which taught him all about the value of teamwork. Automation and standardization are key issues for Felipe in the CRS project. “The CRS project offers exciting problems that can make any techie happy”, he says.*
 
-<figure class="wp-block-image size-large is-resized">![](/images/2023/11/Felipe_Budapest-1-768x1024.jpeg)<figcaption class="wp-element-caption">*Our man in South America: Felipe Zipitría enjoys the views of Budpest at the CRS Developer Retreat 2023*</figcaption></figure><div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>If you enter [The Lab Coffee Roasters](https://thelab.com.uy/) in Uruguay's capital Montevideo on the Rio de la Plata, the river of silver, you might see a man with silver streaks in his hair and beard hunched over a laptop, his glasses on his nose, engrossed in programming, sipping a flat white. Felipe Zipitría is the name of the not quite 50-year-old who is here working on new features for the OWASP ModSecurity Core Rule Set. Since 2021, Felipe has been one of three co-leads of the CRS core team, along with Walter Hop and Christian Folini.
+{{< figure src="images/2023/11/Felipe_Budapest-1.jpeg" caption="Our man in South America: Felipe Zipitría enjoys the views of Budpest at the CRS Developer Retreat 2023" >}}
+
+If you enter [The Lab Coffee Roasters](https://thelab.com.uy/) in Uruguay's capital Montevideo on the Rio de la Plata, the river of silver, you might see a man with silver streaks in his hair and beard hunched over a laptop, his glasses on his nose, engrossed in programming, sipping a flat white. Felipe Zipitría is the name of the not quite 50-year-old who is here working on new features for the OWASP ModSecurity Core Rule Set. Since 2021, Felipe has been one of three co-leads of the CRS core team, along with Walter Hop and Christian Folini.
 
 As an Uruguayan, Felipe has a certain special status in the CRS core team: he is the only team member from overseas and even the southern hemisphere; the other members all live in Europe (only recently a new member from India joined the team). For Felipe, however, the distance from the majority of the team on the other side of the Atlantic also has its good side: “Because most of the CRS team are in European time zones, I get time in my mornings to review pull requests and follow up on things from the CRS project before the U.S. West coast wakes up and I have to concentrate on my day-job.”
 
@@ -49,13 +37,15 @@ Such dedication did not go unnoticed by the CRS project, and soon Felipe receive
 
 Now made co-lead, Felipe sees his role on the team primarily as an enabler: automation and standardization have been key issues for him since the beginning, especially for such a small team. “But my favorite thing is to think about tools that make it easier to use and contribute to CRS and to ease the maintenance toll.” To be sure, Felipe can’t say exactly how many hours he puts into working on the project. But especially during more intensive phases, such as the current big push toward version 4, he can easily add up to between 30 and 50 hours a month.
 
-<figure class="wp-block-image size-large is-resized">![](/images/2023/11/Felipe_Pool-1024x576.jpeg)<figcaption class="wp-element-caption">*Felipe tries to go swimming every day*</figcaption></figure><div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>Felipe would like to see reinforcements for the project team, as the scope of the CRS project has grown enormously. Today, CRS provides an umbrella for numerous subprojects that revolve around the actual core rule set – from container building to testing and performance monitoring to development. “There's something for everyone,” Felipe says and adds jokingly: “In fact, we offer really exciting and very application-oriented problems that can make any techie happy.” For example, he says, anyone interested in contributing can simply create their own issue or even just join the discussion in the Slack channel. “There's plenty for you to do, so get in touch!”
+{{< figure src="images/2023/11/Felipe_Pool.jpeg" caption="Felipe tries to go swimming every day" >}}
+
+Felipe would like to see reinforcements for the project team, as the scope of the CRS project has grown enormously. Today, CRS provides an umbrella for numerous subprojects that revolve around the actual core rule set – from container building to testing and performance monitoring to development. “There's something for everyone,” Felipe says and adds jokingly: “In fact, we offer really exciting and very application-oriented problems that can make any techie happy.” For example, he says, anyone interested in contributing can simply create their own issue or even just join the discussion in the Slack channel. “There's plenty for you to do, so get in touch!”
 
 However, his employer is not the only one who allows him a lot of freedom; after all, Felipe is a family man. When he is not working for his employer or the CRS project, he likes to read a good book – preferably crime novels, but also science fiction – or go for a walk. He tries to go swimming every day, even if he doesn't always succeed. “And I used to brew my own beer,” Felipe adds. “Unfortunately, nowadays I don't get to do it as often as I would actually like.”
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>*How to get onto the project Slack? You can get an invitation from <https://owasp.org/slack/invite>, once registered head to our channel #coreruleset.*
+*How to get onto the project Slack? You can get an invitation from <https://owasp.org/slack/invite>, once registered head to our channel #coreruleset.*
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>### Three more questions for the nerds ...
+### Three more questions for the nerds ...
 
 **What is your favorite part of CRS. Why is that?**
 
@@ -71,11 +61,4 @@ Of course: writing a rule that you think is going to allow one specific use case
 
 *Text: Alessandro Monachesi, science communications*
 
-#### Meet the CRS team:
-
-- [Andrea, the musical man-in-the-middle](https://coreruleset.org/20221018/meet-the-crs-team-andrea-the-musical-man-in-the-middle/)
-- [Ervin, the gardening radio amateur in the background](https://coreruleset.org/20221122/meet-the-crs-team-ervin-the-gardening-radio-amateur-in-the-background/)
-- [Fränzi, the puzzle-loving hard worker with a mission](https://coreruleset.org/20230117/meet-the-crs-team-franzi-the-puzzle-loving-hard-worker-with-a-mission/)
-- [Andrew, the technical writer who loves Eurovision and Doom II](https://coreruleset.org/20231109/meet-the-crs-team-andrew-the-technical-writer-who-loves-eurovision-and-doom-ii/)
-
-- - - - - -
+{{< related-pages "developer portrait" >}}

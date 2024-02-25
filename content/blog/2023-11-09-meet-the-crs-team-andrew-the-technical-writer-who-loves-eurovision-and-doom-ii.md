@@ -1,33 +1,20 @@
 ---
-adv-header-id-meta:
-  - ''
-ast-site-content-layout:
-  - default
-astra-migrate-meta-layouts:
-  - set
 author: amonachesi
 categories:
   - Blog
 date: '2023-11-09T18:03:48+01:00'
-footnotes:
-  - ''
-guid: https://coreruleset.org/?p=2343
-id: 2343
 permalink: /20231109/meet-the-crs-team-andrew-the-technical-writer-who-loves-eurovision-and-doom-ii/
-stick-header-meta:
-  - ''
 tags:
   - developer portrait
-theme-transparent-header-meta:
-  - ''
 title: 'Meet the CRS team: Andrew, the technical writer who loves Eurovision and Doom II'
 url: /2023/11/09/meet-the-crs-team-andrew-the-technical-writer-who-loves-eurovision-and-doom-ii/
 ---
 
-
 #### *When invited to join the Core Rule Set project, Andrew Howe felt a bit intimidated by the highly talented team at first. Today he is a valued member of the CRS core team, bringing his experience as a technical writer and a CRS integrator. “Having people onboard with experience of running CRS at a large-scale would be very useful,” he says. What else he said, you can read in this interview.*
 
-<figure class="wp-block-image size-large">![](/images/2023/11/photo_portrait-683x1024.jpg)<figcaption class="wp-element-caption">*Full steam ahead: CRS core team member Andrew Howe lives in the same place where the Titanic started*</figcaption></figure><div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>*Hello, Andrew. Thanks for taking the time to answer some questions. Let’s start with: where do you live?*
+{{< figure src="images/2023/11/photo_portrait.jpg" caption="Full steam ahead: CRS core team member Andrew Howe lives in the same place where the Titanic started" >}}
+
+*Hello, Andrew. Thanks for taking the time to answer some questions. Let’s start with: where do you live?*
 
 I live in Southampton, a port city on the south coast of the UK. I’ve lived here for fifteen years. Southampton is probably best known as the departure port of the Titanic. The city remains busy to this day with some of the world’s largest cruise liners: when they set sail, I can hear their (often musical) horns from my home office.
 
@@ -57,7 +44,9 @@ We used the Core Rule Set to power our load balancer’s WAF functionality at Lo
 
 Yes! It’s intimidating to join a widely used project that’s developed by very talented people. But everyone is friendly and welcoming and there’s a lot of encouragement given to newcomers who show an interest in the project, which is great. I learned that everyone brings their own strengths to the project, and I realised that being involved was an opportunity to put my otherwise quite niche ModSecurity knowledge to good use. Plus, it’s great to be able to contribute to the world of free and open-source software.
 
-<figure class="wp-block-image size-large is-resized">![](/images/2023/11/photo_eurovision_2023-1024x768.jpg)<figcaption class="wp-element-caption">*"The United Kingdom: 24 points. Le Royaume-Uni: 24 points ..." The result did not dampen Andrew's joy of being live at the ESC Grand Final*</figcaption></figure><div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>*What is your role in the team?*
+{{< figure src="images/2023/11/photo_eurovision_2023.jpg" caption="The United Kingdom: 24 points. Le Royaume-Uni: 24 points ... The result did not dampen Andrew's joy of being live at the ESC Grand Final" >}}
+
+*What is your role in the team?*
 
 I landed into a bit of a technical writing role. I’ve helped to write and rework lots of the project’s published documentation, and we have a lot more writing work left to do. In addition, I bring the perspective of a CRS integrator to the table, as well as customers’ perspectives. I also bring ModSecurity v2 knowledge, which allows me to help write and review rule changes and troubleshoot problems that CRS users report to us.
 
@@ -93,7 +82,9 @@ I play competitive Doom II (yes, the video game released in 1994!) and I’ve pa
 
 *How to get onto the project Slack? You can get an invitation from <https://owasp.org/slack/invite>, once registered head to our channel #coreruleset.*
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:27px"></div>### Three more questions for the nerds ...
+{{< spacer >}}
+
+### Three more questions for the nerds ...
 
 **What is your favorite part of CRS? Why is that?**
 
@@ -113,8 +104,5 @@ I used to maintain a custom rule set that made heavy use of ModSecurity's persis
 
 *Text: Alessandro Monachesi, science communications*
 
-#### Meet the CRS team:
+{{< related-pages "developer portrait" >}}
 
-- [Andrea, the musical man-in-the-middle](https://coreruleset.org/20221018/meet-the-crs-team-andrea-the-musical-man-in-the-middle/)
-- [Ervin, the gardening radio amateur in the background](https://coreruleset.org/20221122/meet-the-crs-team-ervin-the-gardening-radio-amateur-in-the-background/)
-- [Fränzi, the puzzle-loving hard worker with a mission](https://coreruleset.org/20230117/meet-the-crs-team-franzi-the-puzzle-loving-hard-worker-with-a-mission/)
