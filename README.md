@@ -30,11 +30,27 @@ If you just want to edit documentation (not the website), you can do it in the [
 
 ## Editing locally
 
+You will need:
+- hugo binary
+- nodejs (for generating css files)
+
+Then do:
+```sh
+❯ npm install
+
+added 205 packages, and audited 206 packages in 13s
+
+57 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+```
+
 Now you have all in place to perform your local edits.
 
 Everything is created using markdown, and you will normally use the `content` subdirectory to add your edits.
 
-The theme has many shortcodes and others that you can use to simplify editing. You can get more information about it on [Hugo Dot-Org theme](https://themes.gohugo.io/themes/dot-org-hugo-theme/).
+The theme has shortcodes that can be used to simplify editing. You can get more information about it on [Hugo Dot-Org theme](https://themes.gohugo.io/themes/dot-org-hugo-theme/).
 
 You can run `hugo` to serve the pages, and while you edit and save, your changes will be refreshed in the browser!
 
