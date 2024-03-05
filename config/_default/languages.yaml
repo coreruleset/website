@@ -34,6 +34,24 @@ en:
       name: "Documentation"
       url: "/docs/"
       weight: 3
+    - identifier: "installation"
+      name: "Installing"
+      url: "/docs/deployment/install/"
+      weight: 1
+      post: "How to deploy CRS"
+      parent: "docs"
+    - identifier: "contributing"
+      name: "Contributing"
+      url: "/docs/development/contribution_guidelines/"
+      weight: 2
+      post: "Learn how to contribute"
+      parent: "docs"
+    - identifier: "writing"
+      name: "Writing rules"
+      url: "/docs/rules/creating/"
+      weight: 3
+      post: "Tips on writing rules for CRS"
+      parent: "docs"
     - identifier: "faq"
       name: "FAQs"
       url: "/faq/"
