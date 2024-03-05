@@ -26,6 +26,18 @@ en:
       name: "Blog"
       url: "/blog/"
       weight: 1
+    - identifier: "news"
+      name: "News"
+      url: "tags/crs-news/"
+      weight: 1
+      post: "See the latest news"
+      parent: "blog"
+    - identifier: "portraits"
+      name: "Developer Portraits"
+      url: "tags/developer-portrait/"
+      weight: 2
+      post: "Known our developers"
+      parent: "blog"
     - identifier: "videos"
       name: "Videos"
       url: "/videos/"
