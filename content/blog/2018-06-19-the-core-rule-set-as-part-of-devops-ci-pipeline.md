@@ -94,11 +94,71 @@ The message here is: We do not waste a lot of time but get a lot of extra securi
 
 In summary, the CircleCI configuration .circleci/config.yml consists of the following steps:
 
-`# .circleci/config.yml<br></br>``version: 2<br></br>``jobs:<br></br>``   build:<br></br>``      docker:`  
-`         - image: circleci/node:9.11.1-stretch`  
-`      steps:<br></br>``          -run:<br></br>``             name: Install dependencies<br></br>``             ...<br></br>``         -run<br></br>``             name: Install Docker Compose<br></br>``             ...<br></br>``         -setup_remote_docker<br></br>``         -checkout<br></br>``         -run:<br></br>``             name: Start App Container<br></br>``             ...<br></br>``         -run:<br></br>``             name: Start OWASP ModSecurity CRS Container in front of application for application tests<br></br>``             #http://172.17.0.2:8001<br></br>``             #we set inbound and outbound anomaly score to 1, no tolerance<br></br>``             command: |<br></br>``                docker pull franbuehler/modsecurity-crs-rp && \<br></br>``                docker run -dt --name apachecrstc -e PARANOIA=2 -e \<br></br>``                ANOMALYIN=1 -e ANOMALYOUT=1 -e BACKEND=http://172.17.0.1:8000 \<br></br>``                -e PORT=8001 --expose 8001 franbuehler/modsecurity-crs-rp<br></br>``         -run:<br></br>``             name: ModSecurity Tuning - Load rule exclusions<br></br>``             command: |<br></br>``                printf '# Rule 942450 (msg: SQL Hex Encoding Identified) triggers,\n' > tmp.conf<br></br>``                printf '# because of random characters in the session cookie.\n' >> tmp.conf<br></br>``                printf '\nSecRuleUpdateTargetById 942450 "!REQUEST_COOKIES:session"\n' >> tmp.conf<br></br>``                # CRS container for application tests:<br></br>``                docker cp tmp.conf apachecrstc:/etc/httpd/modsecurity.d/owasp-crs/rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf;<br></br>``                docker exec apachecrstc /usr/sbin/httpd -k graceful<br></br>``         - run:<br></br>``             name: Application Tests with Testcafe<br></br>``             command: |<br></br>``                # https://circleci.com/docs/2.0/building-docker-images/#mounting-folders<br></br>``                # creating dummy container which will hold a volume with config<br></br>``                docker create -v /tests --name configs alpine:latest /bin/true<br></br>``                # copying config file into this volume<br></br>``                docker cp /home/circleci/project/testcafe/tests/test.js configs:/tests<br></br>``                # starting application container using this volume<br></br>``                docker pull testcafe/testcafe<br></br>``                docker run --volumes-from configs:rw --name testcafe -it testcafe/testcafe 'chromium:headless --no-sandbox' /tests/test.js<br></br>``         - run:<br></br>``             name: Application Tests with CRS with Testcafe<br></br>``             command: |<br></br>``                docker cp /home/circleci/project/testcafe/tests/testcrs.js configs:/tests<br></br>``                docker run --volumes-from configs:rw --name testcafecrs -it testcafe/testcafe 'chromium:headless --no-sandbox' /tests/testcrs.js<br></br>``         - run:<br></br>``             # Fail if ModSecurity log is not empty<br></br>``             name: Show ModSecurity logs of Testcafe Tests<br></br>``             ...<br></br>``         - run:<br></br>``            # Fail if ModSecurity log does not contain WAF Test String "My evil WAF Test"<br></br>``            # '<script>alert("My evil WAF Test")</script>'<br></br>``            name: Search for WAF Test String "My evil WAF Test" in ModSecurity logs<br></br>``            ... `
+```yaml
+# .circleci/config.yml
+version: 2
+jobs:
+   build:
+      docker: 
+         - image: circleci/node:9.11.1-stretch
+      steps:
+          -run:
+             name: Install dependencies
+             ...
+         -run
+             name: Install Docker Compose
+             ...
+         -setup_remote_docker
+         -checkout
+         -run:
+             name: Start App Container
+             ...
+         -run:
+             name: Start OWASP ModSecurity CRS Container in front of application for application tests
+             #http://172.17.0.2:8001
+             #we set inbound and outbound anomaly score to 1, no tolerance
+             command: |
+                docker pull franbuehler/modsecurity-crs-rp && \
+                docker run -dt --name apachecrstc -e PARANOIA=2 -e \
+                ANOMALYIN=1 -e ANOMALYOUT=1 -e BACKEND=http://172.17.0.1:8000 \
+                -e PORT=8001 --expose 8001 franbuehler/modsecurity-crs-rp
+         -run:
+             name: ModSecurity Tuning - Load rule exclusions
+             command: |
+                printf '# Rule 942450 (msg: SQL Hex Encoding Identified) triggers,\n' > tmp.conf
+                printf '# because of random characters in the session cookie.\n' >> tmp.conf
+                printf '\nSecRuleUpdateTargetById 942450 "!REQUEST_COOKIES:session"\n' >> tmp.conf
+                # CRS container for application tests:
+                docker cp tmp.conf apachecrstc:/etc/httpd/modsecurity.d/owasp-crs/rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf;
+                docker exec apachecrstc /usr/sbin/httpd -k graceful
+         - run:
+             name: Application Tests with Testcafe
+             command: |
+                # https://circleci.com/docs/2.0/building-docker-images/#mounting-folders
+                # creating dummy container which will hold a volume with config
+                docker create -v /tests --name configs alpine:latest /bin/true
+                # copying config file into this volume
+                docker cp /home/circleci/project/testcafe/tests/test.js configs:/tests
+                # starting application container using this volume
+                docker pull testcafe/testcafe
+                docker run --volumes-from configs:rw --name testcafe -it testcafe/testcafe 'chromium:headless --no-sandbox' /tests/test.js
+         - run:
+             name: Application Tests with CRS with Testcafe
+             command: |
+                docker cp /home/circleci/project/testcafe/tests/testcrs.js configs:/tests
+                docker run --volumes-from configs:rw --name testcafecrs -it testcafe/testcafe 'chromium:headless --no-sandbox' /tests/testcrs.js
+         - run:
+             # Fail if ModSecurity log is not empty
+             name: Show ModSecurity logs of Testcafe Tests
+             ...
+         - run:
+            # Fail if ModSecurity log does not contain WAF Test String "My evil WAF Test"
+            # '<script>alert("My evil WAF Test")</script>'
+            name: Search for WAF Test String "My evil WAF Test" in ModSecurity logs
+            ... 
+```
 
-For all details see: 
+For all details see:
 
 [https://github.com/DevSlop/pixi-crs/blob/master/.circleci/config.yml](https://github.com/DevSlop/pixi-crs/blob/master/.circleci/config.yml)
 
@@ -138,8 +198,7 @@ We repeat the application tests, but this time via the WAF / CRS. This is done b
 
 #### Step "Show ModSecurity logs of Testcafe Tests"
 
-In the end, we check the results: The ModSecurity log should be empty. This means that no CRS rule was triggered by the standard application tests.  
-
+In the end, we check the results: The ModSecurity log should be empty. This means that no CRS rule was triggered by the standard application tests.
 
 #### Step "Search for WAF Test String "My evil WAF Test" in ModSecurity logs
 
@@ -168,7 +227,7 @@ Take the CI pipeline and the Docker container of this PoC and customize it for y
 ### Future work
 
 - I plan to implement this pipeline on other continuous integration platforms, such as Jenkins, TravisCI, GitLab CI, and so forth to spread its use.
-- As mentioned earlier, the CRS container already returns the UNIQUE\_ID of a blocked request in the 403.html error page. I plan to match this UNIQUE\_ID to the application test.
+- As mentioned earlier, the CRS container already returns the UNIQUE\_ID of a blocked request in the 403.html error page. I plan to match this UNIQUE_ID to the application test.
 
 ### Presentation and slides
 
@@ -176,8 +235,8 @@ I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2
 
 ### References
 
-The backend application I tested in this PoC is the Pixi application from the [OWASP project DevSlop](http://devslop.co), where I am also a part of the team.  
-The OWASP DevSlop project consists of several modules, all aimed at either presenting proof-of-concept DevSecOps pipelines, or insecure implementations of DevOps to teach better practices.  
+The backend application I tested in this PoC is the Pixi application from the [OWASP project DevSlop](http://devslop.co), where I am also a part of the team.
+The OWASP DevSlop project consists of several modules, all aimed at either presenting proof-of-concept DevSecOps pipelines, or insecure implementations of DevOps to teach better practices.
 [http://devslop.co](http://devslop.co)  
 [https://www.owasp.org/index.php/OWASP\_DevSlop\_Project](https://www.owasp.org/index.php/OWASP_DevSlop_Project) 
 
@@ -193,9 +252,7 @@ Source:
 One of the triggers of the idea behind this blog post is the book 'Securing DevOps' by Julien Vehent:  
 <https://www.manning.com/books/securing-devops>.
 
-Of course, every CRS user knows the ModSecurity Guides from Christian Folini. They provide the basic knowledge to understand the concepts and inner working of CRS and ModSecurity:  
+Of course, every CRS user knows the ModSecurity Guides from Christian Folini. They provide the basic knowledge to understand the concepts and inner working of CRS and ModSecurity:
 [https://netnea.com/apache-tutorials](https://netnea.com/apache-tutorials).
 
 Thanks Christian Folini for proofreading my blog post!
-
-![](/images/2017/11/franziska_buehler-432x432.png) Franziska Buehler / [@bufrasch](https://twitter.com/bufrasch)

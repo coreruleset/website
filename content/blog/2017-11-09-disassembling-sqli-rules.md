@@ -46,14 +46,46 @@ Let's start at the beginning of the regex: `(i)\b(`. We see an ignore case flag 
 We now proceed: We take the `c`, the `o`, the `n`, the `v`, the `ert` and the `_tz` and now reach a `|` operator. That means we have our first word: `convert_tz`.  
 We now move back again because we have some question marks after the closing brackets. This means that `convert` and even `conv` are also valid alternatives.  
 We then move behind the `|` to find more alternatives. Since we are still in the `con(` bracket, we now find the words `concat_ws`. And because of the question mark, `concat` is a valid word as well. After the next `|`, we find `connection_id`.  
-So far we have found the following alternatives:`<br></br>\bconv\W*\(<br></br>\bconvert\W*\(<br></br>\bconvert_tz\W*\(<br></br>\bconcat\W*\(<br></br>\bconcat_ws\W*\(<br></br>\bconnection_id\W*\(`
+So far we have found the following alternatives:`
+\bconv\W*\(
+\bconvert\W*\(
+\bconvert_tz\W*\(
+\bconcat\W*\(
+\bconcat_ws\W*\(
+\bconnection_id\W*\(`
 
 Remember, these start with a `\b` and end with the mentioned `\W*\(`
 
 Now we leave the `con(` bracket and move up to the `co(` bracket, where we take apart the next regexes. And so on. It's basically a routine piece of work.
 
 Two things are important: You always have to know which bracket you are currently working in. And secondly, which letter is in front and at the end of this bracket.  
-Many hours later, the work is done and I have created the following files in the folder [util/regexp-assemble](https://github.com/coreruleset/coreruleset/tree/v3.1/dev/util/regexp-assemble):`<br></br>regexp-942120.data<br></br>regexp-942130.data<br></br>regexp-942140.data<br></br>regexp-942170.data<br></br>regexp-942180.data<br></br>regexp-942190.data<br></br>regexp-942200.data<br></br>regexp-942210.data<br></br>regexp-942240.data<br></br>regexp-942260.data<br></br>regexp-942280.data<br></br>regexp-942300.data<br></br>regexp-942310.data<br></br>regexp-942320.data<br></br>regexp-942330.data<br></br>regexp-942340.data<br></br>regexp-942350.data<br></br>regexp-942360.data<br></br>regexp-942370.data<br></br>regexp-942380.data<br></br>regexp-942390.data<br></br>regexp-942400.data<br></br>regexp-942410.data<br></br>regexp-942470.data<br></br>regexp-942480.data<br></br>`
+Many hours later, the work is done and I have created the following files in the folder [util/regexp-assemble](https://github.com/coreruleset/coreruleset/tree/v3.1/dev/util/regexp-assemble):`
+regexp-942120.data
+regexp-942130.data
+regexp-942140.data
+regexp-942170.data
+regexp-942180.data
+regexp-942190.data
+regexp-942200.data
+regexp-942210.data
+regexp-942240.data
+regexp-942260.data
+regexp-942280.data
+regexp-942300.data
+regexp-942310.data
+regexp-942320.data
+regexp-942330.data
+regexp-942340.data
+regexp-942350.data
+regexp-942360.data
+regexp-942370.data
+regexp-942380.data
+regexp-942390.data
+regexp-942400.data
+regexp-942410.data
+regexp-942470.data
+regexp-942480.data
+`
 
 I want to thank the CRS community for their tests! [@dune73](https://github.com/dune73) ran fairly big tests against the optimized rules and found two behavioral changes. [@lifeforms](https://github.com/lifeforms) has done some testing with sqlmap and his own written tests. He found three errors. [@emphazer](https://github.com/emphazer) manually checked the output of Regexp::Assemble line by line via diff and found four small but important errors such as a `)` instead of a `]`. I was able to eliminate these errors relatively quickly.  
 I did face some problems during my work: Some regexes were not optimized at all.  

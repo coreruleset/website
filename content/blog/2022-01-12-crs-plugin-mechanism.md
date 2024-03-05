@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-01-12T09:32:49+01:00'
-guid: https://coreruleset.org/?p=1608
-id: 1608
 permalink: /20220112/crs-plugin-mechanism/
 tags:
   - ModSecurity
@@ -50,7 +48,16 @@ The order of execution is thus:
 
 This can be mapped almost 1:1 to the *Includes* involved:
 
-`Include crs/crs-setup.conf<br></br> <br></br>Include crs/plugins/*-config.conf<br></br>Include crs/plugins/*-before.conf<br></br> <br></br>Include crs/rules/*.conf<br></br> <br></br>Include crs/plugins/*-after.conf`
+```
+Include crs/crs-setup.conf
+ 
+Include crs/plugins/*-config.conf
+Include crs/plugins/*-before.conf
+ 
+Include crs/rules/*.conf
+ 
+Include crs/plugins/*-after.conf
+```
 
 As you can see, the two existing CRS `Include` statements are complemented with three additional generic plugin *Includes*. This means CRS is configured first, then the plugins are configured (if any), then the first batch of plugin rules are executed, followed by the main CRS rules, and finally the second batch of plugin rules run, after CRS.
 
@@ -60,7 +67,11 @@ Let's prepare the plugin folder first.
 
 Future CRS releases will come with a plugins folder next to the rules folder. If you do not have that yet then create it and place three empty config files in it (Shell command `touch` is your friend):
 
-`crs/plugins/empty-config.conf<br></br>crs/plugins/empty-before.conf<br></br>crs/plugins/empty-after.conf`
+```
+crs/plugins/empty-config.conf
+crs/plugins/empty-before.conf
+crs/plugins/empty-after.conf
+```
 
 These empty rule files make sure that the web server does not fail when including `*.conf` if there are no plugins present. (We're aware that Apache supports the `IncludeOptional` directive, but that is not available on all web servers, so we prefer to use `Include` for documentation purposes.)
 
