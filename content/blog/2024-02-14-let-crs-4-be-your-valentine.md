@@ -20,7 +20,7 @@ What a Valentine’s Day present we have got for you: today, the Core Rule Set p
 
 Finally, you may say – and would be absolutely right: it took us a long time to get there. But we wanted to do it right, especially after the bug bounty program we took part in left us with over 500 individual findings in roughly 180 reports. Fixing all these needed more time than we originally thought. But the result is a CRS that has never been more secure.
 
-<figure class="wp-block-image size-full">![](/images/2024/02/pexels-rdne-stock-project-7755146.png)</figure>*© RDNE Stock project (pexels.com)*
+{{< figure src="images/2024/02/pexels-rdne-stock-project-7755146.png" >}}*© RDNE Stock project (pexels.com)*
 
 And the focus on quality we put in this release is visible in other areas as well, e.g. work on our new quantitative testing framework, extended automation, and the integration of more tests. But we also did a lot of maintenance and cleaning, e.g. breaking up old regular expression patterns and putting them into clean and maintainable formats.
 

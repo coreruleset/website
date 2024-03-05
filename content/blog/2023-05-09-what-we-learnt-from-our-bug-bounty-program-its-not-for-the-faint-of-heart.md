@@ -11,7 +11,8 @@ url: /2023/05/09/what-we-learnt-from-our-bug-bounty-program-its-not-for-the-fain
 ---
 
 
-<figure class="wp-block-image size-large">![](/images/2023/05/entomologists-collection-1024x682.jpg)<figcaption class="wp-element-caption">*A bug hunter's collection with some nice specimens (Photo: FreeImages.com/pi242)*</figcaption></figure>OWASP CRS is the dominant open source web application firewall (WAF) rule set that powers countless servers, commercial WAFs and runs on many CDNs and cloud platforms. Yahoo and Intigriti helped OWASP CRS organize a three week bug bounty program in Spring 2022. A well prepared earlier attempt had not given any results, literally zero reports, so CRS walked into this 2<sup>nd</sup> round in a somewhat naive way. But an avalanche of reports and the professionalism of our partners woke us up real quick. Still, fixing all the findings took us very, very long and we had moments where I feared it would kill our project. Here is a somewhat lengthy report about our journey.
+{{< figure src="images/2023/05/entomologists-collection-1024x682.jpg" caption="A bug hunter's collection with some nice specimens (Photo: FreeImages.com/pi242)" >}}
+OWASP CRS is the dominant open source web application firewall (WAF) rule set that powers countless servers, commercial WAFs and runs on many CDNs and cloud platforms. Yahoo and Intigriti helped OWASP CRS organize a three week bug bounty program in Spring 2022. A well prepared earlier attempt had not given any results, literally zero reports, so CRS walked into this 2<sup>nd</sup> round in a somewhat naive way. But an avalanche of reports and the professionalism of our partners woke us up real quick. Still, fixing all the findings took us very, very long and we had moments where I feared it would kill our project. Here is a somewhat lengthy report about our journey.
 
 ### Bug bounties for open source projects
 
@@ -29,7 +30,8 @@ The setup was perfect.
 
 CRS is a bit of a special case when it comes to software. Our code consists of ModSecurity rules, which means regular expressions and directives in a domain specific language. So this is not your average python web service with bad input validation. It's a crazy piece of code and a lot of people despair when they see our rules the first time.
 
-<figure class="wp-block-image size-full">![](/images/2023/05/Blog_Bug-Bounty.png)<figcaption class="wp-element-caption">*A typical CRS rule with the machine generated regular expression*</figcaption></figure>Participating in a CRS bug bounty means you create payloads in a way the web application firewall can't detect. You are either fuzzing the stuff, or you need to start looking at the regular expressions and their sources in order to identify gaps.
+{{< figure src="images/2023/05/Blog_Bug-Bounty.png" caption="A typical CRS rule with the machine generated regular expression" >}}
+Participating in a CRS bug bounty means you create payloads in a way the web application firewall can't detect. You are either fuzzing the stuff, or you need to start looking at the regular expressions and their sources in order to identify gaps.
 
 The reason the first attempt at a bug bounty failed was because none of the standard Yahoo bounty hunters were interested in digging into CRS for the occasion. One of them asked me why he would share a WAF bypass with us. I asked him why I would share a rule that detects XSS.
 

@@ -18,7 +18,8 @@ The OWASP ModSecurity Core Rule Set project is very happy to announce Felipe Zip
 
 Felipe Zipitría holds a master of computer science from the University of the Republic in Montevideo, Uruguay. He worked as a system administrator for the faculty of engineering for several years and also lectures on security at the University.
 
-<figure class="wp-block-image size-large">![](/images/2022/03/tmp-1024x627.jpeg)<figcaption>*Felipe in Switzerland during the CRS developer summit in 2021.*</figcaption></figure>His jobs include a position as security architect and consultant at Tilsor in Uruguay and then remote work as an infrastructure security team lead at Perceptyx, Inc. He currently works as a senior security engineer at US based Life360.
+{{< figure src="images/2022/03/tmp-1024x627.jpeg" caption="Felipe in Switzerland during the CRS developer summit in 2021." >}}
+His jobs include a position as security architect and consultant at Tilsor in Uruguay and then remote work as an infrastructure security team lead at Perceptyx, Inc. He currently works as a senior security engineer at US based Life360.
 
 Felipe has been a long time developer for OWASP CRS and served the project on various topics. He combines strong technical expertise with management experience that serves the project very well. Unlike his other co-leads he also brings a lot of container know-how to the table. He has been one of the developers building the CRS sandbox and he is currently preparing the upcoming CRS status page.
 
