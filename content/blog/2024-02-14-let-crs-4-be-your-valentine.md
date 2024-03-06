@@ -3,10 +3,7 @@ author: amonachesi
 categories:
   - Blog
 date: '2024-02-14T19:46:50+01:00'
-id: 2573
 permalink: /20240214/let-crs-4-be-your-valentine/
-stick-header-meta:
-  - ''
 tags:
   - CRS-News
   - Plugins
@@ -24,7 +21,7 @@ Finally, you may say – and would be absolutely right: it took us a long time t
 
 And the focus on quality we put in this release is visible in other areas as well, e.g. work on our new quantitative testing framework, extended automation, and the integration of more tests. But we also did a lot of maintenance and cleaning, e.g. breaking up old regular expression patterns and putting them into clean and maintainable formats.
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>#### New features: Plug-in architecture, early blocking, and more
+#### New features: Plug-in architecture, early blocking, and more
 
 But apart from work on quality improvements, what novel features does CRS 4 bring? We think, the most exciting is the new **plug-in architecture**. It allows extending your CRS installation with additional functions and thus minimizing your attack surface (for more details see pull requests #[2038](https://github.com/coreruleset/coreruleset/pull/2038), #[2448](https://github.com/coreruleset/coreruleset/pull/2448), #[2404](https://github.com/coreruleset/coreruleset/pull/2404)). And it has allowed us to migrate our pre-made application rule exclusions and less-used functionality to plug-ins. But best of all: the architecture is open to third parties. This means that anybody can build and publish their own plug-in to add the functions they need to their CRS installation.
 
@@ -38,7 +35,7 @@ The following official CRS plug-ins are tested and available now: [template](htt
 
 You can find them all (together with the untested ones) in the [plug-in registry](https://github.com/coreruleset/plugin-registry).
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>Other new features and important fixes in CRS 4 include:
+Other new features and important fixes in CRS 4 include:
 
 **Early blocking:** Another important new functionality in CRS 4 is the early blocking option (#[1955](https://github.com/coreruleset/coreruleset/pull/1955)). This feature allows the evaluation of anomaly scores at the end of phase 1 (in addition to phase 2) and at the end of phase 3 (in addition to phase 4) when enabled in the new config item `tx.blocking_early`.
 
@@ -52,7 +49,7 @@ You can find them all (together with the untested ones) in the [plug-in registry
 
 **A better spread:** CRS 4 rules are now better spread over paranoia levels.
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>#### But wait, there’s more!
+#### But wait, there’s more!
 
 Here are a few more interesting updates included in CRS 4:
 
@@ -65,21 +62,21 @@ Here are a few more interesting updates included in CRS 4:
 
 In total, there are about 500 changes in CRS 4. This shows what a huge step forward the new release is for CRS.
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>#### A word on migration
+#### A word on migration
 
 Moving from CRS 3.x to CRS 4.0 is a big step. There are brand new rules and many existing rules have been modified, reorganized, or in some cases removed. Most important: In CRS 4, exclusion rules packages for applications are no longer part of the rule set! They are now dealt with within the plug-in architecture. So, if you’re currently using these rule exclusion packages with CRS 3.x, after the update to 4.0 you will find the packages removed. Instead, you will have to install the respective plug-ins to keep the functionality.
 
 Starting over from scratch in terms of false positive tuning is one way to go about the migration. Another option is to look up the rules you have excluded in the change log and see if there are other rules you need to cover as well. Please check the new `crs-setup.conf` and make sure you are up to date with variable names and formats. We will also follow up with blog posts that give more hands-on advice on the migration for more complex setups.
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>#### Adopting a new release schedule
+#### Adopting a new release schedule
 
 CRS 4.0 is the last release following our traditional and very slow release schedule. For the future, we plan to run with a monthly release (so you can expect 4.1 in March 2024). We plan to declare an individual release as long-term support and to continue to update it beyond the release of the next few monthly releases.
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>#### Change log
+#### Change log
 
 You can find all the changes in CRS 4.0 in the change log: <https://github.com/coreruleset/coreruleset/blob/v4.0/dev/CHANGES.md>
 
-<div aria-hidden="true" class="wp-block-spacer" style="height:25px"></div>#### Thank you, sponsors
+#### Thank you, sponsors
 
 *This work would not have been possible without our Gold Sponsors **Google** (<https://www.google.com/>) and **United Security Providers** (<https://united-security-providers.com/>) and our Silver Sponsor **Swiss Post** (<https://www.post.ch/en/about-us/responsibility/information-security-at-swiss-post>). Thank you for supporting CRS!*
 

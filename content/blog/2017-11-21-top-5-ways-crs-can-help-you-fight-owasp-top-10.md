@@ -1,7 +1,5 @@
 ---
 author: dune73
-categories:
-  - Blog
 date: '2017-11-21T16:36:31+01:00'
 permalink: /20171121/top-5-ways-crs-can-help-you-fight-owasp-top-10/
 tags:
@@ -63,7 +61,7 @@ In the list of alerts seen above, the SQL Injection attacks are prevalent. This 
 
 OWASP Top Ten tells you that CRS can detect attacks as seen above under A10. But it does not tell you, that CRS can also stop many of the attacks for you.
 
-<figure aria-describedby="caption-attachment-597" class="wp-caption alignnone" id="attachment_597" style="width: 800px">[![](/images/2017/11/tmp-300x169.png)](/images/2017/11/tmp.png)<figcaption class="wp-caption-text" id="caption-attachment-597">Burp vs. CRS</figcaption></figure>
+{{< figure src="images/2017/11/tmp.png" caption="Burp vs. CRS" >}}
 
 Here is a graphic that depicts a scan as carried out by the Burp vulnerability scanner. In our example, Burp probed a special vulnerable application. In the first column, you see Burp's report when no protection shielded the application. In the 2nd column, you see a CRS default installation used as a 1st line of defense in front of the vulnerable service. Unlike under A10, we are immediately blocking the probes here. Again, false positives are very rare in the default installation and they can be handled with relative ease thanks to existing guides.
 
@@ -99,8 +97,7 @@ There are a couple of [video presentations](https://www.youtube.com/watch?v=eO9g
 
 There is a [series of tutorials](https://www.netnea.com/cms/apache-tutorials/) that explain the use of the rule set in detail. Likewise, I teach [ModSecurity / Core Rule Set courses](https://www.feistyduck.com/training/modsecurity-training-course) several times a year. The next ones probably in February 2018, but I also do in-house courses [on request](mailto:folini@netnea.com).
 
-Finally, let me tell you a about a little known feature: If you are afraid ModSecurity or CRS could blow up your existing service, there is a neat little option that you can enable in the <tt>crs-setup.conf</tt>. It's called the sampling size. It allows you to enable CRS only for let's say 1% of the requests on your service. That way you get minimal impact from potential problems, but enough alerts to get used to it. As you grow more confident you raise the sampling size step by step until you hit one hundred again. That is really useful.
+Finally, let me tell you a about a little known feature: If you are afraid ModSecurity or CRS could blow up your existing service, there is a neat little option that you can enable in the `crs-setup.conf`. It's called the sampling size. It allows you to enable CRS only for let's say 1% of the requests on your service. That way you get minimal impact from potential problems, but enough alerts to get used to it. As you grow more confident you raise the sampling size step by step until you hit one hundred again. That is really useful.
 
 Thanks for reading. If you are interested in CRS, I suggest you follow the project on twitter at [@coreruleset](https://twitter.com/coreruleset) or you come here more often for future blog posts.
 
-{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}
