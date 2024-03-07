@@ -13,7 +13,7 @@ url: /2022/11/22/meet-the-crs-team-ervin-the-gardening-radio-amateur-in-the-back
 
 #### *Astronaut? Garbage truck driver? Electrical engineer? Metalsmith? In the end, Hungarian Ervin Hegedüs became a software developer. Within the Core Rule Set project, he contributes primarily to tool development and packaging. “New team members should above all be team players,” says Ervin.*
 
-{{< figure="images/2022/11/airween_jump_1.png" caption="A man of many talents and names: Ervin Hegedüs aka AirWeen aka HA2OS" >}}
+{{< figure src="images/2022/11/airween_jump_1.png" caption="A man of many talents and names: Ervin Hegedüs aka AirWeen aka HA2OS" >}}
 Ervin Hegedüs has had no shortage of interesting career ideas in his 51-year life. While the usual childhood dreams of becoming an astronaut or a garbage truck driver vanished as he grew older, Ervin still today sometimes wonders what would have become of him if he hadn’t found his way to IT. He thinks he might have become an electrical engineer since he is a HAM radio operator in his spare time (callsign: HA2OS). More about that later.
 
 Ervin's professional career eventually developed in a different direction. He studied at the Eötvös Loránd University (ELTE), a renowned natural science university in the Hungarian capital Budapest, where he graduated with a bachelor's degree in Computer Science. Today, he still lives in Budapest working as a systems and software engineer and developer at Digitalwave, a Hungarian digital marketing and advertising agency.

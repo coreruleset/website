@@ -13,7 +13,7 @@ url: /2022/10/18/meet-the-crs-team-andrea-the-musical-man-in-the-middle/
 
 #### *He likes to play board games and the guitar, and he loves to fix bypasses to CRS rules: Italian Andrea Menin joined the Core Rule Set team in 2018. The most important requirement for anybody joining the project, he says, is to enjoy it.*
 
-{{< figure src="images/2022/10/02-2-1024x768.jpg" caption="Andrea Menin with the famous DeLorean: “*Back to the Future *sparked a love of technology and music in me“" >}}
+{{< figure src="images/2022/10/02-2.jpg" caption="Andrea Menin with the famous DeLorean: “*Back to the Future *sparked a love of technology and music in me“" >}}
 He never wanted to be a locomotive engineer or an astronaut, but Andrea Menin (born in 1983) actually had an alternative to being a developer and IT crack: “After school, I either wanted to do something with computers or become a musician.” It had been the movie *Back to the Future* that sparked a love of technology and music in Andrea early on. “Back then, when I saw Marty play ‘Johnny B. Goode’ at the high school dance, I wanted to learn guitar, too.” Eventually, he studied both computer science at the Istituto Tecnico Industriale Statale (ITIS) and classical guitar at the Conservatorio A. Vivaldi in Alessandria, Italy, his birthplace.
 
 Andrea still plays classical and electric guitar, but in recent years unfortunately much too rarely, as he says himself. Since the possibilities as a professional musician seemed limited to him, he decided to pursue a career in information technology. He got his first job as a security consultant with a company in Milan. He didn't get the tools for the job in college, though, Andrea points out: “We were a group of friends who were heavily into hacking and offensive techniques.”
@@ -33,8 +33,6 @@ Andrea also saw the invitation to join as a chance to expand his own expertise a
 > “The invitation to join the CRS core team was a chance to expand my expertise and learn from the others on the team.”
 
 What message does Andrea have for people who would like to join CRS but don't know if they are talented enough to do so? “My message is quite simple: get in touch with us!” The only requirements for Andrea are a basic knowledge of the regular expression syntax and how the HTTP protocol works, as well as a bit of web security knowledge. The most important requirement, however, is to enjoy the project and contributing to it as well as learning new things. At the end of the day, Andrea says: “No matter what skill level, join us on our Slack channel and say hi. The CRS team welcomes every contributor and all opinions.”
-
-{{ spacer }}
 
 *How to get onto the project Slack? You can get an invitation from <https://owasp.org/slack/invite>, once registered head to our channel #coreruleset.*
 
