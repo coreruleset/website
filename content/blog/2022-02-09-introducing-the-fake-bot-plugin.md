@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-02-09T11:51:09+01:00'
-guid: https://coreruleset.org/?p=1646
-id: 1646
 permalink: /20220209/introducing-the-fake-bot-plugin/
 tags:
   - Fake Bot Plugin
@@ -47,8 +45,7 @@ The Lua code is relatively simple. Please check it out in the [github repo](http
 
 But let's look at the new rule that this plugin brings. The rule is in a file named [fake-bot-after.conf](https://github.com/coreruleset/fake-bot-plugin/blob/main/plugins/fake-bot-after.conf) in the plugins folder.
 
-```
-<pre class="wp-block-code">```
+```apacheconf
 SecRule REQUEST_HEADERS:User-Agent "@pm googlebot bingbot facebookexternalhit facebookcatalog facebookbot" \
     "id:9504110,\
     phase:1,\
@@ -71,7 +68,6 @@ SecRule REQUEST_HEADERS:User-Agent "@pm googlebot bingbot facebookexternalhit fa
     "t:none,\
     setvar:'tx.anomaly_score_pl1=+%{tx.critical_anomaly_score}'"
 ```
-```
 
 First we use the parallel match operator to detect those user-agents that the plugin and its Lua script support. It's simple for Googlebot and Bingbot, but a bit more complicated for Facebook. If the user-agent is something else, we do not get a match here and the plugin execution is done. If we get a rule hit though, we advance to a chained rule, where we branch out to the Lua script. The script will either return nothing or a value that will be interpreted as a rule hit. So the Lua script is in fact the operator of this rule and a positive return value means our chained rule has triggered and we face a fake bot. We therefore use *`setvar`* to raise the CRS anomaly score at paranoia level 1. An interesting detail: The Lua script also set a variable with the name of the bot in question. That variable is used in the log message of the rule for reporting.
 
@@ -79,11 +75,9 @@ First we use the parallel match operator to detect those user-agents that the pl
 
 Beyond the plugin support that is being prepared in the aforementioned blog post, you also need to be sure you have Lua-Support enabled as well as the Lua-Socket library. As far as I can tell, all the major Linux distribution provide Lua-Support with their ModSecurity packages these days. But if you want to be sure, check for the library being linked by the ModSecurity module file. Here is what I did:
 
-```
-<pre class="wp-block-code">```
-$ ldd /apache/modules/mod_security2.so | grep lua
+```bash-session
+ldd /apache/modules/mod_security2.so | grep lua
 liblua5.3.so.0 => /usr/lib/x86_64-linux-gnu/liblua5.3.so.0 (0x00007f91181f2000)
-```
 ```
 
 When you have the pre-requisites in place (don't forget the socket library!), you simply drop the Lua script and the rule-file into the plugins folder, reload the server and you're done.
@@ -92,18 +86,14 @@ When you have the pre-requisites in place (don't forget the socket library!), yo
 
 Here is a test call so we see the plugin in action:
 
-```
-<pre class="wp-block-code">```
-$ curl https://<your-server>/ -H "User-Agent: I'm pretending to be a Bingbot"
-```
+```bash-session
+curl https://<your-server>/ -H "User-Agent: I'm pretending to be a Bingbot"
 ```
 
 And here is the access log entry in the extended access log described in my tutorials at [netnea.com](https://www.netnea.com/cms/apache-tutorials/).
 
 ```
-<pre class="wp-block-code">```
 83.76.112.xxx - - [2022-02-04 09:03:32.220707] "GET / HTTP/1.1" 403 199 "-" "I'm pretending to be a Bingbot" "-" 35480 example.com 192.168.3.7 443 - - + "" Yfzd1OCP8LadrNjJCMOyHwAAAAM TLSv1.3 TLS_AES_256_GCM_SHA384 726 6282 -% 10207 6245 0 0 5-0-0-0 0-0-0-0 5 0
-```
 ```
 
 You see the request being blocked with a status 403 and an anomaly score of 5 near the end of the line.
@@ -111,9 +101,7 @@ You see the request being blocked with a status 403 and an anomaly score of 5 ne
 And now the corresponding error log:
 
 ```
-<pre class="wp-block-code">```
 [2022-02-04 09:03:32.225840] [-:error] 83.76.112.xxx:35480 Yfzd1OCP8LadrNjJCMOyHwAAAAM [client 83.76.112.xxx] ModSecurity: Warning. Fake Bot Plugin: Detected fake Bingbot. [file "/etc/apache2/coreruleset-3.3.2/plugins/fake-bot-after.conf"] [line "27"] [id "9504110"] [msg "Fake bot detected: Bingbot"] [data "Matched Data: bingbot found within REQUEST_HEADERS:User-Agent: i'm pretending to be a bingbot"] [severity "CRITICAL"] [ver "fake-bot-plugin/1.0.0"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-bot"] [tag "capec/1000/225/22/77/13"] [tag "PCI/6.5.10"] [tag "paranoia-level/1"] [hostname "example.com"] [uri "/"] [unique_id "Yfzd1OCP8LadrNjJCMOyHwAAAAM"]
-```
 ```
 
 So everything works as planned.
@@ -123,7 +111,6 @@ So everything works as planned.
 Here is what I got after running this for a bit more than two weeks on a not overly popular webserver:
 
 ```
-<pre class="wp-block-code">```
  13 JP 126.55.130.xxx   mozilla/5.0 (macintosh; intel mac os x 10_11_1) applewebkit/601.2.4 (khtml, like gecko) vers ...
  12 DE 130.180.17.xxx   mozilla/5.0 (macintosh; intel mac os x 10_11_1) applewebkit/601.2.4 (khtml, like gecko) vers ...
   6 US 34.77.181.xxx    mozilla/5.0 (compatible; googlebot/2.1; +http://www.google.com/bot.html)
@@ -154,13 +141,10 @@ Here is what I got after running this for a bit more than two weeks on a not ove
   1 CY 85.208.98.xxx    mozilla/5.0 (compatible; googlebot/2.1; +http://www.google.com/bot.html)
   1 CY 85.208.98.xxx    mozilla/5.0 (compatible; googlebot/2.1; +http://www.google.com/bot.html)
 ```
-```
 
 This report was done with the help of a [fake-bot-report.sh](https://github.com/coreruleset/fake-bot-plugin/blob/main/util/fake-bot-report.sh) script that I cobbled together to help with reporting.
 
-```
-<pre class="wp-block-code">```
-$ cat fake-bot-report.sh
+```bash
 #!/bin/bash
 #
 # Script to analyze the alerts of the OWASP ModSecurity Core Rule Set
@@ -189,7 +173,6 @@ cat | grep 9504110 > $TMPFILE
 done) | sort -nr
 
 trap 'rm -f "$TMPFILE"' EXIT
-```
 ```
 
 The script can also be found in the [plugin repository](https://github.com/coreruleset/fake-bot-plugin/blob/main/util/fake-bot-report.sh).  

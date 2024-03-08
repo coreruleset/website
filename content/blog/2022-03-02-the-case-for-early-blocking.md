@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-03-02T08:43:01+01:00'
-guid: https://coreruleset.org/?p=1668
-id: 1668
 permalink: /20220302/the-case-for-early-blocking/
 tags:
   - Early Blocking
@@ -92,5 +90,3 @@ This is only a simple example where *Early Blocking* makes a difference. There a
 The longer I work with CRS, the more annoyed I get with too many alerts. I no longer think it is cool to have reports with thousands of alerts. I now think it is far cooler to have a clean report with as few alerts as possible and a policy that says, we terminate attackers immediately, so they do not return for subsequent attacks. Early blocking and reducing the anomaly threshold are useful steps in this direction.
 
 After deploying the solution above, I've done the stats and noticed a slight reduction of probes of these scanners. The sample is very small so far, couple of dozens of scanners, but the median number of requests per day dropped from 2 to 1 for IP addresses triggering the numeric host header IP. The mean did not drop so much, since there are scanners that just don't care. They bump into a 403 and they simply continue with their probes. We'll have to stop that behavior with different means.  
-  
-Christian Folini, CRS Co-Lead

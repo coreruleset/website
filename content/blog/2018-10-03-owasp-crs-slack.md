@@ -3,15 +3,7 @@ author: Walter Hop
 categories:
   - Blog
 date: '2018-10-03T14:16:02+02:00'
-guid: https://coreruleset.org/?p=827
-id: 827
 permalink: /20181003/owasp-crs-slack/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: Join us on the OWASP Slack!
 url: /2018/10/03/owasp-crs-slack/
 ---

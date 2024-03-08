@@ -3,8 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2022-12-09T02:45:28+01:00'
-guid: https://coreruleset.org/?p=2000
-id: 2000
 permalink: /20221209/save-the-date-crs-community-summit-on-february-14-2023/
 title: 'Save the Date: CRS Community Summit on February 14, 2023'
 url: /2022/12/09/save-the-date-crs-community-summit-on-february-14-2023/
@@ -29,4 +27,3 @@ Cheers,
 Christian, Felipe, Walter
 
 {{< figure src="images/2018/07/Group-Photo-1-small-1024x731.jpg" title="Group Photo from the CRS Community Summit 2018 in London" caption="Hope to see you in Dublin. To get you in the mood, here is a picture from the CRS Community Summit 2018 in London" >}}
-

@@ -3,13 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2018-07-12T14:10:35+02:00'
-guid: https://coreruleset.org/?p=780
-id: 780
 permalink: /20180712/reporting-from-the-first-crs-community-summit-in-london/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: Reporting from the First CRS Community Summit in London
 url: /2018/07/12/reporting-from-the-first-crs-community-summit-in-london/
 ---
@@ -27,7 +21,7 @@ Next up was Rodrigo Martinez from the University of Uruguay. He brought the news
 
 Back in May, Mirko Dziadzka and Christian Treutler from AviNetworks had published the idea to [create a meta rule language](https://github.com/avinetworks/owasp-crs-technical-discussion/raw/master/documentation/OWASP_AppSec_EU_2018-Core_Ruleset.pdf). This language would be used to express CRS rules instead of ModSecurity code. This would make our project independent from a particular engine. Instead a translator script would process the meta language rules and export them into ModSecurity code. Alternative translators could aim at other WAFs. Or they could create native Java / Python / PHP code which could then be used to perform input validation. It's a bold proposal that would open the field far and wide for CRS. But it actually resonates with an idea by Ivan Ristić from ten years ago. The time was not ready back in the day, but Mirko and Christian were knocking on open doors. It looked as if the community was welcoming this initiative with open arms, constructive feedback and a frenzy discussion carrying that was hard to stop.
 
-<figure aria-describedby="caption-attachment-788" class="wp-caption aligncenter" id="attachment_788" style="width: 1024px">[![](/images/2018/07/Group-Photo-1-small-1024x731.jpg)](/images/2018/07/Group-Photo-1-small.jpg)<figcaption class="wp-caption-text" id="caption-attachment-788">*Group Photo from the CRS Community Summit 2018 in London*</figcaption></figure>
+{{< figure src="images/2018/07/Group-Photo-1-small.jpg" caption="Group Photo from the CRS Community Summit 2018 in London" >}}
 
 Tin Zaw presented [WAFLZ](https://github.com/VerizonDigital/waflz), an alternative open source WAF developed by Verizon for use with their CDN. A full announcement of this project is pending, so it was more of a sneak preview for us in the audience. But a very interesting one. In fact, when talking about WAFLZ, we also touched on other implementations of the ModSecurity rule language. Robert Paprocki's Lua-Resty-WAF (used by others in the room) was mentioned and implementations by other CDNs.
 

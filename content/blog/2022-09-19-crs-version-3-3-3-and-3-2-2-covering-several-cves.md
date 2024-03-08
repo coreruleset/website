@@ -3,8 +3,6 @@ author: RedXanadu
 categories:
   - Blog
 date: '2022-09-19T16:08:09+02:00'
-guid: https://coreruleset.org/?p=1760
-id: 1760
 permalink: /20220919/crs-version-3-3-3-and-3-2-2-covering-several-cves/
 title: CRS Version 3.3.3 and 3.2.2 (covering several CVEs)
 url: /2022/09/19/crs-version-3-3-3-and-3-2-2-covering-several-cves/
@@ -34,7 +32,7 @@ The vulnerabilities we are fixing have been discovered during a limited private 
 
 A small subset of the findings constitute partial rule set bypasses. We define a rule set bypass as a payload (a) that disables the rule set and allows an attacker to submit a payload (b) without the WAF detecting it. A partial rule set bypass is limited to certain parts of a request (e.g. the request body).
 
-The partial rule set bypasses fall into two categories: the ones that can be fixed within CRS and the ones that need to be fixed in the underlying engine, usually ModSecurity. Please note that <mark class="has-inline-color" style="background-color:rgba(0, 0, 0, 0);color:#ff0000"></mark>the latter category also includes vulnerabilities that have to be fixed by the so-called "ModSecurity recommended rules": a small group of rules outside CRS. The open-source Coraza engine is not affected as far as we can see and alternative WAF engines, namely the ones using CRS, will need to be checked against all the different findings.
+The partial rule set bypasses fall into two categories: the ones that can be fixed within CRS and the ones that need to be fixed in the underlying engine, usually ModSecurity. Please note that the latter category also includes vulnerabilities that have to be fixed by the so-called "ModSecurity recommended rules": a small group of rules outside CRS. The open-source Coraza engine is not affected as far as we can see and alternative WAF engines, namely the ones using CRS, will need to be checked against all the different findings.
 
 CRS has contacted the ModSecurity developers at Trustwave SpiderLabs early on. Throughout Summer, ModSecurity lead developer Martin Vierula worked on the fixes on this side, partially with support from the bug bounty hunters and CRS developers. We thank Martin for the frank communication and for sharing early patches with our team.
 
@@ -84,8 +82,7 @@ Official CVE: [CVE-2022-39958](https://www.cve.org/CVERecord?id=CVE-2022-39958)
 
 ### Description of Additional CRS Security Fixes
 
-####   
-MIME header abuse via \_charset\_ field
+#### MIME header abuse via \_charset\_ field
 
 Beyond CVE-2022-39956 which covers the Content-Type and Content-Transfer-Encoding MIME header fields abuse, there is also a fix to prevent potential abuse of the `_charset_` MIME header field which is not covered by the CVE. We assigned this vulnerability a lower severity since we do not know of a parser implementing this field.
 

@@ -3,15 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2021-11-01T11:42:19+01:00'
-guid: https://coreruleset.org/?p=1460
-id: 1460
 permalink: /20211101/crs-developer-retreat-2021/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
-theme-transparent-header-meta:
-  - default
 title: CRS Developer Retreat 2021
 url: /2021/11/01/crs-developer-retreat-2021/
 ---

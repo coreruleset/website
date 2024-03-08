@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-01-20T14:46:29+01:00'
-guid: https://coreruleset.org/?p=1638
-id: 1638
 permalink: /20220120/comprehensive-view-of-the-waf-market-from-an-open-source-perspective/
 title: Comprehensive View of the WAF Market From an Open Source Perspective
 url: /2022/01/20/comprehensive-view-of-the-waf-market-from-an-open-source-perspective/
@@ -72,4 +70,3 @@ You will also learn that Gartner and friends constantly report on nice-to-have W
 
 I'll be back with that blog in a few weeks.
 
-Christian Folini

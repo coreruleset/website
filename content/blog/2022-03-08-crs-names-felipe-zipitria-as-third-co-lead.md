@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-03-08T08:19:02+01:00'
-guid: https://coreruleset.org/?p=1676
-id: 1676
 permalink: /20220308/crs-names-felipe-zipitria-as-third-co-lead/
 tags:
   - CRS-News

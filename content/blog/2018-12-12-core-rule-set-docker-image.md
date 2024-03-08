@@ -3,13 +3,7 @@ author: Franziska Buehler
 categories:
   - Blog
 date: '2018-12-12T10:27:37+01:00'
-guid: https://coreruleset.org/?p=873
-id: 873
 permalink: /20181212/core-rule-set-docker-image/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: Core Rule Set Docker Image
 url: /2018/12/12/core-rule-set-docker-image/
 ---

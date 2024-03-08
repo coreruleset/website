@@ -3,8 +3,6 @@ author: Walter Hop
 categories:
   - Blog
 date: '2022-04-28T21:20:10+02:00'
-guid: https://coreruleset.org/?p=1712
-id: 1712
 permalink: /20220428/coreruleset-v4-rc1-available/
 title: Core Rule Set v4.0.0 Release Candidate 1 available
 url: /2022/04/28/coreruleset-v4-rc1-available/
@@ -31,7 +29,7 @@ The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candid
 - Detect common webshells by inspecting response
 - Detect path traversal in file upload
 - Detect common IP-based SSRF targets
-- <span style="color: var(--ast-global-color-3); font-size: 1rem;">Detect email protocol attacks</span>
+- Detect email protocol attacks
 - Improved RCE detection
 - Improved SQLi detection
 - Expanded blocklists to prevent access to AWS cli files, /proc and /sys files, and many other sensitive files

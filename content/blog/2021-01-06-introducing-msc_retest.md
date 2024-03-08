@@ -214,7 +214,7 @@ This results in a file with 10 million executions each. For the analysis, I am s
 
 Here you are:
 
-```sh
+```bash-session
 $> ls modsec2-nojit-old-pattern.txt modsec2-nojit-new-pattern.txt modsec2-withjit-old-pattern.txt modsec2-withjit-new-pattern.txt modsec3-withjit-old-pattern.txt modsec3-withjit-new-pattern.txt | while read F; do printf "%32s : %f\n" "$F" $(egrep -o "[0-9]+\.[0-9]{6}" $F | awk "{ SUM += \$1 } END { print SUM }"); done
 
    modsec2-nojit-new-pattern.txt : 630.129000

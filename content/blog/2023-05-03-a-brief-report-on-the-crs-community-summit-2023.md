@@ -3,8 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-05-03T15:43:13+02:00'
-guid: https://coreruleset.org/?p=2108
-id: 2108
 permalink: /20230503/a-brief-report-on-the-crs-community-summit-2023/
 title: A brief report on the CRS Community Summit 2023.
 url: /2023/05/03/a-brief-report-on-the-crs-community-summit-2023/

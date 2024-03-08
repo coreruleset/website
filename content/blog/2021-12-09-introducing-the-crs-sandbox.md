@@ -3,8 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-12-09T12:54:13+01:00'
-guid: https://coreruleset.org/?p=1503
-id: 1503
 permalink: /20211209/introducing-the-crs-sandbox/
 title: Introducing the CRS Sandbox
 url: /2021/12/09/introducing-the-crs-sandbox/

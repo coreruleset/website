@@ -3,13 +3,7 @@ author: csanders-git
 categories:
   - Blog
 date: '2018-03-08T18:21:30+01:00'
-guid: https://coreruleset.org/?p=663
-id: 663
 permalink: https://www.fastly.com/blog/building-waf-test-harness?utm_medium=social&#038;utm_source=t.co&#038;utm_campaign=FY18Q1_Blog_FTW
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 title: Building the WAF test harness [x-post]
 url: /2018/03/08/building-the-waf-test-harness-x-post/
 ---

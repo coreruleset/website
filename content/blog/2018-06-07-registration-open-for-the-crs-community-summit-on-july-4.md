@@ -3,13 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2018-06-07T08:41:04+02:00'
-guid: https://coreruleset.org/?p=697
-id: 697
 permalink: /20180607/registration-open-for-the-crs-community-summit-on-july-4/
-site-content-layout:
-  - default
-site-sidebar-layout:
-  - default
 tags:
   - CommunitySummit
 title: Registration Open for the CRS Community Summit on July 4

@@ -1,23 +1,9 @@
 ---
-adv-header-id-meta:
-  - ''
-ast-site-content-layout:
-  - default
-astra-migrate-meta-layouts:
-  - set
 author: amonachesi
 categories:
   - Blog
 date: '2023-11-28T07:00:00+01:00'
-footnotes:
-  - ''
-guid: https://coreruleset.org/?p=2456
-id: 2456
 permalink: /20231128/discussions-excursions-and-hard-work-crs-developer-retreat-2023-days-2-7/
-stick-header-meta:
-  - ''
-theme-transparent-header-meta:
-  - ''
 title: Discussions, excursions and hard work – CRS Developer Retreat 2023, days 2–7
 url: /2023/11/28/discussions-excursions-and-hard-work-crs-developer-retreat-2023-days-2-7/
 ---
@@ -76,4 +62,3 @@ However, for some of us the day regularly ended in a nerve-wrecking social strug
 *PPS: Our second Hungarian word of the week: “[Tilos](https://en.wiktionary.org/wiki/tilos#Hungarian)”. The Hungarians seem to love their “Tilos!” signs.*
 
 {{< figure src="images/2023/11/CRS_Budapest-3-1-576x1024.jpeg" caption="In the Metro to Budapest city center" >}}
-

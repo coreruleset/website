@@ -1,23 +1,9 @@
 ---
-adv-header-id-meta:
-  - ''
-ast-site-content-layout:
-  - default
-astra-migrate-meta-layouts:
-  - set
 author: dune73
 categories:
   - Blog
 date: '2024-01-15T13:32:16+01:00'
-footnotes:
-  - ''
-guid: https://coreruleset.org/?p=2558
-id: 2558
 permalink: /20240115/welcome-the-newest-addition-to-the-owasp-family-modsecurity/
-stick-header-meta:
-  - ''
-theme-transparent-header-meta:
-  - ''
 title: 'Welcome the newest addition to the OWASP family: ModSecurity!'
 url: /2024/01/15/welcome-the-newest-addition-to-the-owasp-family-modsecurity/
 ---
