@@ -31,7 +31,7 @@ An input is a set of configuration options for an HTTP transaction. This can inc
 
 Now that we have covered how the YAML tests are designed at a high level, let’s look at how to write an FTW test. FTW has a number of logical defaults that can be overwritten if more functionality is needed. The default is an HTTP request on port 80 to localhost that looks as follows:
 
-```
+```http
 GET / HTTP/1.1
 Host: localhost
 ```

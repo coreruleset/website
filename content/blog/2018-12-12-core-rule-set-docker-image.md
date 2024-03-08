@@ -21,7 +21,7 @@ For this blog post, we use the intentionally vulnerable web application Pixi fro
 
 One of the application vulnerabilities is that the search field is vulnerable to reflected XSS attacks:
 
-![](/images/2018/12/Pixi_XSS-1024x739.png)
+{{< figure src="images/2018/12/Pixi_XSS.png" >}}
 
 Oops... The injected content is reflected back to the user.
 
@@ -29,7 +29,7 @@ This is one example.
 
 Another misbehaviour of the application is that the secret key is stored in a publicly accessible server.conf file:
 
-![](/images/2018/12/Pixi_serverconf-1024x739.png)
+{{< figure src="images/2018/12/Pixi_serverconf.png" >}}
 
 These are just two examples of this vulnerable web application. One is a classic XSS attack and one is a misconfiguration of the application that results in sensitive data exposure.
 
@@ -37,8 +37,7 @@ The Pixi application has even [more vulnerabilities](http://prezo.s3.amazonaws.c
 
 Of course, these vulnerabilities should be fixed in the application itself. But in the real world, it is not always possible to patch the vulnerabilities within a reasonable timeframe. Or sometimes, we simply have no control over the application software. And this is where the CRS comes in...
 
-<span class="s1">The CRS prevents the exploitation of the two attacks described above. The CRS is not a substitute for patching the software, but an additional layer of defence, a safety net in front of your application, protecting you from these attacks: CRS is the 1st line of defense!  
-</span>
+The CRS prevents the exploitation of the two attacks described above. The CRS is not a substitute for patching the software, but an additional layer of defence, a safety net in front of your application, protecting you from these attacks: CRS is the 1st line of defense!
 
 ## Start CRS in container
 
@@ -97,7 +96,7 @@ We want to repeat our first XSS attack now and see if CRS blocks it, and we hope
 
 We now call the TCP port 8001 of the CRS container:
 
-![](/images/2018/12/CRS_XSS-1024x739.png)
+{{< figure src="images/2018/12/CRS_XSS.png" >}}
 
 The attack can no longer be executed. We get a 403-forbidden status code. That's what we expected.
 
@@ -128,7 +127,7 @@ These three violated rules result in a total Inbound Anomaly Score of 15, which 
 
 We also check what happened to the blocked .conf file. This request can no longer be executed:
 
-![](/images/2018/12/CRS_serverconf-1024x739.png)
+{{< figure src="images/2018/12/CRS_serverconf.png" >}}
 
 The corresponding log entries can be found here:
 
@@ -236,5 +235,3 @@ With this easy way to start the CRS, we can go even further and integrate it in 
 If you want to see this CRS container in action, check out Christian Folini's [asciinema video](https://asciinema.org/a/0JDnaO1Wi42sIYpgJzoYbCdtn).
 
 And many thanks to Christian for reviewing this blog post.
-
-- - - - - -
