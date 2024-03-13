@@ -1,5 +1,7 @@
 <h3>Latest Blog Posts</h3>
 
+<ul>
 {{ range ( where .Site.RegularPages "Type" "blog" | first 3 ) }}
   <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
 {{end}}
+</ul>
