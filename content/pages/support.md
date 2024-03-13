@@ -12,8 +12,8 @@ We strive to make the OWASP CRS accessible to a wide audience of beginner and ex
 
 [Sign up for the CRS mailing list](https://groups.google.com/a/owasp.org/g/modsecurity-core-rule-set-project) to ask general usage questions and participate in discussions on the CRS.
 
-[Join the #coreruleset channel in the OWASP Slack](https://coreruleset.org/20181003/owasp-crs-slack/) to chat with us.
+[Join the #coreruleset channel in the OWASP Slack]({{< ref "blog/2018-10-03-owasp-crs-slack.md" >}}) to chat with us.
 
-We try to give a first response to inquiries and issues within a day or so. This happens via our ["Dev on Duty" program]({{< ref "blog/2021-04-14-introducing-the-dev-on-duty-program.md" >}}) that assigns a CRS developer to scan the aforementioned channels as well as Stack Overflow. Please note that "Dev on Duty" is financed by [sponsorship of NGINX](/20210305/announcing-a-partnership-with-nginx/).
+We try to give a first response to inquiries and issues within a day or so. This happens via our ["Dev on Duty" program]({{< ref "blog/2021-04-14-introducing-the-dev-on-duty-program.md" >}}) that assigns a CRS developer to scan the aforementioned channels as well as Stack Overflow. Please note that "Dev on Duty" is financed by [sponsorship of NGINX]({{< ref "blog/2021-03-05-announcing-a-partnership-with-nginx.md" >}}).
 
 If you've found a false negative/bypass under active exploit, please responsibly disclose the issue by sending an email to <security@coreruleset.org>. If necessary, you can send a message encrypted to our [GPG key](/security.asc).
