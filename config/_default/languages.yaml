@@ -5,7 +5,7 @@ en:
   copyright: "Copyright &copy; {{< current_year >}} CRS Project. All Rights Reserved."
   title: "CRS Project"
   params:
-    description: "The first line of defense"
+    description: "The 1st line of defense"
     ### accessibility ###
     # accessibility:
     #   skip_text: "Skip to content"
