@@ -3,7 +3,6 @@ author: Walter Hop
 categories:
   - Blog
 date: '2020-12-28T18:38:16+01:00'
-permalink: /20201228/owasp-modsecurity-core-rule-set-v3-3-1-release-candidate-1-available/
 title: OWASP ModSecurity Core Rule Set v3.3.1 Release Candidate 1 available
 url: /2020/12/28/owasp-modsecurity-core-rule-set-v3-3-1-release-candidate-1-available/
 ---

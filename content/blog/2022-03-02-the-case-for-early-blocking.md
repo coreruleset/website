@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-03-02T08:43:01+01:00'
-permalink: /20220302/the-case-for-early-blocking/
 tags:
   - Early Blocking
 title: The Case for Early Blocking

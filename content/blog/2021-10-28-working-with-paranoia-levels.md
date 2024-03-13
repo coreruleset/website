@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-10-28T20:54:15+02:00'
-permalink: /20211028/working-with-paranoia-levels/
 tags:
   - Paranoia Levels
 title: Working with Paranoia Levels

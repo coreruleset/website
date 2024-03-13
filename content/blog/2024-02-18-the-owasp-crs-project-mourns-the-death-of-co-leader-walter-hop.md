@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2024-02-18T17:22:23+01:00'
-permalink: /20240218/the-owasp-crs-project-mourns-the-death-of-co-leader-walter-hop/
 title: The OWASP CRS project mourns the death of Co-Leader Walter Hop
 url: /2024/02/18/the-owasp-crs-project-mourns-the-death-of-co-leader-walter-hop/
 ---

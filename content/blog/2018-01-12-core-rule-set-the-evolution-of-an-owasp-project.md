@@ -3,7 +3,6 @@ author: csanders-git
 categories:
   - Blog
 date: '2018-01-12T06:42:29+01:00'
-permalink: https://owasp.blogspot.ch/2017/12/core-rule-set-evolution-of-an-owasp-project.html
 title: 'Core Rule Set: The evolution of an OWASP Project [x-post]'
 url: /2018/01/12/core-rule-set-the-evolution-of-an-owasp-project/
 ---

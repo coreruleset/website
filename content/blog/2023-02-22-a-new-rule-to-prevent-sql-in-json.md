@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-02-22T22:01:07+01:00'
-permalink: /20230222/a-new-rule-to-prevent-sql-in-json/
 title: A new rule to prevent SQL in JSON
 url: /2023/02/22/a-new-rule-to-prevent-sql-in-json/
 ---

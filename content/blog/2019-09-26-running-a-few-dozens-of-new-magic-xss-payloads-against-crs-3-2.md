@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2019-09-26T23:59:23+02:00'
-permalink: /20190926/running-a-few-dozens-of-new-magic-xss-payloads-against-crs-3-2/
 title: Running a few dozens of new magic XSS payloads against CRS 3.2
 url: /2019/09/26/running-a-few-dozens-of-new-magic-xss-payloads-against-crs-3-2/
 ---

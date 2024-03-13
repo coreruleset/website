@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-01-17T18:54:57+01:00'
-permalink: /20230117/meet-the-crs-team-franzi-the-puzzle-loving-hard-worker-with-a-mission/
 tags:
   - developer portrait
 title: 'Meet the CRS team: Fränzi, the puzzle-loving hard worker with a mission'

@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2021-01-06T12:25:13+01:00'
 excerpt: This blog post is about msc_retest, a small family of tools that let you performance test the regular expression engine used inside various ModSecurity versions. As of this writing, the engine is PCRE, but we expect more options in the future.
-permalink: /20210106/introducing-msc_retest/
 tags:
   - Ervin Hegedüs
   - msc_retest

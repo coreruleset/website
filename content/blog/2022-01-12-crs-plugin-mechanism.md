@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2022-01-12T09:32:49+01:00'
-permalink: /20220112/crs-plugin-mechanism/
 tags:
   - ModSecurity
   - Plugins

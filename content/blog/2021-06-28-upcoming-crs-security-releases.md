@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-06-28T15:49:11+02:00'
-permalink: /20210628/upcoming-crs-security-releases/
 title: Upcoming CRS Security Releases
 url: /2021/06/28/upcoming-crs-security-releases/
 ---

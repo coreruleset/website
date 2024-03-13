@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-11-14T22:04:29+01:00'
-permalink: /20181114/crs-project-news-november-2018/
 tags:
   - CRS-News
 title: CRS Project News November 2018

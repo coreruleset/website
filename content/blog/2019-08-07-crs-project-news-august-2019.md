@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2019-08-07T22:45:43+02:00'
-permalink: /20190807/crs-project-news-august-2019/
 tags:
   - CRS-News
 title: CRS Project News August 2019

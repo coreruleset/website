@@ -3,7 +3,6 @@ author: csanders-git
 categories:
   - Blog
 date: '2018-01-12T07:14:45+01:00'
-permalink: /20180112/crs-project-new-january-2018/
 title: CRS Project News January 2018
 url: /2018/01/12/crs-project-new-january-2018/
 ---

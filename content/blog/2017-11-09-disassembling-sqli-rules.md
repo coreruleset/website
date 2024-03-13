@@ -3,7 +3,6 @@ author: Franziska Buehler
 categories:
   - Blog
 date: '2017-11-09T14:30:37+01:00'
-permalink: /20171109/disassembling-sqli-rules/
 title: Disassembling SQLi Rules
 url: /2017/11/09/disassembling-sqli-rules/
 ---

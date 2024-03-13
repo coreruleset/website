@@ -3,7 +3,6 @@ author: Franziska Buehler
 categories:
   - Blog
 date: '2019-09-09T10:37:38+02:00'
-permalink: /20190909/how-the-crs-protects-the-vulnerable-web-application-pixi-by-owasp-devslop/
 tags:
   - DevSlop
 title: How the CRS protects the vulnerable web application Pixi by OWASP DevSlop

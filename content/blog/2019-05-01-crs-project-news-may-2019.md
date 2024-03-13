@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2019-05-01T12:34:59+02:00'
-permalink: /20190501/crs-project-news-may-2019/
 tags:
   - CRS-News
   - DoS

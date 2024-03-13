@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-09-13T06:41:21+02:00'
-permalink: /20180913/some-thoughts-on-why-web-application-firewalls-really-make-a-difference/
 title: Some Thoughts on why Web Application Firewalls Really Make a Difference
 url: /2018/09/13/some-thoughts-on-why-web-application-firewalls-really-make-a-difference/
 ---

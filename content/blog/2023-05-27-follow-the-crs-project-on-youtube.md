@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-05-27T10:42:01+02:00'
-permalink: /20230527/follow-the-crs-project-on-youtube/
 title: Follow the CRS project on YouTube
 url: /2023/05/27/follow-the-crs-project-on-youtube/
 ---

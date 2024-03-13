@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2020-05-13T22:12:06+02:00'
-permalink: /20200513/crs-repository-at-new-location/
 title: CRS Repository at New Location
 url: /2020/05/13/crs-repository-at-new-location/
 ---

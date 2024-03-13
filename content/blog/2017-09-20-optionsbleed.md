@@ -3,7 +3,6 @@ author: csanders-git
 categories:
   - Blog
 date: '2017-09-20T03:15:37+02:00'
-permalink: /20170920/optionsbleed/
 title: OptionsBleed Defenses
 url: /2017/09/20/optionsbleed/
 ---

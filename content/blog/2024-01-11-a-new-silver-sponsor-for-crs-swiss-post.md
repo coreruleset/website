@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2024-01-11T11:30:15+01:00'
-permalink: /20240111/a-new-silver-sponsor-for-crs-swiss-post/
 title: 'A new silver sponsor for CRS: Swiss Post'
 url: /2024/01/11/a-new-silver-sponsor-for-crs-swiss-post/
 ---

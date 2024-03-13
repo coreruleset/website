@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-12-22T13:23:02+01:00'
-permalink: /20211222/talking-about-modsecurity-and-the-new-coraza-waf/
 title: Talking about ModSecurity and the new Coraza WAF
 url: /2021/12/22/talking-about-modsecurity-and-the-new-coraza-waf/
 ---

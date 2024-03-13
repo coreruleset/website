@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-08-09T22:23:26+02:00'
-permalink: /20180809/appsec-podcast-interviewing-crs-project-co-lead-christian-folini/
 title: AppSec Podcast Interviewing CRS Project Co-Lead Christian Folini
 url: /2018/08/09/appsec-podcast-interviewing-crs-project-co-lead-christian-folini/
 ---

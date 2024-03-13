@@ -1,7 +1,6 @@
 ---
 author: dune73
 date: '2017-11-21T16:36:31+01:00'
-permalink: /20171121/top-5-ways-crs-can-help-you-fight-owasp-top-10/
 tags:
   - Cross-Site-Scripting
   - Logging

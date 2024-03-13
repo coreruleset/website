@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2022-11-22T22:03:47+01:00'
-permalink: /20221122/meet-the-crs-team-ervin-the-gardening-radio-amateur-in-the-background/
 tags:
   - developer portrait
 title: 'Meet the CRS team: Ervin, the gardening radio amateur in the background'

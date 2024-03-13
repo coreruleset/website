@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-03-20T07:48:37+01:00'
-permalink: /20180320/save-the-date-crs-community-summit-on-july-4-2018/
 tags:
   - CommunitySummit
 title: 'Save the Date: CRS Community Summit on July 4, 2018'

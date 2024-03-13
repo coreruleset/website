@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2020-01-14T08:12:50+01:00'
-permalink: /20200114/crs-project-news-january-2020/
 tags:
   - CRS-News
 title: CRS Project News January 2020

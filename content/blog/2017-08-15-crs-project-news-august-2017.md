@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2017-08-15T13:48:36+02:00'
-permalink: /20170815/crs-project-news-august-2017/
 title: CRS Project News August 2017
 url: /2017/08/15/crs-project-news-august-2017/
 ---
