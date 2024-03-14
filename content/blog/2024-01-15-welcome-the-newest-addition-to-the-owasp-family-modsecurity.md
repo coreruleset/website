@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2024-01-15T13:32:16+01:00'
-permalink: /20240115/welcome-the-newest-addition-to-the-owasp-family-modsecurity/
 title: 'Welcome the newest addition to the OWASP family: ModSecurity!'
 url: /2024/01/15/welcome-the-newest-addition-to-the-owasp-family-modsecurity/
 ---

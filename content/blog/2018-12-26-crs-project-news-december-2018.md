@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-12-26T13:13:28+01:00'
-permalink: /20181226/crs-project-news-december-2018/
 tags:
   - CRS-News
 title: CRS Project News December 2018

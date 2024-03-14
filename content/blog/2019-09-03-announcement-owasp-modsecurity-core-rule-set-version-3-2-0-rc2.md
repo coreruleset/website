@@ -3,7 +3,6 @@ author: Walter Hop
 categories:
   - Blog
 date: '2019-09-03T13:51:47+02:00'
-permalink: /20190903/announcement-owasp-modsecurity-core-rule-set-version-3-2-0-rc2/
 tags:
   - '3.2'
   - Release

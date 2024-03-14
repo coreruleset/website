@@ -3,7 +3,6 @@ author: csanders-git
 categories:
   - Blog
 date: '2017-11-07T01:46:59+01:00'
-permalink: /20171107/crs-project-news-november/
 title: CRS Project News November
 url: /2017/11/07/crs-project-news-november/
 ---

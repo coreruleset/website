@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2017-09-13T20:35:50+02:00'
-permalink: /20170913/how-you-can-help-the-crs-project/
 tags:
   - ProjectSupport
 title: How You Can Help the CRS Project

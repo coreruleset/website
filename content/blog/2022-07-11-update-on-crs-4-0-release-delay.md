@@ -3,7 +3,6 @@ author: Walter Hop
 categories:
   - Blog
 date: '2022-07-11T12:40:38+02:00'
-permalink: /20220711/update-on-crs-4-0-release-delay/
 title: Update on CRS 4.0 release delay
 url: /2022/07/11/update-on-crs-4-0-release-delay/
 ---

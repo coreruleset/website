@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-11-09T18:03:48+01:00'
-permalink: /20231109/meet-the-crs-team-andrew-the-technical-writer-who-loves-eurovision-and-doom-ii/
 tags:
   - developer portrait
 title: 'Meet the CRS team: Andrew, the technical writer who loves Eurovision and Doom II'

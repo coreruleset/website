@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2017-12-07T12:13:05+01:00'
-permalink: /20171207/new-modsecurity-crs-courses-announced/
 title: New ModSecurity / CRS Courses Announced
 url: /2017/12/07/new-modsecurity-crs-courses-announced/
 ---

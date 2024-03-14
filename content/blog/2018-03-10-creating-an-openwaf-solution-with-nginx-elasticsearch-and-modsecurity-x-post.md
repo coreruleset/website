@@ -3,7 +3,6 @@ author: csanders-git
 categories:
   - Blog
 date: '2018-03-10T20:39:10+01:00'
-permalink: https://karlstoney.com/2018/02/23/nginx-ingress-modsecurity-and-secchatops/
 title: Creating an OpenWAF solution with Nginx, ElasticSearch and ModSecurity [x-post]
 url: /2018/03/10/creating-an-openwaf-solution-with-nginx-elasticsearch-and-modsecurity-x-post/
 ---

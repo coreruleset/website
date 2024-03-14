@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-07-26T07:43:50+02:00'
-permalink: /20180726/crs-project-news-july-2018/
 tags:
   - CommunitySummit
   - CRS-News

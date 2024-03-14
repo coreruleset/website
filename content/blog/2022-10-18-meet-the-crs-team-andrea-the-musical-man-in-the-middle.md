@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2022-10-18T15:37:21+02:00'
-permalink: /20221018/meet-the-crs-team-andrea-the-musical-man-in-the-middle/
 tags:
   - developer portrait
 title: 'Meet the CRS team: Andrea, the musical man-in-the-middle'

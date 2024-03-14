@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2019-04-25T15:29:15+02:00'
-permalink: /20190425/regular-expression-dos-weaknesses-in-crs/
 tags:
   - DDoS
   - DoS

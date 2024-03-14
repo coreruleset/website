@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2020-06-08T21:13:59+02:00'
-permalink: /20200608/overhauling-the-crs-tags/
 tags:
   - CAPEC
   - Tagging

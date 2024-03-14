@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2024-02-14T19:46:50+01:00'
-permalink: /20240214/let-crs-4-be-your-valentine/
 tags:
   - CRS-News
   - Plugins

@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-09-21T13:05:47+02:00'
-permalink: /20230921/crs-performance-framework-a-gsoc-2023-project/
 title: CRS Performance Framework - A GSoC 2023 Project
 url: /2023/09/21/crs-performance-framework-a-gsoc-2023-project/
 ---

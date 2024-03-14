@@ -3,7 +3,6 @@ author: csanders-git
 categories:
   - Blog
 date: '2018-02-21T06:00:52+01:00'
-permalink: https://www.oreilly.com/ideas/how-to-tune-your-waf-installation-to-reduce-false-positives
 title: How to tune your WAF installation to reduce false positives [x-post]
 url: /2018/02/21/how-to-tune-your-waf-installation-to-reduce-false-positives/
 draft: true

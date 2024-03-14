@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2020-09-01T13:35:59+02:00'
-permalink: /20200901/introducing-msc_pyparser/
 title: Introducing msc_pyparser
 url: /2020/09/01/introducing-msc_pyparser/
 ---

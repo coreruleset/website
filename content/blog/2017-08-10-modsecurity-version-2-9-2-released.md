@@ -3,7 +3,6 @@ author: Walter Hop
 categories:
   - Blog
 date: '2017-08-10T12:48:47+02:00'
-permalink: /20170810/modsecurity-version-2-9-2-released/
 title: ModSecurity version 2.9.2 released
 url: /2017/08/10/modsecurity-version-2-9-2-released/
 ---

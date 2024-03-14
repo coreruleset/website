@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-06-07T08:41:04+02:00'
-permalink: /20180607/registration-open-for-the-crs-community-summit-on-july-4/
 tags:
   - CommunitySummit
 title: Registration Open for the CRS Community Summit on July 4

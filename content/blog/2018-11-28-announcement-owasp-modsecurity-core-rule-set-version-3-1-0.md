@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2018-11-28T23:08:03+01:00'
-permalink: /20181128/announcement-owasp-modsecurity-core-rule-set-version-3-1-0/
 title: 'Announcement: OWASP ModSecurity Core Rule Set Version 3.1.0'
 url: /2018/11/28/announcement-owasp-modsecurity-core-rule-set-version-3-1-0/
 ---

@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-05-19T09:24:47+02:00'
-permalink: /20210519/a-new-attempt-to-combine-the-crs-with-machine-learning/
 tags:
   - AI
   - machinelearning

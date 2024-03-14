@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2022-12-01T08:13:00+01:00'
-permalink: /20221201/the-crs-developer-retreat-2022/
 title: The CRS Developer Retreat 2022
 url: /2022/12/01/the-crs-developer-retreat-2022/
 ---

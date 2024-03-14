@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2017-07-27T17:44:30+02:00'
-permalink: /20170727/crs3-presentation-owasp-london/
 title: CRS3 presentation at OWASP London
 url: /2017/07/27/crs3-presentation-owasp-london/
 ---

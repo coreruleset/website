@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2021-03-02T12:22:10+01:00'
-permalink: /20210302/disabling-request-body-access-in-modsecurity-3-leads-to-complete-bypass/
 tags:
   - ModSec3
   - ModSecurity

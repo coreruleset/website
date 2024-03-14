@@ -3,7 +3,6 @@ author: Franziska Buehler
 categories:
   - Blog
 date: '2018-12-12T10:27:37+01:00'
-permalink: /20181212/core-rule-set-docker-image/
 title: Core Rule Set Docker Image
 url: /2018/12/12/core-rule-set-docker-image/
 ---

@@ -3,7 +3,6 @@ author: Franziska Buehler
 categories:
   - Blog
 date: '2018-06-19T09:13:14+02:00'
-permalink: /20180619/the-core-rule-set-as-part-of-devops-ci-pipeline/
 title: The Core Rule Set as Part of DevOps (CI pipeline)
 url: /2018/06/19/the-core-rule-set-as-part-of-devops-ci-pipeline/
 ---

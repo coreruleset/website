@@ -3,7 +3,6 @@ author: amonachesi
 categories:
   - Blog
 date: '2023-11-28T07:00:00+01:00'
-permalink: /20231128/discussions-excursions-and-hard-work-crs-developer-retreat-2023-days-2-7/
 title: Discussions, excursions and hard work – CRS Developer Retreat 2023, days 2–7
 url: /2023/11/28/discussions-excursions-and-hard-work-crs-developer-retreat-2023-days-2-7/
 ---

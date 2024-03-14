@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2017-12-07T16:03:43+01:00'
-permalink: /20171207/core-rule-set-project-winning-osbar-award/
 tags:
   - ModSecurity
   - OSBAR

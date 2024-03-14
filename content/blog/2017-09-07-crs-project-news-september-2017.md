@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2017-09-07T16:18:20+02:00'
-permalink: /20170907/crs-project-news-september-2017/
 tags:
   - CRS-News
 title: CRS Project News September 2017

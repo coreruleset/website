@@ -3,7 +3,6 @@ author: dune73
 categories:
   - Blog
 date: '2019-02-28T09:57:50+01:00'
-permalink: /20190228/crs-project-news-february-2019/
 title: CRS Project News February 2019
 url: /2019/02/28/crs-project-news-february-2019/
 ---
