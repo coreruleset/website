@@ -5,17 +5,17 @@ and we need support to make it happen. If you think that would be a win-win oppo
 your company or organization, then please get in touch with our sponsoring contact 
 CRS co-lead Christian Folini via firstname dot lastname at owasp dot org.
 
+{{ $colnum := 2 }}
+{{ $width := 900 }}
 {{ range $name, $kind := .Site.Data.sponsors }}
 <h3>{{  strings.FirstUpper $name }} Sponsors</h3>
-{{ $colnum := 2 }}
 <div class="columns columns-{{ $colnum }}">
 {{ range $kind }}
 <div class="column {{ lower $name }}-sponsor">
     <a href="{{ .link }}">
         <img
             caption="{{ .caption }}"
-            width="300"
-            height="150"
+            width="{{ div $width $colnum}}"
             loading="lazy"
             src="{{ relURL .logo }}"
             link="{{ .link }}"
