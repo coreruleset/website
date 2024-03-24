@@ -27,6 +27,6 @@ Unfortunately, that was also the moment where we started to lose touch with him,
 
 Losing Walter is a severe blow for us and we will all keep a dear memory of him.
 
-[Link to the family's obituary for Walter](/images/2024/02/Digitale-rouwkaart-Walter-Hop.pdf)
+[Link to the family's obituary for Walter]({{< static src="images/2024/02/Digitale-rouwkaart-Walter-Hop.pdf" >}})
 
 Dr. Christian Folini, OWASP CRS co-lead
