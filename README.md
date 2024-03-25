@@ -61,6 +61,10 @@ hugo serve
 
 Then check your edits on http://localhost:1313/.
 
+## Online Preview
+
+Any merged updates are pushed to [coreruleset.github.io](coreruleset.github.io/website/) for preview.
+
 ## Authors
 
 Because users are `git` users now (there is no user "logged"), there is a [mapping between authors and github users](https://github.com/coreruleset/website/blob/main/data/authors.yaml). If you want to collaborate, please add your github username as the key, and your data below. See the examples in that file.
