@@ -1,5 +1,5 @@
 ---
-author: Franziska Buehler
+author: franbuehler
 categories:
   - Blog
 date: '2017-11-09T14:30:37+01:00'
