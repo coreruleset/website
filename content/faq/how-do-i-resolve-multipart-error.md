@@ -1,5 +1,5 @@
 ---
-title: "How do I resolve error `Unknown variable: &amp;MULTIPART\_PART\_HEADERS`?"
+title: "How do I resolve error `Unknown variable: &MULTIPART\_PART\_HEADERS`?"
 weight: 11
 noindex: true
 ---
