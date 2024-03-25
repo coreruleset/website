@@ -66,10 +66,15 @@ sectionText3:
   other: |
     :wave: Be part of a vibrant and welcoming community.
 
-    :call_me_hand: We are always looking for new contributors and maintainers. 
-
     :world_map: Join us on Slack for discussions, see GitHub for our projects, or follow
     us on Twitter.
+
+    :100: Our dev-on-duty program financed by sponsors guarantees 1st level support via multiple channels.
+
+    :dizzy: Annual develop retreats bring the developers together for a full week where we hack away at the rule set.
+
+    :call_me_hand: We are always looking for new contributors and developers. 
+
 
 sectionButton3:
   other: Community

@@ -1,5 +1,5 @@
 ---
-author: Walter Hop
+author: lifeforms
 categories:
   - Blog
 date: '2020-07-01T20:26:37+02:00'
