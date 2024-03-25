@@ -3,7 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2023-01-19T14:52:50+01:00'
-title: Registration for the OWASP CRS Community Summit 2023 &#8211; Dublin, Feb 14
+title: Registration for the OWASP CRS Community Summit 2023 - Dublin, Feb 14
 url: /2023/01/19/registration-for-the-owasp-crs-community-summit-2023-dublin-feb-14/
 ---
 
