@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/coreruleset/website#readme",
   "dependencies": {
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.19",
     "hugo-extended": "^0.123.8",
     "postcss": "^8.4.36",
     "postcss-cli": "^11.0.0"
