@@ -11,7 +11,8 @@ subhero:
 explainerText:
   other: |
     The **OWASP® CRS** is a set of generic attack detection rules for use with 
-    [ModSecurity](https://www.modsecurity.org/) or compatible web application firewalls. 
+    [ModSecurity](https://www.modsecurity.org/), [Coraza](https://www.coraza.io/) 
+    or compatible web application firewalls. 
     The CRS aims to protect web applications from a wide range of attacks, 
     including the OWASP Top Ten, with a minimum of false alerts. 
     The CRS provides protection against many common attack categories.
