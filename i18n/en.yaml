@@ -15,7 +15,6 @@ explainerText:
     or compatible web application firewalls. 
     The CRS aims to protect web applications from a wide range of attacks, 
     including the OWASP Top Ten, with a minimum of false alerts. 
-    The CRS provides protection against many common attack categories.
 
 explainerButton:
   other: About
