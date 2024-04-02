@@ -96,6 +96,6 @@ The bottom line is that we now have optimized regexes that are easier to read.
 The work is not finished yet. Because 'complexity is the enemy of security,' we've laid an important cornerstone by disassembling the rules. Because the SQLi rules are understandable, the CRS community can now reorganize them. We can remove redundancies, discover holes in the coverage and consolidate and optimize the rules.  
 Outside of the SQLi rules, there are about 10 rules that could be disassembled as well.  
 This further development is very important, as it will bring better performance and hopefully even better detection rates than we currently have.  
-If you are interested in helping us enhance the CRS, [your help is very welcome](./how-you-can-help-the-crs-project/)!
+If you are interested in helping us enhance the CRS, [your help is very welcome]({{< ref "blog/2017-09-13-how-you-can-help-the-crs-project.md" >}})!
 
 ![](/images/2017/11/franziska_buehler.png) Franziska Buehler / [@bufrasch](https://twitter.com/bufrasch)
