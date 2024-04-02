@@ -27,10 +27,15 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass
         run: sudo snap install dart-sass
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
@@ -41,7 +46,19 @@ jobs:
           HUGO_ENVIRONMENT: testing
           HUGO_ENV: testing
         run: |
-          hugo \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo -s subsite/docs --baseURL "${{ steps.pages.outputs.base_url }}/docs/"
+          mv subsite/docs/public public/docs
+          npx -y pagefind --site public
 
+      - name: Check broken links
+        uses: ruzickap/action-my-broken-link-checker@v2
+        with:
+          url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          pages_path: ./public
+          cmd_params: '--exclude=mylabs.dev --max-connections-per-host=5 --rate-limit=5 --timeout=20 --header="User-Agent:curl/7.54.0" --skip-tls-verification'
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
