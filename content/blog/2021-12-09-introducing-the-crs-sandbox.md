@@ -57,7 +57,7 @@ Well of course it is. Yet there is still a price tag. It's running on AWS and OW
 
 #### What headers / options are there?
 
-You can pick the engine and the CRS version via a set of HTTP headers. Also the [CRS Paranoia Level](https://coreruleset.org/docs/configuring/paranoia_levels/) can be selected that way.
+You can pick the engine and the CRS version via a set of HTTP headers. Also the [CRS Paranoia Level](/docs/concepts/paranoia_levels/) can be selected that way.
 
 Backend: Header `"x-backend"` Values `"apache"` (default) or `"nginx"`.  
 CRS version: Header `"x-crs-version:"` Values `"3.3.2"` (default), `"3.2.1"` and `"3.4.0-dev"`  

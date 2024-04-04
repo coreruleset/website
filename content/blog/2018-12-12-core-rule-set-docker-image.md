@@ -12,7 +12,7 @@ The Core Rule Set is installed in just four steps, as described in the [Installa
 
 Now, it's even easier using the CRS Docker container. The effort to start the CRS in front of an application is reduced to a few seconds and only one command.
 
-Franziska Bühler, one of the CRS developers, enhanced the [official CRS container](https://hub.docker.com/r/owasp/modsecurity-crs/). Various CRS variables and the backend application to be protected can be configured using <https://hub.docker.com/r/franbuehler/modsecurity-crs-rp/>.
+Franziska Bühler, one of the CRS developers, enhanced the [official CRS container](https://hub.docker.com/r/owasp/modsecurity-crs/). Various CRS variables and the backend application to be protected can be configured using this [enhanced container](https://hub.docker.com/r/franbuehler/modsecurity-crs-rp/).
 
 ## Vulnerable Web Application
 

@@ -36,7 +36,7 @@ This gives you the `msc_parser` library for use in python script in the version 
 
 To get started it's useful to also grab crs\_read.py and crs\_write.py from the examples folder of the `msc_parser` github:
 
-- [https://raw.githubusercontent.com/digitalwave/`msc_parser`/master/examples/crs\_read.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py)
+- [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/crs\_read.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py)
 - [https://raw.githubusercontent.com/digitalwave/`msc_parser`/master/examples/crs\_write.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_write.py)
 
 The prefix hints at CRS, but they are generic in the way they execute.
@@ -100,7 +100,7 @@ There are quite a lot of CRS rules that change the audit engine with the help of
 
 `msc_parser` comes with several examples. They reside in the examples folder of the [`msc_parser` git](https://github.com/digitalwave/msc_pyparser/tree/master/examples).
 
-This script here is example 11: [https://raw.githubusercontent.com/digitalwave/`msc_parser`/master/examples/example11\_remove\_auditlog.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py)
+This script here is example 11: [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/example11\_remove\_auditlog.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py)
 
 ```python
 #!/usr/bin/env python3

@@ -88,7 +88,7 @@ Let's now dive into Pixi's weaknesses:
 
 With a simple Mongo DB injection, the authentication can be bypassed. For further reading about this class of vulnerabilities, see [here](https://www.owasp.org/index.php/Testing_for_NoSQL_injection).
 
-Unfortunately, I can not show this vulnerability. As soon as I replay this request in ZAP ([OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)) the application Pixi dies. You could say it's a remote DoS on top of the authentication problem. One more reason the use CRS to protect us from this problem!
+Unfortunately, I can not show this vulnerability. As soon as I replay this request in ZAP ([Zed Attack Proxy](https://www.zaproxy.org/)) the application Pixi dies. You could say it's a remote DoS on top of the authentication problem. One more reason the use CRS to protect us from this problem!
 
 When I replay the request through the CRS, Pixi doesn't die anymore, because CRS blocks the request at Paranoia Level 1:
 
