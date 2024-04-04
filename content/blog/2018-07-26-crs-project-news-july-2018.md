@@ -25,7 +25,7 @@ So here we go for the CRS project newsletter for July 2018:
 - AviNetworks presented their proposal for a rules Meta-Language during the summit. It was welcomed with open arms. A committee working on this idea was formed out of attending CRS developers and other people.  
     Link: [https://github.com/avinetworks/owasp-crs-technical-discussion/raw/master/documentation/OWASP\_AppSec\_EU\_2018-Core\_Ruleset.pdf](https://github.com/avinetworks/owasp-crs-technical-discussion/raw/master/documentation/OWASP_AppSec_EU_2018-Core_Ruleset.pdf)
 - Adrian Winckles and Mark Graham from Cambridge are reviving the OWASP Honeypot project that aims to examine HTTP attacks in the wild. It is based on ModSecurity and CRS. If you are interested to join, please get in touch with Adrian.  
-    Link: [https://www.owasp.org/index.php/OWASP\_Honeypot\_Project](https://www.owasp.org/index.php/OWASP_Honeypot_Project) (Website to be)
+    Link: <https://owasp.org/www-project-honeypot/>
 - Tin Zaw from Verizon attended the CRS Summit and presented WAFLZ, an alternative open source implementation of the ModSecurity rules language aimed at running CRS. The focus of the engine is on multitenancy and effective use of resources.  
     Link: <https://github.com/VerizonDigital/waflz>
 - Rodrigo Martinez from the University of Uruguay presented their work on Machine Learning with ModSecurity and the CRS at the summit. His presentation was based on a paper published earlier this year:  

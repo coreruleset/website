@@ -237,7 +237,7 @@ I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2
 The backend application I tested in this PoC is the Pixi application from the [OWASP project DevSlop](http://devslop.co), where I am also a part of the team.
 The OWASP DevSlop project consists of several modules, all aimed at either presenting proof-of-concept DevSecOps pipelines, or insecure implementations of DevOps to teach better practices.
 [http://devslop.co](http://devslop.co)  
-[https://www.owasp.org/index.php/OWASP\_DevSlop\_Project](https://www.owasp.org/index.php/OWASP_DevSlop_Project) 
+[https://owasp.org/www-project-devslop/](https://owasp.org/www-project-devslop/)
 
 The CircleCI configuration can be found on GitHub. Please take this example and customize it for your organization.  
 [https://github.com/DevSlop/pixi-crs/blob/master/.circleci/config.yml](https://github.com/DevSlop/pixi-crs/blob/master/.circleci/config.yml)
