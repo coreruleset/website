@@ -41,5 +41,3 @@ An important thing for our community is the [monthly project chat on IRC](https:
 So that is an overview where we could use some help. I am sure there will be something that fits your interest.
 
 **\[EDIT\]: Very useful comment below from Walter Hop. In fact I thought the same thing when I read through several github comments on the weekend.**
-
-{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

@@ -21,7 +21,7 @@ The Swiss Open Source Awards have played a key role in this development. For 201
 
 This is an abbreviation of "Digitale Nachhaltigkeit Conference", which can be translated as the conference on digital sustainability. This means, the Open Source idea has been opened up to a wider group of projects and initiatives that go behind pure software: open data, open access and sustainability of digital projects in general are now also covered.
 
-{{< figure src="/images/2017/10/dinacon-nomination.png" caption="The Nomination of the CRS Project">}}
+{{< figure src="images/2017/10/dinacon-nomination.png" caption="The Nomination of the CRS Project">}}
 
 But how does this apply to the [Core Rule Set](https://coreruleset.org) project?
 
@@ -31,12 +31,10 @@ CRS has been a one-man show for many years. In early 2016, [Chaim Sanders](http:
 
 This nomination comes at exactly the right moment and means an additional push for our project. It comes at a moment when we are actively working on the sustainability and the transparency of our rule base. Traditionally, the rules of the Core Rule Set have been very hard to read. Yet, new initiatives like the rules cleanup project are changing the situation and lately, Franziska Bühler has committed the [pull request](https://github.com/coreruleset/coreruleset/pull/907) that disassembles all the incomprehensible regular expressions and makes them reproducible and understandable. That work is key and if you have looked at the regular expressions that we leverage in the rule set, you understand why we are in awe of her work.
 
-{{< figure src="/images/2017/10/crs-pr-907.png" caption="The PR by Fränzi Bühler passes all the tests." >}}
+{{< figure src="images/2017/10/crs-pr-907.png" caption="The PR by Fränzi Bühler passes all the tests." >}}
 
 As I said, it is a tough market in Switzerland for Open Source projects and especially when it comes to webserver security. The commercial products all have a very high TCO, either via high license costs or integration and support contracts. Yet the commercial players are all well established and Open Source alternatives like ModSecurity and the Core Rule Set have a hard time finding their way on webservers around here and probably worldwide. But we need to spread the word that there is a transparent and highly secure open source alternative to commercial black boxes. Smaller companies, public administrations and organisations on a tight budget need to know they can get the best tools on the market without spending big money: ModSecurity and the Core Rule Set are at their disposal serving as the 1st line of defense against web application attacks like those covered by the [OWASP Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
 
 Awards like the DINACon can help us get this message across.
 
 It's great to be nominated for DINACon and I really hope we can get this trophy!
-
-{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

@@ -34,7 +34,7 @@ Then come the ModSecurity + CRS bundles. Again, they probably make up another th
 
 Security officers and the national cyber centers immediately realized that log4j exploits was something that a WAF could detect. Here is a graphic by the Swiss National Cyber Security Center. It has a WAF as a first line of defense in the top left corner.
 
-{{< figure src="images/2021/12/log4j_attack-1024x692.jpg" caption="Illustration of the CVE-2021-44228 and the different mitigation techniques by [GovCert.ch](https://www.govcert.ch/blog/zero-day-exploit-targeting-popular-java-library-log4j/)." >}}
+{{< figure src="images/2021/12/log4j_attack.jpg" caption="Illustration of the CVE-2021-44228 and the different mitigation techniques by [GovCert.ch](https://www.govcert.ch/blog/zero-day-exploit-targeting-popular-java-library-log4j/)." >}}
 So while the developers and operators rushed to patch their servers, the WAF administrators sought to mitigate the problem and buy time. The commercial WAF vendors also rushed and published their blog posts claiming very good defenses. In a traditional closed source manner, they explained that they had their users covered, but no transparency about which rules were in action, which payloads they detected and which evasions were hard to catch. I do not want to link any blog posts here, but search for them and there will be plenty.
 
 There were positive examples too. Cloudflare for example [did an extensive writeup](https://blog.cloudflare.com/tag/log4shell/) of the problem and their mitigation approach (like they usually do!) and Barracuda [updated their post regulary](https://campus.barracuda.com/product/WAAS/doc/96024380/apache-log4j-critical-vulnerability-cve-2021-44228/) as new evasions popped up on their sensors.

@@ -39,19 +39,23 @@ After updating this rule to avoid this false positive, I was hooked and the othe
 
 I worked in vim and with keen eyes. I hopped from bracket to bracket and typed one letter behind the other.
 Let's look at the example of rule 942150:  
-`SecRule MATCHED_VARS "@rx (?i)\b(?:c(?:o(?:n(?:v(?:ert(?:_tz)?)?|cat(?:_ws)?|nection_id)|(?:mpres)?s|ercibility|(?:un)?t|llation|alesce)|ur(?:rent_(?:time(?:stamp)?|date|user)|(?:dat|tim)e)|h(?:ar(?:(?:acter)?_length|set)?|r)|iel(?:ing)?|ast|r32)| ... )\W*\("`
+```apacheconf
+SecRule MATCHED_VARS "@rx (?i)\b(?:c(?:o(?:n(?:v(?:ert(?:_tz)?)?|cat(?:_ws)?|nection_id)|(?:mpres)?s|ercibility|(?:un)?t|llation|alesce)|ur(?:rent_(?:time(?:stamp)?|date|user)|(?:dat|tim)e)|h(?:ar(?:(?:acter)?_length|set)?|r)|iel(?:ing)?|ast|r32)| ... )\W*\("
+```
 
 Let's start at the beginning of the regex: `(i)\b(`. We see an ignore case flag for the whole regex and a word boundary. Our work begins with the opening bracket. This is a relatively simple example because the corresponding closing bracket for this first opening bracket is right at the end of the regex. A `\W*\(` follows the closing bracket, which stands for no or multiple non-word characters and an opening bracket. This means all of the alternatives that we find will end with this pattern. That's the first important finding.  
 We now proceed: We take the `c`, the `o`, the `n`, the `v`, the `ert` and the `_tz` and now reach a `|` operator. That means we have our first word: `convert_tz`.  
 We now move back again because we have some question marks after the closing brackets. This means that `convert` and even `conv` are also valid alternatives.  
 We then move behind the `|` to find more alternatives. Since we are still in the `con(` bracket, we now find the words `concat_ws`. And because of the question mark, `concat` is a valid word as well. After the next `|`, we find `connection_id`.  
-So far we have found the following alternatives:`
+So far we have found the following alternatives:
+```
 \bconv\W*\(
 \bconvert\W*\(
 \bconvert_tz\W*\(
 \bconcat\W*\(
 \bconcat_ws\W*\(
 \bconnection_id\W*\(`
+```
 
 Remember, these start with a `\b` and end with the mentioned `\W*\(`
 
@@ -97,5 +101,3 @@ The work is not finished yet. Because 'complexity is the enemy of security,' we'
 Outside of the SQLi rules, there are about 10 rules that could be disassembled as well.  
 This further development is very important, as it will bring better performance and hopefully even better detection rates than we currently have.  
 If you are interested in helping us enhance the CRS, [your help is very welcome]({{< ref "blog/2017-09-13-how-you-can-help-the-crs-project.md" >}})!
-
-![](/images/2017/11/franziska_buehler.png) Franziska Buehler / [@bufrasch](https://twitter.com/bufrasch)

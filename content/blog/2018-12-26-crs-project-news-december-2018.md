@@ -22,7 +22,7 @@ I hope everybody has a few calm days to finish the year. CRS is finishing the ye
 - CRS Co-Lead Christian published an asciinema demo video illustrating Franziska's work.  
     Link: <https://asciinema.org/a/0JDnaO1Wi42sIYpgJzoYbCdtn>
 - The American company Gridvision published a success story how they secured their WordPress setup with CRS.  
-    Link: <https://gridvision.net/projects/nginx-modsecurity-and-project-honeypot/>
+    Link(Outdated): "gridvision.net/projects/nginx-modsecurity-and-project-honeypot"
 - CRS contributor TheMiddle published a blog post with WAF bypasses aiming for PHP. As usual, CRS was doing better than many other WAFs, but there is a particularly sinister bypass we did not detect in lower paranoia levels (more news about this below).  
     Link: <https://www.secjuice.com/php-rce-bypass-filters-sanitization-waf/>
 

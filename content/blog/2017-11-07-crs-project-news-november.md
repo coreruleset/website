@@ -39,7 +39,7 @@ During the chat we discussed the following
     - Need to check balance but Dune73 will finance privately changes.
     - Shooting for by AppSecEU
     - Idea to start to sell the release poster via a printing service like [Redbubble](https://www.redbubble.com/)
-- Info: CRS nominated for the German Open Source Business award ([http://osbar.it](http://osbar.it/)) 
+- Info: CRS nominated for the German Open Source Business award ([https://osbar.it](http://osbar.it/)) 
     - Everyone is excited thank you to Dune73 for nominating us
 - Plans for new blog posts 
     - Franbuehler writing up about SQL disassembly

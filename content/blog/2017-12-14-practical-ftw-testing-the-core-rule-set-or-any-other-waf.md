@@ -303,5 +303,3 @@ It is obviously that complete coverage of all the rules with a decent set of tes
 I would like to have some documentation on how to install this in order to run without virtualenv (I fought python and python won).
 
 And I get the feeling we need a concept on how to write and organize the tests. We have a lot of them already, but I somehow lack the overview and the guideline for a best practice. Maybe a table would be enough for the overview, but how many tests do we need per rule? How do we name them consistently? So maybe it takes more experience and more thinking. And finally, we need to make sure all the existing tests really work. It is namely the latter part where the community could step in and give us a hand. With the information found above and the previous blog posts about test writing, the information is now all in place and you could get hacking immediately.
-
-{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

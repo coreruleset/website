@@ -33,7 +33,7 @@ So here we go for the CRS project newsletter for July 2018:
 - We have too many issues open on github. Federico Schwindt is starting an initiative to resolve open issues and bring down this number. As an immediate remedy, we are pointing users with support questions to stackoverflow (tag questions with "owasp-crs"). The mailinglist continues to be covered too (but was deemed a bit old-fashioned).  
     Link: <https://stackoverflow.com/questions/tagged/owasp-crs>
 - We created a channel named "coreruleset" on the OWASP Slack. There are no plans to move the monthly IRC community meeting just now. If you do not have access to the OWASP slack, you can get an invite from from the link below.  
-    Link: <https://owasp.herokuapp.com>
+    Link: <https://owasp.slack.com/>
 - Soroush Dalili ([@irsdl](https://twitter.com/irsdl)) presented a series of WAF bypasses at AppSecEU. CRS is affected by a charset manipulation via the Content-Type request header. (See below for a PR closing this hole)  
     Link: <https://www.slideshare.net/SoroushDalili/waf-bypass-techniques-using-http-standard-and-web-servers-behaviour>
 - Mazin Ahmed has published a blog post about WAF bypassing via argument separators. He also pointed out that CRS is not affected by this problem.  

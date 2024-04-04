@@ -42,5 +42,3 @@ This is the CRS newsletter covering the period from July until today.
 - There is now a plan to run a real poll where CRS users can vote on feature requests. There are a ton of feature requests recorded on github, but we really are a bit at a loss on what people are really interested in. Stay tuned to learn more about this.
 
 I have been on a holiday for two weeks and it is likely, I overlooked things on the mailinglists and on github. Feel free to speak up and respond to this message highlighting the omissions.
-
-{{< figure src="images/2017/08/christian-folini-2017-450x450.png" width="100px" caption="Christian Folini / [@ChrFolini](https://twitter.com/ChrFolini)" >}}

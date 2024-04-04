@@ -21,7 +21,7 @@ We held our monthly community chat. We had quite a few people stop by. Special t
 
 Our agenda from before the chat is available [here](https://github.com/coreruleset/coreruleset/issues/972). We had a short chat, during the chat we discussed the following:
 
-- @dune73 will be attending [German Open Source Business Awards](http://award.osb-alliance.de). Chances look good that CRS will a top performer. More information can be found [here](http://award.osb-alliance.de/2017/12/01/unsere-osbar-kandidaten-teil-1/)
+- @dune73 will be attending [German Open Source Business Awards](https://award.osb-alliance.de). Chances look good that CRS will a top performer. More information can be found [here](https://osb-alliance.de/news/osbar-gewinner-2017-ausgezeichnet)
 - Using t:lowercase versus (?i) performance and best practice. 
     - There is currently no definitive answer
     - A benchmark can be done using ModSecurity debug logs
