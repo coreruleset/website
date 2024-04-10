@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2022-01-20T14:46:29+01:00'
 title: Comprehensive View of the WAF Market From an Open Source Perspective
-url: /2022/01/20/comprehensive-view-of-the-waf-market-from-an-open-source-perspective/
 ---
 
 

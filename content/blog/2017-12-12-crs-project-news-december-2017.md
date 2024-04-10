@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-12-12T16:20:35+01:00'
 title: CRS Project News December 2017
-url: /2017/12/12/crs-project-news-december-2017/
 ---
 
 

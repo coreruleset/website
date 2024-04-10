@@ -7,7 +7,6 @@ tags:
   - CommunitySummit
   - CRS-News
 title: CRS Project News July 2018
-url: /2018/07/26/crs-project-news-july-2018/
 ---
 
 

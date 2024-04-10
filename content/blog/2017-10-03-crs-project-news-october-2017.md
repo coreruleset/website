@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-10-03T15:11:36+02:00'
 title: CRS Project News October 2017
-url: /2017/10/03/crs-project-news-october-2017/
 ---
 
 

@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-08-21T22:48:36+02:00'
 title: Running CRS rules only on certain parameters
-url: /2017/08/21/running-crs-rules-only-on-certain-parameters/
 ---
 
 

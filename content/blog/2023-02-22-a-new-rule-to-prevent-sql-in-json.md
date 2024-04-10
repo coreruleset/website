@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2023-02-22T22:01:07+01:00'
 title: A new rule to prevent SQL in JSON
-url: /2023/02/22/a-new-rule-to-prevent-sql-in-json/
 ---
 
 

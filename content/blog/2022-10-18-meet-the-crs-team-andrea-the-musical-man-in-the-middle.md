@@ -6,7 +6,6 @@ date: '2022-10-18T15:37:21+02:00'
 tags:
   - developer portrait
 title: 'Meet the CRS team: Andrea, the musical man-in-the-middle'
-url: /2022/10/18/meet-the-crs-team-andrea-the-musical-man-in-the-middle/
 ---
 
 

@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-12-07T12:13:05+01:00'
 title: New ModSecurity / CRS Courses Announced
-url: /2017/12/07/new-modsecurity-crs-courses-announced/
 ---
 
 

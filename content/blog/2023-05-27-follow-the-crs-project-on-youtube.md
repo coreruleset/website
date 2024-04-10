@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2023-05-27T10:42:01+02:00'
 title: Follow the CRS project on YouTube
-url: /2023/05/27/follow-the-crs-project-on-youtube/
 ---
 
 

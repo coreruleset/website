@@ -26,3 +26,7 @@ privacy:
   vimeo:
     enableDNT: true
 
+# Links
+permalinks:
+  page:
+    blog: /:year:month:day/:slug/

@@ -6,7 +6,6 @@ date: '2023-01-17T18:54:57+01:00'
 tags:
   - developer portrait
 title: 'Meet the CRS team: Fränzi, the puzzle-loving hard worker with a mission'
-url: /2023/01/17/meet-the-crs-team-franzi-the-puzzle-loving-hard-worker-with-a-mission/
 ---
 
 

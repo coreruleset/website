@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2022-12-08T02:22:12+01:00'
 title: Bug Bounty Switzerland supports CRS as Silver sponsor
-url: /2022/12/08/bug-bounty-switzerland-supports-crs-as-silver-sponsor/
 ---
 
 

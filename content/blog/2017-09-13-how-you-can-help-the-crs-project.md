@@ -6,7 +6,6 @@ date: '2017-09-13T20:35:50+02:00'
 tags:
   - ProjectSupport
 title: How You Can Help the CRS Project
-url: /2017/09/13/how-you-can-help-the-crs-project/
 ---
 
 

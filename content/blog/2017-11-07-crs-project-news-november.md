@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-11-07T01:46:59+01:00'
 title: CRS Project News November
-url: /2017/11/07/crs-project-news-november/
 ---
 
 This is the CRS newsletter covering the period from Early October until today.

@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2020-05-13T22:12:06+02:00'
 title: CRS Repository at New Location
-url: /2020/05/13/crs-repository-at-new-location/
 ---
 
 We have successfully migrated our GitHub repository to a new location at  

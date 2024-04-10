@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-11-09T14:30:37+01:00'
 title: Disassembling SQLi Rules
-url: /2017/11/09/disassembling-sqli-rules/
 ---
 
 ## Introduction

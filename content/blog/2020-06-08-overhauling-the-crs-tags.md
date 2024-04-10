@@ -7,7 +7,6 @@ tags:
   - CAPEC
   - Tagging
 title: Overhauling the CRS Tags
-url: /2020/06/08/overhauling-the-crs-tags/
 ---
 
 

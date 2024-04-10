@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2023-11-05T20:18:00+01:00'
 title: Universe domination plans in Budapest - The CRS Developer Retreat 2023, day 1 
-url: /2023/11/05/universe-domination-plans-in-budapest-the-crs-developer-retreat-2023-day-1/
 ---
 
 

@@ -2,7 +2,6 @@
 title: 'CRS version 4.1.0 released'
 date: '2024-03-27T15:03:22+01:00'
 author: amonachesi
-permalink: /2024/03/27/crs-version-4-1-0-released/
 categories:
     - Blog
 tags:

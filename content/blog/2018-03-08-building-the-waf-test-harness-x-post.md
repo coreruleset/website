@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2018-03-08T18:21:30+01:00'
 title: Building the WAF test harness [x-post]
-url: /2018/03/08/building-the-waf-test-harness-x-post/
 ---
 
 

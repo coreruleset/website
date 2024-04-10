@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2023-05-03T15:43:13+02:00'
 title: A brief report on the CRS Community Summit 2023.
-url: /2023/05/03/a-brief-report-on-the-crs-community-summit-2023/
 ---
 
 

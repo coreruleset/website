@@ -2,7 +2,6 @@
 title: 'New feature spotlight: Early Blocking'
 date: '2024-02-27T09:00:00+01:00'
 author: dune73
-url: /2024/02/27/new-feature-spotlight-early-blocking/
 categories:
     - Blog
 tags:

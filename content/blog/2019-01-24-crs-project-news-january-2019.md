@@ -6,7 +6,6 @@ date: '2019-01-24T16:37:11+01:00'
 tags:
   - CRS-News
 title: CRS Project News January 2019
-url: /2019/01/24/crs-project-news-january-2019/
 ---
 
 We are back with the CRS project news. We're attending the Cloudfest Hackathon in March in Germany and we have plans for another CRS Community Summit at the new OWASP AppSec Global conference in Tel Aviv at the end of May (formerly OWASP AppSecEU).

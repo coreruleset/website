@@ -10,7 +10,6 @@ tags:
   - SecRequestBodyAccess
   - security
 title: Disabling Request Body Access in ModSecurity 3 Leads to Complete Bypass
-url: /2021/03/02/disabling-request-body-access-in-modsecurity-3-leads-to-complete-bypass/
 ---
 
 

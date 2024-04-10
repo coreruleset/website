@@ -9,7 +9,6 @@ tags:
   - msc_retest
   - performance
 title: Introducing msc_retest
-url: /2021/01/06/introducing-msc_retest/
 ---
 
 Debugging CRS and more generally debugging ModSecurity can be nasty. False Positives are the worst, but also nagging performance problems can spoil the fun. Sometimes you have network problems or the whole architecture is botched. But equally often it's simply your server or ModSecurity that's misbehaving.

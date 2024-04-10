@@ -7,7 +7,6 @@ tags:
   - ModSecurity
   - Plugins
 title: The CRS Plugin Mechanism
-url: /2022/01/12/crs-plugin-mechanism/
 ---
 
 
