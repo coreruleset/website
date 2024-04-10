@@ -2,7 +2,6 @@
 title: 'Save the date: CRS Community Summit on June 26 in Lisbon'
 date: '2024-04-04T14:22:35+02:00'
 author: amonachesi
-url: /2024/04/04/save-the-date-crs-community-summit-on-june-26-in-lisbon/
 categories:
     - Blog
 ---

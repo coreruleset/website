@@ -8,7 +8,6 @@ tags:
   - Lua
   - Plugins
 title: Introducing the Fake Bot Plugin
-url: /2022/02/09/introducing-the-fake-bot-plugin/
 ---
 
 

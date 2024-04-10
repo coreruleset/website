@@ -7,7 +7,6 @@ tags:
   - ftw
   - testing
 title: 'Practical FTW: Testing the Core Rule Set or Any Other WAF'
-url: /2017/12/14/practical-ftw-testing-the-core-rule-set-or-any-other-waf/
 ---
 
 

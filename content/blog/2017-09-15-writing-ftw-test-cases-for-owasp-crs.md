@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-09-15T03:10:31+02:00'
 title: Writing FTW test cases for OWASP CRS
-url: /2017/09/15/writing-ftw-test-cases-for-owasp-crs/
 ---
 
 

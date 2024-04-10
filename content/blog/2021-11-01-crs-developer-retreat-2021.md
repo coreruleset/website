@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2021-11-01T11:42:19+01:00'
 title: CRS Developer Retreat 2021
-url: /2021/11/01/crs-developer-retreat-2021/
 ---
 
 

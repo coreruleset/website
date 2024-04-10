@@ -6,7 +6,6 @@ date: '2017-10-03T07:25:59+02:00'
 tags:
   - DINACon
 title: CRS Project Nominated for Swiss DINACon Award
-url: /2017/10/03/crs-project-nominated-for-swiss-dinacon-award/
 ---
 
 The Core Rule Set project (CRS for short) has been nominated for the Swiss [DINAcon Awards](https://dinacon.ch/en/dinacon-awards/). I do not think any of you understand what awards I am talking about, so let me explain.

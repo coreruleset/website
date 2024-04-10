@@ -6,7 +6,6 @@ date: '2018-06-07T08:41:04+02:00'
 tags:
   - CommunitySummit
 title: Registration Open for the CRS Community Summit on July 4
-url: /2018/06/07/registration-open-for-the-crs-community-summit-on-july-4/
 ---
 
 

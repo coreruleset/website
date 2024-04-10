@@ -9,7 +9,6 @@ tags:
   - OWASPTop10
   - SQLInjection
 title: The Top 5 Ways CRS Can Help You Fight the OWASP Top 10
-url: /2017/11/21/top-5-ways-crs-can-help-you-fight-owasp-top-10/
 ---
 
 

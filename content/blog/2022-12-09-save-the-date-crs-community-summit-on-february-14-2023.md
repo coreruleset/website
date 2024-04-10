@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2022-12-09T02:45:28+01:00'
 title: 'Save the Date: CRS Community Summit on February 14, 2023'
-url: /2022/12/09/save-the-date-crs-community-summit-on-february-14-2023/
 ---
 
 

@@ -8,7 +8,6 @@ tags:
   - DoS
   - ReDoS
 title: CRS Project News May 2019
-url: /2019/05/01/crs-project-news-may-2019/
 ---
 
 

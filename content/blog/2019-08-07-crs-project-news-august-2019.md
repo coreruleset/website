@@ -6,7 +6,6 @@ date: '2019-08-07T22:45:43+02:00'
 tags:
   - CRS-News
 title: CRS Project News August 2019
-url: /2019/08/07/crs-project-news-august-2019/
 ---
 
 

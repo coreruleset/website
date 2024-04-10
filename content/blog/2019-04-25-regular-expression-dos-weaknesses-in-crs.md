@@ -12,7 +12,6 @@ tags:
 theme-transparent-header-meta:
   - default
 title: Regular Expression DoS weaknesses in CRS
-url: /2019/04/25/regular-expression-dos-weaknesses-in-crs/
 ---
 
 

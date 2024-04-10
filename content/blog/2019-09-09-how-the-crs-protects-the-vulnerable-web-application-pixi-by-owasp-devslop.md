@@ -6,7 +6,6 @@ date: '2019-09-09T10:37:38+02:00'
 tags:
   - DevSlop
 title: How the CRS protects the vulnerable web application Pixi by OWASP DevSlop
-url: /2019/09/09/how-the-crs-protects-the-vulnerable-web-application-pixi-by-owasp-devslop/
 ---
 
 

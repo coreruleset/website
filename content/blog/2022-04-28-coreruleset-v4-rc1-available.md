@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2022-04-28T21:20:10+02:00'
 title: Core Rule Set v4.0.0 Release Candidate 1 available
-url: /2022/04/28/coreruleset-v4-rc1-available/
 ---
 
 

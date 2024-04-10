@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2017-07-27T17:44:30+02:00'
 title: CRS3 presentation at OWASP London
-url: /2017/07/27/crs3-presentation-owasp-london/
 ---
 
 

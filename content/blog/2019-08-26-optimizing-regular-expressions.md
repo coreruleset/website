@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2019-08-26T10:44:51+02:00'
 title: How the CRS optimizes regular expressions
-url: /2019/08/26/optimizing-regular-expressions/
 ---
 
 

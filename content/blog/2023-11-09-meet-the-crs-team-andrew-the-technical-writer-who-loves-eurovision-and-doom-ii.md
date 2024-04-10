@@ -6,7 +6,6 @@ date: '2023-11-09T18:03:48+01:00'
 tags:
   - developer portrait
 title: 'Meet the CRS team: Andrew, the technical writer who loves Eurovision and Doom II'
-url: /2023/11/09/meet-the-crs-team-andrew-the-technical-writer-who-loves-eurovision-and-doom-ii/
 ---
 
 #### *When invited to join the Core Rule Set project, Andrew Howe felt a bit intimidated by the highly talented team at first. Today he is a valued member of the CRS core team, bringing his experience as a technical writer and a CRS integrator. “Having people onboard with experience of running CRS at a large-scale would be very useful,” he says. What else he said, you can read in this interview.*

@@ -6,7 +6,6 @@ date: '2022-03-02T08:43:01+01:00'
 tags:
   - Early Blocking
 title: The Case for Early Blocking
-url: /2022/03/02/the-case-for-early-blocking/
 ---
 
 

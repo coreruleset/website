@@ -8,7 +8,6 @@ tags:
   - machinelearning
   - ML
 title: A new attempt to combine the CRS with machine learning
-url: /2021/05/19/a-new-attempt-to-combine-the-crs-with-machine-learning/
 ---
 
 *The following is a contributing blog post by Floriane Gilliéron. You can reach Floriane via firstname dot lastname at gmail.com.*

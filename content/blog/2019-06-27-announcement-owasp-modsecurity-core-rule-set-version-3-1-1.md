@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2019-06-27T06:32:41+02:00'
 title: 'Announcement: OWASP ModSecurity Core Rule Set Version 3.1.1'
-url: /2019/06/27/announcement-owasp-modsecurity-core-rule-set-version-3-1-1/
 ---
 
 

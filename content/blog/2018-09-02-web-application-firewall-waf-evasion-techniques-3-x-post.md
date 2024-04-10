@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2018-09-02T19:02:42+02:00'
 title: 'Web Application Firewall (WAF) Evasion Techniques #3 [x-post]'
-url: /2018/09/02/web-application-firewall-waf-evasion-techniques-3-x-post/
 ---
 
 

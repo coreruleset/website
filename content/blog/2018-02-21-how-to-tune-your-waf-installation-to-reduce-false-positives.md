@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2018-02-21T06:00:52+01:00'
 title: How to tune your WAF installation to reduce false positives [x-post]
-url: /2018/02/21/how-to-tune-your-waf-installation-to-reduce-false-positives/
 draft: true
 ---
 

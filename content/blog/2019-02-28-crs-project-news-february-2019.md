@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2019-02-28T09:57:50+01:00'
 title: CRS Project News February 2019
-url: /2019/02/28/crs-project-news-february-2019/
 ---
 
 We are back with the CRS project news. The news are running very, very late in the month as I've been held up with other projects.

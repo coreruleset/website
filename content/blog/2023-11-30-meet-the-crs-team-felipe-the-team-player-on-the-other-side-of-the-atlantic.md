@@ -6,7 +6,6 @@ date: '2023-11-30T06:00:00+01:00'
 tags:
   - developer portrait
 title: 'Meet the CRS team: Felipe, the team player on the other side of the Atlantic'
-url: /2023/11/30/meet-the-crs-team-felipe-the-team-player-on-the-other-side-of-the-atlantic/
 ---
 
 

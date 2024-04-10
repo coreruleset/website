@@ -6,7 +6,6 @@ date: '2022-11-22T22:03:47+01:00'
 tags:
   - developer portrait
 title: 'Meet the CRS team: Ervin, the gardening radio amateur in the background'
-url: /2022/11/22/meet-the-crs-team-ervin-the-gardening-radio-amateur-in-the-background/
 ---
 
 

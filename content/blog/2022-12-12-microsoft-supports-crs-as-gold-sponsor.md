@@ -7,7 +7,6 @@ tags:
   - CRS-News
   - sponsoring
 title: Microsoft Supports CRS as Gold sponsor
-url: /2022/12/12/microsoft-supports-crs-as-gold-sponsor/
 ---
 
 

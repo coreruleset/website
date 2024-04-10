@@ -6,7 +6,6 @@ date: '2018-06-26T10:27:14+02:00'
 tags:
   - CommunitySummit
 title: 'CRS Community Summit next week: Call for Posters and the Program is Ready'
-url: /2018/06/26/crs-community-summit-next-week-call-for-posters-and-the-program-is-ready/
 ---
 
 

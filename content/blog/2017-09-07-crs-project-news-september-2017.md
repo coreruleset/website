@@ -6,7 +6,6 @@ date: '2017-09-07T16:18:20+02:00'
 tags:
   - CRS-News
 title: CRS Project News September 2017
-url: /2017/09/07/crs-project-news-september-2017/
 ---
 
 

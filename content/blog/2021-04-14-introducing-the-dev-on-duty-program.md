@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2021-04-14T10:03:45+02:00'
 title: Introducing the Dev on Duty Program
-url: /2021/04/14/introducing-the-dev-on-duty-program/
 ---
 
 

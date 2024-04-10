@@ -4,7 +4,6 @@ categories:
   - Blog
 date: '2023-09-21T13:05:47+02:00'
 title: CRS Performance Framework - A GSoC 2023 Project
-url: /2023/09/21/crs-performance-framework-a-gsoc-2023-project/
 ---
 
 This year, the OWASP ModSecurity Core Rule Set for the second time took part in the Google Summer of Code initiative. Google Summer of Code (GSoC) is a global online program focused on bringing new contributors into open-source software development. GSoC contributors work with an open-source organization of their choice on a 12+ week programming project under the guidance of the mentors from the organization. [Dexter Chang](https://github.com/dextermallo) had applied to the CRS project with a proposal for a performance framework. We spoke to Dexter about his GSoC experience with the Core Rule Set.
