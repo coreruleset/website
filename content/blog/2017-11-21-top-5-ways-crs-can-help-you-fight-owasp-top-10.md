@@ -13,7 +13,7 @@ url: /2017/11/21/top-5-ways-crs-can-help-you-fight-owasp-top-10/
 ---
 
 
-The new edition [OWASP Top Ten](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf) list mentions [ModSecurity](https://modsecurity.org) and the [OWASP ModSecurity Core Rule Set](https://coreruleset.org) for the first time.
+The new edition [OWASP Top Ten](https://github.com/OWASP/Top10/raw/master/2017/OWASP%20Top%2010-2017%20%28en%29.pdf) list mentions [ModSecurity](https://www.modsecurity.org) and the [OWASP ModSecurity Core Rule Set](https://coreruleset.org) for the first time.
 
 Let me explain you what the Core Rule Set does and how it can help you protect your services from these risks.
 

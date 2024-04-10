@@ -25,7 +25,7 @@ So here we go for the CRS project newsletter for July 2018:
 - AviNetworks presented their proposal for a rules Meta-Language during the summit. It was welcomed with open arms. A committee working on this idea was formed out of attending CRS developers and other people.  
     Link: [https://github.com/avinetworks/owasp-crs-technical-discussion/raw/master/documentation/OWASP\_AppSec\_EU\_2018-Core\_Ruleset.pdf](https://github.com/avinetworks/owasp-crs-technical-discussion/raw/master/documentation/OWASP_AppSec_EU_2018-Core_Ruleset.pdf)
 - Adrian Winckles and Mark Graham from Cambridge are reviving the OWASP Honeypot project that aims to examine HTTP attacks in the wild. It is based on ModSecurity and CRS. If you are interested to join, please get in touch with Adrian.  
-    Link: [https://www.owasp.org/index.php/OWASP\_Honeypot\_Project](https://www.owasp.org/index.php/OWASP_Honeypot_Project) (Website to be)
+    Link: <https://owasp.org/www-project-honeypot/>
 - Tin Zaw from Verizon attended the CRS Summit and presented WAFLZ, an alternative open source implementation of the ModSecurity rules language aimed at running CRS. The focus of the engine is on multitenancy and effective use of resources.  
     Link: <https://github.com/VerizonDigital/waflz>
 - Rodrigo Martinez from the University of Uruguay presented their work on Machine Learning with ModSecurity and the CRS at the summit. His presentation was based on a paper published earlier this year:  
@@ -33,7 +33,7 @@ So here we go for the CRS project newsletter for July 2018:
 - We have too many issues open on github. Federico Schwindt is starting an initiative to resolve open issues and bring down this number. As an immediate remedy, we are pointing users with support questions to stackoverflow (tag questions with "owasp-crs"). The mailinglist continues to be covered too (but was deemed a bit old-fashioned).  
     Link: <https://stackoverflow.com/questions/tagged/owasp-crs>
 - We created a channel named "coreruleset" on the OWASP Slack. There are no plans to move the monthly IRC community meeting just now. If you do not have access to the OWASP slack, you can get an invite from from the link below.  
-    Link: <https://owasp.herokuapp.com>
+    Link: <https://owasp.slack.com/>
 - Soroush Dalili ([@irsdl](https://twitter.com/irsdl)) presented a series of WAF bypasses at AppSecEU. CRS is affected by a charset manipulation via the Content-Type request header. (See below for a PR closing this hole)  
     Link: <https://www.slideshare.net/SoroushDalili/waf-bypass-techniques-using-http-standard-and-web-servers-behaviour>
 - Mazin Ahmed has published a blog post about WAF bypassing via argument separators. He also pointed out that CRS is not affected by this problem.  

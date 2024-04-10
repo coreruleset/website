@@ -88,12 +88,12 @@ Let's now dive into Pixi's weaknesses:
 
 With a simple Mongo DB injection, the authentication can be bypassed. For further reading about this class of vulnerabilities, see [here](https://www.owasp.org/index.php/Testing_for_NoSQL_injection).
 
-Unfortunately, I can not show this vulnerability. As soon as I replay this request in ZAP ([OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)) the application Pixi dies. You could say it's a remote DoS on top of the authentication problem. One more reason the use CRS to protect us from this problem!
+Unfortunately, I can not show this vulnerability. As soon as I replay this request in ZAP ([Zed Attack Proxy](https://www.zaproxy.org/)) the application Pixi dies. You could say it's a remote DoS on top of the authentication problem. One more reason the use CRS to protect us from this problem!
 
 When I replay the request through the CRS, Pixi doesn't die anymore, because CRS blocks the request at Paranoia Level 1:
 
-{{< figure src="images/2019/09/Authentication_Bypass_Request-1024x664.png" caption="Authentication Bypass: ZAP Request Editor" >}}
-{{< figure src="images/2019/09/Authentication_Bypass_Response-1024x663.png" caption="Authentication Bypass: ZAP Response" >}}
+{{< figure src="images/2019/09/Authentication_Bypass_Request.png" caption="Authentication Bypass: ZAP Request Editor" >}}
+{{< figure src="images/2019/09/Authentication_Bypass_Response.png" caption="Authentication Bypass: ZAP Response" >}}
 The logfile tells us that the MongoDB injection was detected (id: 942290). It says that the access was denied (id: 949110) and that the Inbound Anomaly Score of the request at PL1 was 5 (id: 980130). The last two log file entries (id: 949110 and 980130) always occur with a blocked request.
 
 ```
@@ -116,13 +116,14 @@ So let's see what Pixi does with this command in the login mask:
 {{constructor.constructor('alert(1)')()}}
 ```
 
-{{< figure src="images/2019/09/Angular_Request_Form-1-1024x714.png" caption="Angular Template Injection" >}}
-{{< figure src="images/2019/09/Angular_Request_Popup-1-1024x714.png" caption="Angular Template Injection: Popup" >}}
+{{< figure src="images/2019/09/Angular_Request_Form-1.png" caption="Angular Template Injection" >}}
+{{< figure src="images/2019/09/Angular_Request_Popup-1.png" caption="Angular Template Injection: Popup" >}}
 Ooops, we showed a popup window through XSS!
 
 So let's see what the Core Rule Set does with this command:
 
-{{< figure src="images/2019/09/Angular_PL1-1024x714.png" caption="Angular Template Injection: Popup at PL1" >}}
+{{< figure src="images/2019/09/Angular_PL1.png" caption="Angular Template Injection: Popup at PL1" >}}
+
 The CRS at Paranoia Level 1 does not detect this Angular injection. Why could this happen?
 
 That's possible because the CRS is not meant to protect us from every exploit at Paranoia Level 1.
@@ -131,7 +132,7 @@ There are 4 Paranoia Levels available. If our web application is critical and if
 
 Let's do this and see what the CRS does at PL2:
 
-{{< figure src="images/2019/09/Angular_PL2-1024x655.png" caption="Angular Template Injection: CRS blocks at PL2" >}}
+{{< figure src="images/2019/09/Angular_PL2.png" caption="Angular Template Injection: CRS blocks at PL2" >}}
 The request is now blocked and the log confirms this:
 
 ```sh
@@ -157,10 +158,10 @@ The following string entered in the search field shows a popup, that demonstrate
 <script>alert('xss')</script>
 ```
 
-{{< figure src="images/2019/09/XSS-1024x642.png" caption="Cross Site Scripting in Search Field" >}}
+{{< figure src="images/2019/09/XSS.png" caption="Cross Site Scripting in Search Field" >}}
 The Core Rule Set at PL1 blocks this XSS test request:
 
-{{< figure src="images/2019/09/XSS_blocked-1024x477.png" caption="Cross Site Scripting: CRS blocks" >}}
+{{< figure src="images/2019/09/XSS_blocked.png" caption="Cross Site Scripting: CRS blocks" >}}
 In the logs we see that three XSS rules were triggered by this request and we got a Inbound Anomaly Score of 15 at PL1!
 
 ```sh
@@ -176,14 +177,17 @@ $ cat my-alert-error.log | melidmsg
 
 When not logged in as an admin of the application, the access to the admin path throws an HTTP 500 error. This error reveals some information about the application:
 
-{{< figure src="images/2019/09/admin-2-1024x667.png" caption="Verbose Errors in Admin Page" >}}
+{{< figure src="images/2019/09/admin-2.png" caption="Verbose Errors in Admin Page" >}}
+
 When accessing the secret page, the error even shows a hint to a server.conf file:
 
-{{< figure src="images/2019/09/secret-1024x618.png" caption="Verbose Errors in Secret Page" >}}
+{{< figure src="images/2019/09/secret.png" caption="Verbose Errors in Secret Page" >}}
+
 When running at PL1 this response error remains undetected but not at PL2:
 
 {{< figure src="images/2019/09/admin_blocked-1.png" caption="Verbose Errors in Admin Page are blocked at PL2" >}}
 {{< figure src="images/2019/09/secret-blocked.png" caption="Verbose Errors in Secret Page are blocked at PL2" >}}
+
 In the logs we see that the response code 500 was blocked at PL2 due to potential information leakage:
 
 ```sh
@@ -197,12 +201,12 @@ $ cat my-alert-error.log | melidmsg
 
 In the error message above we saw that there must be a server.conf. So let's access the file and see what it reveals to us:
 
-{{< figure src="images/2019/09/serverconf-1024x618.png" caption="server.conf reveals session_secret" >}}
+{{< figure src="images/2019/09/serverconf.png" caption="server.conf reveals session_secret" >}}
 The server.conf even shows a session_secret. That is very awful!
 
 Does the Core Rule Set protect us?
 
-{{< figure src="images/2019/09/serverconf_blocked-1024x618.png" caption="server.conf is blocked at PL1" >}}
+{{< figure src="images/2019/09/serverconf_blocked.png" caption="server.conf is blocked at PL1" >}}
 The log confirms that a request to a .conf file is potentially dangerous:
 
 ```sh

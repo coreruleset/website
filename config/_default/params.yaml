@@ -12,7 +12,7 @@ custom_css: []
 images: ["/img/social-share.png"]
 
 github:
-  repo_url: "https://github.com/coreruleset/website/blob/master"
+  repo_url: "https://github.com/coreruleset/website/blob/main"
   show_edit_link: true
 
 social_links:
@@ -23,7 +23,7 @@ social_links:
   github: "https://github.com/coreruleset"
   instagram: ""
   landscape: ""
-  linkedin: "https://www.linkedin.com/company/owasp-coreruleset"
+  linkedin: "https://www.linkedin.com/company/owasp-crs"
   mastodon: ""
   pinterest: ""
   rss: ""

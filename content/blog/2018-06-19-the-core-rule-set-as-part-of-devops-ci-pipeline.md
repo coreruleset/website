@@ -74,11 +74,11 @@ I have implemented a proof of concept in CircleCI. Of course, the continuous int
 
 In the basic setup, we have application tests that are performed against the application. Naturally, these application tests should succeed:
 
-![](/images/2018/06/Setup1-1024x640.png)
+{{< figure src="images/2018/06/Setup1.png" >}}
 
 As a next step, we put CRS in front of the same application in order to funnel the same tests through the WAF. We expect the application tests to still succeed and the log to remain empty. This would confirm that no CRS rule were triggered by the tests.
 
-![](/images/2018/06/Setup2-1024x640.png)
+{{< figure src="images/2018/06/Setup2.png" >}}
 
 Each of these components runs in a separate Docker container.
 
@@ -86,7 +86,7 @@ The time taken to pull and start the Core Rule Set container and to run the appl
 
 The message here is: We do not waste a lot of time but get a lot of extra security.
 
-![](/images/2018/06/circleci_output.png)
+{{< figure src="images/2018/06/circleci_output.png" >}}
 
 
 ### CI Configuration
@@ -237,7 +237,7 @@ I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2
 The backend application I tested in this PoC is the Pixi application from the [OWASP project DevSlop](http://devslop.co), where I am also a part of the team.
 The OWASP DevSlop project consists of several modules, all aimed at either presenting proof-of-concept DevSecOps pipelines, or insecure implementations of DevOps to teach better practices.
 [http://devslop.co](http://devslop.co)  
-[https://www.owasp.org/index.php/OWASP\_DevSlop\_Project](https://www.owasp.org/index.php/OWASP_DevSlop_Project) 
+[https://owasp.org/www-project-devslop/](https://owasp.org/www-project-devslop/)
 
 The CircleCI configuration can be found on GitHub. Please take this example and customize it for your organization.  
 [https://github.com/DevSlop/pixi-crs/blob/master/.circleci/config.yml](https://github.com/DevSlop/pixi-crs/blob/master/.circleci/config.yml)

@@ -39,7 +39,7 @@ During the chat we discussed the following
     - Need to check balance but Dune73 will finance privately changes.
     - Shooting for by AppSecEU
     - Idea to start to sell the release poster via a printing service like [Redbubble](https://www.redbubble.com/)
-- Info: CRS nominated for the German Open Source Business award ([http://osbar.it](http://osbar.it/)) 
+- Info: CRS nominated for the German Open Source Business award ([https://osbar.it](http://osbar.it/)) 
     - Everyone is excited thank you to Dune73 for nominating us
 - Plans for new blog posts 
     - Franbuehler writing up about SQL disassembly
@@ -78,7 +78,7 @@ The next community chats will be held on the following dates:
 
 Upcoming talks and talks that were just posted
 
-- ModSec 3.0 talk on B-sides Toronto next week: <http://www.bsidesto.ca/abstracts.html#6>
+- ModSec 3.0 talk on B-sides Toronto next week: <https://github.com/bsidesto/bsidesto.github.io/blob/5fc5ef3169e72b0ec42e959ff2caed331acd5ac2/2017/Presentations2017/BSidesTO2017-libModSecurity.pdf>
 - BlackHat Europe Arsenal demo for libModSecurity in December: <https://www.blackhat.com/eu-17/arsenal/schedule/#modsecurity-300-9079>
 - WAFs FTW! A modern devops approach to security testing: [https://www.youtube.com/watch?v=05Uy0R7UdFw ](https://www.youtube.com/watch?v=05Uy0R7UdFw)
 - Introducing the OWASP ModSEcurity Core Rule Set (CRS) 3.0: <https://www.youtube.com/watch?v=oCxW966128A>

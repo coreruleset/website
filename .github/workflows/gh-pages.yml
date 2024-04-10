@@ -62,11 +62,11 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo --gc --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
           hugo -s subsite/docs --baseURL "${{ steps.pages.outputs.base_url }}/docs/"
           mv subsite/docs/public public/docs
           npx -y pagefind --site public
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -20,9 +20,8 @@ Link: <https://sourceforge.net/p/mod-security/mailman/message/36899090/>
 #### Announcements and News Coverage
 
 - AWS is offering CRS as option in their Managed Rules offering <https://aws.amazon.com/blogs/aws/announcing-aws-managed-rules-for-aws-waf/>
-- Gitlab uses CRS for their enterprise customers  
-    <https://about.gitlab.com/2019/09/22/gitlab-12-3-released/#web-application-firewall-for-kubernetes-ingress>
-    We have established contact with the GitLab engineering teamContact with their engineering team established. Planning to have regular talks.
+- Gitlab [uses CRS](https://about.gitlab.com/releases/2019/09/22/gitlab-12-3-released/#web-application-firewall-for-kubernetes-ingress) for their enterprise customers
+    We have established contact with the GitLab engineering team. Planning to have regular talks.
 - Midsized Swiss Bank Acrevis uses CRS; a setup engineered by our Franziska Bühler <https://www.netzwoche.ch/news/2019-11-11/open-source-in-der-bankenwelt>
 - CRS has reached the certification level as a Best Practice <https://github.com/coreruleset/coreruleset/issues/502>
 - We have generated a private key for the project and we will sign our releases from now on <https://coreruleset.org/security.asc>

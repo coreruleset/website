@@ -27,10 +27,15 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass
         run: sudo snap install dart-sass
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
@@ -41,7 +46,25 @@ jobs:
           HUGO_ENVIRONMENT: testing
           HUGO_ENV: testing
         run: |
-          hugo \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo -s subsite/docs --baseURL "${{ steps.pages.outputs.base_url }}/docs/"
+          mv subsite/docs/public public/docs
+          npx -y pagefind --site public
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@22134d37a1fff6c2974df9c92a7c7e1e86a08f9c # for v1.9.0
+        with:
+          args: --no-progress -u "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0" -E './content/**/*.md'
+          jobSummary: true
+
+              #      - name: Create Issue From File
+              #if: env.lychee_exit_code != 0
+              #uses: peter-evans/create-issue-from-file@v5
+              #permissions:
+              #issues: write
+              #with:
+              #title: Link Checker Report
+              #content-filepath: ./lychee/out.md
+              #labels: report, automated issue
 

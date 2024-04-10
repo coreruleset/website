@@ -39,7 +39,7 @@ SecRule <text-contain-regex: "hacker (cat|kitty|meow)>"
 
 In this case, how can we measure the performance impact caused by the change, especially since there are many considerable-length regexes in the project? The CRS Performance Framework aims to resolve the issue. The framework is developed to help developers testing the performance of CRS and to provide a benchmark in order to compare the performance of CRS with different versions or different configurations.
 
-{{< figure src="images/2023/09/process-diagram-1024x528.png" caption="A lovely little diagram of how performance tests in Dexter Chang's performance framework work" >}}
+{{< figure src="images/2023/09/process-diagram.png" caption="A lovely little diagram of how performance tests in Dexter Chang's performance framework work" >}}
 
 **What challenges did you encounter during your GSoC project?**
 
