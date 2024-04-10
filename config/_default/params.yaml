@@ -11,6 +11,9 @@ custom_css: []
 ### default social share image (can also be set per lang) ###
 images: ["/img/social-share.png"]
 
+crs:
+  latest_version: "4.1.0"
+
 github:
   repo_url: "https://github.com/coreruleset/website/blob/main"
   show_edit_link: true
