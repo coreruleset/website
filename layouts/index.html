@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{- $crs := $.Site.Params.crs -}}
   <div class="columns hero-grid">
     <div class="hero-grid__col1">
       <h1 class="title">
@@ -8,6 +9,11 @@
       <h2 class="subhero">{{ i18n "subhero" }}</h2>
 
       <p class="shortened-width">{{ i18n "explainerText" | markdownify }}</p>
+
+      {{ with $crs }}
+      <a href="{{ printf "%s/v%s" .release_url_prefix .latest_major_version }}" class="button">Get latest: {{ .latest_major_version }}</a>
+      <a href="{{ printf "%s/v%s" .release_url_prefix .prev_major_version }}" class="button">Get previous major: {{ .prev_major_version }}</a>
+      {{ end }}
     </div>
     <div class="hero-grid__col2">
       <img
@@ -27,7 +33,7 @@
     <div class="card">
       <h2>{{ i18n "sectionTitle1" }}</h2>
       <p>{{ i18n "sectionText1" | markdownify }}</p>
-      <a href="https://github.com/coreruleset/coreruleset/releases/tag/v{{ .Site.Params.crs.latest_version }}" class="button">{{ i18n "sectionButton1" }}</a>
+      <a href="{{ printf "%s/v%s" $crs.release_url_prefix $crs.latest_major_version }}" class="button">{{ i18n "sectionButton1" }}</a>
     </div>
 
     <div class="card">
