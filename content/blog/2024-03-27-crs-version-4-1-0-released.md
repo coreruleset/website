@@ -7,6 +7,7 @@ categories:
 tags:
     - CRS-News
     - Release
+slug: 'crs-version-4-1-0-released'
 ---
 
 Last week, we have released CRS v4.1.0. The new release is the first according to the new monthly release schedule and brings a couple of new features and fixes.

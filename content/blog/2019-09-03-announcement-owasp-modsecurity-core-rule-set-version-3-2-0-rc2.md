@@ -7,6 +7,7 @@ tags:
   - '3.2'
   - Release
 title: 'Announcement: OWASP ModSecurity Core Rule Set Version 3.2.0-RC2'
+slug: 'owasp-modsecurity-core-rule-set-version-3-2-0'
 ---
 
 

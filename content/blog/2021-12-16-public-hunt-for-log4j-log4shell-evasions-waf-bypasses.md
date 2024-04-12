@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2021-12-16T13:01:59+01:00'
 title: Public Hunt for log4j / log4shell Evasions / WAF Bypasses
+slug: 'public-hunt-for-log4j-log4shell-evasions-waf-bypasses'
 ---
 
 

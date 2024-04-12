@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2017-08-10T12:48:47+02:00'
 title: ModSecurity version 2.9.2 released
+slug: 'modsecurity-version-2-9-2-released'
 ---
 
 Trustwave has released [ModSecurity version 2.9.2](https://www.trustwave.com/Resources/SpiderLabs-Blog/Announcing-ModSecurity-version-2-9-2/).

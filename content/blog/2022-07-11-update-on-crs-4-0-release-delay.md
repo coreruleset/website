@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2022-07-11T12:40:38+02:00'
 title: Update on CRS 4.0 release delay
+slug: 'update-on-crs-4-0-release-delay'
 ---
 
 

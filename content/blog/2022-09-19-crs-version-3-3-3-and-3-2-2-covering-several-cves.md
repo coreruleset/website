@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2022-09-19T16:08:09+02:00'
 title: CRS Version 3.3.3 and 3.2.2 (covering several CVEs)
+slug: 'crs-version-3-3-3-and-3-2-2-covering-several-cves'
 ---
 
 
