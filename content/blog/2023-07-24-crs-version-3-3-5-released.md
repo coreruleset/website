@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2023-07-24T20:11:27+02:00'
 title: CRS version 3.3.5 released
+slug: 'crs-version-3-3-5-released'
 ---
 
 
