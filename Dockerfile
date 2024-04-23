@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:debian as build
+FROM mcr.microsoft.com/devcontainers/base:debian@sha256:98a855f963d5d3ec742a7b94827b24b4f513fe5f5e010fbbb8654bafda6d498b as build
 
 # VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
 ARG VARIANT=hugo_extended
@@ -18,7 +18,7 @@ RUN URL=$(curl -s https://api.github.com/repos/sass/dart-sass/releases/${SASS_VE
     tar xf ${SASS_VERSION}.tar.gz && \
     mv dart-sass/sass /usr/bin/sass
 
-FROM mcr.microsoft.com/devcontainers/javascript-node
+FROM mcr.microsoft.com/devcontainers/javascript-node@sha256:ec1e123dee944ce1e3b939b70bb9ab258458f6bf4028f8682e6690e22d9bb87f
 COPY --from=build /usr/bin/hugo /usr/bin
 COPY --from=build /usr/bin/sass /usr/bin
 EXPOSE 1313
