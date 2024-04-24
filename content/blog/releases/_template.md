@@ -1,5 +1,5 @@
 ---
-title: 'CRS version VERSION released'
+title: 'CRS version FIXME:Version released'
 date: '2024-04-23'
 author: fzipi
 categories:
@@ -13,7 +13,7 @@ draft: true
 <!-- This is a template. To use it:
 
 - copy this file with a new name. could be the release version, e.g. "cp template.md 4.35.0.md"
-- replace VERSION with the CRS release version.
+- replace "FIXME:Version" with the CRS release version.
 - remove the "draft: true" above
 - remove this comment 
 - change the "author:" above to match the one publishing the doc
@@ -21,8 +21,8 @@ draft: true
 
 -->
 
-We have released CRS vVERSION. The new release includes:
+We have released CRS FIXME:Version. The new release includes:
 
 - ...
 
-Read the changelog [here](https://github.com/coreruleset/coreruleset/releases/tag/vVERSION).
+Read the changelog [here](https://github.com/coreruleset/coreruleset/releases/tag/FIXME:Version).
