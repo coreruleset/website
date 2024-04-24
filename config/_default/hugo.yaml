@@ -8,6 +8,7 @@ title: "CRS Project"
 timeZone: "Europe/London"
 
 enableEmoji: true
+enableGitInfo: true
 ######################## i18n ####################
 # Auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
 hasCJKLanguage: false
