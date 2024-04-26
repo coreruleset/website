@@ -3,7 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2023-05-09T09:00:00+02:00'
-title: 'What we learnt from our bug bounty program: It&#8217;s not for the faint of heart'
+title: "What we learnt from our bug bounty program: It's not for the faint of heart"
 ---
 
 

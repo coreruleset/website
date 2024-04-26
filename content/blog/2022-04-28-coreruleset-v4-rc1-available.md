@@ -8,13 +8,13 @@ slug: 'coreruleset-v4-rc1-available'
 ---
 
 
-The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candidate 1 for the upcoming CRS v4.0.0 release. The release candidate is available from our [installation page](https://coreruleset.org/installation/); see also the upgrade notes on that page.
+The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candidate 1 for the upcoming CRS v4.0.0 release. The release candidate is available from our [installation page](/docs/deployment/install/); see also the upgrade notes on that page.
 
 **CRS 4 contains many important changes, such as:**
 
-- A plugin architecture for extending CRS and minimizing attack surface. Application exclusion sets and less-used functionality have been migrated from the CRS to [plugins](https://coreruleset.org/docs/concepts/plugins/). (See our [plugin registry](https://github.com/coreruleset/plugin-registry) for the extensive list of existing plugins.)
-- [Early blocking](https://coreruleset.org/20220302/the-case-for-early-blocking/)
-- <span style="color: var(--ast-global-color-3); font-size: 1rem;">Granular control over reporting levels</span>
+- A plugin architecture for extending CRS and minimizing attack surface. Application exclusion sets and less-used functionality have been migrated from the CRS to [plugins](/docs/concepts/plugins/). (See our [plugin registry](https://github.com/coreruleset/plugin-registry) for the extensive list of existing plugins.)
+- [Early blocking]({{< ref "blog/2022-03-02-the-case-for-early-blocking.md" >}})
+- Granular control over reporting levels
 - All formerly PCRE-only regular expressions have been updated to be compatible with Re2/Hyperscan WAF engines
 - We now publish [nightly packages](https://github.com/coreruleset/coreruleset/releases) of the development branch
 - We refactored and renamed the anomaly scoring variables and paranoia level definitions
@@ -46,7 +46,7 @@ Please see the [CHANGES.md](https://github.com/coreruleset/coreruleset/blob/v4.0
 
 If you try out our release candidate, we will be very eager to receive your feedback. You can [report any issues on GitHub](https://github.com/coreruleset/coreruleset/issues/new/choose). Be sure to mention the CRS version, so we can handle RC issues as quickly as possible. Depending on the feedback, we will possibly release more Release Candidates, while we get a firmer picture and finalize our schedule for the final release.
 
-If you have questions, the quickest way to get in touch with us directly is to [join the #coreruleset channel on the OWASP Slack](https://coreruleset.org/20181003/owasp-crs-slack/).
+If you have questions, the quickest way to get in touch with us directly is to [join the #coreruleset channel on the OWASP Slack]({{< ref "blog/2018-10-03-owasp-crs-slack.md" >}}).
 
 I want to thank all our [developers and outside contributors](https://github.com/coreruleset/coreruleset/blob/v4.0/main/CONTRIBUTORS.md) for helping us make the best CRS version yet!
 
