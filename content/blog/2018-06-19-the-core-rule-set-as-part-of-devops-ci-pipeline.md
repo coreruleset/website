@@ -229,7 +229,7 @@ Take the CI pipeline and the Docker container of this PoC and customize it for y
 
 ### Presentation and slides
 
-I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2018-zurich/program/franziska-buehler/), the [Open Cloud Day in Zurich](https://opencloudday.ch/wp-content/uploads/sites/6/2018/05/Franziska-Buehler_presentation_open_cloud_day.pdf), the [Open Security Summit in England](https://open-security-summit.org/tracks/devsecops/user-sessions/adding-crs3-pixi-to-circleci-pipeline/) and the [DevOps Meetup Bern](https://www.meetup.com/de-DE/DevOps-Bern/events/248088984/) where I explain this whole idea. The slides can be found at <https://www.slideshare.net/franbuehler> and the video from the DevOpsDays ZH can be found at <https://vimeo.com/271451246>.
+I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2018-zurich/program/franziska-buehler/), the [Open Cloud Day in Zurich](https://www.ch-open.ch/en/open-cloud-day/ocd-program/web-application-firewall-friend-of-your-devops-chain/), the [Open Security Summit in England](https://2018.open-security-summit.org/tracks/devsecops/user-sessions/adding-crs3-pixi-to-circleci-pipeline/) and the [DevOps Meetup Bern](https://www.meetup.com/de-DE/DevOps-Bern/events/248088984/) where I explain this whole idea. The slides can be found at <https://www.slideshare.net/franbuehler> and the video from the DevOpsDays ZH can be found at <https://vimeo.com/271451246>.
 
 ### References
 
