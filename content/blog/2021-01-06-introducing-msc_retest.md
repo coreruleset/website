@@ -82,14 +82,14 @@ There are a few command line options for both variants. With pcre4msc2, the use 
 
 In fact the PCRE JIT compiler makes quite a different for raw regular expression execution. It is not enabled in most Linux distribution packages, but if you compile ModSecurity 2.9.x yourself, then the configure option --enable-pcre-jit is worth a try. With JIT, ModSecurity will study the regular expression at config time of the server. That is surprisingly useful in terms of performance.
 
-The script pcre4msc3 has a flag -f that behaves like the off the shelf versions of ModSecurity 3.0.0 - 3.0.4. The problem is these version suffer from a bad implementation of the regular expression operator that leads to a big Denial of Service problem: [CVE-2020-15598](https://coreruleset.org/20200914/cve-2020-15598/). When we released this advisory, we advocated to patch ModSecurity 3 in order to fix the problem. Several Linux distributions followed suit, but you may want to check this yourself. Unfortunately, Trustwave did not release a new version of the software themselves.
+The script pcre4msc3 has a flag -f that behaves like the off the shelf versions of ModSecurity 3.0.0 - 3.0.4. The problem is these version suffer from a bad implementation of the regular expression operator that leads to a big Denial of Service problem: [CVE-2020-15598]({{ ref "blog/2020-09-14-cve-2020-15598.md" }}). When we released this advisory, we advocated to patch ModSecurity 3 in order to fix the problem. Several Linux distributions followed suit, but you may want to check this yourself. Unfortunately, Trustwave did not release a new version of the software themselves.
 
 But anyways, the default for pcre4msc3 is to use a sane implementation and the broken, but official implementation, can be called via the -f flag.
 
 Furthermore, both scripts have a -d option that brings more debug output.
 
-```
-<pre class="wp-block-preformatted">$> echo "hello fool" | pcre4msc2 -d -j pattern.txt
+```bash
+echo "hello fool" | pcre4msc2 -d -j pattern.txt
 RAW pattern:
 ============
 foo
@@ -167,7 +167,7 @@ Let me sum this up. Here is the old regular expression:
 (?<!&(?:[aAoOuUyY]uml)|&(?:[aAeEiIoOuU]circ)|&(?:[eEiIoOuUyY]acute)|&(?:[aAeEiIoOuU]grave)|&(?:[cC]cedil)|&(?:[aAnNoO]tilde)|&(?:amp)|&(?:apos));|['\"=]
 ```
 
-This uses a negative-look-behind (-&gt; see the *?&lt;!* at the beginning of the regex) that we want to avoid.
+This uses a negative-look-behind (:point_right: see the `?<!` at the beginning of the regex) that we want to avoid.
 
 And we here is the new rule proposed in the pull request:
 

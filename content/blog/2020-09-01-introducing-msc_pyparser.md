@@ -15,7 +15,7 @@ We will walk you through four example use cases in this blog post. This is enoug
 
 What is the library and does it work?
 
-[`msc_parser`](https://github.com/digitalwave/msc_pyparser/blob/master/README.md) has been written by CRS developer [Ervin Hegedüs](https://twitter.com/IamAirWeen) from Hungarian company [Digitalwave](https://www.digitalwave.hu/en/services/modsecurity). The core of the library is an import function that parses a rule set and transforms it into a custom YAML or JSON representation. If you are interested in the details, it's a python list containing dictionaries. You can manipulate this representation of the rule set and export it into the ModSecurity rule language again when you are done.
+[`msc_pyparser`](https://github.com/digitalwave/msc_pyparser/blob/master/README.md) has been written by CRS developer [Ervin Hegedüs](https://twitter.com/IamAirWeen) from Hungarian company [Digitalwave](https://www.digitalwave.hu/en/services/modsecurity). The core of the library is an import function that parses a rule set and transforms it into a custom YAML or JSON representation. If you are interested in the details, it's a python list containing dictionaries. You can manipulate this representation of the rule set and export it into the ModSecurity rule language again when you are done.
 
 The neat thing: If you import a rule set and export it without further manipulation you end up with exactly the same rule set as before, byte by byte. This works, because Ervin did a very good job and paid attention to whitespace and everything.
 
@@ -35,8 +35,8 @@ This gives you the `msc_parser` library for use in python script in the version 
 
 To get started it's useful to also grab `crs_read.py` and `crs_write.py` from the examples folder of the `msc_parser` github:
 
-- [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/crs_read.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py)
-- [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/crs_write.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_write.py)
+- [https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py)
+- [https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_write.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_write.py)
 
 The prefix hints at CRS, but they are generic in the way they execute.
 
@@ -99,7 +99,7 @@ There are quite a lot of CRS rules that change the audit engine with the help of
 
 `msc_parser` comes with several examples. They reside in the examples folder of the [`msc_parser` git](https://github.com/digitalwave/msc_pyparser/tree/master/examples).
 
-This script here is example 11: [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/example11_remove_auditlog.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py)
+This script here is example 11: [https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py)
 
 ```python
 #!/usr/bin/env python3
@@ -522,6 +522,6 @@ The interesting part of the script is near the use of the keywords "`capture`" a
 
 It should be easy to adopt this for your specific needs if you want to search for rules with different characteristics.
 
-So these were four examples with different use cases for [`msc_parser`](https://github.com/digitalwave/msc_pyparser/blob/master/README.md). The [example folder](https://github.com/digitalwave/msc_pyparser/tree/master/examples) of the library's github has more than a dozen of them as of this writing. So check them out if you have an idea that is not covered in this blog post!  
+So these were four examples with different use cases for [`msc_pyparser`](https://github.com/digitalwave/msc_pyparser/blob/master/README.md). The [example folder](https://github.com/digitalwave/msc_pyparser/tree/master/examples) of the library's github has more than a dozen of them as of this writing. So check them out if you have an idea that is not covered in this blog post!  
   
 Ervin Hegedüs &amp; Christian Folini
