@@ -43,7 +43,7 @@ This way, the application's traffic is tested with the CRS and we don't have to 
 
 ### CRS Docker Container
 
-As you can read at {{< ref "/docs/deployment/install" >}}, it only takes a few steps to install the Core Rule Set. And it gets even easier if you use it in a Docker Container.
+As you can read [here](/docs/deployment/install), it only takes a few steps to install the Core Rule Set. And it gets even easier if you use it in a Docker Container.
 
 I have created a Docker Image that inherits from the official OWASP ModSecurity Core Rule Set Container (<https://hub.docker.com/r/owasp/modsecurity-crs/>). My image adds an Apache reverse proxy configuration. The reverse proxy configuration is used to put the CRS in front of an application. It also adds some more CRS variables. The CRS container can be found at <https://hub.docker.com/r/franbuehler/modsecurity-crs-rp/>. This way, the CRS can be very quickly and easily integrated into automated tests.
 

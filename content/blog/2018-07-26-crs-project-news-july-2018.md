@@ -16,7 +16,7 @@ So here we go for the CRS project newsletter for July 2018:
 
 ## What has happened in recent weeks
 
-- We met for the first CRS community summit in London on July 4, 2018 and then for an on-site developer meeting on Friday July 6. There is a [blog post covering the Summit (and a photo below)]({{< ref "blog/2018-07-12-reporting-from-the-first-crs-community-summit-in-london.md"> }}).
+- We met for the first CRS community summit in London on July 4, 2018 and then for an on-site developer meeting on Friday July 6. There is a [blog post covering the Summit (and a photo below)]({{< ref "blog/2018-07-12-reporting-from-the-first-crs-community-summit-in-london.md" >}}).
 - The dev meeting (replacing the monthly chat for July) was very productive. Below is a list of decisions taken.
 - Chaim Sanders has been named release manager for 3.1. We are aiming for CRS 3.1 in September with a release candidate in August. CRS 3.2 should be ready in early Summer 2019.
 - We're launching the monthly newsletter anew. It's going to be edited by Christian Folini. This is going to be published via the website.
