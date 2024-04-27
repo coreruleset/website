@@ -8,7 +8,7 @@ slug: 'coreruleset-v4-rc1-available'
 ---
 
 
-The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candidate 1 for the upcoming CRS v4.0.0 release. The release candidate is available from our [installation page](/docs/deployment/install/); see also the upgrade notes on that page.
+The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candidate 1 for the upcoming CRS v4.0.0 release. The release candidate is available from our [installation page](https://coreruleset.org/docs/deployment/install/); see also the upgrade notes on that page.
 
 **CRS 4 contains many important changes, such as:**
 
@@ -40,7 +40,7 @@ A lot of effort also went into improving our test suite, so that 100% of our rul
 
 Finally, we have worked on creating extensive documentation about all aspects of the CRS. You can find it under the [Documentation](https://coreruleset.org/docs/) section of our website. If you would like to make improvements, please go to the [repository](https://github.com/coreruleset/documentation/) and submit your pull request!
 
-For those wanting to try CRS 4, it is important to quickly touch upon the new plugin architecture. Some parts of CRS 3, such as the application exclusion rules (WordPress, Drupal, etc.), were split off into "plugins". As an admin, you can choose to install plugins or leave them out. In this way, we can more swiftly update plugins (for instance to deal with application updates), and we decrease the attack surface for admins who are not interested in their functionality. If you used the application exclusions in CRS 3, you will need to download the relevant plugin files and put them in your `plugins` subdirectory in CRS 4. [See here for extended information about working with plugins.](https://coreruleset.org/docs/configuring/plugins/)
+For those wanting to try CRS 4, it is important to quickly touch upon the new plugin architecture. Some parts of CRS 3, such as the application exclusion rules (WordPress, Drupal, etc.), were split off into "plugins". As an admin, you can choose to install plugins or leave them out. In this way, we can more swiftly update plugins (for instance to deal with application updates), and we decrease the attack surface for admins who are not interested in their functionality. If you used the application exclusions in CRS 3, you will need to download the relevant plugin files and put them in your `plugins` subdirectory in CRS 4. [See here for extended information about working with plugins.](https://coreruleset.org/docs/concepts/plugins/)
 
 Please see the [CHANGES.md](https://github.com/coreruleset/coreruleset/blob/v4.0/dev/CHANGES.md) file for a full list of the more than 200 changes, improvements and fixes. Each CHANGES entry links to the relevant pull requests, so you can dive into the specifics of a certain change.
 

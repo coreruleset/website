@@ -10,7 +10,7 @@ slug: 'crs-version-3-3-5-released'
 
 The OWASP ModSecurity Core Rule Set (CRS) team is pleased to announce the release of CRS v3.3.5.
 
-For downloads and installation instructions, please refer to the [Installation](https://coreruleset.org/installation/) page.
+For downloads and installation instructions, please refer to the [Installation](https://coreruleset.org/docs/deployment/install) page.
 
 This is a security release which fixes the [recently announced](https://coreruleset.org/20230717/cve-2023-38199-multiple-content-type-headers/) CVE-2023-38199, whereby it is possible to cause an impedance mismatch on some platforms running CRS v3.3.4 and earlier by submitting a request with multiple Content-Type headers.
 

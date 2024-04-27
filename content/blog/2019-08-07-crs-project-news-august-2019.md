@@ -15,8 +15,6 @@ Life is interfering and the rhythm of the CRS news is not what I would like it t
 
 - The OWASP Honeypot project that is based on CRS is running a Google Summer of Code  
     project, that aims for an up do date containerization of the honeypot.  
-    Link:  
-    <https://docs.google.com/document/d/1nyXuuS90TAy-UyeCE3vsoR7V5fUQ2adbxguEWdKjbiQ/edit>
 - O'Reilly is distributing a free 40 pages brochure about "Defense in Depth" by Stephen Gates.  
     CRS is featured prominently on page 22: "Today, most WAF vendors have implemented the OWASP ModSecurity Core Rule Set (CRS), which contains generic attack detection rules for use with ModSecurity or compatible WAFs."  
     Link:  

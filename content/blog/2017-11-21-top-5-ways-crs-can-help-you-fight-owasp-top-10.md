@@ -89,7 +89,7 @@ Admittedly, A9 goes far beyond Local File Inclusion. But these files are extreme
 
 ## Where to go from here?
 
-You should take CRS for a spin. The [default installation](https://coreruleset.org/installation/) only takes a couple of minutes. You can also use a ready-made [docker image](https://github.com/CRS-support/modsecurity-docker). And if you do all this in your lab or on a dev server, you can get a first feeling of CRS without risking anything.
+You should take CRS for a spin. The [default installation](https://coreruleset.org/docs/deployment/install/) only takes a couple of minutes. You can also use a ready-made [docker image](https://github.com/coreruleset/modsecurity-crs-docker). And if you do all this in your lab or on a dev server, you can get a first feeling of CRS without risking anything.
 
 There are a couple of [video presentations](https://www.youtube.com/watch?v=eO9gBAmKS58&feature=youtu.be) on our website that give an overview. And I also wrote a length introduction to CRS over at Linux Weekly News.
 

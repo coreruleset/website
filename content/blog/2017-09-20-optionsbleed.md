@@ -18,7 +18,7 @@ In spite of it's relative rarity you might be wonder if it can be protected agai
 
 Generally OWASP Core Rule Set will provide protection against HTTP level DOS attacks. In this case, the POC for the Optiosnbleed attack recommends making 100 subsequent requests. This could easily be blocked by configuring the DOS protection provided with OWASP CRS. To do this one could modify the crs-setup.conf to provide more strict limits. This may look similar to as follows:
 
-```
+```apacheconf
 SecAction \
     "id:900700,\
     phase:1,\
@@ -32,7 +32,7 @@ SecAction \
 
 It may be even easier to solve this. By default, OWASP CRS allows the following HTTP methods: GET, POST, HEAD, and OPTIONS. If you are not using the OPTIONS method for things like CORS, you can disable it. This could be done in the following manner:
 
-```
+```apacheconf
 SecAction \
     "id:900200,\
     phase:1,\

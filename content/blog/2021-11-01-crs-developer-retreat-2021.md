@@ -38,7 +38,7 @@ We want to formalize the documentation of our rules. This information is quite c
 
 #### Workshop: How to Avoid CVEs
 
-As you probably know, we suffered from a rule set bypass that resulted in a CRITICAL CVE ([CVE-2021-35368](https://coreruleset.org/20210630/cve-2021-35368-crs-request-body-bypass/)). During the retreat, we talked about this for a long time, since we really want to avoid this for the future. We're only an open source project, but we have hundreds of thousands of users and most big cloud providers have a CRS offering these days, so the question is essential: What can we as a project do to avoid merging such a devastating bug in the future?
+As you probably know, we suffered from a rule set bypass that resulted in a CRITICAL CVE ([CVE-2021-35368]({{< ref "blog/2021-06-30-cve-2021-35368-crs-request-body-bypass.md" >}})). During the retreat, we talked about this for a long time, since we really want to avoid this for the future. We're only an open source project, but we have hundreds of thousands of users and most big cloud providers have a CRS offering these days, so the question is essential: What can we as a project do to avoid merging such a devastating bug in the future?
 
 #### Workshop: Request Smuggling and Server Side Request Forgery
 

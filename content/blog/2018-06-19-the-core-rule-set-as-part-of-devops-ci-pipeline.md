@@ -43,7 +43,7 @@ This way, the application's traffic is tested with the CRS and we don't have to 
 
 ### CRS Docker Container
 
-As you can read [here](/docs/deployment/install), it only takes a few steps to install the Core Rule Set. And it gets even easier if you use it in a Docker Container.
+As you can read [here](https://coreruleset.org/docs/deployment/install/), it only takes a few steps to install the Core Rule Set. And it gets even easier if you use it in a Docker Container.
 
 I have created a Docker Image that inherits from the official OWASP ModSecurity Core Rule Set Container (<https://hub.docker.com/r/owasp/modsecurity-crs/>). My image adds an Apache reverse proxy configuration. The reverse proxy configuration is used to put the CRS in front of an application. It also adds some more CRS variables. The CRS container can be found at <https://hub.docker.com/r/franbuehler/modsecurity-crs-rp/>. This way, the CRS can be very quickly and easily integrated into automated tests.
 
@@ -229,7 +229,7 @@ Take the CI pipeline and the Docker container of this PoC and customize it for y
 
 ### Presentation and slides
 
-I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2018-zurich/program/franziska-buehler/), the [Open Cloud Day in Zurich](https://opencloudday.ch/wp-content/uploads/sites/6/2018/05/Franziska-Buehler_presentation_open_cloud_day.pdf), the [Open Security Summit in England](https://open-security-summit.org/tracks/devsecops/user-sessions/adding-crs3-pixi-to-circleci-pipeline/) and the [DevOps Meetup Bern](https://www.meetup.com/de-DE/DevOps-Bern/events/248088984/) where I explain this whole idea. The slides can be found at <https://www.slideshare.net/franbuehler> and the video from the DevOpsDays ZH can be found at <https://vimeo.com/271451246>.
+I gave a presentation at the [DevOpsDays ZH](https://www.devopsdays.org/events/2018-zurich/program/franziska-buehler/), the [Open Cloud Day in Zurich](https://www.ch-open.ch/en/open-cloud-day/ocd-program/web-application-firewall-friend-of-your-devops-chain/), the [Open Security Summit in England](https://2018.open-security-summit.org/tracks/devsecops/user-sessions/adding-crs3-pixi-to-circleci-pipeline/) and the [DevOps Meetup Bern](https://www.meetup.com/de-DE/DevOps-Bern/events/248088984/) where I explain this whole idea. The slides can be found at <https://www.slideshare.net/franbuehler> and the video from the DevOpsDays ZH can be found at <https://vimeo.com/271451246>.
 
 ### References
 

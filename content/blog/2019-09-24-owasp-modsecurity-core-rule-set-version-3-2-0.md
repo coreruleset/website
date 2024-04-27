@@ -10,7 +10,7 @@ slug: 'owasp-modsecurity-core-rule-set-version-3-2-0'
 
 **The OWASP ModSecurity Core Rule Set team is proud to announce the general availability of the OWASP ModSecurity Core Rule Set Version 3.2.0.**
 
-The new release is available for download at [](https://coreruleset.org/installation/)<https://coreruleset.org/installation/>
+The new release is available for download [here](https://coreruleset.org/docs/deployment/install/).
 
 This release represents a very big step forward in terms of both capabilities and protections including:
 
