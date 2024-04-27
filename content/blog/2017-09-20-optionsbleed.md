@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2017-09-20T03:15:37+02:00'
 title: OptionsBleed Defenses
+slug: 'optionsbleed'
 ---
 
 

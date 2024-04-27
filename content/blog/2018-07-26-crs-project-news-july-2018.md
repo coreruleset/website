@@ -16,8 +16,7 @@ So here we go for the CRS project newsletter for July 2018:
 
 ## What has happened in recent weeks
 
-- We met for the first CRS community summit in London on July 4, 2018 and then for an on-site developer meeting on Friday July 6. There is a blog post covering the Summit (and a photo below).  
-    Link: <https://coreruleset.org/20180712/reporting-from-the-first-crs-community-summit-in-london/>
+- We met for the first CRS community summit in London on July 4, 2018 and then for an on-site developer meeting on Friday July 6. There is a [blog post covering the Summit (and a photo below)]({{< ref "blog/2018-07-12-reporting-from-the-first-crs-community-summit-in-london.md"> }}).
 - The dev meeting (replacing the monthly chat for July) was very productive. Below is a list of decisions taken.
 - Chaim Sanders has been named release manager for 3.1. We are aiming for CRS 3.1 in September with a release candidate in August. CRS 3.2 should be ready in early Summer 2019.
 - We're launching the monthly newsletter anew. It's going to be edited by Christian Folini. This is going to be published via the website.
@@ -29,8 +28,8 @@ So here we go for the CRS project newsletter for July 2018:
     Link: <https://github.com/VerizonDigital/waflz>
 - Rodrigo Martinez from the University of Uruguay presented their work on Machine Learning with ModSecurity and the CRS at the summit. His presentation was based on a paper published earlier this year:  
     Link: <https://arxiv.org/pdf/1803.05529.pdf>
-- We have too many issues open on github. Federico Schwindt is starting an initiative to resolve open issues and bring down this number. As an immediate remedy, we are pointing users with support questions to stackoverflow (tag questions with "owasp-crs"). The mailinglist continues to be covered too (but was deemed a bit old-fashioned).  
-    Link: <https://stackoverflow.com/questions/tagged/owasp-crs>
+- We have too many issues open on github. Federico Schwindt is starting an initiative to resolve open issues and bring down this number. As an immediate remedy, we are pointing users with support questions to stackoverflow (tag questions with "coreruleset"). The mailinglist continues to be covered too (but was deemed a bit old-fashioned).  
+    Link: https://stackoverflow.com/search?tab=newest&q=is%3Aquestion+coreruleset
 - We created a channel named "coreruleset" on the OWASP Slack. There are no plans to move the monthly IRC community meeting just now. If you do not have access to the OWASP slack, you can get an invite from from the link below.  
     Link: <https://owasp.slack.com/>
 - Soroush Dalili ([@irsdl](https://twitter.com/irsdl)) presented a series of WAF bypasses at AppSecEU. CRS is affected by a charset manipulation via the Content-Type request header. (See below for a PR closing this hole)  

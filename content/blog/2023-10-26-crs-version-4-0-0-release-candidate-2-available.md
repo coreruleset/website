@@ -14,7 +14,7 @@ The OWASP ModSecurity Core Rule Set (CRS) team is proud to announce the availabi
 
 This new release candidate includes over 230 changes. Some of the important changes include:
 
-- Add new rule 920620 to explicitly detect multiple Content-Type abuse ([CVE-2023-38199](https://coreruleset.org/20230717/cve-2023-38199-multiple-content-type-headers/)) (Andrea Menin)
+- Add new rule 920620 to explicitly detect multiple Content-Type abuse ([CVE-2023-38199]({{< ref "blog/2023-07-17-cve-2023-38199-multiple-content-type-headers.md" >}})) (Andrea Menin)
 - Extend definition of restricted headers to include Content-Encoding and Accept-Charset by default (Walter Hop)
 - Migrate application exclusions and less-used functionality to plugins (Christian Folini, Max Leske, Jozef Sudolský, Andrew Howe)
 - Add support for HTTP/3 (Jozef Sudolský)
@@ -23,7 +23,7 @@ This new release candidate includes over 230 changes. Some of the important chan
 
 Refer to the CHANGES.md file in the release for the full list of changes.
 
-It is important to note that this new release candidate is **significantly different to the first release candidate** which was [announced and made available](https://coreruleset.org/20220428/coreruleset-v4-rc1-available/) back in April 2022. Two days after the v4.0.0 RC1 release, the CRS project [participated in a bug bounty program](https://coreruleset.org/20230509/what-we-learnt-from-our-bug-bounty-program-its-not-for-the-faint-of-heart/) in April-May 2022 which resulted in *175 security findings* being reported. The decision was made to fix the findings in full for the v4.0.0 release, rather than release a half-baked version 4.0 with many newly discovered holes.
+It is important to note that this new release candidate is **significantly different to the first release candidate** which was [announced and made available]({{< ref "blog/2022-04-28-coreruleset-v4-rc1-available.md" >}}) back in April 2022. Two days after the v4.0.0 RC1 release, the CRS project [participated in a bug bounty program]({{< ref "blog/2023-05-09-what-we-learnt-from-our-bug-bounty-program-its-not-for-the-faint-of-heart.md" >}}) in April-May 2022 which resulted in *175 security findings* being reported. The decision was made to fix the findings in full for the v4.0.0 release, rather than release a half-baked version 4.0 with many newly discovered holes.
 
 The fixes required a *significant* amount of work over many months. It was sometimes the case that adding the required new detection would cause unforeseen problems, such as introducing new false positives which then needed to be addressed. Fixing all of the security findings in full required the development of new tooling, new rules, new tests, and new approaches. This all took a lot of time to complete to the high standard expected from the CRS project, resulting in an unfortunate delay to v4.0.0.
 
