@@ -33,20 +33,20 @@ pip3 install msc-pyparser==0.3
 
 This gives you the `msc_parser` library for use in python script in the version 0.3.
 
-To get started it's useful to also grab crs\_read.py and crs\_write.py from the examples folder of the `msc_parser` github:
+To get started it's useful to also grab `crs_read.py` and `crs_write.py` from the examples folder of the `msc_parser` github:
 
-- [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/crs\_read.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py)
-- [https://raw.githubusercontent.com/digitalwave/`msc_parser`/master/examples/crs\_write.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_write.py)
+- [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/crs_read.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_read.py)
+- [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/crs_write.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/crs_write.py)
 
 The prefix hints at CRS, but they are generic in the way they execute.
 
 ### How to import the rule set?
 
-The rule set is of course imported with the help of a parser, the crs\_read.py we just grabbed wraps around that parser library. Let's download the CRS rule set from github and import it into the `msc_parser`.
+The rule set is of course imported with the help of a parser, the `crs_read.py` we just grabbed wraps around that parser library. Let's download the CRS rule set from github and import it into the `msc_parser`.
 
 Here is how:
 
-```sh
+```bash-session
 $> git clone https://github.com/coreruleset/coreruleset.git
 $> mkdir coreruleset/rules-yaml
 $> crs_read.py coreruleset/rules coreruleset/rules-yaml 
@@ -69,7 +69,7 @@ So everything has been transformed into a YAML format that describes the content
 
 The export is dead simple again:
 
-```sh
+```bash-session
 $> mkdir coreruleset/rules-new
 $> crs_write.py coreruleset/rules-yaml coreruleset/rules-new
 Parsing CRS structure: coreruleset/rules-yaml/REQUEST-901-INITIALIZATION.yaml
@@ -84,7 +84,7 @@ And this gives you the rule set in the new folder `coreruleset/rules-new`.
 If you want, you can check the original rules and the new copy is identical:
 
 ```sh
-$> ls coreruleset/rules/*.conf | while read F; do diff -q coreruleset/rules/$(basename $F) coreruleset/rules-new/$(basename $F); done
+ls coreruleset/rules/*.conf | while read F; do diff -q coreruleset/rules/$(basename $F) coreruleset/rules-new/$(basename $F); done
 ```
 
 If there is a difference, it will be reported. If there is no output, then you're OK.
@@ -99,7 +99,7 @@ There are quite a lot of CRS rules that change the audit engine with the help of
 
 `msc_parser` comes with several examples. They reside in the examples folder of the [`msc_parser` git](https://github.com/digitalwave/msc_pyparser/tree/master/examples).
 
-This script here is example 11: [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/example11\_remove\_auditlog.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py)
+This script here is example 11: [https://raw.githubusercontent.com/digitalwave/msc_parser/master/examples/example11_remove_auditlog.py](https://raw.githubusercontent.com/digitalwave/msc_pyparser/master/examples/example11_remove_auditlog.py)
 
 ```python
 #!/usr/bin/env python3
@@ -170,9 +170,9 @@ With the script executing successfully, you can now export the rules in rules-ya
 
 ### Example 2 - Add new tags to certain rules
 
-Maybe you have read the blog post about the plans to [introduce CAPEC tagging into CRS](https://coreruleset.org/20200608/overhauling-the-crs-tags/). We have implemented these changes (and it's already in the CRS v3.3 release) with the help of the `msc_parser`. We prepared the CAPEC tag for every rule in a seperate CSV file (-&gt; format: rule-id;tag).
+Maybe you have read the blog post about the plans to [introduce CAPEC tagging into CRS]({{< ref "blog/2020-06-08-overhauling-the-crs-tags.md" >}}). We have implemented these changes (and it's already in the CRS v3.3 release) with the help of the `msc_parser`. We prepared the CAPEC tag for every rule in a seperate CSV file (-> format: rule-id;tag).
 
-Ervin has provided us with an example named [example3\_addtag.py](https://github.com/digitalwave/msc_pyparser/blob/master/examples/example3_addtag.py) that prepends tags in front of the existing tag "OWASP\_CRS". For the CAPEC tagging, we've transformed the script into appendtag.py script by replacing the while loop (`while aidx < len…`) with a separate routine and then making sure the script takes rule ids and the tag to be appended as a command line parameter.
+Ervin has provided us with an example named [example3_addtag.py](https://github.com/digitalwave/msc_pyparser/blob/master/examples/example3_addtag.py) that prepends tags in front of the existing tag `"OWASP_CRS"`. For the CAPEC tagging, we've transformed the script into appendtag.py script by replacing the while loop (`while aidx < len…`) with a separate routine and then making sure the script takes rule ids and the tag to be appended as a command line parameter.
 
 ```python
 #!/usr/bin/env python3
@@ -277,7 +277,7 @@ done
 
 ```
 
-The wrapper script assumes, you have already executed crs\_read.py and the rules reside under coreruleset/rules-yaml. You will then get the new version with the additional tags in coreruleset/rules-yaml-new. Ready for the export with crs\_write.py.
+The wrapper script assumes, you have already executed `crs_read.py` and the rules reside under coreruleset/rules-yaml. You will then get the new version with the additional tags in coreruleset/rules-yaml-new. Ready for the export with `crs_write.py`.
 
 ### Example 3 - Remove certain rules from the rule set
 
@@ -397,7 +397,9 @@ if __name__ == "__main__":
 
 And here is how to call the script:
 
-`$> remove_rule_by_id.py /tmp/coreruleset/rules-yaml/REQUEST-920-PROTOCOL-ENFORCEMENT.yaml /tmp/coreruleset/rules-yaml-new/REQUEST-920-PROTOCOL-ENFORCEMENT.yaml 920180`
+```sh
+$> remove_rule_by_id.py /tmp/coreruleset/rules-yaml/REQUEST-920-PROTOCOL-ENFORCEMENT.yaml /tmp/coreruleset/rules-yaml-new/REQUEST-920-PROTOCOL-ENFORCEMENT.yaml 920180
+```
 
 Obviously, you need to wrap it again to loop over all the files. Namely when you are not quite sure in which the rule in question is residing.
 

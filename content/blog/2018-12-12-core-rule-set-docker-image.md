@@ -7,7 +7,7 @@ title: Core Rule Set Docker Image
 ---
 
 
-The Core Rule Set is installed in just four steps, as described in the [Installation Guide](https://coreruleset.org/installation/).
+The Core Rule Set is installed in just four steps, as described in the [Installation Guide](https://coreruleset.org/docs/deployment/install).
 
 Now, it's even easier using the CRS Docker container. The effort to start the CRS in front of an application is reduced to a few seconds and only one command.
 

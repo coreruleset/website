@@ -12,7 +12,7 @@ slug: 'owasp-modsecurity-core-rule-set-v3-3-0-available'
 
 The OWASP ModSecurity Core Rule Set team is proud to announce the final release for CRS v3.3.0.
 
-For downloads and installation instructions, please see the [Installation]("/docs/deployment/install") page.
+For downloads and installation instructions, please see the [Installation](https://coreruleset.org/docs/deployment/install/) page.
 
 This release packages many changes, such as:
 

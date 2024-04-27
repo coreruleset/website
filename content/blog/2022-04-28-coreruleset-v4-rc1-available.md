@@ -8,7 +8,7 @@ slug: 'coreruleset-v4-rc1-available'
 ---
 
 
-The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candidate 1 for the upcoming CRS v4.0.0 release. The release candidate is available from our [installation page](/docs/deployment/install/); see also the upgrade notes on that page.
+The OWASP ModSecurity Core Rule Set team is proud to announce the Release Candidate 1 for the upcoming CRS v4.0.0 release. The release candidate is available from our [installation page](https://coreruleset.org/docs/deployment/install/); see also the upgrade notes on that page.
 
 **CRS 4 contains many important changes, such as:**
 

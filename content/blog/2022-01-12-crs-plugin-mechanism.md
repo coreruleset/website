@@ -18,7 +18,7 @@ Plugins are sets of additional rules that you can plug in to your web applicatio
 
 #### Why do we Need Plugins?
 
-Installing only a minimal set of rules is desirable from a security perspective. A term often used is "minimizing the attack window". For CRS, this means that by having fewer rules, it is less likely to deploy a bug. In fact, CRS had a major bug in one of the rule exclusion packages which affected every standard CRS installation (see [CVE-2021-41773](https://coreruleset.org/20210630/cve-2021-35368-crs-request-body-bypass/)). By moving all rule exclusion packages into optional plugins, we will reduce the risk in this regard. So security is a prime driver for the introduction of plugins.
+Installing only a minimal set of rules is desirable from a security perspective. A term often used is "minimizing the attack window". For CRS, this means that by having fewer rules, it is less likely to deploy a bug. In fact, CRS had a major bug in one of the rule exclusion packages which affected every standard CRS installation (see [CVE-2021-41773]({{< ref "blog/2021-10-06-crs-protecting-users-from-apache-cve-2021-41773.md" >}})). By moving all rule exclusion packages into optional plugins, we will reduce the risk in this regard. So security is a prime driver for the introduction of plugins.
 
 A second driver is the need for certain functionality that we do not want to have in mainline CRS releases. Typical candidates include the following:
 
@@ -129,7 +129,7 @@ Plugins are a new idea for CRS as well, so we do not really have strict rules ab
 - Be careful when you interfere with CRS. You can disrupt CRS easily by excluding essential rules or by messing with variables.
 - Keep an eye on performance and think of use cases.
 
-##### Anomaly Scoring: Get the Phases Right 
+##### Anomaly Scoring: Get the Phases Right
 
 The anomaly scores are only initialized in the CRS rules file `REQUEST-901-INITIALIZATION.conf`. This happens in phase 1, but it still happens after your plugin's `*-before.conf` file has been executed for phase 1. So if you set anomaly scores there, it will be overwritten in CRS phase 1.  
 The effect for phase 2 anomaly scoring in the plugin's `*-after.conf` file is similar. It happens after the CRS request blocking happens in phase 2. This can mean you raise the anomaly score after the blocking decision. You might end up with a higher anomaly score in your log file and you will wonder why the request has not been blocked.

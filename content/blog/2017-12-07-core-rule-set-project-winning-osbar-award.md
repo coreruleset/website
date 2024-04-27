@@ -20,5 +20,5 @@ WAFs protect web applications from attacks like those outlined by the [OWASP Top
 
 ModSecurity was able to establish itself globally as the only open source offering among a large number of commercial WAF solutions. The OSBAR award for the standard ModSecurity rule set, CRS, therefore underlines the relevance of Open Source Software in a highly contested commercial market such as Web Application Firewalls.
 
-People interested in getting their feet wet with CRS will find [documentation](/docs/deployment/install/) and [videos](https://www.youtube.com/watch?v=eO9gBAmKS58) here on the site, as well as an extensive set of [tutorials](https://www.netnea.com/cms/apache-tutorials/) and also [public courses](https://www.feistyduck.com/training/modsecurity-training-course) (February in Zurich and Frankfurt in March).
+People interested in getting their feet wet with CRS will find [documentation](https://coreruleset.org/docs/deployment/install/) and [videos](https://www.youtube.com/watch?v=eO9gBAmKS58) here on the site, as well as an extensive set of [tutorials](https://www.netnea.com/cms/apache-tutorials/) and also [public courses](https://www.feistyduck.com/training/modsecurity-training-course) (February in Zurich and Frankfurt in March).
 
