@@ -43,7 +43,7 @@ Dune73 and csanders will work offline to determine the best way to minimize the 
 
 **Announcements:**
 
-- New draft of the poster [https://www.christian-folini.ch/poster1.jpg](https://www.christian-folini.ch/poster1.jpg). It’ll be sold through a poster store.
+- New draft of the poster for CRS3. It’ll be sold through a poster store.
 - Dune has a ModSec talk in Geneva in February 22 [https://swiss-cybersecurity.ch/upcoming-events](https://swiss-cybersecurity.ch/upcoming-events)
 - Netnea has an open position as posted on the ML, contact Dune73 for more information.
 
