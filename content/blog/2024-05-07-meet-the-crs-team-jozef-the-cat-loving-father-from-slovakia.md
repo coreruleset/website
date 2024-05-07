@@ -12,7 +12,7 @@ slug: 'meet-the-crs-team-jozef-the-cat-loving-father-from-slovakia'
 
 #### *Programming and entrepreneurship run in Jozef Sudolsky's family. When he's not working for his own web hosting company or for the CRS project, you can find him working out at the gym or in his large garden - or just playing with his daughter. His office is at the same time his daughter's playroom.*
 
-{{< figure src="images/2024/Jozef_Sudolsky_1.jpeg" caption="Our man in South America: Felipe Zipitría enjoys the views of Budpest at the CRS Developer Retreat 2023" >}}
+{{< figure src="images/2024/Jozef_Sudolsky_1.jpeg" caption="His own company, his daughter, four cats, a house, a large garden, and the CRS project keep him busy: Jozef Sudolsky aka azurit" >}}
 
 We met Jozef Sudolsky at the [November 2023 developer retreat](2023-11-05-universe-domination-plans-in-budapest-the-crs-developer-retreat-2023-day-1.md) in Budapest. It was the first time he met with the CRS core team in person. Jozef brought delicious Slovakian cheese and schnapps as a gift for the whole team. “I like cheese and schnapps,” he concedes. “But I like beer even more.” He once tried to brew his own beer but gave up after realizing it wasn't as easy as he probably thought. “It was drinkable, but too much work.”
 
