@@ -14,7 +14,7 @@ slug: 'meet-the-crs-team-jozef-the-cat-loving-father-from-slovakia'
 
 {{< figure src="images/2024/Jozef_Sudolsky_1.jpeg" caption="His own company, his daughter, four cats, a house, a large garden, and the CRS project keep him busy: Jozef Sudolsky aka azurit" >}}
 
-We met Jozef Sudolsky at the [November 2023 developer retreat](2023-11-05-universe-domination-plans-in-budapest-the-crs-developer-retreat-2023-day-1.md) in Budapest. It was the first time he met with the CRS core team in person. Jozef brought delicious Slovakian cheese and schnapps as a gift for the whole team. “I like cheese and schnapps,” he concedes. “But I like beer even more.” He once tried to brew his own beer but gave up after realizing it wasn't as easy as he probably thought. “It was drinkable, but too much work.”
+We met Jozef Sudolsky at the [November 2023 developer retreat]({{ ref "blog/2023-11-05-universe-domination-plans-in-budapest-the-crs-developer-retreat-2023-day-1.md" >}}) in Budapest. It was the first time he met with the CRS core team in person. Jozef brought delicious Slovakian cheese and schnapps as a gift for the whole team. “I like cheese and schnapps,” he concedes. “But I like beer even more.” He once tried to brew his own beer but gave up after realizing it wasn't as easy as he probably thought. “It was drinkable, but too much work.”
 
 Jozef was born in 1985 in the Slovak town of Banská Bystrica, then Czechoslovakia, the youngest of three children. If there is a gene for information technology, Jozef was obviously born with it. After all, he comes from a family of programmers: both his brother and sister studied computer science, and his father was a programmer. The fact that Jozef's mother was a math teacher instead of a computer scientist didn't hurt either.
 
@@ -46,7 +46,7 @@ But more than work and hobbies, Jozef loves spending time with his daughter, who
 
 In the end, his daughter was also the reason Jozef couldn't stay the whole week at the developer retreat. Instead, he had to say goodbye on Monday. “I want to go home because it's my turn to take care of her,” he explained. Of course, he could have arranged to stay longer. But that's not Jozef's understanding of family. “I want to be with her,” he says. His family has always played a big role in his life – and it still means a lot to him.
 
-*You can find Jozef on Slack under the username* azurit *. How to get onto the project Slack? You can get an invitation from <https://owasp.org/slack/invite>, once registered head to our channel #coreruleset.*
+*You can find Jozef on Slack under the username *azurit*. How to get onto the project Slack? You can get an invitation from <https://owasp.org/slack/invite>, once registered head to our channel #coreruleset.*
 
 
 ### Three more questions for the nerds …
