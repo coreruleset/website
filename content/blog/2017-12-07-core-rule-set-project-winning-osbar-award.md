@@ -7,6 +7,7 @@ tags:
   - ModSecurity
   - OSBAR
 title: Core Rule Set Project Won a German OSBAR Award!
+slug: 'core-rule-set-project-winning-osbar-award'
 ---
 
 
