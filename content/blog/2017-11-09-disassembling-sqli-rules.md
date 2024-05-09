@@ -12,7 +12,7 @@ I would like to explain my work disassembling highly optimized regular expressio
 
 ## What's the problem?
 
-The SQLi rules in the core rule set consist of 43 rules. 25 of them have been optimized with the [Perl module Regexp::Assemble](http://search.cpan.org/~rsavage/Regexp-Assemble-0.38/lib/Regexp/Assemble.pm). This module assembles multiple regular expressions into one regular expression.  
+The SQLi rules in the core rule set consist of 43 rules. 25 of them have been optimized with the [Perl module Regexp::Assemble](https://metacpan.org/pod/Regexp::Assemble). This module assembles multiple regular expressions into one regular expression.  
 The source patterns were lost over the years as they were taken from the old CRS project and partly from other projects, and source code management migrations led to the situation we are facing now.  
 Unfortunately, there is no tool for disassembling an optimized regex, so we did not have a chance to undo this optimization process and regain the original patterns.
 
