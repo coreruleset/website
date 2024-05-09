@@ -7,6 +7,7 @@ tags:
   - CRS-News
   - Felipe Zipitria
 title: CRS names Felipe Zipitría as third Co-Lead
+slug: 'crs-names-felipe-zipitria-as-third-co-lead'
 ---
 
 
