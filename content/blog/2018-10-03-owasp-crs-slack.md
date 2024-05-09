@@ -4,6 +4,7 @@ categories:
   - Blog
 date: '2018-10-03T14:16:02+02:00'
 title: Join us on the OWASP Slack!
+slug: 'owasp-crs-slack'
 ---
 
 
