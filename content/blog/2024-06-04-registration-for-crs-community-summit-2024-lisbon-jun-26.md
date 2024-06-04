@@ -3,7 +3,7 @@ author: dune73
 categories:
   - Blog
 date: '2024-06-04T10:52:50+01:00'
-title: Registration for the OWASP CRS Community Summit 2024 - Lisbon, Juni 26
+title: Registration for the OWASP CRS Community Summit 2024 - Lisbon, June 26
 slug: 'registration-for-crs-community-summit-2024-lisbon-jun-26'
 ---
 
