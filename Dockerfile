@@ -18,7 +18,7 @@ RUN URL=$(curl -s https://api.github.com/repos/sass/dart-sass/releases/${SASS_VE
     tar xf ${SASS_VERSION}.tar.gz && \
     mv dart-sass/sass /usr/bin/sass
 
-FROM mcr.microsoft.com/devcontainers/javascript-node@sha256:bbd5e0faa919bfb7470e649c9f09a0c06546eb9a4c7f18322d35cd2dbfe4a69f
+FROM mcr.microsoft.com/devcontainers/javascript-node@sha256:cad3951c5a6ff844e5b080541b5a0fee63fc18b21adc9f4854a7b50b9775f4fd
 COPY --from=build /usr/bin/hugo /usr/bin
 COPY --from=build /usr/bin/sass /usr/bin
 EXPOSE 1313
