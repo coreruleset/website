@@ -27,8 +27,7 @@ The most important news is the publication of the release candidate 1 for CRS 3.
     Link: <https://github.com/coreruleset/coreruleset>
 - Interview with CRS project co-lead Christian Folini on the AppSec podcast  
     Link: <https://coreruleset.org/20180809/appsec-podcast-interviewing-crs-project-co-lead-christian-folini/>
-- Webinar on ModSecurity and CRS3 with Owen Garett, Head of Products at NGINX: The webinar covered installation of ModSec3 and CRS3, but also integration and tuning for false positives and performance. It can be watched on demand after registration.
-    Link:[ https://www.nginx.com/watch-on-demand/?id=modsecurity-and-nginx-tuning-the-owasp-core-rule-set-emea](https://www.nginx.com/watch-on-demand/?id=modsecurity-and-nginx-tuning-the-owasp-core-rule-set-emea)
+- Webinar on ModSecurity and CRS3 with Owen Garett, Head of Products at NGINX: The webinar covered installation of ModSec3 and CRS3, but also integration and tuning for false positives and performance. It can be watched on demand after registration (link no longer available)
 - There is a missing feature in ModSecurity 3.0.x that makes it choke on the upcoming CRS 3.1 release. There is an official patch available and the development tree of ModSecurity has the fix. But Trustwave has not yet released the ModSecurity with the fix anew. This may mean that users of the officially release ModSecurity 3 software will fail to run CRS 3.1 after our release.
     Link: <https://github.com/SpiderLabs/ModSecurity/issues/1797>
 - Maxmind, the company behind the popular GeoIP database used by ModSecurity ceased to release the legacy format of the database. ModSec 2.9 only supports this legacy version, so users are in a bad position. CRS developer Christoph Hansen posted on the ModSec mailinglist he was able to transpose the new GeoIP database into the old format so he could continue to use it. A blog post is in the making.
