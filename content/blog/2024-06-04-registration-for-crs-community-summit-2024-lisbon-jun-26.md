@@ -20,7 +20,7 @@ The program is still in the making, but we have the following talks fixed.
 
 - Welcoming address
 - Lukas Funk, United Security Providers: From USP Secure Entry Server to CoreWAAP with CRS and Coraza
-- Ervin Hegedüs, OWASP ModSecurity - What happened in the last half year
+- Ervin Hegedüs, ModSecurity Regression Test Set - a rule set to test the whole engine.
 - Juan-Pablo Tosso, Seclang 2.0: Deliberations on a new language to describe WAF rules
 - Felipe Zipitría, CRS co-lead: Automatic testing of CVEs against CRS (Project Seaweed)
 - Christian Folini, CRS co-lead: CRS plugin workshop
