@@ -8,6 +8,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN
 permissions:
   contents: read
+  issues: write
 
 # Default to bash
 defaults:
@@ -52,7 +53,8 @@ jobs:
           npx -y pagefind --site public
 
       - name: Restore lychee cache
-        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        id: restore-cache
+        uses: actions/cache/restore@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         with:
             path: .lycheecache
             key: cache-lychee-${{ github.sha }}
@@ -66,13 +68,18 @@ jobs:
             args: "-c lychee.toml --cache --max-cache-age 1d -E './content/**/*.md'"
             jobSummary: true
 
-              #      - name: Create Issue From File
-              #if: env.lychee_exit_code != 0
-              #uses: peter-evans/create-issue-from-file@v5
-              #permissions:
-              #issues: write
-              #with:
-              #title: Link Checker Report
-              #content-filepath: ./lychee/out.md
-              #labels: report, automated issue
+      - name: Create Issue From File
+        if: env.lychee_exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue
+
+      - name: Save lychee cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .lycheecache
+          key: ${{ steps.restore-cache.outputs.cache-primary-key }}
 
