@@ -1,4 +1,5 @@
 # CRS Project Website Repository
+[![Check Links](https://github.com/coreruleset/website/actions/workflows/test.yml/badge.svg)](https://github.com/coreruleset/website/actions/workflows/test.yml)
 
 This repository contains the website for the OWASP CRS Project.
 

@@ -1,3 +1,3 @@
-exclude = ["piwik.netnea.com", "github.com/*", "trustwave.com", "www.redbubble.com", "stackoverflow.com", "gartner.com", "asciinema.org", "secjuice.com"]
+exclude = ["piwik.netnea.com", "github.com/*", "trustwave.com", "www.redbubble.com", "stackoverflow.com", "gartner.com", "asciinema.org", "secjuice.com", "vimeo.com"]
 user-agent = "Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/81.0"
 no-progress = true

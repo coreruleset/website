@@ -3,5 +3,8 @@
   "extends": [
     "local>coreruleset/renovate-config",
     "schedule:weekly"
-  ]
+  ],
+  "git-submodules": {
+    "enabled": true
+  }
 }
