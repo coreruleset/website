@@ -70,14 +70,14 @@ jobs:
 
       - name: Create Issue From File
         if: env.lychee_exit_code != 0
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5
         with:
           title: Link Checker Report
           content-filepath: ./lychee/out.md
           labels: report, automated issue
 
       - name: Save lychee cache
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         if: always()
         with:
           path: .lycheecache
