@@ -5,5 +5,20 @@
   ],
   "git-submodules": {
     "enabled": true
-  }
+  },
+  "customManagers": [
+    {
+      "description": "CRS: Latest Release",
+      "customType": "regex",
+      "fileMatch": [
+        "^config/_default/params\\.yaml$"
+      ],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "latest_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+      ],
+      "depNameTemplate": "coreruleset/coreruleset",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
 }
