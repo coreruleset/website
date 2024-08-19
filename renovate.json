@@ -32,7 +32,7 @@
       ],
       "depNameTemplate": "coreruleset/coreruleset",
       "datasourceTemplate": "github-releases",
-      "versioningTemplate": "same-minor"
+      "allowedValues": "minor, patch, prerelease"
     }
   ]
 }
