@@ -19,20 +19,6 @@
       ],
       "depNameTemplate": "coreruleset/coreruleset",
       "datasourceTemplate": "github-releases"
-    },
-    {
-      "description": "CRS: Previous Major Release",
-      "customType": "regex",
-      "fileMatch": [
-        "^config/_default/params\\.yaml$"
-      ],
-      "matchStringsStrategy": "any",
-      "matchStrings": [
-        "prev_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
-      ],
-      "depNameTemplate": "coreruleset/coreruleset",
-      "datasourceTemplate": "github-releases",
-      "versioningTemplate": "same-major"
     }
   ]
 }
