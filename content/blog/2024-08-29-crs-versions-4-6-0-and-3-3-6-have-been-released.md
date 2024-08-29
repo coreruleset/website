@@ -1,5 +1,5 @@
 ---
-title: CRS Versions 4.6.0 and 3.3.6 have been released
+title: CRS versions 4.6.0 and 3.3.6 have been released
 date: 2024-08-29
 author: amonachesi
 categories:
