@@ -26,3 +26,5 @@ Release 4.6.0 contains other features and fixes like
 -	the removal of unnecessary chain rule and capture in rule 921180 by [@EsadCetiner](https://github.com/EsadCetiner) ([#3787](https://github.com/coreruleset/coreruleset/pull/3787))
 -	a fix for rule 942160 by checking against REQUEST_FILENAME by [@mat1010](https://github.com/mat1010) ([#3782](https://github.com/coreruleset/coreruleset/pull/3782))
 -	an update of rule 932270's version variable by [@airween](https://github.com/airween) ([#3786](https://github.com/coreruleset/coreruleset/pull/3786))
+
+All users are requested to update to the new releases.
