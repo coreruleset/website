@@ -5,7 +5,7 @@ author: amonachesi
 categories:
     - Blog
 ---
-We have recently released version [4.6.0](https://github.com/coreruleset/coreruleset/releases/tag/v4.6.0) for CRS 4, fixing a serious problem. As this problem affects CRS 3 as well, we also did a backport release for v3. ([3.3.6](https://github.com/coreruleset/coreruleset/releases/tag/v3.3.6)).
+We have recently released version [4.6.0](https://github.com/coreruleset/coreruleset/releases/tag/v4.6.0) for CRS 4, fixing a serious problem. As this problem affects CRS 3 as well, we also did a backport release for v3. ([3.3.6](https://github.com/coreruleset/coreruleset/releases/tag/v3.3.6)). All users are requested to update to the new releases.
 
 The new releases tackle two multipart file upload bypass methods that were reported by [@luelueking](https://github.com/luelueking):
 
@@ -26,5 +26,3 @@ Release 4.6.0 contains other features and fixes like
 -	the removal of unnecessary chain rule and capture in rule 921180 by [@EsadCetiner](https://github.com/EsadCetiner) ([#3787](https://github.com/coreruleset/coreruleset/pull/3787))
 -	a fix for rule 942160 by checking against REQUEST_FILENAME by [@mat1010](https://github.com/mat1010) ([#3782](https://github.com/coreruleset/coreruleset/pull/3782))
 -	an update of rule 932270's version variable by [@airween](https://github.com/airween) ([#3786](https://github.com/coreruleset/coreruleset/pull/3786))
-
-All users are requested to update to the new releases.
