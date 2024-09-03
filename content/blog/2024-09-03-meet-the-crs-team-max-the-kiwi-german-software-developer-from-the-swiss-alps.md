@@ -13,7 +13,7 @@ slug: 'meet-the-crs-team-max-the-kiwi-german-software-developer-from-the-swiss-a
 
 #### *Max Leske is not a security expert per se. And maybe that's exactly what makes him such an important CRS core team member. Max is perhaps the most global member of the team: after a brief detour to the other side of the globe, the Berlin native grew up in the Swiss mountains. In everything he does – and he does a lot – he attaches great importance to having fun. For him, the most important thing about the CRS project is the people.*
 
-{{< figure src="images/2024/08/Max_Leske_1.jpg" caption="Whether it's work or sports – he just wants to enjoy what he's doing: Max Leske aka theseion" >}}
+{{< figure src="images/2024/09/Max_Leske_1.jpg" caption="Whether it's work or sports – he just wants to enjoy what he's doing: Max Leske aka theseion" >}}
 
 *After [Franziska “Fränzi” Bühler]({{< ref "blog/2023-01-17-meet-the-crs-team-franzi-the-puzzle-loving-hard-worker-with-a-mission.md" >}}), Max Leske is the second Swiss member of the CRS core team to be presented here with a developer profile. As with Fränzi, we met in the café of the Stauffacher bookshop in the Swiss capital Bern.*
 
@@ -31,7 +31,7 @@ It was at Netstyle that he first came into contact with CRS. Netstyle offered a 
 
 Max has now been working at Xovis AG, a specialist for people flow analysis, for almost five years. Originally employed as a Java programmer, he now works as a full-stack developer in Java, .Net, Go and Python. As his employer Xovis has no commitment to CRS, working on the rule set is a hobby for Max – albeit a time-consuming one. He spends perhaps five to six hours a week on it, and in intensive phases he can easily spend ten to twelve hours. He does this in his free time in the mornings and evenings, sitting at his computer at home. “I can concentrate well in my home office.” He shares his apartment in Bern with his long-term girlfriend. “We don't have any noisy children or annoying pets,” Max explains with a smile. 
 
-{{< figure src="images/2024/08/Max_Leske_1.jpg" caption="If Max isn't working he likes to hang around ..." >}}
+{{< figure src="images/2024/09/Max_Leske_1.jpg" caption="If Max isn't working he likes to hang around ..." >}}
 
 As a professional software developer, Max brings special expertise to the CRS project that few other members of the core team have to this extent. His favorite topics are automation and tooling, which are typical software development topics. He would very much welcome reinforcement of the CRS team, as there is plenty of work. “We have many exciting projects that are part of CRS: container images that need to be maintained; a toolchain for automation; go-ftw for testing; parsers for verification; automated CVE tests …” However, day-to-day business, i.e. fixing bugs and answering questions about the rules, takes up a lot of time, that is then not available for these projects. Support is, therefore, very welcome in all areas – and not just from security specialists, as Max emphasizes: “The CRS project benefits enormously when we combine diverse expertise in the team.”
 
