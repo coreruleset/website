@@ -11,7 +11,7 @@ slug: 'meet-the-crs-team-max-the-kiwi-german-software-developer-from-the-swiss-a
 
 
 
-#### *Max Leske is not a security expert, but nevertheless plays an important role in the CRS core team as a software developer. Max is perhaps the most global member of the team: after a brief detour to the other side of the globe, the Berlin native grew up in the Swiss mountains. In everything he does – and he does a lot – he attaches great importance to having fun. For him, the most important thing about the CRS project is the people.*
+#### *Max Leske is not a security expert per se. And maybe that's exactly what makes him such an important CRS core team member. Max is perhaps the most global member of the team: after a brief detour to the other side of the globe, the Berlin native grew up in the Swiss mountains. In everything he does – and he does a lot – he attaches great importance to having fun. For him, the most important thing about the CRS project is the people.*
 
 {{< figure src="images/2024/08/Max_Leske_1.jpg" caption="Whether it's work or sports – he just wants to enjoy what he's doing: Max Leske aka theseion" >}}
 
