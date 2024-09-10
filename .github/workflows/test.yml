@@ -62,7 +62,7 @@ jobs:
 
       - name: Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@d4128702eae98bbc5ecf74df0165a8156c80920a # for v1.9.3
+        uses: lycheeverse/lychee-action@c38ba4f281730ee0d64e6963f49b708e01567b86 # for v1.9.3
         with:
             fail: false
             args: "-c lychee.toml --cache --max-cache-age 1d -E './content/**/*.md'"
