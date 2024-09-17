@@ -17,4 +17,4 @@ While the OWASP CRS does not provide coverage against DDoS, credential stuffing 
 
 As an open source project, CRS relies on volunteer developers and commercial partners supporting our work. Ajay Kapur, Edgio’s Chief Technology Officer, explains its commitment: "We value the contributions of the CRS community and look forward to further expanding the reach of OWASP CRS rules across the industry." There is a bright future ahead for CRS and we look forward to a fruitful cooperation with our new partner Edgio.
 
-Link to Edgio’s [announcement](https://investors.edg.io/news-releases/news-release-details/edgio-sponsors-owasp-modsecurity-crs-further-advance-application).
+Link to Edgio’s [announcement](http://web.archive.org/web/20240905201644/https://investors.edg.io/news-releases/news-release-details/edgio-sponsors-owasp-modsecurity-crs-further-advance-application)

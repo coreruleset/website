@@ -122,4 +122,4 @@ Dissecting this new rule, it checks the path of the request, and for all other U
 
 Summarising our new rules, we alter the Core Rule Set’s SQL injection rules to stop them scanning across all parameters, and then add back just the SearchTerm parameter. To stop that parameter from running on all pages, we then remove it again if the current request isn’t for the Product Search page.
 
-Many thanks to Christian Folini for helping me come up with these rules, and to the other folks on the [OWASP ModSecurity Core Rule Set mailing list](https://lists.owasp.org/mailman/listinfo/owasp-modsecurity-core-rule-set).
+Many thanks to Christian Folini for helping me come up with these rules, and to the other folks on the [OWASP CRS mailing list](https://groups.google.com/a/owasp.org/g/modsecurity-core-rule-set-project)
