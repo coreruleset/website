@@ -24,4 +24,4 @@ From now on, we will hold our monthly development meetings in the Slack channel 
 
 See you there!
 
-PS: for CRS/ModSecurity help questions, we prefer that you use public forums such as the [CRS mailing list](https://lists.owasp.org/mailman/listinfo/owasp-modsecurity-core-rule-set) or StackOverflow. This will ensure that your question and the answers will be searchable, so that others can also learn from them. Thank you!
+PS: for CRS help questions, we prefer that you use public forums such as the [CRS Google Group](https://groups.google.com/a/owasp.org/g/modsecurity-core-rule-set-project) or StackOverflow. This will ensure that your question and the answers will be searchable, so that others can also learn from them. Thank you!

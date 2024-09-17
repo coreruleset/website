@@ -21,7 +21,7 @@ The most important news is the publication of the release candidate 1 for CRS 3.
   - More pre-made exclusion packs for popular web applications  
   - Reconstructed and improved SQL injections protections  
   - Various bug fixes and optimizations  
-    Announcement: <https://lists.owasp.org/pipermail/owasp-modsecurity-core-rule-set/2018-September/002586.html>
+    Announcement: <http://web.archive.org/web/20230830054004/https://lists.owasp.org/pipermail/owasp-modsecurity-core-rule-set/2018-September/002586>
     Download: <https://github.com/coreruleset/coreruleset/releases/tag/v3.1.0-rc1>
 - The development has been moved to the 3.2/dev branch, some changes will be backported to 3.1.
     Link: <https://github.com/coreruleset/coreruleset>

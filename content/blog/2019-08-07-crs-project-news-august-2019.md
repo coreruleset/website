@@ -27,7 +27,7 @@ Life is interfering and the rhythm of the CRS news is not what I would like it t
     Link:  
     <{{< ref "blog/2019-06-27-announcement-owasp-modsecurity-core-rule-set-version-3-1-1.md" >}}>.
 - There is a new, bi-monthly CRS / ModSecurity Meetup in Bern, Switzerland. The first edition ran on June 26 2019 and we got 14 people together in the room.  
-    Link: <https://www.puzzle.ch/de/blog/articles/2019/07/02/erstes-treffen-der-crs-community-in-bern>
+    Link: <http://web.archive.org/web/20200807130543/https://www.puzzle.ch/de/blog/articles/2019/07/02/erstes-treffen-der-crs-community-in-bern>
 - Brian Krebs blogged about the CapitalOne breach and blamed it on an SSRF (server-side request forgery) on the ModSecurity WAF running CRS. However, this is likely wrong as a more detailed blog post at AppSecco explained. It's rather a SSRF that CRS did not block. Either because it was not detected (that is quite likely, as SSRF is really hard to detect with generic rules) or because the WAF was in monitoring mode.  
     Link:  
     <https://krebsonsecurity.com/2019/08/what-we-can-learn-from-the-capital-one-hack/>  
