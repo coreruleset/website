@@ -34,4 +34,4 @@ Aside from the security fix, the v4.8.0 release also includes a few other minor 
 Please feel free to contact us with any questions or concerns about this release via the usual channels: directly via the [CRS GitHub repository](https://github.com/coreruleset/coreruleset), in our Slack channel (#coreruleset on [owasp.slack.com](https://owasp.slack.com/)), or on our [mailing list](https://groups.google.com/a/owasp.org/g/modsecurity-core-rule-set-project).
 
 Sincerely,  
-Andrew Howe on behalf of the Core Rule Set development team
+Andrew Howe on behalf of the CRS development team
