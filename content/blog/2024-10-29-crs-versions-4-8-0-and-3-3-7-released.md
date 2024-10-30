@@ -7,7 +7,7 @@ title: CRS versions 4.8.0 and 3.3.7 released
 slug: 'crs-versions-4-8-0-and-3-3-7-released'
 ---
 
-The OWASP ModSecurity Core Rule Set (CRS) team is pleased to announce the release of two new CRS versions: v4.8.0 and v3.3.7.
+The OWASP CRS team is pleased to announce the release of two new CRS versions: v4.8.0 and v3.3.7.
 
 For downloads and installation instructions, please refer to the [Installation](https://coreruleset.org/docs/deployment/install/) page.
 
