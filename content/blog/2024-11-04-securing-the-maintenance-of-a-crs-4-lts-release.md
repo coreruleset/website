@@ -2,7 +2,7 @@
 author: dune73
 categories:
   - Blog
-date: '2024-06-04T10:52:50+01:00'
+date: '2024-11-06T10:52:50+01:00'
 title: Securing the Maintenance of a CRS 4 LTS release
 slug: 'securing-the-maintenance-of-a-crs-4-lts-release'
 ---
@@ -24,7 +24,7 @@ Maintaining a Long-Term Support (LTS) version of a software project like OWASP C
 
 ##The Dev-On-Duty Program: A Model to Follow
 
-With the [Dev-on-Duty program]({{< ref "blog/2024-11-04-securing-the-maintenance-of-a-crs-4-lts-release" >}}), we guarantee responses for support questions around CRS via multiple channels. We can guarantee this, because we are paying CRS developers a weekly fee to cover this service. And the fee is paid out of the funds that our existing sponsors contribute to CRS. This benefits the community and the project in an extraordinary way: the community can seek assistance on the preferred channel, GitHub issues are addressed and cleaned away, the development of the project is not dragged down by the influx of support calls, the developers stay in touch with the problems of ordinary users, and the developers in the Dev-on-Duty program earn a bit of money on the side and the sponsors are contributing substantially to the well-being of the project.
+With the [Dev-on-Duty program]({{< ref "blog/2021-04-14-introducing-the-dev-on-duty-program.md" >}}), we guarantee responses for support questions around CRS via multiple channels. We can guarantee this, because we are paying CRS developers a weekly fee to cover this service. And the fee is paid out of the funds that our existing sponsors contribute to CRS. This benefits the community and the project in an extraordinary way: the community can seek assistance on the preferred channel, GitHub issues are addressed and cleaned away, the development of the project is not dragged down by the influx of support calls, the developers stay in touch with the problems of ordinary users, and the developers in the Dev-on-Duty program earn a bit of money on the side and the sponsors are contributing substantially to the well-being of the project.
 
 We are now seeking a similar model for the maintenance of an LTS release: we want to bring an LTS to our users without dragging down overall development.
 
