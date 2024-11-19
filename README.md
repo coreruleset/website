@@ -9,7 +9,10 @@ The generated website is automatically updated at https://coreruleset.org/. If y
 
 ## Requirements
 
-You can edit the documentation on your local system. You will need is the latest [Hugo binary](https://gohugo.io/getting-started/installing/) for your OS (Windows, Linux, Mac), and a working NodeJS compiler (required by the theme we use).
+You can edit the documentation on your local system. You will need:
+- the latest [Hugo binary](https://gohugo.io/getting-started/installing/) for your OS (Windows, Linux, Mac)
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing dependencies
+- [dart-sass](https://github.com/sass/dart-sass) for transpiling to CSS
 
 **Important: You need a modern version of Hugo, _extended_ version >= 0.123.0.**
 
