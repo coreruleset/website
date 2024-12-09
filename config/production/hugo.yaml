@@ -6,9 +6,3 @@ enableRobotsTXT: true
 build:
   writeStats: true
 
-# Services
-params:
-  services:
-    matomoAnalytics:
-      id: "4"
-      url: "piwik.netnea.com/matomo"
