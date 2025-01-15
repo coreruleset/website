@@ -53,25 +53,25 @@ en:
       weight: 3
     - identifier: "installation"
       name: "Installing"
-      url: "/docs/deployment/install/"
+      url: "/docs/1-getting-started/1-1-crs-installation/"
       weight: 1
       post: "How to deploy CRS"
       parent: "docs"
     - identifier: "fulldoc"
       name: "Deep Dive"
       post: "See our full documentation"
-      url: "/docs/"
+      url: "/docs/1-getting-started/1-1-crs-installation/"
       weight: 2
       parent: "docs"
     - identifier: "writing"
       name: "Writing Rules"
-      url: "/docs/rules/creating/"
+      url: "/docs/3-about-rules/creating/"
       weight: 3
       post: "Tips on writing rules for CRS"
       parent: "docs"
     - identifier: "contributing"
       name: "Contributing"
-      url: "/docs/development/contribution_guidelines/"
+      url: "/docs/6-development/6-1-contribution-guidelines/"
       weight: 3
       post: "Learn how to contribute"
       parent: "docs"
