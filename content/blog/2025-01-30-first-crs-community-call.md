@@ -22,6 +22,6 @@ In the last segment, we want to give you time to ask any questions, be it CRS ba
 
 {{< figure src="images/2025/community-call-2025-03-17.png" alt="Join the first CRS community call with Christian Folini" >}}
 
-The first community call will take place on **March 17, from 20:30 to 21:30 CET** (19:30 UTC / 2:30 p.m. ET). Head over to the [registration page]({{% ref "/registration.md" %}}) to grab the link to the call.
+The first community call will take place on **March 17, from 20:30 to 21:30 CET** (19:30 UTC / 2:30 p.m. ET). Head over to the [registration page](/registration/community-call) to grab the link to the call.
 
 We're looking forward to seeing some old and, hopefully, many new faces :wave:.
