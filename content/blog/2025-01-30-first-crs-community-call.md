@@ -1,5 +1,5 @@
 ---
-date: '2025-01-10'
+date: '2025-02-03'
 categories:
   - Blog
 title: 'First CRS community call'
