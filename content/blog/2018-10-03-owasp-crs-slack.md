@@ -18,7 +18,7 @@ To join:
 
 1. Go to <https://owasp.org/slack/invite>
 2. Register with your e-mail address.
-3. When in the Slack, find our channel in the channel list, or simply type: <tt>/join #coreruleset</tt>
+3. When in the Slack, find our channel in the channel list, or simply type: `/join #coreruleset`
 
 From now on, we will hold our monthly development meetings in the Slack channel (first Monday of every month).
 
