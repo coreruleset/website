@@ -10,10 +10,10 @@ slug: 'crs-version-3-3-3-and-3-2-2-covering-several-cves'
 
 **Release announcement covering fixes for CVE-2022-39955, CVE-2022-39956, CVE-2022-39957 and CVE-2022-39958, additional security fixes and security fixes in the latest ModSecurity releases 2.9.6 and 3.0.8.**
 
-The OWASP ModSecurity Core Rule Set (CRS) team is pleased to announce the release of two new CRS versions.  
+The OWASP ModSecurity Core Rule Set (CRS) team is pleased to announce the release of two new CRS versions.
 *Edit: Updated download links now to refer to the [fixed versions](https://coreruleset.org/20220920/crs-version-3-3-4-and-3-2-3/).*
 
-Version 3.3.4 — <https://github.com/coreruleset/coreruleset/releases/tag/v3.3.4>  
+Version 3.3.4 — <https://github.com/coreruleset/coreruleset/releases/tag/v3.3.4>
 Version 3.2.3 — <https://github.com/coreruleset/coreruleset/releases/tag/v3.2.3>
 
 This is a security release fixing several partial rule set bypasses with HIGH or even CRITICAL severity described in the following CVEs:
@@ -73,7 +73,7 @@ Official CVE: [CVE-2022-39957](https://www.cve.org/CVERecord?id=CVE-2022-39957)
 
 #### CVE-2022-39958 – Small range header leading to response rule set bypass
 
-The OWASP ModSecurity Core Rule Set (CRS) is affected by a response body bypass to sequentially exfiltrate small and undetectable sections of data by repeatedly submitting an HTTP <mark class="has-inline-color" style="background-color:rgba(0, 0, 0, 0);color:#fb0000"></mark>range header field with a small byte range. A restricted resource, access to which would ordinarily be detected, may be exfiltrated from the backend, despite being protected by a web application firewall that uses CRS. Short subsections of a restricted resource may bypass pattern matching techniques and allow undetected access. The legacy CRS versions 3.0.x and 3.1.x are affected, as well as the currently supported versions 3.2.1 and 3.3.2. Integrators and users are advised to upgrade to 3.2.2 and 3.3.3 respectively and to configure a CRS paranoia level of 3 or higher.
+The OWASP ModSecurity Core Rule Set (CRS) is affected by a response body bypass to sequentially exfiltrate small and undetectable sections of data by repeatedly submitting an HTTP range header field with a small byte range. A restricted resource, access to which would ordinarily be detected, may be exfiltrated from the backend, despite being protected by a web application firewall that uses CRS. Short subsections of a restricted resource may bypass pattern matching techniques and allow undetected access. The legacy CRS versions 3.0.x and 3.1.x are affected, as well as the currently supported versions 3.2.1 and 3.3.2. Integrators and users are advised to upgrade to 3.2.2 and 3.3.3 respectively and to configure a CRS paranoia level of 3 or higher.
 
 This vulnerability was discovered and reported by [@Karel\_Origin](https://twitter.com/Karel_Origin) (Karel Knibbe) during the Intigriti 1337UP0522 WAF Promotion Event.  
   

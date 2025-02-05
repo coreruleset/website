@@ -8,7 +8,7 @@ title: "What we learnt from our bug bounty program: It's not for the faint of he
 
 
 {{< figure src="images/2023/05/entomologists-collection.jpg" caption="A bug hunter's collection with some nice specimens (Photo: FreeImages.com/pi242)" >}}
-OWASP CRS is the dominant open source web application firewall (WAF) rule set that powers countless servers, commercial WAFs and runs on many CDNs and cloud platforms. Yahoo and Intigriti helped OWASP CRS organize a three week bug bounty program in Spring 2022. A well prepared earlier attempt had not given any results, literally zero reports, so CRS walked into this 2<sup>nd</sup> round in a somewhat naive way. But an avalanche of reports and the professionalism of our partners woke us up real quick. Still, fixing all the findings took us very, very long and we had moments where I feared it would kill our project. Here is a somewhat lengthy report about our journey.
+OWASP CRS is the dominant open source web application firewall (WAF) rule set that powers countless servers, commercial WAFs and runs on many CDNs and cloud platforms. Yahoo and Intigriti helped OWASP CRS organize a three week bug bounty program in Spring 2022. A well prepared earlier attempt had not given any results, literally zero reports, so CRS walked into this 2^nd^ round in a somewhat naive way. But an avalanche of reports and the professionalism of our partners woke us up real quick. Still, fixing all the findings took us very, very long and we had moments where I feared it would kill our project. Here is a somewhat lengthy report about our journey.
 
 ### Bug bounties for open source projects
 
@@ -18,7 +18,7 @@ Unfortunately, time and money are often in short supply in Open Source projects.
 
 The model we found may be exemplary: Take a big enterprise with a well established bug bounty program run by a professional team and include the open source software as an additional scope, while profiting from the smooth processes that are already in place. Another benefit, of course, is the third party bounty sponsor: Yahoo paid the bill and we fixed the bugs. A fruitful partnership with benefits for all CRS users.
 
-Bug bounty platform provider Intigriti came in to make sure the right bug bounty hunters would join the program. Intigriti also did 1<sup>st</sup> level triage, moderated the content, organized calls, created special prizes, etc. All contributed to the program to make it attractive and fun for the hunters.
+Bug bounty platform provider Intigriti came in to make sure the right bug bounty hunters would join the program. Intigriti also did 1^st^ level triage, moderated the content, organized calls, created special prizes, etc. All contributed to the program to make it attractive and fun for the hunters.
 
 The setup was perfect.
 

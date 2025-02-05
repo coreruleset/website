@@ -31,3 +31,14 @@ privacy:
 permalinks:
   page:
     blog: /:year:month:day/:slug/
+
+markup:
+  goldmark:
+    extensions:
+      extras:
+        delete:
+          enable: true
+        subscript:
+          enable: true
+        superscript:
+          enable: true
