@@ -10,20 +10,20 @@ We are back with the CRS project news. The news are running very, very late in t
 
 ### What has happened in recent weeks
 
-- Miyuru Sankalpa has started to publish a transformed GeoIP database in the legacy format readable by ModSecurity 2.x under a creative commons. This seems to be based on the MaxMind databases and it is not clear of MaxMind endorses this initiative.
+- Miyuru Sankalpa has started to publish a transformed GeoIP database in the legacy format readable by ModSecurity 2.x under a creative commons. This seems to be based on the MaxMind databases and it is not clear if MaxMind endorses this initiative.
     Link: <https://www.miyuru.lk/geoiplegacy>
 - CRS developer Andrea Menin has released a set of ModSecurity rules that complement CRS when protecting WordPress.
     Link: <https://github.com/Rev3rseSecurity/wordpress-modsecurity-ruleset>
 - Andrea Menin has also written a tutorial about DNS over HTTPS and how to protect and integrate it using ModSecurity.
     Link: <https://www.secjuice.com/modsecurity-web-application-firewall-dns-over-https/>
-- Microsoft has forked ModSecurity 2.x on github and it is (according sombody working on the project) working on patches that allow better integration with the Azure Cloud.
+- Microsoft has forked ModSecurity 2.x on github and it is (according somebody working on the project) working on patches that allow better integration with the Azure Cloud.
     Link: <https://github.com/Microsoft/ModSecurity>
 - CRS developer Franziska Bühler has integrated CRS together with the Pixie learning app into a new docker container. This allows for easy training sessions and checking out attacks against the naked Pixie and the one protected by CRS.
     Link: <https://github.com/DevSlop/pixi-crs-demo>
 
 ### Significant pull requests that were merged
 
-- CRS develop Andrea Menin contributed a rule to prevent PHP rule bypasses via variable functions.
+- CRS developer Andrea Menin contributed a rule to prevent PHP rule bypasses via variable functions.
     Link:[https://github.com/coreruleset/coreruleset/pull/1294](https://github.com/coreruleset/coreruleset/pull/1294)
 - Github user siric1 contributed a rule exclusion that brings support for the WordPress Gutenberg editor.
     Link: <https://github.com/coreruleset/coreruleset/pull/1298>
@@ -34,7 +34,7 @@ We are back with the CRS project news. The news are running very, very late in t
 
 ### Things that are meant to happen in the coming weeks or thereafter
 
-- The Core Rule Set project will participate at the Cloudfest Hackathon in Germany on March 23 - 25 under the direction of Walter Hop and Christoph Hansen. The idea is to develop rules, rules exclusions and documentation to allow easier integration of CRS for internet hosters. Registration is open.
+- The Core Rule Set project will participate at the Cloudfest Hackathon in Germany from March 23 - 25 under the direction of Walter Hop and Christoph Hansen. The idea is to develop rules, rule exclusions and documentation to allow easier integration of CRS for internet hosters. Registration is open.
     Link: <https://www.cloudfest.com/hackathon>
 - The Core Rule Set project will hold a Community Summit on Tuesday May 28, the day before the OWASP AppSecGlobal in Tel Aviv. This will follow the same format of the Community Summit we did at AppSecEU in London in 2018. Details pending.
 - Swiss Post is runing a public intrusion against its Online-Voting system, that is protected by the Core Rule Set as a first layer of defense. The test runs from February 25 to March 24, 2019.

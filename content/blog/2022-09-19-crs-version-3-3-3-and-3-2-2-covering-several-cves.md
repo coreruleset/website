@@ -13,8 +13,8 @@ slug: 'crs-version-3-3-3-and-3-2-2-covering-several-cves'
 The OWASP ModSecurity Core Rule Set (CRS) team is pleased to announce the release of two new CRS versions.
 *Edit: Updated download links now to refer to the [fixed versions](https://coreruleset.org/20220920/crs-version-3-3-4-and-3-2-3/).*
 
-Version 3.3.4 — <https://github.com/coreruleset/coreruleset/releases/tag/v3.3.4>
-Version 3.2.3 — <https://github.com/coreruleset/coreruleset/releases/tag/v3.2.3>
+Version 3.3.4 — https://github.com/coreruleset/coreruleset/releases/tag/v3.3.4
+Version 3.2.3 — https://github.com/coreruleset/coreruleset/releases/tag/v3.2.3
 
 This is a security release fixing several partial rule set bypasses with HIGH or even CRITICAL severity described in the following CVEs:
 

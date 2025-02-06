@@ -22,9 +22,9 @@ We are back with the CRS project news. There was not too much to talk about in r
     conclusion, that only one of them (👉 CVE-2019-11387) is directly
     exploitable and only on ModSecurity 3 at paranoia level 2 or higher. The problem is situation in two separate rules. We are now working on a solution for this issue.
     Links:
-    <https://nvd.nist.gov/vuln/detail/CVE-2019-11387>
-    <https://github.com/coreruleset/coreruleset/issues/1359>
-    <https://portswigger.net/daily-swig/unpatched-modsecurity-crs-vulnerabilities-leave-web-servers-open-to-denial-of-service-attacks>
+    - https://nvd.nist.gov/vuln/detail/CVE-2019-11387
+    - https://github.com/coreruleset/coreruleset/issues/1359
+    - https://portswigger.net/daily-swig/unpatched-modsecurity-crs-vulnerabilities-leave-web-servers-open-to-denial-of-service-attacks
     {{< ref "blog/2019-04-25-regular-expression-dos-weaknesses-in-crs.md" >}}
 - CRS contributor Airween has made a big effort to make sure that ModSecurity 3 passes the CRS test suite. He fixed several ModSec bugs along the way (not all of them merged yet) and he has been 100% successful with ModSec3 in combination with the Apache connector. With the nginx connector, he is really close.
     Please note that this means, that none of the released ModSec 3 versions
@@ -51,8 +51,7 @@ We are back with the CRS project news. There was not too much to talk about in r
 
 ### Things that are meant to happen in the coming weeks or thereafter
 
-- Tin Zaw from Verizon is presenting CRS at the OWASP project showcase
-    at the AppSec conference in Tel Aviv.
+- Tin Zaw from Verizon is presenting CRS at the OWASP project showcase at the AppSec conference in Tel Aviv.
 - 3.1.1 is meant to be released with a backported fix for CVE-2019-11387 as soon as we have the fix.
 
 ### Important pull requests in the queue
@@ -60,13 +59,13 @@ We are back with the CRS project news. There was not too much to talk about in r
 - Several PRs to solve the open CVEs. Yet many of these PRs come with a change
     of behaviour and we would like to avoid that.
     Link:
-    <https://github.com/coreruleset/coreruleset/pull/1355>
-    <https://github.com/coreruleset/coreruleset/pull/1361>
-    <https://github.com/coreruleset/coreruleset/pull/1362>
+    - https://github.com/coreruleset/coreruleset/pull/1355
+    - https://github.com/coreruleset/coreruleset/pull/1361
+    - https://github.com/coreruleset/coreruleset/pull/1362
 - Remove Warning from php-errors.data as all the warnings are already
     covered by other strings.
-    Link: <https://github.com/coreruleset/coreruleset/pull/1343>
+    Link: https://github.com/coreruleset/coreruleset/pull/1343
 - Add AngularJS client side template injection #1340
-    Link: <https://github.com/coreruleset/coreruleset/pull/1340>
+    Link: https://github.com/coreruleset/coreruleset/pull/1340
 - SQLi bypass detection: ticks and backticks #1335
-    Link: <https://github.com/coreruleset/coreruleset/pull/1335>
+    Link: https://github.com/coreruleset/coreruleset/pull/1335
