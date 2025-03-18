@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:debian@sha256:6155a486f236fd5127b76af33086029d64f64cf49dd504accb6e5f949098eb7e as build
+FROM mcr.microsoft.com/devcontainers/base:debian@sha256:577ed426ea0beda5fe12f135ca9355e95adc1ab2cede18d11e4ec583d877da81 as build
 
 # VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
 ARG VARIANT=hugo_extended
