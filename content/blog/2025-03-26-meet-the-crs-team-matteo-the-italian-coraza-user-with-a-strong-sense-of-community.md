@@ -106,9 +106,9 @@ professional life. Or in Matteo’s own words: “It shouldn’t be just about y
 or making money. We live in a society, and my true fulfillment comes from both taking and giving
 back.”
 
-You can find Matteo on Slack under the username Matteo Pace. How to get onto the project
+*You can find Matteo on Slack under the username* Matteo Pace *and on GitHub under* [@M4tteoP](https://github.com/M4tteoP). How to get onto the project
 Slack? You can get an invitation from https://owasp.org/slack/invite, once registered head to our
-channel #coreruleset.
+channel #coreruleset.*
 
 ### Three more questions for the nerds …
 
@@ -125,7 +125,7 @@ I’m going to mention one of the (rightfully) most hated ones, 942100. It was t
 worked on, back in Varese, side by side with Max. We spent the session debugging libinjection,
 and it was a great first experience working with him, even with the tricky libinjection behaviors.
 
-**Can you share the biggest f**up that happened on your ModSecurity setup?**
+**Can you share the biggest f\*\*\*-up that happened on your ModSecurity setup?**
 
 Well … I’m using Coraza. :)
 On a more serious note, I was involved in an effort to simplify the integration of CRS rules into a
