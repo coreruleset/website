@@ -9,12 +9,14 @@ title: Introducing the CRS Sandbox
 
 The OWASP ModSecurity Core Rule Set project is very happy to present the CRS Sandbox. It's an API that allows you to test an attack payload against CRS without the need to install a ModSecurity box or anything. Here is how to do this:
 
-> $ curl -H "x-format-output: txt-matched-rules" "https://sandbox.coreruleset.org/?search=&lt;script&gt;alert('CRS+Sandbox+Release')&lt;/script&gt;"  
-> 941100 PL1 XSS Attack Detected via libinjection  
-> 941110 PL1 XSS Filter - Category 1: Script Tag Vector  
-> 941160 PL1 NoScript XSS InjectionChecker: HTML Injection  
-> 949110 PL1 Inbound Anomaly Score Exceeded (Total Score: 15)  
-> 980130 PL1 Inbound Anomaly Score Exceeded (Total Inbound Score: 15 - SQLI=0,XSS=15,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): individual paranoia level scores: 15, 0, 0, 0
+```sh
+$ curl -H "x-format-output: txt-matched-rules" "https://sandbox.coreruleset.org/?search=&lt;script&gt;alert('CRS+Sandbox+Release')&lt;/script&gt;"  
+941100 PL1 XSS Attack Detected via libinjection  
+941110 PL1 XSS Filter - Category 1: Script Tag Vector  
+941160 PL1 NoScript XSS InjectionChecker: HTML Injection  
+949110 PL1 Inbound Anomaly Score Exceeded (Total Score: 15)  
+980130 PL1 Inbound Anomaly Score Exceeded (Total Inbound Score: 15 - SQLI=0,XSS=15,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): individual paranoia level scores: 15, 0, 0, 0
+```
 
 As you can see, curl is calling our sandbox with an XSS payload and the sandbox returns the list of CRS rules that the request triggered. If you are unfamiliar with CRS, then the important part is that there are several rules that triggered / detected something. And the total "anomaly score" of 15, which is far beyond the default anomaly threshold of 5 that gets a request blocked for looking like an attack.
 
@@ -36,19 +38,21 @@ But these days are over now: the CRS sandbox allows you to run a quick test and 
 
 And there is a bonus on top: There is a header that gives you a draft version of a text snippet you can include in your blog post about a new payload:
 
-> $ curl -H "x-format-output: txt-matched-rules-extended" "https://sandbox.coreruleset.org/?search=&lt;script&gt;alert('CRS+Sandbox+Release')&lt;/script&gt;"  
-> This payload has been tested against the OWASP ModSecurity Core Rule Set  
-> web application firewall. The test was executed using the apache engine and CRS version 3.3.2.
-> 
-> The payload is being detected by triggering the following rules:
-> 
-> 941100 PL1 XSS Attack Detected via libinjection  
-> 941110 PL1 XSS Filter - Category 1: Script Tag Vector  
-> 941160 PL1 NoScript XSS InjectionChecker: HTML Injection  
-> 949110 PL1 Inbound Anomaly Score Exceeded (Total Score: 15)  
-> 980130 PL1 Inbound Anomaly Score Exceeded (Total Inbound Score: 15 - SQLI=0,XSS=15,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): individual paranoia level scores: 15, 0, 0, 0
-> 
-> CRS therefore detects this payload starting with paranoia level 1.
+```sh
+$ curl -H "x-format-output: txt-matched-rules-extended" "https://sandbox.coreruleset.org/?search=&lt;script&gt;alert('CRS+Sandbox+Release')&lt;/script&gt;"  
+This payload has been tested against the OWASP ModSecurity Core Rule Set  
+web application firewall. The test was executed using the apache engine and CRS version 3.3.2.
+
+The payload is being detected by triggering the following rules:
+
+941100 PL1 XSS Attack Detected via libinjection  
+941110 PL1 XSS Filter - Category 1: Script Tag Vector  
+941160 PL1 NoScript XSS InjectionChecker: HTML Injection  
+949110 PL1 Inbound Anomaly Score Exceeded (Total Score: 15)  
+980130 PL1 Inbound Anomaly Score Exceeded (Total Inbound Score: 15 - SQLI=0,XSS=15,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): individual paranoia level scores: 15, 0, 0, 0
+
+CRS therefore detects this payload starting with paranoia level 1.
+```
 
 #### Is this free?
 
@@ -58,21 +62,20 @@ Well of course it is. Yet there is still a price tag. It's running on AWS and OW
 
 You can pick the engine and the CRS version via a set of HTTP headers. Also the [CRS Paranoia Level](/docs/concepts/paranoia_levels/) can be selected that way.
 
-Backend: Header `"x-backend"` Values `"apache"` (default) or `"nginx"`.  
-CRS version: Header `"x-crs-version:"` Values `"3.3.2"` (default), `"3.2.1"` and `"3.4.0-dev"`  
-Paranoia Level: Header `"x-crs-paranoia-level"` Values from `"1"` (default) to `"4"`.
+* Backend: Header `"x-backend"` Values `"apache"` (default) or `"nginx"`.  
+* CRS version: Header `"x-crs-version:"` Values `"3.3.2"` (default), `"3.2.1"` and `"3.4.0-dev"`  
+* Paranoia Level: Header `"x-crs-paranoia-level"` Values from `"1"` (default) to `"4"`.
 
 And you can change the format of the output via the help of the HTTP header `"x-format-output"`:
 
-`"json-matched-rules"`: returns the matched rules in JSON format  
-`"csv-matched-rules"`: returns the matched rules in CSV format  
-`"txt-matched-rules"`: returns the matched rules in human readable  
-`"txt-matched-rules-extended"`: returns the matched rules in human readable with  
-additional information, ready for a publication (see above):
+* `"json-matched-rules"`: returns the matched rules in JSON format
+* `"csv-matched-rules"`: returns the matched rules in CSV format
+* `"txt-matched-rules"`: returns the matched rules in human readable format
+* `"txt-matched-rules-extended"`: returns the matched rules in human readable format with additional information, ready for a publication (see above).
 
 #### Any future plans?
 
-We are working on an expansion of the set of backend services. And we think about a GUI version and a way to re-access previous payloads. That way you could send a friend a link to a CRS sandbox payload and she could retrieve it together with the rules it triggers.
+We are working on an expansion of the set of backend services. And we think about a GUI version and a way to re-access previous payloads. That way you could send a friend a link to a CRS sandbox payload and s/he could retrieve it together with the rules it triggers.
 
 Hand in hand with this idea is a way to link a payload to a researcher who might want to be listed in a hall of fame or something. It could be a header like "x-contact" or something.
 
