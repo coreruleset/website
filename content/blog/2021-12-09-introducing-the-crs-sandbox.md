@@ -75,7 +75,7 @@ And you can change the format of the output via the help of the HTTP header `"x-
 
 #### Any future plans?
 
-We are working on an expansion of the set of backend services. And we think about a GUI version and a way to re-access previous payloads. That way you could send a friend a link to a CRS sandbox payload and she could retrieve it together with the rules it triggers.
+We are working on an expansion of the set of backend services. And we think about a GUI version and a way to re-access previous payloads. That way you could send a friend a link to a CRS sandbox payload and s/he could retrieve it together with the rules it triggers.
 
 Hand in hand with this idea is a way to link a payload to a researcher who might want to be listed in a hall of fame or something. It could be a header like "x-contact" or something.
 
