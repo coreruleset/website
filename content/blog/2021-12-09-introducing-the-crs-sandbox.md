@@ -70,8 +70,8 @@ And you can change the format of the output via the help of the HTTP header `"x-
 
 * `"json-matched-rules"`: returns the matched rules in JSON format
 * `"csv-matched-rules"`: returns the matched rules in CSV format
-* `"txt-matched-rules"`: returns the matched rules in human readable
-* `"txt-matched-rules-extended"`: returns the matched rules in human readable with additional information, ready for a publication (see above):
+* `"txt-matched-rules"`: returns the matched rules in human readable format
+* `"txt-matched-rules-extended"`: returns the matched rules in human readable format with additional information, ready for a publication (see above).
 
 #### Any future plans?
 
