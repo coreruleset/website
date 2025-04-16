@@ -15,23 +15,23 @@ Issue 4035 was interesting to me because it is labelled as a false negative, mea
 After reading through the issue comments by other team members, I decided to do some of my own testing to confirm the situation described in the issue report, and to work out possible web application firewall (WAF) rule-based remedies. In doing so, I wrote these two basic rules: 
 
 ```apacheconf
-SecRule REQUEST_HEADERS:User-Agent "@rx (?i)select(\s+)(.*)where" 
-"id:1000200, 
- phase:1, 
- deny, 
- t:none, 
- msg:'User agent not allowed - possible SQL injection attempt', 
- logdata:'Matched Data: Unauthorised user agent in %{MATCHED_VAR_NAME}: %{MATCHED_VAR}'" 
+SecRule REQUEST_HEADERS:User-Agent "@rx (?i)select(\s+)(.*)where" \
+    "id:1000200,\
+    phase:1,\
+    deny,\
+    t:none,\
+    msg:'User agent not allowed - possible SQL injection attempt',\
+    logdata:'Matched Data: Unauthorised user agent in %{MATCHED_VAR_NAME}: %{MATCHED_VAR}'"
 ```
 
 ```apacheconf
-SecRule REQUEST_HEADERS:User-Agent "@rx (?i)case(\s+)(.*)when" 
-"id:1000201, 
- phase:1, 
- deny, 
- t:none, 
- msg:'User agent not allowed - possible SQL injection attempt', 
- logdata:'Matched Data: Unauthorised user agent in %{MATCHED_VAR_NAME}: %{MATCHED_VAR}'"
+SecRule REQUEST_HEADERS:User-Agent "@rx (?i)case(\s+)(.*)when" \
+    "id:1000201,\
+    phase:1,\
+    deny,\
+    t:none,\
+    msg:'User agent not allowed - possible SQL injection attempt',\
+    logdata:'Matched Data: Unauthorised user agent in %{MATCHED_VAR_NAME}: %{MATCHED_VAR}'"
 ```
 
 With these new rules in place in my test environment, I used curl to make requests pulled from the issue reporter’s log files. All of my test requests from those log entries were caught by ModSecurity with the new rules in place. That seemed like a decent first pass at a possible solution. Hooray! 
