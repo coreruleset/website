@@ -1,6 +1,9 @@
 +++
-title = 'False Negatives, False Positives – How the CRS team decide when to add or modify rules, and when we decide not to add them'
+author: michelamarie
+categories:
+  - Blog
 date = 2025-04-15T13:51:38-07:00
+title = 'False Negatives, False Positives – How the CRS team decide when to add or modify rules, and when we decide not to add them'
 draft = false
 +++
 My name is Michela, and I’ve quite recently and gradually begun participating in the CRS project – a group of very sharp and incredibly welcoming people, who work to make the Internet safer. Needless to say, it’s been very interesting, and fun, so far! 
