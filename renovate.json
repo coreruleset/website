@@ -10,8 +10,8 @@
     {
       "description": "CRS: Latest Release",
       "customType": "regex",
-      "fileMatch": [
-        "^config/_default/params\\.yaml$"
+      "managerFilePatterns": [
+        "/^config/_default/params\\.yaml$/"
       ],
       "matchStringsStrategy": "any",
       "matchStrings": [
@@ -23,7 +23,9 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["gohugoio/hugo"],
+      "matchPackageNames": [
+        "gohugoio/hugo"
+      ],
       "allowedVersions": "<=0.145.0"
     }
   ]
