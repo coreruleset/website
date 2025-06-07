@@ -20,13 +20,5 @@
       "depNameTemplate": "coreruleset/coreruleset",
       "datasourceTemplate": "github-releases"
     }
-  ],
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "gohugoio/hugo"
-      ],
-      "allowedVersions": "<=0.145.0"
-    }
   ]
 }
