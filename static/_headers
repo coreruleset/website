@@ -2,7 +2,8 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
-  Permissions-Policy: document-domain=()
+  Permissions-Policy: microphone=(), geolocation=()
+
   Content-Security-Policy: script-src 'self' https://coreruleset.org/; frame-ancestors 'none';
 
 https://:project.pages.dev/*
