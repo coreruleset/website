@@ -2,7 +2,7 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), geolocation=(), camera=()
 
   Content-Security-Policy: script-src 'self' https://coreruleset.org/; frame-ancestors 'none';
 
