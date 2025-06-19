@@ -4,7 +4,7 @@
   Referrer-Policy: no-referrer
   Permissions-Policy: microphone=(), geolocation=(), camera=()
 
-  Content-Security-Policy: script-src 'self' 'unsafe-inline' https://coreruleset.org/ https://*.pages.dev/; frame-ancestors 'none';
+  Content-Security-Policy: script-src 'self' 'unsafe-inline' https://coreruleset.org/ https://*.website-1u6.pages.dev/; frame-ancestors 'none';
 
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
