@@ -1,0 +1,8 @@
+<div class="gallery">
+  {{ $images := .Page.Resources.Match "images/*.jpeg" }}
+  {{ range $images }}
+    <div class="gallery-item">
+      <img src="{{ .RelPermalink }}" alt="{{ .Name }}">
+    </div>
+  {{ end }}
+</div>
