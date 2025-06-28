@@ -1,0 +1,6 @@
+{{ $text := .Get "text" }}
+{{ with .Page.Resources.Get (.Get "file") }}
+<a href="{{ .RelPermalink }}" >
+    {{ $text }}
+</a>
+{{ end }}
