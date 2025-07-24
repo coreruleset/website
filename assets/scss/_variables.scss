@@ -1,5 +1,4 @@
-@use "hugo:vars" as h;
-$fonts-path : h.$fonts-path;
+@use "hugo:vars";
 
 // Define CSS variables
 :root {
