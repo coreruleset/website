@@ -1,14 +1,27 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>coreruleset/renovate-config"
+    "github>coreruleset/renovate-config"
   ],
   "git-submodules": {
     "enabled": true
   },
+  "packageRules": [
+    {
+      "matchPackageNames": ["coreruleset-v3"],
+      "rangeStrategy": "bump-minor",
+      "allowedVersions": "<4.0.0",
+      "groupName": "CRS v3 updates"
+    },
+    {
+      "matchPackageNames": ["coreruleset-v4"],
+      "allowedVersions": ">=4.0.0",
+      "groupName": "CRS v4 updates"
+    }
+  ],
   "customManagers": [
     {
-      "description": "CRS: Latest Release",
+      "description": "CRS: Update latest major release",
       "customType": "regex",
       "managerFilePatterns": [
         "/^config/_default/params\\.yaml$/"
@@ -17,8 +30,23 @@
       "matchStrings": [
         "latest_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
       ],
-      "depNameTemplate": "coreruleset/coreruleset",
-      "datasourceTemplate": "github-releases"
+      "depNameTemplate": "coreruleset-v4",
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "coreruleset/coreruleset"
+    },
+    {
+      "description": "CRS: Update previous major release",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^config/_default/params\\.yaml$/"
+      ],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "prev_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+      ],
+      "depNameTemplate": "coreruleset-v3",
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "coreruleset/coreruleset"
     }
   ]
 }
