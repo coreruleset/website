@@ -55,7 +55,7 @@ jobs:
 
       - name: Restore lychee cache
         id: restore-cache
-        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
             path: .lycheecache
             key: cache-lychee-${{ github.sha }}
@@ -63,7 +63,7 @@ jobs:
 
       - name: Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@82202e5e9c2f4ef1a55a3d02563e1cb6041e5332 # v2.4.1
+        uses: lycheeverse/lychee-action@5c4ee84814c983aa7164eaee476f014e53ff3963 # v2.5.0
         with:
             fail: false
             args: "--accept 200..=204,429 --cookie-jar /tmp/lychee-cookies --cache --max-cache-age 1d -E './content/**/*.md'"
@@ -78,7 +78,7 @@ jobs:
           labels: report, automated issue
 
       - name: Save lychee cache
-        uses: actions/cache/save@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         if: always()
         with:
           path: .lycheecache
