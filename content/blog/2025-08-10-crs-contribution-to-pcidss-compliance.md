@@ -3,7 +3,7 @@ author: pha6d
 categories:
   - Blog
 date: '2025-08-10T08:10:42+01:00'
-title: 'CRS contribution to PCI DSS compliance'
+title: 'How CRS contributes to PCI DSS compliance'
 ---
 The Payment Card Industry Data Security Standard (PCI DSS) applies to all organizations that store, process, or transmit cardholder data or sensitive authentication data, as well as any systems, people, or processes that could affect their security. This includes not only merchants and service providers, but also supporting components such as authentication servers, access controls, and Web Application Firewalls (WAFs).  
 The OWASP Core Rule Set (CRS) is a widely adopted, open-source set of WAF rules designed to detect and block a broad range of web application attacks. When properly deployed, CRS provides robust, customizable protection against many threats relevant to PCI DSS compliance.  
