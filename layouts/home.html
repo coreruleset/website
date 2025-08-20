@@ -39,7 +39,7 @@
     <div class="card">
       <h2>{{ i18n "sectionTitle2" }}</h2>
       <p>{{ i18n "sectionText2" | markdownify }}</p>
-      <a href="https://coreruleset.org/docs/concepts/" class="button"
+      <a href="https://coreruleset.org/docs/2-how-crs-works/" class="button"
         >{{ i18n "sectionButton2" }}</a
       >
     </div>
@@ -47,7 +47,7 @@
     <div class="card">
       <h2>{{ i18n "sectionTitle3" }}</h2>
       <p>{{ i18n "sectionText3" | markdownify }}</p>
-      <a href="https://coreruleset.org/docs/resources/#free-and-open-source-community-help" class="button">{{ i18n "sectionButton3" }}</a>
+      <a href="https://coreruleset.org/docs/8-additional-resources/#free-and-open-source-community-help" class="button">{{ i18n "sectionButton3" }}</a>
     </div>
   </div>
 
@@ -57,6 +57,9 @@
 
   <hr />
 
-  {{ partial "sponsors.html" . }}
+  {{ partial "related-projects-and-tools.html" . }}
 
+  <hr />
+
+  {{ partial "sponsors.html" . }}
 {{ end }}
