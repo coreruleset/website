@@ -35,10 +35,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
-
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
