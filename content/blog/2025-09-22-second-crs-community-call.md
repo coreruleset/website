@@ -6,7 +6,7 @@ title: 'Second CRS community call'
 author: theseion
 ---
 
-We're excited to announce our second community call, taking place on September 22, 2025. Although our first call did not match the expectitions we had for it (primarily with respect to the number of participants), we are still pretty happy with the outcome. It was a good experience for all attendees to get to know each other and chat about CRS. So we decided to give it another go and see what will happen.
+We're excited to announce our second community call, taking place on Monday 22 September, 2025. We were pretty happy with our first community call back in March, but we want to make it bigger and better. It would be amazing to have more CRS users and security enthusiasts join us on our next community call: everyone is welcome, and it would be great to see some new faces! The first call was a good experience for all attendees to get to know each other and chat about CRS. So we decided to give it another go and see what will happen.
 
 ## Program
 
@@ -21,4 +21,4 @@ In the last segment, we want to give you time to ask any questions, be it CRS ba
 
 {{< figure src="/images/2025/community-call-2025-09-22.png" alt="Join the second CRS community call with Christian Folini" >}}
 
-The second community call will take place on **September 22, from 20:30 to 21:30 CET** (18:30 UTC / 2:30 p.m. ET). Head over to the [registration page](/register/community-call) to grab the link to the call.
+The second community call will take place on **Monday 22 September, from 20:30 to 21:30 CEST** (18:30 UTC / 2:30 p.m. ET). Head over to the [registration page](/register/community-call) to grab the link to the call.
