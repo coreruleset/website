@@ -69,5 +69,5 @@ If you have news that should be covered in this newsletter, then please submit t
 
 And here is the group photo from the community summit.
 
-{{< figure src="images/2018/07/Group-Photo-1-small.jpg" caption="Group Photo from the CRS Community Summit 2018 in London" >}}
+{{< figure src="/images/2018/07/Group-Photo-1-small.jpg" caption="Group Photo from the CRS Community Summit 2018 in London" >}}
 

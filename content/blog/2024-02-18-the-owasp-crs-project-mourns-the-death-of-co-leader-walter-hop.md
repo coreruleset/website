@@ -11,7 +11,7 @@ Walter died last week and we are at a loss of words. For CRS, he has been a wond
 
 Walter had a unique talent to bring out the best in people. Every conversation, namely technical discussions, improved in his presence. I would not call him charismatic, actually he was maybe more on the nerdy, if not socially awkward side. But his mere presence, his brief questions, asked with his soft voice, the witty observations here and there and the experience he could bring to the table were an immense contribution to the project. His calm demeanor also meant there would not be any heated debates as long as he was in the room. It was clear that you had to convince Walter in any discussion and if you were able to convince Walter, then the team would side with whatever solution he chose in the end. That way he contributed a big deal to the cohesion of the project.
 
-{{< figure src="images/2021/11/Greisinger-Museum.jpeg" caption="Walter and the team in front of the Tolkien museum in Switzerland in 2021" height="1024" width="768" >}}
+{{< figure src="/images/2021/11/Greisinger-Museum.jpeg" caption="Walter and the team in front of the Tolkien museum in Switzerland in 2021" height="1024" width="768" >}}
 Walter and I exchanged messages on the ModSecurity and Core Rule Set mailinglist for a couple of years until we got pulled into the project by Chaim Sanders in early 2016. I contributed my work on Paranoia Levels and Walter shared PHP rules that he had developed for his company Slik.nl.
 
 In hinsight, these rules look fairly standard. But the conceptual approach and how he split the problems into smaller chunks and more manageable rules have become a standard pattern that we use to great benefit to this day.
@@ -26,6 +26,6 @@ Unfortunately, that was also the moment where we started to lose touch with him,
 
 Losing Walter is a severe blow for us and we will all keep a dear memory of him.
 
-[Link to the family's obituary for Walter]({{< static src="images/2024/02/Digitale-rouwkaart-Walter-Hop.pdf" >}})
+[Link to the family's obituary for Walter]({{< static src="/images/2024/02/Digitale-rouwkaart-Walter-Hop.pdf" >}})
 
 Dr. Christian Folini, OWASP CRS co-lead

@@ -23,10 +23,10 @@ Among the topics we discussed were.
 
 Expect more detailed news on some of these in the coming days, weeks, or probably months.
 
-{{< figure src="images/2024/11/airween_in_nrc.jpg" caption="Once he sits behind a radio station, not even a hundred horses can pull Airween away" >}}
+{{< figure src="/images/2024/11/airween_in_nrc.jpg" caption="Once he sits behind a radio station, not even a hundred horses can pull Airween away" >}}
 
 On Sunday, the team skipped work and took a trip to nearby Bletchley Park, the Mecca for code breakers, hackers, and cybersecurity experts. And for radio enthusiasts, as the team soon found out how hard it can be to get Airween away from the National Radio Centre...
 
 Much of the rest of the time is hard work on various week-long projects, watched through the windows by curious squirrels and deer.
 
-{{< figure src="images/2024/11/squirrel.jpg" caption="The all-present and always watching squirrels gave the CRS core team a high paranoia level" >}}
+{{< figure src="/images/2024/11/squirrel.jpg" caption="The all-present and always watching squirrels gave the CRS core team a high paranoia level" >}}

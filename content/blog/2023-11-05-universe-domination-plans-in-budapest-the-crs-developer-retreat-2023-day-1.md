@@ -7,7 +7,7 @@ title: Universe domination plans in Budapest - The CRS Developer Retreat 2023, d
 ---
 
 
-{{< figure src="images/2023/11/Devretreat-1-scaled.jpeg" >}}
+{{< figure src="/images/2023/11/Devretreat-1-scaled.jpeg" >}}
 
 It's hard to believe that it's already been another year since the last OWASP ModSecurity Core Rule Set Developer Retreat in Varese near Milan in northern Italy. This year, the core team is meeting in the Hungarian capital Budapest from November 5th to 12th. The team members travelled from all directions – some got up inhumanly early, others flew across the Atlantic and still others had been travelling by train for two days ... but not even the Deutsche Bahn could prevent all registered participants from arriving at the Hotel [Nádas Pihenőpark](https://nadaspihenopark.hu/en/) by late afternoon on Sunday.
 
@@ -24,4 +24,4 @@ In addition, various hot topics such as sponsors, the future of ModSecurity and,
 
 The discussion of the CRS roadmap is planned for Monday afternoon. That should be very exciting again.
 
-{{< figure src="images/2023/11/CRS-developer-retreat-2023-edited.jpeg" caption="Ready to take over the universe ... the CRS core team at the start of the Developer Retreat" >}}
+{{< figure src="/images/2023/11/CRS-developer-retreat-2023-edited.jpeg" caption="Ready to take over the universe ... the CRS core team at the start of the Developer Retreat" >}}

@@ -24,4 +24,4 @@ moment, please save the date and spread the word!
 Cheers,  
 Christian, Felipe, Walter
 
-{{< figure src="images/2018/07/Group-Photo-1-small.jpg" title="Group Photo from the CRS Community Summit 2018 in London" caption="Hope to see you in Dublin. To get you in the mood, here is a picture from the CRS Community Summit 2018 in London" >}}
+{{< figure src="/images/2018/07/Group-Photo-1-small.jpg" title="Group Photo from the CRS Community Summit 2018 in London" caption="Hope to see you in Dublin. To get you in the mood, here is a picture from the CRS Community Summit 2018 in London" >}}

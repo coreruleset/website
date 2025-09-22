@@ -11,7 +11,7 @@ title: 'Meet the CRS team: Ervin, the gardening radio amateur in the background'
 
 #### *Astronaut? Garbage truck driver? Electrical engineer? Metalsmith? In the end, Hungarian Ervin Hegedüs became a software developer. Within the Core Rule Set project, he contributes primarily to tool development and packaging. “New team members should above all be team players,” says Ervin.*
 
-{{< figure src="images/2022/11/airween_jump_1.png" caption="A man of many talents and names: Ervin Hegedüs aka AirWeen aka HA2OS" >}}
+{{< figure src="/images/2022/11/airween_jump_1.png" caption="A man of many talents and names: Ervin Hegedüs aka AirWeen aka HA2OS" >}}
 Ervin Hegedüs has had no shortage of interesting career ideas in his 51-year life. While the usual childhood dreams of becoming an astronaut or a garbage truck driver vanished as he grew older, Ervin still today sometimes wonders what would have become of him if he hadn’t found his way to IT. He thinks he might have become an electrical engineer since he is a HAM radio operator in his spare time (callsign: HA2OS). More about that later.
 
 Ervin's professional career eventually developed in a different direction. He studied at the Eötvös Loránd University (ELTE), a renowned natural science university in the Hungarian capital Budapest, where he graduated with a bachelor's degree in Computer Science. Today, he still lives in Budapest working as a systems and software engineer and developer at Digitalwave, a Hungarian digital marketing and advertising agency.
@@ -24,7 +24,7 @@ Within two or three months, Ervin managed – with many workarounds – to get l
 
 The CRS team noticed Ervin’s talent and dedication. He was asked if he would like to demonstrate his parser to the team members present at an upcoming OWASP conference. When the core team eventually invited him to officially work as a developer on the Core Rule Set, Ervin didn’t hesitate: “I felt honored by the request. Moreover, I knew that I wanted to work with ModSecurity and CRS in the next few years. So, I accepted and joined the team.”
 
-{{< figure src="images/2022/11/Ervin_Antenna.jpeg" caption="He has the high ground. After all, he calls himself AirWeen" >}}
+{{< figure src="/images/2022/11/Ervin_Antenna.jpeg" caption="He has the high ground. After all, he calls himself AirWeen" >}}
 
 Today, Ervin is an indispensable member of the CRS core team. In the Slack channel, he figures under “AirWeen” – a nickname he got from his friends when he did the triathlon: there were shoes called Nike Air Hurachi and Nike Air Pegasus ... so, why not Nike Air Ween? With his knowledge of the inner workings of the engines (mod\_security2 and libmodsecurity3) Ervin sees his role above all in providing important support in the background. Based on his parser, the CRS team has since developed a number of important utilities (e.g. regexp-assemble) and testing tools. “Tools that support the work of the ‘real’ CRS developers,” Ervin says with a wink. As a Debian maintainer, he also takes care of packaging for Debian and Ubuntu and brings this perspective to the work of the CRS team. This goes to show that all talents can be of use in the project. “Of course, a project like the Core Rule Set can always use web security analysts,” Ervin says. “But most importantly, you should be a team player.”
 
