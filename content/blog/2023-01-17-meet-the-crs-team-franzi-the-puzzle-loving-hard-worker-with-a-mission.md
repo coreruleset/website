@@ -12,7 +12,7 @@ slug: 'meet-the-crs-team-franzi-the-puzzle-loving-hard-worker-with-a-mission'
 
 #### **Franziska Bühler* doesn't feel too comfortable in the limelight. The CISO of a Swiss mid-sized IT company rather likes to work through lists of hundreds of bypasses than being at the forefront. Talking to her, it gets clear quickly: Fränzi loves a challenge. “Once I set my mind to something, I follow through,” she says.*
 
-{{< figure src="images/2023/01/Fraenzi_klein.jpg" caption="She was always fascinated by great heights: Franziska Bühler aka Fränzi on top of the Milan cathedral" >}}
+{{< figure src="/images/2023/01/Fraenzi_klein.jpg" caption="She was always fascinated by great heights: Franziska Bühler aka Fränzi on top of the Milan cathedral" >}}
 
 “I don't really like to talk about myself,” Franziska says as she sits down and sips her coffee. We meet in the café of the Stauffacher bookstore in the old town of Bern, the Swiss capital, so that she can tell us something about herself and her motivation for working on the CRS project. It's a shame she doesn't like to talk about herself, because Franziska Bühler (called “Fränzi” by friends[^1^]) would have a lot to tell. For example, about her career from high school to an apprenticeship to CISO of an IT company – a position she practically created herself. Or about her passion for puzzles and brainteasers and what this has to do with her job. Or about the commitment with which she completes all her tasks. Or about how close she actually came to her former dream job (three guesses, and no, it's not princess).
 
@@ -26,7 +26,7 @@ Yet everything could have turned out differently. “Originally, I wanted to be 
 
 In the end, however, Franziska decided otherwise. After high school, she completed a two-year IT apprenticeship and then a computer science degree with a focus on security, which she completed in 2011 with a bachelor's thesis on forensics in the Android file system. In it, she showed how to recover deleted text messages, contacts and call logs. “That was a huge challenge. I kept staring at the hex dump, trying to glean something from it and find connections,” Franziska recounts. One day, a light suddenly dawned on her – and all of a sudden, she was able to recognize previously hidden patterns. “I saw the matrix, so to speak.”
 
-{{< figure src="images/2023/01/DSC_1040_DxO_2.jpg" caption="On her way to black: Fränzi at her exam for the green belt" >}}
+{{< figure src="/images/2023/01/DSC_1040_DxO_2.jpg" caption="On her way to black: Fränzi at her exam for the green belt" >}}
 It's these experiences that Franziska loves about IT security: when, after much thought and trial and error, the penny finally drops. “I love puzzles, riddles and detective work. I like to crack problems.” Surely, she's an avid murder mystery reader then? Franziska shakes her head, “I rarely read mystery novels, I'd rather study or be productive.” But Franziska does know how to relax by reading – only she reads IT security literature instead of thrillers. “It's the best way for me to relax.”
 
 This is exactly why Franziska came to the Core Rule Set – at least that's how the saga goes. She had met Christian Folini while working as a system administrator at Swiss Post. In 2009, she moved from systems operations to join him in security, where ModSecurity was deployed. “I don't remember it myself, but apparently at some point I said to Christian that I was often bored in the evenings.” So he encouraged her to join the CRS project.

@@ -19,7 +19,7 @@ For this blog post, we use the intentionally vulnerable web application Pixi fro
 
 One of the application vulnerabilities is that the search field is vulnerable to reflected XSS attacks:
 
-{{< figure src="images/2018/12/Pixi_XSS.png" >}}
+{{< figure src="/images/2018/12/Pixi_XSS.png" >}}
 
 Oops... The injected content is reflected back to the user.
 
@@ -27,7 +27,7 @@ This is one example.
 
 Another misbehaviour of the application is that the secret key is stored in a publicly accessible server.conf file:
 
-{{< figure src="images/2018/12/Pixi_serverconf.png" >}}
+{{< figure src="/images/2018/12/Pixi_serverconf.png" >}}
 
 These are just two examples of this vulnerable web application. One is a classic XSS attack and one is a misconfiguration of the application that results in sensitive data exposure.
 
@@ -94,7 +94,7 @@ We want to repeat our first XSS attack now and see if CRS blocks it, and we hope
 
 We now call the TCP port 8001 of the CRS container:
 
-{{< figure src="images/2018/12/CRS_XSS.png" >}}
+{{< figure src="/images/2018/12/CRS_XSS.png" >}}
 
 The attack can no longer be executed. We get a 403-forbidden status code. That's what we expected.
 
@@ -125,7 +125,7 @@ These three violated rules result in a total Inbound Anomaly Score of 15, which 
 
 We also check what happened to the blocked .conf file. This request can no longer be executed:
 
-{{< figure src="images/2018/12/CRS_serverconf.png" >}}
+{{< figure src="/images/2018/12/CRS_serverconf.png" >}}
 
 The corresponding log entries can be found here:
 

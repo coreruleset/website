@@ -43,7 +43,7 @@ So all we really need is an open source alternative to ModSecurity. And such a v
 
 Coraza is an implementation of a SecLang engine in the memory-safe Go language, all developed by Juan Pablo Tosso from Chile. Coraza is currently only working on the open source [Caddy web server](https://caddyserver.com/), but Coraza already passes 100% of the CRS test suite and we are convinced it is production ready. Juan Pablo has picked up work on Apache and NGINX integration, and he wants to make it a drop-in replacement for ModSecurity. And then many, many more plans. The only obstacle to fill these with life is the lack of a developer community around Coraza. And we sincerely hope that the beauty of the project will inspire people to check it out and join!
 
-{{< figure src="images/2021/12/coraza-logo.png" caption="The new Coraza WAF with its pet \"Sancho\" on the right." >}}
+{{< figure src="/images/2021/12/coraza-logo.png" caption="The new Coraza WAF with its pet \"Sancho\" on the right." >}}
 To give you an early access to Coraza, if you do not have a Caddy webserver to play around, we have set up a Caddy with Coraza on our CRS sandbox, and you can try it out immediately. In the following example, we will send a Log4J exploit to the sandbox. Note that with the “x-backend” header, we pick Coraza as an engine, and with “x-crs-version” we pick the Core Rule Set with the extra Log4J rule from our [earlier Log4J blog post](https://coreruleset.org/20211213/crs-and-log4j-log4shell-cve-2021-44228/).
 
 ```sh

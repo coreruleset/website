@@ -12,7 +12,7 @@ slug: 'meet-the-crs-team-jozef-the-cat-loving-father-from-slovakia'
 
 #### *Programming and entrepreneurship run in Jozef Sudolsky's family. When he's not working for his own web hosting company or for the CRS project, you can find him working out at the gym or in his large garden - or just playing with his daughter. His office is at the same time his daughter's playroom.*
 
-{{< figure src="images/2024/05/Jozef_Sudolsky_1.jpg" caption="His own company, his daughter, four cats, a house, a large garden, and the CRS project keep him busy: Jozef Sudolsky aka azurit" >}}
+{{< figure src="/images/2024/05/Jozef_Sudolsky_1.jpg" caption="His own company, his daughter, four cats, a house, a large garden, and the CRS project keep him busy: Jozef Sudolsky aka azurit" >}}
 
 We met Jozef Sudolsky at the [November 2023 developer retreat]({{< ref "blog/2023-11-05-universe-domination-plans-in-budapest-the-crs-developer-retreat-2023-day-1.md" >}}) in Budapest. It was the first time he met with the CRS core team in person. Jozef brought delicious Slovakian cheese and schnapps as a gift for the whole team. “I like cheese and schnapps,” he concedes. “But I like beer even more.” He once tried to brew his own beer but gave up after realizing it wasn't as easy as he probably thought. “It was drinkable, but too much work.”
 
@@ -32,7 +32,7 @@ That’s why IT security has always been important to Jozef. About five or six y
 
 Where did he since leave his mark on the project? Jozef ponders for a moment before answering: “My biggest contribution, I guess, is the use of the Lua language and parts of the plug-in architecture.” He knew very little about Lua (an efficient, lightweight and embeddable scripting language) himself, but he found its goal of being as small as possible interesting. However, since the language was not suitable to be an integral part of the core rules, it had to be separated. This is how the new plug-in architecture of CRS v4 was born. “My contributions extend mainly to the exclusion rules plug-in and the current antivirus integration plug-in,” says Jozef.
 
-{{< figure src="images/2024/05/Jozef_Sudolsky_2.jpg" caption="Mens sana in corpore sano: Jozef goes to the gym 3-4 times a week" >}}
+{{< figure src="/images/2024/05/Jozef_Sudolsky_2.jpg" caption="Mens sana in corpore sano: Jozef goes to the gym 3-4 times a week" >}}
 
 With CRS v4 being released, the team still has many ideas for the future development of the project, and new team members who bring additional skills are always welcome. There are talks about rewriting CRS in another language, like Yaml, to make it more universal. “If we do that, it would be great to have someone on board with some knowledge of those alternative languages”, Jozef argues.
 

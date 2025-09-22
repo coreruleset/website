@@ -13,7 +13,7 @@ slug: 'core-rule-set-project-winning-osbar-award'
 
 The OWASP ModSecurity Core Rule Set Project is very excited about winning one of the OSBAR awards of the [German Open Source Business Alliance](http://osb-alliance.de/). The prize is awarded to projects, start-ups and outstanding ideas from the open source environment. The increased attention should make it easier for the award winners to attract users, developers and supporters.
 
-{{< figure width="225px" src="images/2017/12/osbar.jpeg" caption="CRS hackers Christian Folini and Franziska Bühler with the OSBAR award trophy (photo Fridolin Zurlinden)" >}}
+{{< figure width="225px" src="/images/2017/12/osbar.jpeg" caption="CRS hackers Christian Folini and Franziska Bühler with the OSBAR award trophy (photo Fridolin Zurlinden)" >}}
 
 [ModSecurity](https://www.modsecurity.org) is a Web Application Firewall (WAF) with open source code that is also widely used in commercial products. The award-winning CRS project develops a set of about 150 generic rules for use with ModSecurity and related solutions. The CRS project was founded more than ten years ago and is now run as a flagship project by the Foundation Open Web Application Security Project ([OWASP](https://owasp.org)). The rules are available under license from the Apache Foundation and are also used in several commercial WAF solutions (where that is not always advertised).
 
