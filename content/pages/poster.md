@@ -7,6 +7,6 @@ noindex: true
 ---
 
 
-The [CRS3 poster]({{< ref src="images/2017/07/CRS3-movie-poster.jpg" >}}) was designed by Hugo Costa, OWASP's graphical designer. It can be reused under a [CC BY-ND](https://creativecommons.org/licenses/by-nd/4.0/) license.
+The [CRS3 poster]({{< ref src="/images/2017/07/CRS3-movie-poster.jpg" >}}) was designed by Hugo Costa, OWASP's graphical designer. It can be reused under a [CC BY-ND](https://creativecommons.org/licenses/by-nd/4.0/) license.
 
-{{< figure src="images/2017/07/CRS3-movie-poster.jpg" >}}
+{{< figure src="/images/2017/07/CRS3-movie-poster.jpg" >}}

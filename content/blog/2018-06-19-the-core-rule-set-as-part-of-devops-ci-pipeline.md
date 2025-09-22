@@ -73,11 +73,11 @@ I have implemented a proof of concept in CircleCI. Of course, the continuous int
 
 In the basic setup, we have application tests that are performed against the application. Naturally, these application tests should succeed:
 
-{{< figure src="images/2018/06/Setup1.png" >}}
+{{< figure src="/images/2018/06/Setup1.png" >}}
 
 As a next step, we put CRS in front of the same application in order to funnel the same tests through the WAF. We expect the application tests to still succeed and the log to remain empty. This would confirm that no CRS rule were triggered by the tests.
 
-{{< figure src="images/2018/06/Setup2.png" >}}
+{{< figure src="/images/2018/06/Setup2.png" >}}
 
 Each of these components runs in a separate Docker container.
 
@@ -85,7 +85,7 @@ The time taken to pull and start the Core Rule Set container and to run the appl
 
 The message here is: We do not waste a lot of time but get a lot of extra security.
 
-{{< figure src="images/2018/06/circleci_output.png" >}}
+{{< figure src="/images/2018/06/circleci_output.png" >}}
 
 
 ### CI Configuration

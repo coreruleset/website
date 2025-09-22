@@ -14,7 +14,7 @@ predominant user of Coraza rather than ModSecurity, Matteo Pace brings a much we
 outsider’s perspective to the CRS team. Community and shared purpose define his professional
 and private life.
 
-{{< figure src="images/2025/03/Matteo_1.jpg" caption="Matteo Pace likes the social aspects in everything he does – like here during the CRS developer retreat 2023 in the Hungarian capital Budapest" >}}
+{{< figure src="/images/2025/03/Matteo_1.jpg" caption="Matteo Pace likes the social aspects in everything he does – like here during the CRS developer retreat 2023 in the Hungarian capital Budapest" >}}
 
 Strolling through Turin, Italy&#39;s Piedmont capital, you might assume half its residents are
 chocolatiers, pastry chefs, or café owners. But Turin offers more than chocolate and
@@ -73,7 +73,7 @@ And when he couldn’t, he still attended monthly CRS Slack meetings to stay upd
 later, the core team officially invited him to join. “It was unexpected, but one of those great
 opportunities you just can’t say no to,“ he says.
 
-{{< figure src="images/2025/03/Matteo_2.jpg" caption="\"I need activities that get me outside.\" Luckily, Matteo lives in Turin, close to the alps." >}}
+{{< figure src="/images/2025/03/Matteo_2.jpg" caption="\"I need activities that get me outside.\" Luckily, Matteo lives in Turin, close to the alps." >}}
 
 Matteo brings an outsider’s perspective to CRS due to his background with Coraza. “My focus
 has always been on adapting CRS rules to work seamlessly with Coraza as an alternative to

@@ -11,7 +11,7 @@ title: 'Save the Date: CRS Community Summit on July 4, 2018'
 
 The OWASP ModSecurity Core Rule Set project will meet on Wednesday July 4, at 4pm in London to hold it's first community summit. We scheduled this for the night before the AppSecEU conference in London on Thursday and Friday so people would have a real incentive to make the trip.
 
-{{ figure src="images/2018/03/16367769605_dec3772aa8_k.jpg" caption="London Tower Bridge by night (Photo by Arijit_Roy; flickr)" >}}
+{{ figure src="/images/2018/03/16367769605_dec3772aa8_k.jpg" caption="London Tower Bridge by night (Photo by Arijit_Roy; flickr)" >}}
 
 Truth be told, the three project leads, Chaim, Walter and me have never met in person and physical contact is similarly rare between the committers, let alone the commercial suppliers or the thousands of users worldwide.
 

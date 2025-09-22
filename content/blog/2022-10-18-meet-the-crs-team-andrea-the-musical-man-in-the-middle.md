@@ -11,7 +11,7 @@ title: 'Meet the CRS team: Andrea, the musical man-in-the-middle'
 
 #### *He likes to play board games and the guitar, and he loves to fix bypasses to CRS rules: Italian Andrea Menin joined the Core Rule Set team in 2018. The most important requirement for anybody joining the project, he says, is to enjoy it.*
 
-{{< figure src="images/2022/10/02-2.jpg" caption="Andrea Menin with the famous DeLorean: “*Back to the Future *sparked a love of technology and music in me“" >}}
+{{< figure src="/images/2022/10/02-2.jpg" caption="Andrea Menin with the famous DeLorean: “*Back to the Future *sparked a love of technology and music in me“" >}}
 He never wanted to be a locomotive engineer or an astronaut, but Andrea Menin (born in 1983) actually had an alternative to being a developer and IT crack: “After school, I either wanted to do something with computers or become a musician.” It had been the movie *Back to the Future* that sparked a love of technology and music in Andrea early on. “Back then, when I saw Marty play ‘Johnny B. Goode’ at the high school dance, I wanted to learn guitar, too.” Eventually, he studied both computer science at the Istituto Tecnico Industriale Statale (ITIS) and classical guitar at the Conservatorio A. Vivaldi in Alessandria, Italy, his birthplace.
 
 Andrea still plays classical and electric guitar, but in recent years unfortunately much too rarely, as he says himself. Since the possibilities as a professional musician seemed limited to him, he decided to pursue a career in information technology. He got his first job as a security consultant with a company in Milan. He didn't get the tools for the job in college, though, Andrea points out: “We were a group of friends who were heavily into hacking and offensive techniques.”
@@ -22,7 +22,7 @@ After many years in Milan, Andrea now works as a web application security busine
 
 Andrea has been an active member of the Core Rule Set team since 2018. Before that, he had started to develop his own web application firewall based on ModSecurity and Openresty for his former employer. For this, he sent several pull requests to GitHub with fixes for bypasses he found in CRS. This is how the CRS dev team became aware of the Italian developer, who usually appears on the Internet as “theMiddle”. TheMiddle? That's right: Andrea Menin theMiddle – man in the middle, get it? When they finally asked him to become part of the core team, did he hesitate? “Of course not!” replies Andrea, “I was totally excited. Many WAF vendors can only sell their product because the CRS project exists. We're not even twenty developers, but our project is used by companies like Microsoft, Cloudflare, and Google.”
 
-{{< figure src="images/2022/10/01.jpg" caption="“Get in touch with us!” Even the Vulcan way." >}}
+{{< figure src="/images/2022/10/01.jpg" caption="“Get in touch with us!” Even the Vulcan way." >}}
 
 Andrea is convinced of the importance of the CRS: “The CRS is currently the most widely used and most complete rule set for WAF. Anyone who has tried to write a general ruleset against attacks such as cross-site scripting, SQL injection or remote code execution knows the difficulty – and how many bypass possibilities you have to keep in mind. Ivan Ristić once said, paraphrasing, ‘When you write a WAF rule, you create ten ways to bypass it.’” The OWASP CRS can count not only on the core team, but also on the support of an entire developer community.
 

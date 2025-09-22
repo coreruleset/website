@@ -12,7 +12,7 @@ The OWASP Project maintains an open source set of rules known as the the OWASP C
 
 During this same timeframe we have seen Quality Assurance (QA)/DevOps techniques adjust to new Agile development methodologies. To a large extent this Agile pattern matches the historical development practices of CRS. As a result, during the development of the latest CRS version 3.0, the development team decided that a serious overhaul of the regression/unit tests was overdue. While some existing Perl regression tests existed, these were incomplete and considered difficult for the average user to run. The CRS development team also concluded that a more refined testing methodology commits to a higher quality product and allows for a demonstration of the effectiveness of OWASP CRS compared to many other rule sets and WAFs.
 
-{{< figure src="images/2017/08/FTW1.png" >}}
+{{< figure src="/images/2017/08/FTW1.png" >}}
 
 As a result of extensive regression test development we are hoping to address a frequent user request to provide a capability to compare the effectiveness of various WAFs. Such comparisons can be tricky as they often attempt to compare varying features. In many situations OWASP CRS comes out favorably as can be seen in the latest Gartner report ([https://www.gartner.com/doc/reprints?id=1-3C4V1AS&amp;ct=160721&amp;st=sb](https://www.gartner.com/doc/reprints?id=1-3C4V1AS&ct=160721&st=sb)), where ModSecurity with CRS effectively acts as a baseline. However comparisons such as these have historically put very little work on testing overall WAF effectiveness. Our hope is to provide a set of tests that will act as a minimum benchmark between WAFs.
 
@@ -59,6 +59,6 @@ To aid the developer, tests are designed to only require minimal effort to desig
 
 FTW follows the same extendible concept as ModSecurity. While the project provides the capability to develop extremely flexible web based testing, the core project is provided with only limited tests files itself. The CRS team provides a continuously expanding corpus of tests designed for OWASP CRS 3 within their repo at: <https://github.com/coreruleset/coreruleset/tree/v3.0/dev/util/regression-tests>. While these tests were designed with CRS in mind, they provide a set of web-based attacks to test security features of any WAF against the OWASP CRS Top 10 web attacks. Such testing has already uncovered several underperforming rules such as can be seen in Github issue #480 (<https://github.com/coreruleset/coreruleset/pull/480>), as well as providing a methodical way to develop and test more complex functionality, such as the revamped RCE rules in CRS 3 (<https://github.com/coreruleset/coreruleset/pull/430>).
 
-{{< figure src="images/2017/08/FTW2.png" >}}
+{{< figure src="/images/2017/08/FTW2.png" >}}
 
 At this point the CRS regressions has over 1500 test cases designed for it and this number is growing daily. To utilize such extensive tests we plan to enforce the use of [Travis-CI](https://travis-ci.org/) starting with the promotion of OWASP CRS 3.0 to the master branch. It is our sincere hope that an increased reliance on testing and automation will vastly increase the quality of both the CRS ruleset and WAFs as a whole.
