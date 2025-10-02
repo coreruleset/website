@@ -11,7 +11,7 @@ Pizza, pasta, pesto ... pineapple? This was one of the many important topics (an
 
 This time, the backdrop for the meeting from October 29 to November 5 was the southern foothills of the Alps near Lake Varese, close to the Swiss border. Here, in [Villa Cagnola](https://villacagnola.com), there was not only good food and drink – there was also [a lot of work](https://github.com/coreruleset/coreruleset/wiki/Dev-Retreat-2022-Topics). The focus was on two items: preparing the rule set for the CRS v4 release and defining a strategy for the future of the project.
 
-{{< figure src="images/2022/11/Developer_Retreat_2022_Garden-2.jpeg" caption="The CRS core team is meeting in the garden of Villa Cagnola for the roadmap discussion" >}}
+{{< figure src="/images/2022/11/Developer_Retreat_2022_Garden-2.jpeg" caption="The CRS core team is meeting in the garden of Villa Cagnola for the roadmap discussion" >}}
 #### Working Off All Bug Bounty Findings
 
 A private bug bounty in Spring had delayed the preparation for the CRS v4 release and we were still trying to get over that hill. The policy clearly is that we will not release v4 without being sure we closed the 150 or bug bounty findings that had been reported to us. Additionally, there was also a separate submission with several dozens of SQLi bypasses that [will have to be fixed as well](https://github.com/coreruleset/coreruleset/issues?q=Shivam+is%3Aissue+author%3Afranbuehler+label%3Asqli-bypass-bathla). We started the week with 38 open issues and finished with a single tricky finding we had not solved. So this was highly successful, [but still not quite done](https://github.com/coreruleset/coreruleset/wiki/DevRetreat22ProjectBugBounty).
@@ -24,7 +24,7 @@ Due to the uncertainty of ModSecurity, the Coraza WAF is becoming more and more 
 
 In contrast to this, the project as a whole will not commit to help with libinjection. Libinjection is considered a major pain point, but CRS can not really agree what to do with the library to ease the situation and we are rather staying absent than tear our project apart over this question.
 
-{{< figure src="images/2022/11/Developer_Retreat_2022_Milano.jpg" caption="Peak performance: On the roof of Milan's cathedral" >}}
+{{< figure src="/images/2022/11/Developer_Retreat_2022_Milano.jpg" caption="Peak performance: On the roof of Milan's cathedral" >}}
 #### Organizing the CRS Project
 
 Another central point of discussion concerned organization of the project. In recent years, the project has grown enormously and beyond just the ruleset. It was therefore necessary to discuss how to deal with the resulting increase in complexity.
@@ -44,7 +44,7 @@ The workshop identified the following subprojects. Which team members are involv
 • Testing  
 • Tools
 
-{{< figure src="images/2022/11/Developer_Retreat_2022_Italians-scaled.jpeg" caption="Can you spot the real Italians?" >}}
+{{< figure src="/images/2022/11/Developer_Retreat_2022_Italians-scaled.jpeg" caption="Can you spot the real Italians?" >}}
 #### Other Projects: Keyword Lists, Status Page and Milan
 
 Other projects of the retreat included an update of all keyword lists and tools in preparation for the 4.0 release, fixing bugs in Regexp-Assemble and [continuing work on the status page](https://github.com/coreruleset/coreruleset/wiki/DevRetreat22ProjectStatusPage) where we want to test CRS integrations like Azure, AWS or Cloudflare with our test suite.

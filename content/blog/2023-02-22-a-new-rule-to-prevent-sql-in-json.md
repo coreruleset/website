@@ -15,7 +15,7 @@ An example payload described by Team82 could be:
 1 OR JSON_EXTRACT('{"foo":1}','$.foo')=1
 ```
 
-{{< figure src="images/2023/02/SQL-in-JSON.png" >}}The OWASP Core Rule Set is blocking all payloads reported by Team82 at paranoia level 2 basically just with the rule `942110 "SQL Injection Attack: Common Injection Testing Detected"`.
+{{< figure src="/images/2023/02/SQL-in-JSON.png" >}}The OWASP Core Rule Set is blocking all payloads reported by Team82 at paranoia level 2 basically just with the rule `942110 "SQL Injection Attack: Common Injection Testing Detected"`.
 
 Though blocking this at paranoia level 2 is great, we decided to define a new rule to block all “JSON in SQL” payloads at the default level (paranoia level 1). More information about the new rule can be reached by visiting the related [pull request page on the CRS GitHub repository](https://github.com/coreruleset/coreruleset/pull/3055).
 

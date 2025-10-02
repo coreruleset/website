@@ -10,7 +10,7 @@ title: 'Meet the CRS team: Andrew, the technical writer who loves Eurovision and
 
 #### *When invited to join the Core Rule Set project, Andrew Howe felt a bit intimidated by the highly talented team at first. Today he is a valued member of the CRS core team, bringing his experience as a technical writer and a CRS integrator. “Having people onboard with experience of running CRS at a large-scale would be very useful,” he says. What else he said, you can read in this interview.*
 
-{{< figure src="images/2023/11/photo_portrait.jpg" caption="Full steam ahead: CRS core team member Andrew Howe lives in the same place where the Titanic started" >}}
+{{< figure src="/images/2023/11/photo_portrait.jpg" caption="Full steam ahead: CRS core team member Andrew Howe lives in the same place where the Titanic started" >}}
 
 *Hello, Andrew. Thanks for taking the time to answer some questions. Let’s start with: where do you live?*
 
@@ -42,7 +42,7 @@ We used the Core Rule Set to power our load balancer’s WAF functionality at Lo
 
 Yes! It’s intimidating to join a widely used project that’s developed by very talented people. But everyone is friendly and welcoming and there’s a lot of encouragement given to newcomers who show an interest in the project, which is great. I learned that everyone brings their own strengths to the project, and I realised that being involved was an opportunity to put my otherwise quite niche ModSecurity knowledge to good use. Plus, it’s great to be able to contribute to the world of free and open-source software.
 
-{{< figure src="images/2023/11/photo_eurovision_2023.jpg" caption="The United Kingdom: 24 points. Le Royaume-Uni: 24 points ... The result did not dampen Andrew's joy of being live at the ESC Grand Final" >}}
+{{< figure src="/images/2023/11/photo_eurovision_2023.jpg" caption="The United Kingdom: 24 points. Le Royaume-Uni: 24 points ... The result did not dampen Andrew's joy of being live at the ESC Grand Final" >}}
 
 *What is your role in the team?*
 

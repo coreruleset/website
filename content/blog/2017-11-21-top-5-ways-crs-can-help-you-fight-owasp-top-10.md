@@ -60,7 +60,7 @@ In the list of alerts seen above, the SQL Injection attacks are prevalent. This 
 
 OWASP Top Ten tells you that CRS can detect attacks as seen above under A10. But it does not tell you, that CRS can also stop many of the attacks for you.
 
-{{< figure src="images/2017/11/tmp.png" caption="Burp vs. CRS" >}}
+{{< figure src="/images/2017/11/tmp.png" caption="Burp vs. CRS" >}}
 
 Here is a graphic that depicts a scan as carried out by the Burp vulnerability scanner. In our example, Burp probed a special vulnerable application. In the first column, you see Burp's report when no protection shielded the application. In the 2nd column, you see a CRS default installation used as a 1st line of defense in front of the vulnerable service. Unlike under A10, we are immediately blocking the probes here. Again, false positives are very rare in the default installation and they can be handled with relative ease thanks to existing guides.
 

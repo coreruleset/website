@@ -16,7 +16,7 @@ I am Dexter Chang and I’m currently based in Taiwan. I have more than three ye
 
 Participating in GSoC is a great opportunity for anybody – even more so now since it isn’t limited to students anymore. The program not only provides opportunities to collaborate with communities on open-source projects but also provides stipends to the participants. As for me, the most valuable part of joining GSoC was that the participants can develop their experience and learn from their mentors how to contribute to the communities. And you can even stay in the community once the campaign is completed.
 
-{{< figure src="images/2023/09/Dexter_Chang.jpg" caption="Dexter Chang applyed for a Coogle Summer of Code project with the Core Rule Set" >}}
+{{< figure src="/images/2023/09/Dexter_Chang.jpg" caption="Dexter Chang applyed for a Coogle Summer of Code project with the Core Rule Set" >}}
 
 **Why did you want to contribute to the OWASP ModSecurity Core Rule Set?**
 
@@ -38,7 +38,7 @@ SecRule <text-contain-regex: "hacker (cat|kitty|meow)>"
 
 In this case, how can we measure the performance impact caused by the change, especially since there are many considerable-length regexes in the project? The CRS Performance Framework aims to resolve the issue. The framework is developed to help developers testing the performance of CRS and to provide a benchmark in order to compare the performance of CRS with different versions or different configurations.
 
-{{< figure src="images/2023/09/process-diagram.png" caption="A lovely little diagram of how performance tests in Dexter Chang's performance framework work" >}}
+{{< figure src="/images/2023/09/process-diagram.png" caption="A lovely little diagram of how performance tests in Dexter Chang's performance framework work" >}}
 
 **What challenges did you encounter during your GSoC project?**
 

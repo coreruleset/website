@@ -20,7 +20,7 @@ You can control this early blocking behavior by setting the `tx.early_blocking` 
 
 Early blocking is also implemented for *responses*, but it has less of an effect there, admittedly.
 
-{{< figure src="images/2024/02/pexels-rdne-stock-project-7755146.png" caption="© RDNE Stock project (pexels.com)" >}}
+{{< figure src="/images/2024/02/pexels-rdne-stock-project-7755146.png" caption="© RDNE Stock project (pexels.com)" >}}
 
 #### The performance
 

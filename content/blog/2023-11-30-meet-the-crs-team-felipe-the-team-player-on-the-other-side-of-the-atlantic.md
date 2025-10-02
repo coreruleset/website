@@ -12,7 +12,7 @@ slug: 'meet-the-crs-team-felipe-the-team-player-on-the-other-side-of-the-atlanti
 
 #### *As a South American, Felipe Zipitría has a special status in the CRS core team. The sociable Uruguayan played basketball which taught him all about the value of teamwork. Automation and standardization are key issues for Felipe in the CRS project. “The CRS project offers exciting problems that can make any techie happy”, he says.*
 
-{{< figure src="images/2023/11/Felipe_Budapest-1.jpeg" caption="Our man in South America: Felipe Zipitría enjoys the views of Budpest at the CRS Developer Retreat 2023" >}}
+{{< figure src="/images/2023/11/Felipe_Budapest-1.jpeg" caption="Our man in South America: Felipe Zipitría enjoys the views of Budpest at the CRS Developer Retreat 2023" >}}
 
 If you enter [The Lab Coffee Roasters](https://thelab.com.uy/) in Uruguay's capital Montevideo on the Rio de la Plata, the river of silver, you might see a man with silver streaks in his hair and beard hunched over a laptop, his glasses on his nose, engrossed in programming, sipping a flat white. Felipe Zipitría is the name of the not quite 50-year-old who is here working on new features for the OWASP ModSecurity Core Rule Set. Since 2021, Felipe has been one of three co-leads of the CRS core team, along with Walter Hop and Christian Folini.
 
@@ -36,7 +36,7 @@ Such dedication did not go unnoticed by the CRS project, and soon Felipe receive
 
 Now made co-lead, Felipe sees his role on the team primarily as an enabler: automation and standardization have been key issues for him since the beginning, especially for such a small team. “But my favorite thing is to think about tools that make it easier to use and contribute to CRS and to ease the maintenance toll.” To be sure, Felipe can’t say exactly how many hours he puts into working on the project. But especially during more intensive phases, such as the current big push toward version 4, he can easily add up to between 30 and 50 hours a month.
 
-{{< figure src="images/2023/11/Felipe_Pool.jpeg" caption="Felipe tries to go swimming every day" >}}
+{{< figure src="/images/2023/11/Felipe_Pool.jpeg" caption="Felipe tries to go swimming every day" >}}
 
 Felipe would like to see reinforcements for the project team, as the scope of the CRS project has grown enormously. Today, CRS provides an umbrella for numerous subprojects that revolve around the actual core rule set – from container building to testing and performance monitoring to development. “There's something for everyone,” Felipe says and adds jokingly: “In fact, we offer really exciting and very application-oriented problems that can make any techie happy.” For example, he says, anyone interested in contributing can simply create their own issue or even just join the discussion in the Slack channel. “There's plenty for you to do, so get in touch!”
 

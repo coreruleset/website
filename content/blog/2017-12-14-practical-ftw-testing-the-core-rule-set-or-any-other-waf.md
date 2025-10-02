@@ -285,7 +285,7 @@ CRS_Tests.py::test_crs[ruleset0-Example_Tests -- 920272-3] PASSED
 
 We are now seeing quite a few failed tests. This has nothing to do with ftw or the CRS, it's the tests that are not yet written correctly. User [@azhao155](https://github.com/azhao155) is very active with fixing these to give us better coverage (and he could use some help with this task). Because of these errors, our continuos integration setup on github does not call all the tests. Instead, Travis only covers those we known to be working:
 
-{{< figure width="967px" src="images/2017/12/tmp.png" caption="Not all tests are executed by Travis so far. The 920xxx rules are skipped as of this writing" >}}
+{{< figure width="967px" src="/images/2017/12/tmp.png" caption="Not all tests are executed by Travis so far. The 920xxx rules are skipped as of this writing" >}}
 
 As soon as we have all of them sorted out, we can get include all of them and start to cover those rules where a test is not yet in place.
 

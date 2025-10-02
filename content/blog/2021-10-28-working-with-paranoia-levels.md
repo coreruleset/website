@@ -74,7 +74,7 @@ So there is a better way. Let's think of the Paranoia Level as the Blocking Para
 
 Now let's introduce an additional Paranoia Level: the Executing Paranoia Level. This PL is equal to (this is the default) or higher than the Blocking Paranoia Level. If the Executing Paranoia Level is higher, you execute rules that might trigger false positives, but even if they do, these alerts will not count towards the Anomaly Threshold used to make the blocking decision.
 
-{{< figure src="images/2021/10/executing-paranoia-level-1.png" caption="Scheme with Blocking Paranoia Level at 1 and Executing Paranoia Level 2" >}}>
+{{< figure src="/images/2021/10/executing-paranoia-level-1.png" caption="Scheme with Blocking Paranoia Level at 1 and Executing Paranoia Level 2" >}}>
 So the Executing Paranoia Level allows you to run a higher Paranoia Level and to trigger false positives in production. You can then tune them away with the help of rule exclusions and, when you are ready, finally raise the Blocking Paranoia Level to match the level of the Executing Paranoia Level. This gives you more flexibility and a secure way to raise the Paranoia Level in production without risking new false alarms to bite your users.
 
 By the way, you can always lower the Paranoia Level (or Blocking Paranoia Level, if you will) and you will get fewer false positives, or none. The way the rule set is constructed, lowering the Paranoia Level always means fewer or no false positives; raising the Paranoia Level is likely to bring more false positives.
