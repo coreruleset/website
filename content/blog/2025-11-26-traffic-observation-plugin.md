@@ -58,7 +58,7 @@ Here's what the output looks like:
 This report is safe to share. In fact, we're asking you to share it with us.
 
 
-<center><img src="/static/images/2025/2025-11-26-traffic-observation-plugin-illustration.png" alt="CRS Traffic Observation Flowchart" width="90%"></center>
+<center><img src="/static/images/2025/2025-11-26-traffic-observation-plugin-illustration.png" alt="CRS Traffic Observation Flowchart" width="50%"></center>
 
 *Overview of how HTTP traffic flows through OWASP CRS, the Traffic Observation Plugin, the log file, and the analysis script to produce a statistical report.*
 
