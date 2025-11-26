@@ -39,7 +39,7 @@ The report contains aggregated statistics like means, medians, ranges, and stand
 
 Here's what the output looks like:
 
-```json
+```bash
 ...
 {
   "NumReqHeaders": {
