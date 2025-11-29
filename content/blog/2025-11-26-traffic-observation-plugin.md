@@ -2,7 +2,7 @@
 author: dune73
 categories:
   - Blog
-date: '2025-11-26T14:53:00+01:00'
+date: '2025-11-28T07:53:00+01:00'
 title: 'Help Us Optimize CRS Performance: Introducing the Traffic Observation Plugin'
 ---
 
