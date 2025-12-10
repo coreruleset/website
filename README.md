@@ -91,3 +91,5 @@ Favicons were generated using https://realfavicongenerator.net.
 ## Emojis! :tada:
 
 Check the hugo reference for the [list of supported emojis!](https://gohugo.io/quick-reference/emojis/)
+
+Updated on 12/10/2025
