@@ -13,9 +13,9 @@ During our recent developer retreat in Bern, the CRS core team made important de
 
 Consider this: would you trust an antivirus with signatures that are five years old? Of course not. Yet that's essentially what extended LTS periods can create in web application security.
 
-Five years is an eternity in web and API security. Attack techniques evolve, new vulnerabilities emerge, and threat landscapes shift dramatically. While maintaining old rules provides some protection, it also creates a dangerous false sense of security—organizations may believe they're fully protected when they're actually missing defenses against modern attack vectors.
+Five years is an eternity in web and API security. Attack techniques evolve, new vulnerabilities emerge, and threat landscapes shift dramatically. While maintaining old rules provides some protection, it also creates a dangerous false sense of security — organizations may believe they're fully protected when they're actually missing defenses against modern attack vectors.
 
-This is why CRS is moving away from the extended LTS model we used for CRS 3.3, which was maintained for nearly five years. Our commitment to protecting our user base means providing security rules that remain effective against contemporary threats, not just legacy attack patterns. We also work incredibly hard with each release to lower our false positive ratio, continuously refining rules based on real-world traffic patterns and feedback. These improvements don't just make CRS easier to use—they make it more effective by allowing organizations to run at stricter paranoia levels without operational disruption.
+This is why CRS is moving away from the extended LTS model we used for CRS 3.3, which was maintained for nearly five years. Our commitment to protecting our user base means providing security rules that remain effective against contemporary threats, not just legacy attack patterns. We also work incredibly hard with each release to lower our false positive ratio, continuously refining rules based on real-world traffic patterns and feedback. These improvements don't just make CRS easier to use, they make it more effective by allowing organizations to run at stricter paranoia levels without operational disruption.
 
 Annual LTS releases strike the right balance: stable enough for production deployments requiring predictability, recent enough to maintain effective protection against modern threats, and sustainable enough for our volunteer-driven development team to maintain properly.
 
@@ -34,8 +34,6 @@ This approach balances the needs of organizations requiring stability with our c
 
 In November 2024, we [made a public call for sponsorship](https://coreruleset.org/20241106/securing-the-maintenance-of-a-crs-4-lts-release/) to support the maintenance of CRS 4 LTS releases. We outlined two paths forward: direct support through corporate partners taking over LTS maintenance, or indirect support through financial sponsorship allowing us to commission this work from within our developer community.
 
-A major change in our approach is the significantly shortened LTS cycle. Previous releases like CRS 3.3 have been maintained for nearly five years—an extraordinarily long support period that, while valuable to users, proved unsustainable for the development team. Our new model commits to a fixed one-year support period for each LTS release, plus an additional six months of overlap after the next LTS arrives. This 18-month window gives downstream providers and organizations ample time to plan and execute migrations while keeping the maintenance burden manageable for our volunteer-driven project.
-
 We were transparent about the costs involved. Maintaining an LTS version requires substantial ongoing work including backporting critical changes, maintaining parallel testing infrastructure, managing CI/CD pipelines for older codebases, and the inevitable drain on developer mindshare as resources split between new development and maintenance of stable releases.
 
 The reality we face today is that **we still do not have dedicated corporate supporters for LTS releases**. Despite CRS being deployed by major organizations worldwide, and despite the clear value an LTS provides to these organizations planning their migration from CRS 3.3, our call for sponsorship has not materialized into the commitments we need.
@@ -44,9 +42,11 @@ The reality we face today is that **we still do not have dedicated corporate sup
 
 Here's what sets the CRS project apart: **we're doing it anyway**.
 
-The CRS team believes deeply in the importance of Long-Term Support for the security community. Organizations need stable, well-maintained versions they can depend on for extended periods. Security infrastructure demands predictability and reliability. The absence of corporate sponsorship won't stop us from delivering on this commitment.
+The CRS team understands in the importance of Long-Term Support releases for the security community. Organizations need stable, well-maintained versions they can depend on for extended periods. Security infrastructure demands predictability and reliability. The absence of corporate sponsorship won't stop us from delivering on this commitment.
 
-This decision comes at a cost. Our developers will balance LTS maintenance with ongoing development, new feature work, and the innovation that keeps CRS at the cutting edge of web application security. We'll manage parallel CI/CD pipelines and testing infrastructure from our existing resources. The work will be harder, and progress on new features may be slower, but we're committed to serving the community that depends on us.
+This decision comes at a cost, however. Our developers will balance LTS maintenance with ongoing development, new feature work, and the innovation that keeps CRS at the cutting edge of web application security. We'll manage parallel CI/CD pipelines and testing infrastructure from our existing resources. The work will be harder, and progress on new features may be slower, but we're committed to serving the community that depends on us.
+
+A major change in our approach is the significantly shortened LTS cycle. Previous releases like CRS 3.3 have been maintained for nearly five years - an extraordinarily long support period that, while valuable to users, proved unsustainable for the development team. Our new model commits to a fixed one-year support period for each LTS release, plus an additional six months of overlap after the next LTS arrives. This 18-month window gives downstream providers and organizations ample time to plan and execute migrations while keeping the maintenance burden manageable for our volunteer-driven project.
 
 ## A Call to Action
 
@@ -74,7 +74,7 @@ If your organization benefits from CRS and wants to support the LTS effort, plea
 
 ### Individual Users Can Make a Difference
 
-Even if you're not in a position to make organizational decisions, you can still help. If you're an end user whose infrastructure depends on CRS—whether through cloud providers, managed security services, CDN providers, or other platforms—reach out to them. Ask them to contribute to or get involved with the CRS project. Many providers benefit enormously from CRS but may not realize their users value and depend on this contribution to the open source security ecosystem.
+Even if you're not in a position to make organizational decisions, you can still help. If you're an end user whose infrastructure depends on CRS — whether through cloud providers, managed security services, CDN providers, or other platforms — reach out to them. Ask them to contribute to or get involved with the CRS project. Many providers benefit enormously from CRS but may not realize their users value and depend on this contribution to the open source security ecosystem.
 
 Your voice matters. When providers hear from their customers that CRS support is important, it strengthens the case for their involvement. We're also working with OWASP Headquarters to establish additional donation pathways throughout 2026, making it easier for organizations of all sizes to support this critical infrastructure.
 
