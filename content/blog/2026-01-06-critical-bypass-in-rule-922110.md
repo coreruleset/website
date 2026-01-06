@@ -282,7 +282,7 @@ The bug is in the **rule logic**, not the engine implementation.
 
 ## Remediation
 
-### Option 1: Upgrade (Recommended)
+### Upgrade (Recommended)
 
 Upgrade to the patched version for your branch:
 
