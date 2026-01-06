@@ -14,7 +14,7 @@ images: ["images/social-preview.svg"]
 crs:
   release_url_prefix: "https://github.com/coreruleset/coreruleset/releases/tag"
   latest_major_version: "4.22.0"
-  prev_major_version: "3.3.7"
+  prev_major_version: "3.3.8"
 
 github:
   repo_url: "https://github.com/coreruleset/website/blob/main"
