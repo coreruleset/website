@@ -684,7 +684,7 @@ The good news:
 - ✅ Backward compatible
 - ✅ Works across all engines
 
-We encourage all CRS users to upgrade to version 4.22.0 at their earliest convenience.
+We urge all CRS users to upgrade to version 4.22.0 as soon as possible.
 
 Stay secure,
 The OWASP CRS Team
