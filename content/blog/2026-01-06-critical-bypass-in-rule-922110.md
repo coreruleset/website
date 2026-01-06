@@ -440,7 +440,7 @@ So using `MATCHED_VAR` instead of `TX:1` would result in the same vulnerability 
 
 Additionally, `MATCHED_VAR` contains the **entire** matched string (e.g., `"content-type: text/plain; charset=utf-7"`) while `TX:1` contains just the captured group (e.g., `"text/plain; charset=utf-7"`). The validation regex expects the value **after** the `"content-type: "` prefix.
 
-What about `MATCHED_VARS` (plural)? While it contains all matched data, it doesn't solve the problem either. Since `MATCHED_VAR` holds the wrong match (only the last one), using `MATCHED_VARS` to validate all matches would cause many false positives because it includes data from all iterations, not just the extracted charset values we need to validate.
+What about `MATCHED_VARS` (plural)? While it contains all matched data, it doesn't solve the problem either. Using `MATCHED_VARS` to validate all matches would cause many false positives because it includes data from all iterations, not just the extracted charset values we need to validate.
 
 **Q: Why not use regular expression backreferences?**
 
