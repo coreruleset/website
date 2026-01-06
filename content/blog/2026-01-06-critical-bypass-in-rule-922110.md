@@ -430,13 +430,17 @@ Part 2: Content-Type: text/plain; charset=utf-8  ← LEGITIMATE
 
 **Q: Why not just use `MATCHED_VAR` instead of `TX:1`?**
 
-A: Because `MATCHED_VAR` contains the **entire** matched string:
-```
-MATCHED_VAR = "content-type: text/plain; charset=utf-7"
-TX:1 = "text/plain; charset=utf-7"  ← This is what we need
-```
+A: `MATCHED_VAR`'s behavior is almost the same as the `TX:1` captured variable - it only holds the **last** inspected target. According to the [ModSecurity reference manual](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-(v2.x)#user-content-MATCHED_VAR):
 
-The validation regex expects the value **after** the `"content-type: "` prefix. Using `MATCHED_VAR` would check the wrong string.
+> This variable holds the value of the most-recently matched variable. It is similar to the TX:0, but it is automatically supported by all operators and there is no need to specify the capture action.
+> ...
+> _**Note: Be aware that this variable holds data for the last operator match.**_
+
+So using `MATCHED_VAR` instead of `TX:1` would result in the same vulnerability - only the last multipart part would be checked.
+
+Additionally, `MATCHED_VAR` contains the **entire** matched string (e.g., `"content-type: text/plain; charset=utf-7"`) while `TX:1` contains just the captured group (e.g., `"text/plain; charset=utf-7"`). The validation regex expects the value **after** the `"content-type: "` prefix.
+
+What about `MATCHED_VARS` (plural)? While it contains all matched data, it doesn't solve the problem either. Since `MATCHED_VAR` holds the wrong match (only the last one), using `MATCHED_VARS` to validate all matches would cause many false positives because it includes data from all iterations, not just the extracted charset values we need to validate.
 
 **Q: Why not use regular expression backreferences?**
 
