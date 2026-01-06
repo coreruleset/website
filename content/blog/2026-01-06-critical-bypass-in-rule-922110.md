@@ -291,18 +291,11 @@ Upgrade to the patched version for your branch:
 - Download: https://github.com/coreruleset/coreruleset/releases/tag/v4.22.0
 
 **For CRS 3.3.x users:**
-- **CRS 3.3.8** (released January 2026) - backport with the fix
+- **CRS 3.3.8** (released January 2026) - includes the fix
 - Download: https://github.com/coreruleset/coreruleset/releases/tag/v3.3.8
 
 **Installation:**
 - https://coreruleset.org/installation/
-
-### Option 2: Apply Backport Patches
-
-For users who cannot immediately upgrade but need the fix:
-
-- **CRS 3.3.x users:** Upgrade to 3.3.8 (recommended over manual patching)
-- **CRS 4.x users:** Upgrade to 4.22.0
 
 ### Verification
 
