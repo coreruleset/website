@@ -6,11 +6,11 @@ title: 'Introducing seclang_parser: A Unified ANTLR-Based Parser for SecLang'
 author: fzipi
 ---
 
-We are excited to announce a significant development in the CRS ecosystem: the [seclang_parser](https://github.com/coreruleset/seclang_parser), a new ANTLR-based parser for the SecLang configuration language used by ModSecurity and compatible WAF engines.
+We are excited to introduce the community to a significant development in the CRS ecosystem: the [seclang_parser](https://github.com/coreruleset/seclang_parser), an ANTLR-based parser for the SecLang configuration language used by ModSecurity and compatible WAF engines.
 
 ## What is seclang_parser?
 
-The seclang_parser is a grammar-based parser generator built on ANTLR 4 (Another Tool for Language Recognition) that provides a unified, language-agnostic approach to parsing ModSecurity's SecLang configuration files. Rather than maintaining separate parsing implementations across different programming languages, this project consolidates efforts around a single, authoritative grammar specification.
+The seclang_parser is a grammar-based parser built using ANTLR 4 (Another Tool for Language Recognition) that provides a unified, language-agnostic approach to parsing ModSecurity's SecLang configuration files. Rather than maintaining separate parsing implementations across different programming languages, this project consolidates efforts around a single, authoritative grammar specification.
 
 ## Why Was This Needed?
 
@@ -34,7 +34,7 @@ The parser operates independently of its destination programming language. The A
 Rather than dealing with low-level parsing details in each target language, the grammar prioritizes simplicity and clarity. This reduces implementation errors and makes the parser easier to understand and maintain.
 
 ### Minimal Dependencies
-The generated parsers are designed to work with native code without requiring external dependencies or CGo bindings. This makes integration into existing projects straightforward and reduces potential compatibility issues.
+The generated parsers are designed to work with native code without requiring external dependencies or cgo bindings. This makes integration into existing projects straightforward and reduces potential compatibility issues.
 
 ### Multi-Language Support
 Currently, the project includes working implementations for:
