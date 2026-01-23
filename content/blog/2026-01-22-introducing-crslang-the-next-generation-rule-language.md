@@ -81,22 +81,26 @@ Seclang's support for complex logical conditions is limited and often requires w
 
 ```yaml
 rule:
-  id: 1
-  phase: 1
+  metadata:
+    id: 1
+    phase: 1
   conditions:
     - and:
         - or:
-            - variable: ARGS:user
-              operator: "@streq"
-              pattern: "admin"
-            - variable: ARGS:username
-              operator: "@streq"
-              pattern: "admin"
-        - variable: REQUEST_LINE
-          operator: "@contains"
-          pattern: "admin"
+            - variables:
+                - name: ARGS:user
+              operator:
+                streq: "admin"
+            - variables:
+                - name: ARGS:username
+              operator:
+                streq: "admin"
+        - variables:
+            - name: REQUEST_LINE
+          operator:
+            contains: "admin"
   actions:
-    - action: block
+    disruptive: block
 ```
 
 ### 3. Template Functions
@@ -108,24 +112,28 @@ templates:
   admin_check:
     conditions:
       - or:
-          - variable: ARGS:user
-            operator: "@streq"
-            pattern: "admin"
-          - variable: ARGS:username
-            operator: "@streq"
-            pattern: "admin"
+          - variables:
+              - name: ARGS:user
+            operator:
+              streq: "admin"
+          - variables:
+              - name: ARGS:username
+            operator:
+              streq: "admin"
 
 rules:
-  - id: 1
-    phase: 1
+  - metadata:
+      id: 1
+      phase: 1
     conditions:
       - and:
           - template: admin_check
-          - variable: REQUEST_LINE
-            operator: "@contains"
-            pattern: "admin"
+          - variables:
+              - name: REQUEST_LINE
+            operator:
+              contains: "admin"
     actions:
-      - action: block
+      disruptive: block
 ```
 
 ### 4. Bidirectional Translation
@@ -193,7 +201,6 @@ We're excited about this evolution and would love your feedback. Whether you're 
 
 Join the conversation:
 - GitHub: [github.com/coreruleset/crslang](https://github.com/coreruleset/crslang)
-- OWASP Slack: [owasp.org/slack/](https://owasp.org/slack/) (#coreruleset channel)
-- Mailing list: Join our community discussions
+- OWASP Slack: [owasp.org/slack/invite](https://owasp.org/slack/invite) (#coreruleset channel)
 
 The future of OWASP CRS is clearer, more maintainable, and more accessible. We can't wait to see what the community builds with CRSLang.
