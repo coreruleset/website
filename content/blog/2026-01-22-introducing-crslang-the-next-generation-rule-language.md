@@ -45,26 +45,33 @@ CRSLang is a YAML-based, technology-agnostic rule language designed to address t
 ```yaml
 rule:
   metadata:
-    comment: "Validate request line against the format specified in the HTTP RFC"
+    comment: |
+      "Validate request line against the format specified in the HTTP RFC"
     phase: 1
     id: 920100
     message: Invalid HTTP Request Line
     severity: WARNING
     tags:
       - application-multi
-      - attack-protocol
+      - language-multi
+    version: OWASP_CRS/4.0.0
   conditions:
     - variables:
-        - name: REQUEST_LINE
+        - REQUEST_LINE
       operator:
-        rx: (?i)^(?:get /[^#\?]*...$
+        negate: true
+        rx: (?i)^(?:get /[^#\?]...
       transformations:
         - none
   actions:
     disruptive: block
     non-disruptive:
       - logdata: "%{request_line}"
-      - setvar: tx.inbound_anomaly_score_pl1=+%{tx.warning_anomaly_score}
+      - setvar:
+          collection: TX
+          operation: =+
+          assignments:
+            - inbound_anomaly_score_pl1: "%{tx.warning_anomaly_score}"
 ```
 
 The difference is immediately apparent. The rule structure is clear, with distinct sections for metadata, conditions, and actions.
@@ -77,55 +84,64 @@ CRSLang separates metadata, conditions, and actions into distinct, easy-to-under
 
 ### 2. Improved Logical Expressions
 
-Seclang's support for complex logical conditions is limited and often requires workarounds. CRSLang provides clean AND/OR syntax:
+Seclang's support for complex logical conditions is limited and often requires workarounds. CRSLang provides a clean AND syntax, and we are working on extending its logical capabilities.
+
 
 ```yaml
 rule:
-  id: 1
-  phase: 1
+  metadata:
+    phase: 1
+    id: 920310
+    message: Request Has an Empty Accept Header
   conditions:
-    - and:
-        - or:
-            - variable: ARGS:user
-              operator: "@streq"
-              pattern: "admin"
-            - variable: ARGS:username
-              operator: "@streq"
-              pattern: "admin"
-        - variable: REQUEST_LINE
-          operator: "@contains"
-          pattern: "admin"
+    - collections:
+        - name: REQUEST_HEADERS
+          arguments:
+            - Accept
+      operator:
+        rx: ^$
+      transformations:
+        - none
+    - variables:
+        - REQUEST_METHOD
+      operator:
+        negate: true
+        rx: ^OPTIONS$
+    - collections:
+        - name: REQUEST_HEADERS
+          arguments:
+            - User-Agent
+      operator:
+        negate: true
+        pm: AppleWebKit Android Business Enterprise Entreprise
+      transformations:
+        - none
   actions:
-    - action: block
+    disruptive: block
 ```
 
 ### 3. Template Functions
 
-CRSLang introduces reusable rule components, making it easier to maintain consistent patterns across your rule set:
+CRSLang introduces reusable rule components, making it easier to maintain consistent patterns across your rule set. You can also define common patterns and use them with different variables:
 
-```yaml
-templates:
-  admin_check:
-    conditions:
-      - or:
-          - variable: ARGS:user
-            operator: "@streq"
-            pattern: "admin"
-          - variable: ARGS:username
-            operator: "@streq"
-            pattern: "admin"
+```
+detect-pattern-template: &detect-pattern
+  operator:
+    rx: "some-pattern"
+  transformations:
+    - urlDecode
+    - lowercase
 
-rules:
-  - id: 1
-    phase: 1
-    conditions:
-      - and:
-          - template: admin_check
-          - variable: REQUEST_LINE
-            operator: "@contains"
-            pattern: "admin"
-    actions:
-      - action: block
+rule:
+  metadata:
+    phase: "1"
+    id: 1
+  conditions:
+    - <<: *detect-pattern
+      variables:
+        - REQUEST_URI
+  actions:
+    disruptive: pass
 ```
 
 ### 4. Bidirectional Translation
@@ -145,7 +161,7 @@ CRSLang builds upon the foundation laid by earlier parser projects. If you're fa
 
 While msc_pyparser focused on rule manipulation through Python, CRSLang provides a comprehensive language specification with:
 
-- ANTLR-based parsing with support for multiple target languages (Go, Python, Java)
+- ANTLR-based parsing with support for multiple target languages (Go, Python, Java), based on [seclang_parser]({{% ref "2026-01-22-introducing-seclang-parser-unified-antlr-based-parser.md" %}})
 - Full support for Seclang v2 and v3
 - Validation and testing frameworks
 - IDE integration capabilities (syntax highlighting, validation, debugging)
