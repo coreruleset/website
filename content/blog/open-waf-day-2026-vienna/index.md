@@ -2,7 +2,7 @@
 author: fzipi
 categories:
   - Blog
-date: '2026-02-01T10:00:00+01:00'
+date: '2026-02-25T10:00:00+01:00'
 title: 'Join Us at Open WAF Day 2026 - Vienna, Austria'
 slug: 'open-waf-day-2026-vienna'
 ---
@@ -15,7 +15,7 @@ Following the success of our Barcelona 2025 event, we're bringing the community 
 
 ## Event Details
 
-- **Date:** Tuesday, June 24, 2026
+- **Date:** Wednesday, June 24, 2026
 - **Time:** 09:00 - 18:00 (CEST)
 - **Location:** Vienna, Austria
 - **Cost:** Free attendance
@@ -24,21 +24,21 @@ Following the success of our Barcelona 2025 event, we're bringing the community 
 
 Registration is now open! Please register using the form below to secure your spot:
 
-[REGISTER HERE](https://docs.google.com/forms/d/e/1FAIpQLSc_DAc3N6OOac3mJpR0hBaqULt8voNIL_1uKs4FJWrwJfDqFg/viewform)
+{{< button link="https://forms.gle/UckehAUPdR8xZVkd8" text="Register now!" >}}
 
 ## Call for Presentations
 
 We're looking for speakers to share their experiences, research, and insights on topics including:
 
 - Web Application Firewalls (ModSecurity, Coraza, and others)
-- OWASP Core Rule Set
+- OWASP CRS
 - WAF deployment strategies and best practices
 - Security automation and testing
 - Real-world WAF use cases and lessons learned
 - WAF performance and optimization
 - Integration with observability and monitoring tools
 
-**The call for presentations will be opening soon.** If you're interested in presenting, please stay tuned for more details or reach out to us directly.
+{{< button link="https://forms.gle/PoBKhza7YcRLFdFU6" text="Send your presentation here" >}}
 
 ## What to Expect
 
