@@ -19,21 +19,37 @@ explainerText:
 explainerButton:
   other: About
 
+ltsBannerTitle:
+  other: "CRS 4.25.0 LTS — First Long-Term Support Release"
+
+ltsBannerText:
+  other: |
+    **CRS 4.25.0** is the first **Long-Term Support** release for the CRS 4 line.
+    This release focuses on stability: completing the migration to
+    [regex-assembly](https://github.com/coreruleset/coreruleset/issues/4480),
+    small improvements, and false positive fixes.
+    Organizations running CRS 3.3 should plan their migration now — CRS 3.3.x support ends Q3 2026.
+
+ltsBannerButton:
+  other: Get CRS 4.25.0 LTS
+
 sectionTitle:
   other: Getting Started
 
 sectionTitle1:
   other: |
-    New Features in CRS 4
+    What's New in CRS 4
 
 
 sectionText1:
   other: |
-    CRS 4 includes many coverage improvements, plus the following new features:
+    CRS 4 includes many coverage improvements, plus the following features:
       - Plug-in architecture allowing official and 3rd party plugins to integrate into CRS
       - Early-Blocking option
       - Over 500 individual rule bypasses closed following a big Bug Bounty project
-      - :new: Web shell detection
+      - Smarty template injection (SSTI) detection
+      - Improved multi-byte UTF-8 handling for CJK, Arabic, and Hebrew scripts
+      - Web shell detection
       - Full RE2/Hyperscan compatibility for better performance
       - Support for HTTP/3
       - More granular reporting options
@@ -50,6 +66,7 @@ sectionText2:
     - Remote File Inclusion (RFI)
     - PHP Code Injection
     - Java Code Injection
+    - Server-Side Template Injection (SSTI)
     - HTTPoxy
     - Shellshock
     - Unix/Windows Shell Injection

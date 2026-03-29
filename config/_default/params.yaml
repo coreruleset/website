@@ -15,6 +15,7 @@ crs:
   release_url_prefix: "https://github.com/coreruleset/coreruleset/releases/tag"
   latest_major_version: "4.25.0"
   prev_major_version: "3.3.9"
+  lts_v4_version: "4.25.0"
 
 github:
   repo_url: "https://github.com/coreruleset/website/blob/main"
