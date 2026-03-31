@@ -9,6 +9,7 @@ timeZone: "Europe/London"
 
 enableEmoji: true
 enableGitInfo: true
+refLinksErrorLevel: WARNING
 ######################## i18n ####################
 # Auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
 hasCJKLanguage: false
