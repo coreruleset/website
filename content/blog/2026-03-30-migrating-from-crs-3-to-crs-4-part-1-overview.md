@@ -58,7 +58,7 @@ The series covers the migration in six more posts after this one:
 - **Part 4: Anomaly Scoring and Reporting** — The renamed scoring variables, the new reporting model, early blocking, and how paranoia level redistribution affects your anomaly score baseline.
 - **Part 5: Rule Changes** — New rule categories, removed and reorganized rules, RE2/Hyperscan compatibility, and how to audit your existing `SecRuleRemoveById` and exclusion rules against the new rule set.
 - **Part 6: False Positive Tuning** — Two migration strategies (start fresh vs. carry over), a step-by-step method for mapping old exclusions to new rule IDs, and how to run a production migration in shadow mode.
-- **Part 7: Engine-Specific Notes** — The CRS 4 engine support matrix, differences between ModSecurity v2, ModSecurity v3, and Coraza, and the new Docker image tagging scheme.
+- **Part 7: Engine-Specific Notes** — The CRS 4 engine support matrix, differences between ModSecurity v2, ModSecurity v3, and Coraza, and the container image tagging scheme.
 
 ## Before You Start
 
