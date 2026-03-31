@@ -7,6 +7,8 @@ tags:
   - CRS-News
   - Migration
   - CRS-v4
+images:
+  - /images/2026/04/pexels-toulouse-18332033.jpg
 title: 'Migrating from CRS 3.3 to CRS 4.25 LTS — Part 1: Overview'
 slug: 'migrating-crs-3-to-4-part-1-overview'
 ---
@@ -14,6 +16,8 @@ slug: 'migrating-crs-3-to-4-part-1-overview'
 The release of [CRS v4.25.0 LTS]({{< ref "blog/2026-03-28-announcing-crs-v4-25-lts.md" >}}) marks the moment the CRS 4 generation has its long-term support anchor. If you have been running CRS 3.3.x — waiting for stability before committing to an upgrade — that moment is now.
 
 This is the first post in a series walking through everything you need to know to migrate from CRS 3.3.9 (the last CRS 3 LTS release) to CRS 4.25.0 LTS. The series is not a quick upgrade guide. It is a deliberate, post-by-post treatment of each dimension of the migration so that you can plan and execute without surprises.
+
+{{< figure src="/images/2026/04/pexels-toulouse-18332033.jpg" >}}*© Maël BALLAND (pexels.com)*
 
 ## Why Migrate?
 
