@@ -1,0 +1,483 @@
+<div id="crs-migrator" style="border:1px solid #d0d7de;border-radius:8px;padding:1.5rem;margin:2rem 0;background:#f6f8fa;">
+  <h3 style="margin-top:0;font-size:1.1rem;">CRS v3 → v4 Configuration Migrator</h3>
+  <p style="margin-bottom:1rem;">Paste the contents of your CRS 3 <code>crs-setup.conf</code> below. The tool extracts every variable you have set, applies all the CRS 4 renames and additions, and produces a ready-to-use CRS 4 config with inline notes on every change.</p>
+
+  <label for="crs-m-input" style="display:block;font-weight:600;margin-bottom:0.4rem;font-size:0.9rem;">Your CRS 3 crs-setup.conf</label>
+  <textarea id="crs-m-input" rows="12" spellcheck="false"
+    style="width:100%;font-family:ui-monospace,monospace;font-size:0.82em;padding:0.75rem;border:1px solid #d0d7de;border-radius:6px;box-sizing:border-box;background:#fff;resize:vertical;"
+    placeholder="# Paste your CRS 3 crs-setup.conf here.
+# Only the lines you have uncommented will be migrated.
+# Example:
+# SecAction \
+#   &quot;id:900000,phase:1,pass,t:none,nolog,\
+#   setvar:tx.paranoia_level=2&quot;"></textarea>
+
+  <button onclick="crsM.run()"
+    style="margin-top:0.75rem;background:#0969da;color:#fff;border:none;padding:0.55rem 1.4rem;border-radius:6px;cursor:pointer;font-size:0.95rem;font-weight:600;">
+    Migrate to CRS 4 &#8594;
+  </button>
+
+  <div id="crs-m-notes" style="display:none;margin-top:1.25rem;border:1px solid #d0d7de;border-radius:6px;padding:1rem;background:#fff;font-size:0.9rem;"></div>
+
+  <div id="crs-m-out-wrap" style="display:none;margin-top:1.25rem;">
+    <label for="crs-m-output" style="display:block;font-weight:600;margin-bottom:0.4rem;font-size:0.9rem;">Migrated CRS 4 crs-setup.conf</label>
+    <textarea id="crs-m-output" rows="22" readonly spellcheck="false"
+      style="width:100%;font-family:ui-monospace,monospace;font-size:0.82em;padding:0.75rem;border:1px solid #d0d7de;border-radius:6px;box-sizing:border-box;background:#fff;resize:vertical;"></textarea>
+    <div style="margin-top:0.6rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+      <button onclick="crsM.copy(this)"
+        style="background:#f6f8fa;border:1px solid #d0d7de;padding:0.45rem 1rem;border-radius:6px;cursor:pointer;font-size:0.9rem;">
+        Copy to clipboard
+      </button>
+      <button onclick="crsM.download()"
+        style="background:#f6f8fa;border:1px solid #d0d7de;padding:0.45rem 1rem;border-radius:6px;cursor:pointer;font-size:0.9rem;">
+        &#8659; Download crs-setup.conf
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+
+  /* ── constants ──────────────────────────────────────────────────── */
+
+  var BASIC_HEADERS = [
+    'content-encoding','proxy','lock-token','content-range','if',
+    'x-http-method-override','x-http-method','x-method-override',
+    'x-middleware-subrequest','expect'
+  ];
+  var EXTENDED_HEADERS = ['accept-charset'];
+
+  /* ── parser ─────────────────────────────────────────────────────── */
+
+  function parseV3(text) {
+    var vars = {};
+    var issues = [];
+
+    // Flag directives that were removed in CRS 4
+    var stripped0 = text.replace(/^[ \t]*#[^\n]*/gm, '');
+    if (/^\s*SecCollectionTimeout\b/m.test(stripped0)) {
+      issues.push({ type:'removed',
+        msg:'<strong>SecCollectionTimeout</strong> was removed from <code>crs-setup.conf</code> '
+          + 'in CRS 4. Move it to your main <code>modsecurity.conf</code> if you need a '
+          + 'non-default value.' });
+    }
+
+    // Join continuation lines then strip comments
+    var joined = text
+      .split('\n')
+      .filter(function(l){ return !/^\s*#/.test(l); })
+      .join('\n')
+      .replace(/\\\s*\n\s*/g, ' ');
+
+    // setvar:'tx.name=value with spaces'
+    var reQ = /setvar:'(tx\.[^=\s]+)=([^']+)'/gi, m;
+    while ((m = reQ.exec(joined)) !== null)
+      vars[m[1].toLowerCase()] = m[2].trim();
+
+    // setvar:tx.name=value  (no spaces in value)
+    var reU = /setvar:(tx\.[^=,\s"']+)=([^,\s"'\\]+)/gi;
+    while ((m = reU.exec(joined)) !== null) {
+      var k = m[1].toLowerCase();
+      if (vars[k] === undefined) vars[k] = m[2].trim();
+    }
+
+    return { vars: vars, issues: issues };
+  }
+
+  /* ── output builder ─────────────────────────────────────────────── */
+
+  function generate(vars, issues) {
+    var L = [];          // output lines
+    var N = issues;      // notes accumulator
+
+    function line(s){ L.push(s === undefined ? '' : s); }
+    function note(type, msg){ N.push({ type: type, msg: msg }); }
+    function secAction(id, setvars, comment) {
+      // setvars: array of "key=value" strings
+      if (comment) line('# ' + comment);
+      line('SecAction \\');
+      line('    "id:' + id + ',\\');
+      line('    phase:1,\\');
+      line('    pass,\\');
+      line('    t:none,\\');
+      line('    nolog,\\');
+      for (var i = 0; i < setvars.length; i++) {
+        var isLast = (i === setvars.length - 1);
+        line('    setvar:' + setvars[i] + (isLast ? '"' : ',\\'));
+      }
+    }
+    function commentedSecAction(id, setvars, comment) {
+      if (comment) line('# ' + comment);
+      line('#SecAction \\');
+      line('#    "id:' + id + ',\\');
+      line('#    phase:1,\\');
+      line('#    pass,\\');
+      line('#    t:none,\\');
+      line('#    nolog,\\');
+      for (var i = 0; i < setvars.length; i++) {
+        var isLast = (i === setvars.length - 1);
+        line('#    setvar:' + setvars[i] + (isLast ? '"' : ',\\'));
+      }
+    }
+
+    // ── header ──
+    line('# ------------------------------------------------------------------------');
+    line('# OWASP CRS v4.25.0 — Migrated from CRS v3.3.x');
+    line('# Generated by the CRS Config Migrator');
+    line('# https://coreruleset.org/blog/migrating-crs-3-to-4-part-2-configuration/');
+    line('#');
+    line('# Review each section before deploying.');
+    line('# Refer to the full migration series for explanations of every change.');
+    line('# ------------------------------------------------------------------------');
+    line();
+
+    // ── mode ──
+    line('# -- Mode of Operation');
+    line('SecDefaultAction "phase:1,log,auditlog,pass"');
+    line('SecDefaultAction "phase:2,log,auditlog,pass"');
+    line();
+
+    // ── paranoia level ──
+    var pl = vars['tx.paranoia_level'] || '1';
+    if (vars['tx.paranoia_level']) {
+      note('renamed', '<strong>tx.paranoia_level</strong> → '
+        + '<strong>tx.blocking_paranoia_level</strong> (value <code>' + pl + '</code> preserved)');
+      secAction('900000', ['tx.blocking_paranoia_level=' + pl],
+        'MIGRATED: tx.paranoia_level → tx.blocking_paranoia_level');
+    } else {
+      commentedSecAction('900000', ['tx.blocking_paranoia_level=1'],
+        'Paranoia Level (default: 1). Uncomment to change.');
+    }
+    line();
+
+    // ── detection paranoia level ──
+    var execPL = vars['tx.executing_paranoia_level'];
+    if (execPL) {
+      note('renamed', '<strong>tx.executing_paranoia_level</strong> → '
+        + '<strong>tx.detection_paranoia_level</strong> (value <code>' + execPL + '</code> preserved). '
+        + 'The semantics changed: in CRS 4 rules up to the detection level run, '
+        + 'but only rules up to <code>tx.blocking_paranoia_level</code> score. Review carefully.');
+      secAction('900001', ['tx.detection_paranoia_level=' + execPL],
+        'MIGRATED: tx.executing_paranoia_level → tx.detection_paranoia_level (semantics changed — review)');
+    } else {
+      line('# -- Detection Paranoia Level (NEW in CRS 4 — no CRS 3 equivalent)');
+      line('# Runs rules up to this PL but only scores up to tx.blocking_paranoia_level.');
+      line('# Useful to trial a higher PL without risk. Leave commented for initial migration.');
+      commentedSecAction('900001', ['tx.detection_paranoia_level=' + pl]);
+    }
+    line();
+
+    // ── enforce body processor ──
+    if (vars['tx.enforce_bodyproc_urlencoded'] === '1') {
+      secAction('900010', ['tx.enforce_bodyproc_urlencoded=1'],
+        'Enforce Body Processor URLENCODED (preserved)');
+      line();
+    }
+
+    // ── severity scores ──
+    var cs = vars['tx.critical_anomaly_score'];
+    var es = vars['tx.error_anomaly_score'];
+    var ws = vars['tx.warning_anomaly_score'];
+    var ns = vars['tx.notice_anomaly_score'];
+    if (cs || es || ws || ns) {
+      secAction('900100', [
+        'tx.critical_anomaly_score=' + (cs||'5') + ',\\',
+        'tx.error_anomaly_score='    + (es||'4') + ',\\',
+        'tx.warning_anomaly_score='  + (ws||'3') + ',\\',
+        'tx.notice_anomaly_score='   + (ns||'2')
+      ], 'Anomaly Score Severity Levels (unchanged from CRS 3, custom values preserved)');
+    } else {
+      line('# -- Anomaly Score Severity Levels (defaults: critical=5 error=4 warning=3 notice=2)');
+      line('# Unchanged from CRS 3. Uncomment only to override defaults.');
+      commentedSecAction('900100', [
+        "tx.critical_anomaly_score=5,\\",
+        "tx.error_anomaly_score=4,\\",
+        "tx.warning_anomaly_score=3,\\",
+        "tx.notice_anomaly_score=2"
+      ]);
+    }
+    line();
+
+    // ── thresholds ──
+    var inT  = vars['tx.inbound_anomaly_score_threshold'];
+    var outT = vars['tx.outbound_anomaly_score_threshold'];
+    if (inT || outT) {
+      secAction('900110', [
+        'tx.inbound_anomaly_score_threshold='  + (inT  || '5') + ',\\',
+        'tx.outbound_anomaly_score_threshold=' + (outT || '4')
+      ], 'Anomaly Score Thresholds (variable names unchanged from CRS 3, values preserved)');
+    } else {
+      line('# -- Anomaly Score Thresholds (defaults: inbound=5, outbound=4)');
+      line('# Variable names unchanged from CRS 3. Uncomment to change.');
+      commentedSecAction('900110', [
+        "tx.inbound_anomaly_score_threshold=5,\\",
+        "tx.outbound_anomaly_score_threshold=4"
+      ]);
+    }
+    line();
+
+    // ── reporting level (new) ──
+    line('# -- Anomaly Score Reporting Level (NEW in CRS 4 — no CRS 3 equivalent)');
+    line('# Controls phase 5 logging verbosity beyond the blocking rule.');
+    line('#   0 = disabled   1 = blocked requests only   2 = would-be-blocked');
+    line('#   3 = score > 0 (blocking PL)   4 = score > 0 (detection PL, default)   5 = all');
+    line('# Default 4 logs near-misses — useful during tuning. Lower to 1 if log volume is a concern.');
+    commentedSecAction('900115', ['tx.reporting_level=4']);
+    line();
+
+    // ── early blocking (new) ──
+    line('# -- Early Blocking (NEW in CRS 4 — no CRS 3 equivalent)');
+    line('# Evaluates anomaly score at end of phase 1 and phase 3 in addition to 2 and 4.');
+    line('# Leave commented until the rest of your migration is stable.');
+    commentedSecAction('900120', ['tx.early_blocking=1']);
+    line();
+
+    // ── default collections (new) ──
+    line('# -- Default Collections (NEW in CRS 4)');
+    line('# CRS 4 core rules no longer use IP/GLOBAL collections.');
+    line('# Enable if a plugin requires them (dos-protection, fake-bot, etc.).');
+    commentedSecAction('900130', ['tx.enable_default_collections=1']);
+    line();
+
+    // ── HTTP methods ──
+    var am = vars['tx.allowed_methods'];
+    if (am) {
+      secAction('900200', ["'tx.allowed_methods=" + am + "'"],
+        'HTTP Methods (preserved from CRS 3)');
+    } else {
+      line("# -- HTTP Methods (default: GET HEAD POST OPTIONS)");
+      commentedSecAction('900200', ["'tx.allowed_methods=GET HEAD POST OPTIONS'"]);
+    }
+    line();
+
+    // ── method override parameter (new) ──
+    line('# -- Method Override Parameter (NEW in CRS 4)');
+    line('# If your app uses _method=DELETE/PATCH in form submissions');
+    line('# (Laravel, Rails, Symfony, CakePHP), uncomment this.');
+    commentedSecAction('900210', ['tx.allow_method_override_parameter=1']);
+    line();
+
+    // ── content types ──
+    var act = vars['tx.allowed_request_content_type'];
+    if (act) {
+      secAction('900220', ["'tx.allowed_request_content_type=" + act + "'"],
+        'Allowed Request Content Types (preserved from CRS 3)');
+      line();
+    }
+
+    // ── HTTP versions ──
+    var ahv = vars['tx.allowed_http_versions'];
+    if (ahv) {
+      if (/HTTP\/0\.9/i.test(ahv)) {
+        note('warning', 'Your CRS 3 config allowed <strong>HTTP/0.9</strong>. '
+          + 'It is not supported in CRS 4 and has been removed. '
+          + 'Update any infrastructure (health checks, load balancers) that uses HTTP/0.9.');
+        ahv = ahv.replace(/\s*HTTP\/0\.9\s*/gi, ' ').trim();
+        secAction('900230', ["'tx.allowed_http_versions=" + ahv + "'"],
+          'MODIFIED: HTTP/0.9 removed — no longer valid in CRS 4');
+      } else {
+        secAction('900230', ["'tx.allowed_http_versions=" + ahv + "'"],
+          'Allowed HTTP Versions (preserved from CRS 3)');
+      }
+      line();
+    } else {
+      line('# -- Allowed HTTP Versions');
+      line('# CRS 4 default includes HTTP/3 and HTTP/2. Uncomment only to restrict.');
+      commentedSecAction('900230',
+        ["'tx.allowed_http_versions=HTTP/1.0 HTTP/1.1 HTTP/2 HTTP/2.0 HTTP/3 HTTP/3.0'"]);
+      line();
+    }
+
+    // ── restricted extensions ──
+    var re = vars['tx.restricted_extensions'];
+    if (re) {
+      secAction('900240', ["'tx.restricted_extensions=" + re + "'"],
+        'Restricted File Extensions (preserved from CRS 3)');
+      line();
+    }
+
+    // ── restricted headers (the split) ──
+    line('# -- Restricted Headers');
+    line('# CHANGED IN CRS 4: the single tx.restricted_headers variable was split into:');
+    line('#   tx.restricted_headers_basic   — always blocked (all paranoia levels)');
+    line('#   tx.restricted_headers_extended — blocked at higher paranoia levels');
+
+    var rh = vars['tx.restricted_headers'];
+    if (rh) {
+      // Parse /header/ tokens from old value
+      var userTokens = [];
+      var tokRe = /\/([^/]+)\//g, tm;
+      while ((tm = tokRe.exec(rh)) !== null)
+        userTokens.push(tm[1].toLowerCase());
+
+      var custom = userTokens.filter(function(h){
+        return BASIC_HEADERS.indexOf(h) === -1 && EXTENDED_HEADERS.indexOf(h) === -1;
+      });
+
+      // Basic = all CRS 4 basic defaults + any custom additions
+      var basicHeaders = BASIC_HEADERS.slice();
+      if (custom.length > 0) {
+        basicHeaders = basicHeaders.concat(custom);
+        note('manual', 'Your CRS 3 config had headers not in the CRS 4 defaults: '
+          + '<code>' + custom.map(function(h){ return '/'+h+'/'; }).join(' ') + '</code>. '
+          + 'These have been placed in <code>tx.restricted_headers_basic</code>. '
+          + 'Check whether any belong in <code>tx.restricted_headers_extended</code> instead.');
+      }
+
+      // Note new CRS 4 additions the user didn't have
+      var newOnes = BASIC_HEADERS.filter(function(h){ return userTokens.indexOf(h) === -1; });
+      if (newOnes.length > 0) {
+        note('added', 'New headers added to the CRS 4 basic list that were not in your CRS 3 config: '
+          + '<code>' + newOnes.map(function(h){ return '/'+h+'/'; }).join(' ') + '</code>. '
+          + 'They are included for security. Remove any that cause false positives.');
+      }
+
+      var basicVal    = basicHeaders.map(function(h){ return '/'+h+'/'; }).join(' ');
+      var extendedVal = EXTENDED_HEADERS.map(function(h){ return '/'+h+'/'; }).join(' ');
+
+      line('# MIGRATED: tx.restricted_headers split into basic + extended.');
+      line();
+      secAction('900250', ["'tx.restricted_headers_basic=" + basicVal + "'"],
+        'Basic restricted headers (always blocked)');
+      line();
+      secAction('900255', ["'tx.restricted_headers_extended=" + extendedVal + "'"],
+        'Extended restricted headers (blocked at higher paranoia levels)');
+    } else {
+      line('# CRS 4 defaults shown. Uncomment to customise.');
+      line();
+      commentedSecAction('900250',
+        ["'tx.restricted_headers_basic=" + BASIC_HEADERS.map(function(h){ return '/'+h+'/'; }).join(' ') + "'"]);
+      line();
+      commentedSecAction('900255',
+        ["'tx.restricted_headers_extended=/accept-charset/'"]);
+    }
+    line();
+
+    // ── content-type charset ──
+    var ctc = vars['tx.allowed_request_content_type_charset'];
+    if (ctc) {
+      secAction('900280', ["'tx.allowed_request_content_type_charset=" + ctc + "'"],
+        'Allowed Content-Type Charsets (preserved from CRS 3)');
+      line();
+    }
+
+    // ── arg/upload limits ──
+    var limits = [
+      { v:'tx.max_num_args',         id:'900300', d:'Max number of arguments' },
+      { v:'tx.arg_name_length',      id:'900310', d:'Max argument name length' },
+      { v:'tx.arg_length',           id:'900320', d:'Max argument value length' },
+      { v:'tx.total_arg_length',     id:'900330', d:'Max total argument length' },
+      { v:'tx.max_file_size',        id:'900340', d:'Max individual file upload size' },
+      { v:'tx.combined_file_sizes',  id:'900350', d:'Max combined file upload size' },
+    ];
+    var hasLimits = limits.some(function(l){ return vars[l.v]; });
+    if (hasLimits) {
+      line('# -- Argument and Upload Limits (preserved from CRS 3)');
+      limits.forEach(function(l){
+        if (vars[l.v]) {
+          secAction(l.id, [l.v + '=' + vars[l.v]], l.d);
+          line();
+        }
+      });
+    }
+
+    // ── sampling ──
+    var sp = vars['tx.sampling_percentage'];
+    if (sp && sp !== '100') {
+      secAction('900400', ['tx.sampling_percentage=' + sp],
+        'Sampling Percentage (preserved from CRS 3 — ' + sp + '%)');
+      line();
+    }
+
+    // ── UTF-8 ──
+    if (vars['tx.crs_validate_utf8_encoding'] === '1') {
+      secAction('900950', ['tx.crs_validate_utf8_encoding=1'],
+        'UTF-8 Encoding Validation (preserved from CRS 3)');
+      line();
+    }
+
+    // ── skip response analysis (new) ──
+    line('# -- Skip Response Analysis (NEW in CRS 4)');
+    line('# Disables response body inspection entirely. Protects against RFDoS attacks');
+    line('# at the cost of losing response-phase detection (web shells, data leakage).');
+    line('# Leave commented — enable only if you have a specific RFDoS concern.');
+    commentedSecAction('900500', ['tx.crs_skip_response_analysis=1']);
+    line();
+
+    // ── version marker (required) ──
+    line('# -- Setup Complete (required — do not remove)');
+    line('SecAction \\');
+    line('    "id:900990,\\');
+    line('    phase:1,\\');
+    line('    pass,\\');
+    line('    t:none,\\');
+    line('    nolog,\\');
+    line('    setvar:tx.crs_setup_version=4250"');
+
+    return L.join('\n');
+  }
+
+  /* ── UI ─────────────────────────────────────────────────────────── */
+
+  var TYPE_STYLE = {
+    renamed: { label:'Renamed',         bg:'#dbeafe', color:'#1d4ed8' },
+    removed: { label:'Removed',         bg:'#fee2e2', color:'#b91c1c' },
+    warning: { label:'Warning',         bg:'#ffedd5', color:'#c2410c' },
+    added:   { label:'Added',           bg:'#dcfce7', color:'#15803d' },
+    manual:  { label:'Review required', bg:'#ede9fe', color:'#7c3aed' },
+  };
+
+  window.crsM = {
+    run: function() {
+      var input = document.getElementById('crs-m-input').value.trim();
+      if (!input) { alert('Paste your CRS 3 crs-setup.conf first.'); return; }
+
+      var parsed = parseV3(input);
+      var config = generate(parsed.vars, parsed.issues);
+      var notes  = parsed.issues;   // generate() pushes into this array
+
+      document.getElementById('crs-m-output').value = config;
+      document.getElementById('crs-m-out-wrap').style.display = 'block';
+
+      var nd = document.getElementById('crs-m-notes');
+      if (notes.length === 0) {
+        nd.innerHTML = '<span style="color:#15803d;">&#10003; No breaking changes detected. '
+          + 'Review the new CRS 4 options in the output.</span>';
+      } else {
+        var html = '<strong style="display:block;margin-bottom:0.6rem;">Migration notes ('
+          + notes.length + ')</strong><ul style="margin:0;padding-left:1.2rem;line-height:1.8;">';
+        notes.forEach(function(n){
+          var s = TYPE_STYLE[n.type] || TYPE_STYLE.warning;
+          html += '<li><span style="background:' + s.bg + ';color:' + s.color
+            + ';padding:1px 7px;border-radius:4px;font-size:0.8em;font-weight:700;">'
+            + s.label + '</span>&ensp;' + n.msg + '</li>';
+        });
+        html += '</ul>';
+        nd.innerHTML = html;
+      }
+      nd.style.display = 'block';
+      nd.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    },
+
+    copy: function(btn) {
+      var ta = document.getElementById('crs-m-output');
+      ta.select();
+      document.execCommand('copy');
+      var orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = orig; }, 2000);
+    },
+
+    download: function() {
+      var content = document.getElementById('crs-m-output').value;
+      var blob = new Blob([content], { type:'text/plain' });
+      var url  = URL.createObjectURL(blob);
+      var a    = document.createElement('a');
+      a.href = url; a.download = 'crs-setup.conf'; a.click();
+      URL.revokeObjectURL(url);
+    }
+  };
+
+})();
+</script>

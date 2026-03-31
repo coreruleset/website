@@ -194,6 +194,12 @@ Work through this list before reloading your WAF with CRS 4:
 - [ ] Remove or migrate any `SecCollectionTimeout` directive from your old config
 - [ ] Review the full `crs-setup.conf.example` for any new options not present in CRS 3
 
+## Interactive Migration Tool
+
+Paste your CRS 3 `crs-setup.conf` into the tool below and click **Migrate to CRS 4**. It will generate a CRS 4 config with all renamed variables applied, new variables pre-populated with their defaults, and a colour-coded notes panel explaining every change.
+
+{{< crs-config-migrator >}}
+
 ## What's Next
 
 [Part 3]({{< ref "blog/2026-04-13-migrating-from-crs-3-to-crs-4-part-3-plugins.md" >}}) covers the plugin architecture in depth — including the full mapping from CRS 3 application exclusion packages to CRS 4 plugins, and how to install them.
