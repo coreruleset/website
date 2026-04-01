@@ -186,4 +186,4 @@ The rule ID range `9,500,000–9,999,999` is reserved for CRS plugins. This is i
 
 [Part 4]({{< ref "blog/2026-04-20-migrating-from-crs-3-to-crs-4-part-4-scoring.md" >}}) covers the anomaly scoring and reporting changes — including the variable renames, the new granular reporting model, early blocking, and how the redistribution of rules across paranoia levels affects your anomaly score baseline.
 
-*Felipe Zipitria, CRS Co-Lead*
+{{< related-pages "Migration" "CRS-v4" >}}
