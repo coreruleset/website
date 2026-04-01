@@ -36,7 +36,7 @@ In CRS 4, these files are gone from the release tarball. They have been moved to
 
 This change was intentional and security-motivated. Having application exclusion rules bundled in core meant that a bug in, say, the WordPress exclusion package affected every CRS installation — including those that do not run WordPress. By moving exclusions to opt-in plugins, the default attack surface is smaller. (A previous incident where a bundled exclusion package had a critical vulnerability validated this reasoning.)
 
-{{< figure src="/images/2026/04/pexels-markusspiske-168866.jpg" >}}*© Markus Spiske (pexels.com)*
+{{< figure src="/images/2026/04/pexels-markusspiske-168866.jpg" caption="Modular architecture: from monolith to plugins" attr="Markus Spiske on Pexels" attrlink="https://www.pexels.com" >}}
 
 ## What Is the Plugin Architecture?
 
