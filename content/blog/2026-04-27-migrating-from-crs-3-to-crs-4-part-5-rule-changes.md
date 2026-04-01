@@ -15,7 +15,7 @@ slug: 'migrating-crs-3-to-4-part-5-rule-changes'
 
 This is Part 5 of the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). Part 4 covered anomaly scoring and reporting. This post covers the rule-level changes: what is new, what is gone, what moved, and how to audit your existing exclusions against the CRS 4 rule set.
 
-{{< figure src="/images/2026/04/pexels-egorkomarov-8824026.jpg" >}}*© Egor Komarov (pexels.com)*
+{{< figure src="/images/2026/04/pexels-egorkomarov-8824026.jpg" caption="Hundreds of rules changed under the hood" attr="Egor Komarov on Pexels" attrlink="https://www.pexels.com" >}}
 
 ## The Scale of Change
 
