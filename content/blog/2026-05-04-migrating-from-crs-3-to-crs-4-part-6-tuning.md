@@ -15,7 +15,7 @@ slug: 'migrating-crs-3-to-4-part-6-tuning'
 
 This is Part 6 of the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). Part 5 covered rule changes and how to audit your existing exclusions. This post covers the tuning phase itself — the practical work of establishing a clean CRS 4 baseline for your applications.
 
-{{< figure src="/images/2026/04/pexels-northern-29268627.jpg" >}}*© Dave H (pexels.com)*
+{{< figure src="/images/2026/04/pexels-northern-29268627.jpg" caption="Fine-tuning for production" attr="Dave H on Pexels" attrlink="https://www.pexels.com" >}}
 
 ## Two Migration Strategies
 
