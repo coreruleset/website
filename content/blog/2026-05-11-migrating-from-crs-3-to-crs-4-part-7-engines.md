@@ -168,4 +168,4 @@ CRS v4.25.0 LTS is supported until Q3 2027. If you start the migration now, you 
 
 If you run into issues during your migration, the best places to get help are the [CRS mailing list](https://groups.google.com/a/owasp.org/forum/#!forum/modsecurity-core-rule-set-project) and the [OWASP Slack #coreruleset channel](https://owasp.slack.com/archives/CBKGH8A5P).
 
-*Felipe Zipitria, CRS Co-Lead*
+{{< related-pages "Migration" "CRS-v4" >}}
