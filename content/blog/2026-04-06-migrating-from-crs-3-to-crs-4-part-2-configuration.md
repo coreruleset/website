@@ -17,7 +17,7 @@ This is Part 2 of the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026
 
 If you take one thing from this post: **do not reuse your CRS 3 `crs-setup.conf` with CRS 4 without reviewing every variable in it.** Some variables were renamed, some were removed, and several new ones are required for features that did not exist in CRS 3.
 
-{{< figure src="/images/2026/04/pexels-antonio-batinic-2573434-4164418.jpg" >}}*© Antonio Batinić (pexels.com)*
+{{< figure src="/images/2026/04/pexels-antonio-batinic-2573434-4164418.jpg" caption="Every configuration variable matters" attr="Antonio Batinić on Pexels" attrlink="https://www.pexels.com" >}}
 
 ## The Migration Approach for Configuration
 
