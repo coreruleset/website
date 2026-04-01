@@ -119,4 +119,4 @@ A notable addition: CRS 4 ships with `REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.con
 
 [Part 6]({{< ref "blog/2026-05-04-migrating-from-crs-3-to-crs-4-part-6-tuning.md" >}}) covers the practical approach to false positive tuning during the migration — two strategies for carrying over your existing tuning, how to run a production migration safely, and common false positives that changed between versions.
 
-*Felipe Zipitria, CRS Co-Lead*
+{{< related-pages "Migration" "CRS-v4" >}}
