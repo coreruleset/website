@@ -169,7 +169,7 @@ For migration, leave this at the default (response analysis enabled). Be aware o
 
 ## HTTP Version Defaults
 
-CRS 3 tolerated HTTP/0.9 requests. CRS 4 does not — a new rule blocks HTTP/0.9 requests outright. If your infrastructure passes HTTP/0.9 internally (rare, but seen in legacy load balancers), you will see blocks. The fix is to either exclude the rule or update the infrastructure.
+CRS 3 tolerated HTTP/0.9 requests. CRS 4 does not — rule 920430 blocks HTTP/0.9 requests outright. If your infrastructure passes HTTP/0.9 internally (rare, but seen in legacy load balancers), you will see blocks. The fix is to add back HTTP/0.9 in rule 900230.
 
 ## The SecCollectionTimeout Removal
 
