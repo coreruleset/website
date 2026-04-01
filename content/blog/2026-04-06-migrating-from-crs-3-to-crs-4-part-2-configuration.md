@@ -204,4 +204,4 @@ Paste your CRS 3 `crs-setup.conf` into the tool below and click **Migrate to CRS
 
 [Part 3]({{< ref "blog/2026-04-13-migrating-from-crs-3-to-crs-4-part-3-plugins.md" >}}) covers the plugin architecture in depth — including the full mapping from CRS 3 application exclusion packages to CRS 4 plugins, and how to install them.
 
-*Felipe Zipitria, CRS Co-Lead*
+{{< related-pages "Migration" "CRS-v4" >}}

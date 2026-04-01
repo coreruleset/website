@@ -70,4 +70,4 @@ Second, open the [CRS 4.0 CHANGES.md](https://github.com/coreruleset/coreruleset
 
 The next post covers the configuration file changes in detail.
 
-*Felipe Zipitria, CRS Co-Lead*
+{{< related-pages "Migration" "CRS-v4">}}
