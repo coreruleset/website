@@ -15,7 +15,7 @@ slug: 'migrating-crs-3-to-4-part-4-scoring'
 
 This is Part 4 of the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). Part 3 covered the plugin architecture. This post covers anomaly scoring, the reporting model, and paranoia level changes — the areas most likely to affect your baseline after a migration.
 
-{{< figure src="/images/2026/04/pexels-thisisengineering-3861957.jpg" >}}*© ThisIsEngineering (pexels.com)*
+{{< figure src="/images/2026/04/pexels-thisisengineering-3861957.jpg" caption="Measuring and scoring every request" attr="ThisIsEngineering on Pexels" attrlink="https://www.pexels.com" >}}
 
 ## How Anomaly Scoring Changed
 
