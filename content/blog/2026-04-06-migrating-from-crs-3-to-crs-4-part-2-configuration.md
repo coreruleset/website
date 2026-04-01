@@ -49,7 +49,7 @@ CRS 4 also introduces a companion variable, `tx.detection_paranoia_level`, that 
 #    setvar:tx.detection_paranoia_level=2"
 ```
 
-If you do not set it, `tx.detection_paranoia_level` defaults to the value of `tx.blocking_paranoia_level`. For migration, leave it unset — it defaults to the same value and behaviour as CRS 3.
+If you do not set it, `tx.detection_paranoia_level` defaults to the value of `tx.blocking_paranoia_level`. For migration, we recommend you do not set it and let it.
 
 ## Anomaly Scoring Variables
 
@@ -83,7 +83,9 @@ The default is `4`. This is more verbose than CRS 3, where only blocked requests
 
 ## New Variable: Early Blocking
 
-CRS 4 introduces `tx.early_blocking` (rule id:900120), which controls whether the anomaly score is evaluated at the end of phase 1 (before the request body is processed) and at the end of phase 3 (before the response body is processed).
+CRS 4 introduces `tx.early_blocking` (rule 900120), which controls whether the anomaly score is evaluated at the end of phase 1 (before the request body is processed) and at the end of phase 3 (before the response body is processed).
+
+The purpose of early blocking is to reduce the amount of work the web server and WAF have to do when traffic will be rejected anyway.
 
 ```apache
 #SecAction \
@@ -140,7 +142,7 @@ All of these are blocked at PL1. If your application or any client sending reque
 
 ### The extended list
 
-The default extended list contains `/accept-charset/`. This header is deprecated and can be used for response WAF bypass, but it still appears in some legitimate clients, so it is restricted at higher paranoia levels rather than universally. If you run at PL2 or above, check whether any of your clients send `Accept-Charset`.
+The default extended list contains `/accept-charset/`. This header is deprecated and can be used to bypass the WAF on response rules, but it still appears in some legitimate clients, so it is restricted at higher paranoia levels rather than universally. If you run at PL2 or above, check whether any of your clients send `Accept-Charset`.
 
 ### Adding exclusions
 
@@ -155,13 +157,13 @@ SecRule REQUEST_URI "@beginsWith /api/upload" \
 
 ## New Variable: Method Override Parameter
 
-CRS 4 adds `tx.allow_method_override_parameter` (id:900210), which controls whether the `_method` query parameter used by many web frameworks for HTML form method override is allowed. By default this is blocked at PL2+.
+CRS 4 adds `tx.allow_method_override_parameter` (rule 900210), which controls whether the `_method` query parameter used by many web frameworks for HTML form method override is allowed. By default this is blocked at PL2 and higher.
 
 If your application uses a framework that relies on `_method=DELETE` or `_method=PATCH` in form submissions, set this to `1` or add a targeted exclusion. If you run at PL1 only, this is not triggered.
 
 ## New Variable: Skip Response Analysis
 
-CRS 4 adds `tx.crs_skip_response_analysis` (id:900500). Response body analysis is enabled by default in CRS 4 (when `SecResponseBodyAccess On` is set in your engine config). A newly documented attack class — Request Filter Denial of Service (RFDoS) — can abuse response body inspection to exhaust WAF resources. Setting `tx.crs_skip_response_analysis=1` disables response inspection entirely.
+CRS 4 adds `tx.crs_skip_response_analysis` (rule 900500). Response body analysis is enabled by default in CRS 4 (when `SecResponseBodyAccess On` is set in your engine config). A newly documented attack class — Request Filter Denial of Service (RFDoS) — can abuse response body inspection to exhaust WAF resources. Setting `tx.crs_skip_response_analysis=1` disables response inspection entirely.
 
 For migration, leave this at the default (response analysis enabled). Be aware of the trade-off if you are deploying in an environment where RFDoS is a concern.
 
@@ -173,7 +175,6 @@ CRS 3 tolerated HTTP/0.9 requests. CRS 4 does not — a new rule blocks HTTP/0.9
 
 CRS 3 defined `SecCollectionTimeout` in `crs-setup.conf`. CRS 4 removed this setting from the core rule set because the core rules no longer work with collections directly. If you need a custom collection timeout, set it in your WAF's main configuration or in a plugin's configuration file.
 
-If your old `crs-setup.conf` includes a `SecCollectionTimeout` directive, remove it or move it to your global WAF configuration.
 
 ## Migration Checklist
 
