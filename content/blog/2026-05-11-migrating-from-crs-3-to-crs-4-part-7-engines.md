@@ -15,7 +15,7 @@ slug: 'migrating-crs-3-to-4-part-7-engines'
 
 This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). The previous six posts covered configuration, plugins, anomaly scoring, rule changes, and tuning. This post covers the engine layer: what WAF engines CRS 4 supports, how support differs across them, and the changes to Docker-based deployments.
 
-{{< figure src="/images/2026/04/pexels-brett-sayles-4508751.jpg" >}}*© Brett Sayles (pexels.com)*
+{{< figure src="/images/2026/04/pexels-brett-sayles-4508751.jpg" caption="Choosing the right engine for CRS 4" attr="Brett Sayles on Pexels" attrlink="https://www.pexels.com" >}}
 
 ## The CRS 4 Engine Support Matrix
 
