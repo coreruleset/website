@@ -117,4 +117,4 @@ If you have an anomaly score below the threshold but a rule fired, the per-PL br
 
 [Part 5]({{< ref "blog/2026-04-27-migrating-from-crs-3-to-crs-4-part-5-rule-changes.md" >}}) covers the rule-level changes — new detection categories, removed and reorganized rules, RE2/Hyperscan compatibility, and how to audit your existing `SecRuleRemoveById` exclusions against the CRS 4 rule set.
 
-*Felipe Zipitria, CRS Co-Lead*
+{{< related-pages "Migration" "CRS-v4" >}}
