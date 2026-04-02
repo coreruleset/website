@@ -68,6 +68,8 @@ First, download CRS v4.25.0 and open the `crs-setup.conf.example` alongside your
 
 Second, open the [CRS 4.0 CHANGES.md](https://github.com/coreruleset/coreruleset/blob/v4.0/dev/CHANGES.md) on GitHub. It is a long file, but it is the authoritative record of what changed. You do not need to read it end to end now — the series will reference specific entries — but knowing it exists and how to search it will be useful throughout.
 
-The next post covers the configuration file changes in detail.
+## What's Next
 
-{{< related-pages "Migration" "CRS-v4">}}
+[Part 2]({{< ref "blog/2026-04-06-migrating-from-crs-3-to-crs-4-part-2-configuration.md" >}}) covers the configuration file changes in detail — a side-by-side walk through every renamed, removed, and new variable in `crs-setup.conf`, plus a migration checklist and an interactive tool to convert your CRS 3 config.
+
+{{< related-pages "Migration" "CRS-v4" >}}
