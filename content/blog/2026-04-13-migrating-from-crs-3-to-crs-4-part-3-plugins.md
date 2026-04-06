@@ -61,7 +61,7 @@ Include crs/rules/*.conf
 Include crs/plugins/*-after.conf
 ```
 
-This load order matters. Rules in `*-before.conf` run before CRS has processed the request — this is where exclusion rules go, so they can suppress matching before CRS rules fire. Rules in `*-after.conf` run after CRS — this is where scoring rules that need to know the CRS result go.
+This load order matters. Rules in `*-before.conf` run before CRS has processed the request — this is where exclusion rules go, so they can suppress matching before CRS rules fire. Rules in `*-after.conf` run after CRS — this is where rules go that need to know the CRS scoring result.
 
 The three `Include` directives for plugins are new in CRS 4. If you are upgrading an existing installation, you must add them to your WAF configuration. The CRS release includes three empty placeholder files in the `plugins/` directory so the `Include` statements do not produce errors when no plugins are installed.
 
@@ -122,7 +122,7 @@ mv /path/to/crs/plugins/wordpress-rule-exclusions-plugin-config.conf.example \
    /path/to/crs/plugins/wordpress-rule-exclusions-plugin-config.conf
 ```
 
-Review the config file for any options to set, then reload your WAF.
+Review the config and README files of the plugin for any options to set, then reload your WAF.
 
 ### Method 2: Symlinks (recommended for maintainability)
 
@@ -138,7 +138,7 @@ cp /opt/crs-plugins/wordpress-rule-exclusions-plugin/plugins/wordpress-rule-excl
 
 # Symlink each file into the CRS plugins directory
 for f in /opt/crs-plugins/wordpress-rule-exclusions-plugin/plugins/*; do
-    ln -s "$f" /path/to/crs/plugins/
+    ln -s "${f}" /path/to/crs/plugins/
 done
 ```
 
@@ -152,17 +152,14 @@ Check each plugin's documentation for whether it needs collections. If any plugi
 
 ## Using Plugins on Multi-Application Reverse Proxies
 
-If your WAF fronts multiple applications, you likely do not want WordPress exclusion rules to apply to requests going to your API or your phpBB forum. CRS 4 plugins support per-virtual-host scoping via `SecWebAppID` (ModSecurity) or the `Host` header (Coraza):
+If your WAF fronts multiple applications, you likely do not want WordPress exclusion rules to apply to requests going to your API or your phpBB forum. CRS 4 plugins support per-virtual-host scoping via [`SecWebAppID`](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29#secwebappid) (and [`WEBAPPID`](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29#webappid) or the `Host` header (Coraza):
 
 ```apache
 # ModSecurity: disable the WordPress plugin for non-WordPress virtual hosts
-SecRule &TX:wordpress-rule-exclusions-plugin_enabled "@eq 0" \
-    "id:9507010,phase:1,pass,nolog,chain"
-    SecRule WebAppID "!@streq wordpress" \
-        "t:none,setvar:'tx.wordpress-rule-exclusions-plugin_enabled=0'"
+SecRule WebAppID "!@streq wordpress" \
+    "id:9507011,t:none,setvar:'tx.wordpress-rule-exclusions-plugin_enabled=0'"
 ```
 
-Most official plugins include this pattern commented out in their config file. Review each plugin's `*-config.conf` for the scoping example.
 
 ## Capability Plugins (Not in CRS 3)
 
