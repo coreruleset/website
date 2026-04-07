@@ -152,7 +152,7 @@ Check each plugin's documentation for whether it needs collections. If any plugi
 
 ## Using Plugins on Multi-Application Reverse Proxies
 
-If your WAF fronts multiple applications, you likely do not want WordPress exclusion rules to apply to requests going to your API or your phpBB forum. CRS 4 plugins support per-virtual-host scoping via [`SecWebAppID`](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29#secwebappid) (and [`WEBAPPID`](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29#webappid) or the `Host` header (Coraza):
+If your WAF fronts multiple applications, you likely do not want WordPress exclusion rules to apply to requests going to your API or your phpBB forum. CRS 4 plugins support per-virtual-host scoping via [`SecWebAppID`](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29#secwebappid) (and [`WEBAPPID`](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29#webappid)) or the `Host` header (Coraza):
 
 ```apache
 # ModSecurity: disable the WordPress plugin for non-WordPress virtual hosts
