@@ -66,7 +66,7 @@ Before reading the rest of this series, do two things.
 
 First, download CRS v4.25.0 and open the `crs-setup.conf.example` alongside your existing `crs-setup.conf`. Having both files open makes the configuration changes in Part 2 immediately concrete.
 
-Second, open the [CRS 4.0 CHANGES.md](https://github.com/coreruleset/coreruleset/blob/v4.0/dev/CHANGES.md) on GitHub. It is a long file, but it is the authoritative record of what changed. You do not need to read it end to end now — the series will reference specific entries — but knowing it exists and how to search it will be useful throughout.
+Second, open the [CRS 4.0 CHANGES.md](https://github.com/coreruleset/coreruleset/blob/v4.25.0/CHANGES.md) on GitHub. It is a long file, but it is the authoritative record of what changed. You do not need to read it end to end now — the series will reference specific entries — but knowing it exists and how to search it will be useful throughout.
 
 ## What's Next
 
