@@ -1,14 +1,22 @@
-{{ with $tag := .Get 0 }}
-  {{ with where site.RegularPages "Params.tags" "intersect" (slice $tag) }}
-    {{ with where . "Permalink" "ne" $.Page.Permalink }}
-      <h2>Related pages:</h2>
-      <ul>
-        {{ range . }}
-          <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-        {{ end }}
-      </ul>
-    {{ end }}
+{{ $tags := slice }}
+{{ range $i := seq 0 9 }}
+  {{ with $.Get $i }}
+    {{ $tags = $tags | append . }}
+  {{ end }}
+{{ end }}
+{{ with $tags }}
+  {{ $pages := site.RegularPages }}
+  {{ range $tag := $tags }}
+    {{ $pages = where $pages "Params.tags" "intersect" (slice $tag) }}
+  {{ end }}
+  {{ with where $pages "Permalink" "ne" $.Page.Permalink }}
+    <h2>Related pages:</h2>
+    <ul>
+      {{ range . }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    </ul>
   {{ end }}
 {{ else }}
-  {{ errorf "The %q shortcode requires a tag name as parameter. See %s" .Name .Position }}
+  {{ errorf "The %q shortcode requires at least one tag name as parameter. See %s" .Name .Position }}
 {{ end }}
