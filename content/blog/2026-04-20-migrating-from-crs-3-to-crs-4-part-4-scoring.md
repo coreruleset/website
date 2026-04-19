@@ -27,9 +27,9 @@ This model is simple but has one significant weakness: you cannot tell from the 
 
 ### The CRS 4 Model
 
-CRS 4 refactored the anomaly scoring variables for consistency. The **threshold** variable names are unchanged — you still configure `tx.inbound_anomaly_score_threshold` and `tx.outbound_anomaly_score_threshold` in `crs-setup.conf` exactly as in CRS 3.
+CRS 4 refactored how anomaly scores are accumulated and reported. The variables you configure in `crs-setup.conf` are unchanged — you still set `tx.inbound_anomaly_score_threshold` and `tx.outbound_anomaly_score_threshold` exactly as in CRS 3.
 
-What changed is the internal score accumulation and how the per-severity increments are named. The per-severity scoring variables are:
+The per-severity scoring variables are unchanged from CRS 3:
 
 ```apache
 # These existed in CRS 3 and carry over to CRS 4 unchanged:
@@ -39,9 +39,27 @@ tx.warning_anomaly_score  = 3
 tx.notice_anomaly_score   = 2
 ```
 
-In CRS 3, the running total was accumulated in `tx.anomaly_score`. In CRS 4 the internal accumulation was refactored so that scores are tracked in a way that correlates with the paranoia level of the firing rule. The details are inside the engine rules — the operator-facing variables you configure (`tx.inbound_anomaly_score_threshold`, the severity scores) are unchanged.
+What changed is the internal score accumulation. In CRS 3, the running total lived in `tx.anomaly_score`. In CRS 4 the score is tracked per paranoia level, and a set of new aggregate variables is computed at evaluation time:
 
-The visible change is in what gets reported. CRS 4 reporting rules (see the Reporting Model section below) include more structured context about which paranoia level and rule category contributed to the score, making it significantly easier to understand what drove a blocking action.
+```apache
+# New per-PL accumulators (inbound; outbound has the same shape):
+tx.inbound_anomaly_score_pl1
+tx.inbound_anomaly_score_pl2
+tx.inbound_anomaly_score_pl3
+tx.inbound_anomaly_score_pl4
+
+# New per-direction aggregates used by the blocking and reporting logic:
+tx.blocking_inbound_anomaly_score    # sum of per-PL scores up to tx.blocking_paranoia_level
+tx.detection_inbound_anomaly_score   # sum of per-PL scores up to tx.detection_paranoia_level
+
+# New combined inbound+outbound aggregates, set in phase 5:
+tx.blocking_anomaly_score            # tx.blocking_inbound_anomaly_score + tx.blocking_outbound_anomaly_score
+tx.detection_anomaly_score           # tx.detection_inbound_anomaly_score + tx.detection_outbound_anomaly_score
+```
+
+The equivalent `tx.outbound_anomaly_score_pl1..pl4`, `tx.blocking_outbound_anomaly_score`, and `tx.detection_outbound_anomaly_score` variables exist for the response side. `tx.anomaly_score` still exists but is now a derived combined value set by the correlation rule — it is no longer the accumulator.
+
+The visible change is in what gets reported. CRS 4 reporting rules (see [The Reporting Model](#the-reporting-model) below) include more structured context about which paranoia level and rule category contributed to the score, making it significantly easier to understand what drove a blocking action.
 
 ### Impact on Custom Rules
 
@@ -55,7 +73,7 @@ CRS 3 had a set of `980xxx` reporting rules that fired when a request exceeded t
 
 ### CRS 4 Reporting: Granular Control
 
-CRS 4 replaces the `980xxx` rules with a new, more structured reporting system controlled by `tx.reporting_level`. There is a single reporting action per direction in phase 5, governed by logic that decides *when* it fires based on the level you configure. The result is cleaner logs and operator control over verbosity.
+CRS 4 restructures the `980xxx` reporting rules into a consolidated reporting system controlled by `tx.reporting_level`. A single reporting action (`id:980170`, phase 5) emits one combined message covering both inbound and outbound scores, gated by rules that decide *whether* it fires based on the level you configure. The result is cleaner logs and operator control over verbosity.
 
 The six reporting levels (configured via rule 900115) are:
 
@@ -97,7 +115,7 @@ In CRS 4, a significant number of rules were moved from lower to higher paranoia
 
 **If you run at PL1:** Your anomaly score baseline will likely *decrease* after migration. Rules that previously fired at PL1 in CRS 3 may now only fire at PL2 or higher. This is generally good — fewer false positives at PL1 — but it also means some attacks you were detecting at PL1 in CRS 3 may now only be detected at PL2 in CRS 4. Review your threat model.
 
-**If you run at PL2 or higher:** Your baseline may increase. Rules that were at PL1 in CRS 3 are now at PL2, so at PL2 you are covering more detection than before. This is the intended direction, but it means more tuning may be needed after the migration.
+**If you run at PL2 or higher:** Your baseline should remain stable or decrease. A rule that moved from PL1 in CRS 3 to PL2 in CRS 4 still fires for you at PL2 — it was already part of your coverage. Shifting a rule to a higher PL does not add detection at levels that already included it. Any baseline changes you observe at PL2+ come from genuinely new rules, removed rules, or revised detection logic, not from the PL redistribution itself.
 
 **If you have PL-specific exclusions:** Some of your exclusions may no longer be necessary if the rules they targeted moved to a higher PL than the one you run at. Conversely, new rules may fire at your PL that were not present in CRS 3. After the migration, run in detection mode for at least a week before enabling blocking to establish a new baseline.
 
