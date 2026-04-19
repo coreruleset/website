@@ -73,9 +73,9 @@ CRS 3 had a set of `980xxx` reporting rules that fired when a request exceeded t
 
 ### CRS 4 Reporting: Granular Control
 
-CRS 4 restructures the `980xxx` reporting rules into a consolidated reporting system controlled by `tx.reporting_level`. A single reporting action (`id:980170`, phase 5) emits one combined message covering both inbound and outbound scores, gated by rules that decide *whether* it fires based on the level you configure. The result is cleaner logs and operator control over verbosity.
+CRS 4 restructures the `980xxx` reporting rules into a consolidated reporting system controlled by `tx.reporting_level`. A single reporting action (`980170`, phase 5) emits one combined message covering both inbound and outbound scores, gated by rules that decide *whether* it fires based on the level you configure. The result is cleaner logs and operator control over verbosity.
 
-The six reporting levels (configured via rule 900115) are:
+The six reporting levels (configured via rule `900115`) are:
 
 | Level | Behaviour |
 |---|---|
