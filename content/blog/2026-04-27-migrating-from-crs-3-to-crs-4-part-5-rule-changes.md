@@ -32,7 +32,7 @@ The authoritative source for all of this is the [CHANGES.md](https://github.com/
 
 ## New: Web Shell Detection in Responses
 
-One of the most significant new detection capabilities in CRS 4 is response-phase web shell detection. CRS 3 focused almost entirely on inspecting inbound requests. CRS 4 adds a category of rules (in the `950xxx` range) that inspect HTTP responses for indicators of web shell activity — command output patterns, PHP error messages triggered by shell execution, and other post-exploitation signals.
+One of the most significant new detection capabilities in CRS 4 is response-phase web shell detection. CRS 3 focused almost entirely on inspecting inbound requests. CRS 4 adds a dedicated file, `RESPONSE-955-WEB-SHELLS.conf`, with rules in the `955xxx` range that inspect HTTP responses for indicators of web shell activity — command output patterns, PHP error messages triggered by shell execution, and other post-exploitation signals.
 
 This matters for migration in two ways:
 
@@ -44,18 +44,20 @@ This matters for migration in two ways:
 
 CRS 4 adds rules that correctly handle HTTP/3 semantics. For most operators this is invisible — your WAF engine handles the protocol level, not CRS. But if you use a WAF engine that passes HTTP/3-specific headers or pseudo-headers to the rule set, CRS 4 handles them correctly where CRS 3 would have misbehaved or missed them.
 
-## Removed: HTTP/0.9
+## Changed: HTTP/0.9 Tolerance Dropped
 
-HTTP/0.9 support was dropped. A new rule blocks any request using HTTP/0.9. This was motivated by false positive avoidance (certain legacy monitoring agents used HTTP/0.9 in ways that interfered with CRS 3 rules) and by the reality that no modern legitimate traffic uses HTTP/0.9.
+HTTP/0.9 was already absent from the default `tx.allowed_http_versions` list in CRS 3.3, so the protocol enforcement rule in `REQUEST-920` has been blocking it by default in both versions. What changed in CRS 4 is narrower: response-splitting detection (rule `921110`) used to carve out an HTTP/0.9 pattern to avoid false positives on legacy clients, and that carve-out was removed. See the "drop HTTP/0.9 support" change in [CHANGES.md](https://github.com/coreruleset/coreruleset/blob/v4.0/dev/CHANGES.md) (PR #1966).
 
-If your infrastructure sends HTTP/0.9 requests — for example, a legacy health check or a monitoring probe — you will see these blocked after the migration. Update the probe to use HTTP/1.0 or later, or exclude the rule for the specific source.
+For most operators this is invisible at migration time. If you explicitly allowed HTTP/0.9 in CRS 3 by adding it to `tx.allowed_http_versions`, the same configuration continues to work in CRS 4, but rule `921110` will no longer tolerate HTTP/0.9 in its regex. Monitoring agents that still speak HTTP/0.9 should be updated to HTTP/1.0 or later regardless.
 
 ## Changed: Restricted Headers
 
 CRS 4 restructured restricted headers into two categories with different enforcement behaviour (covered in detail in Part 2). From a rule-change perspective, the key additions are:
 
-**Basic restricted headers** (blocked at all paranoia levels, new in CRS 4):
+**Basic restricted headers** (blocked at all paranoia levels, new in CRS 4). The full default list in `tx.restricted_headers_basic` is:
 - `content-encoding` — compressed request bodies bypass WAF inspection
+- `proxy` — HTTPoxy (CVE-2016-5385) and related upstream request smuggling
+- `lock-token`, `content-range`, `if` — WebDAV headers misused by uncommon clients
 - `x-http-method-override`, `x-http-method`, `x-method-override` — method override attack prevention
 - `x-middleware-subrequest` — CVE-2025-29927 (Next.js)
 - `expect` — HTTP desync attack prevention
