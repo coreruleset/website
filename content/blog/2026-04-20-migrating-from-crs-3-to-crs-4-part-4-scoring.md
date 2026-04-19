@@ -41,7 +41,7 @@ tx.notice_anomaly_score   = 2
 
 In CRS 3, the running total was accumulated in `tx.anomaly_score`. In CRS 4 the internal accumulation was refactored so that scores are tracked in a way that correlates with the paranoia level of the firing rule. The details are inside the engine rules — the operator-facing variables you configure (`tx.inbound_anomaly_score_threshold`, the severity scores) are unchanged.
 
-The visible change is in what gets reported. CRS 4 reporting rules (see the Reporting Model section below) include more structured context about which paranoia level and rule category contributed to the score, making it significantly easier to understand what drove a block.
+The visible change is in what gets reported. CRS 4 reporting rules (see the Reporting Model section below) include more structured context about which paranoia level and rule category contributed to the score, making it significantly easier to understand what drove a blocking action.
 
 ### Impact on Custom Rules
 
@@ -57,7 +57,7 @@ CRS 3 had a set of `980xxx` reporting rules that fired when a request exceeded t
 
 CRS 4 replaces the `980xxx` rules with a new, more structured reporting system controlled by `tx.reporting_level`. There is a single reporting action per direction in phase 5, governed by logic that decides *when* it fires based on the level you configure. The result is cleaner logs and operator control over verbosity.
 
-The six reporting levels (configured via rule id:900115) are:
+The six reporting levels (configured via rule 900115) are:
 
 | Level | Behaviour |
 |---|---|
@@ -70,7 +70,7 @@ The six reporting levels (configured via rule id:900115) are:
 
 The default is `4`, which is more verbose than CRS 3. This is intentional — the extra log output at level 4 is the mechanism that shows you near-miss requests (requests that scored above zero but did not hit the blocking threshold), which is essential for tuning.
 
-The practical migration impact: if you have SIEM rules, alerting logic, or log parsers that match on `980xxx` rule IDs, update them to the new CRS 4 reporting rule IDs. The log message format changed — run your log parser against a sample of CRS 4 output before cutting over.
+The practical migration impact: if you have SIEM rules, alerting logic, or log parsers that match on `980xxx` rule IDs, update them to the new CRS 4 reporting rule IDs. Also, the log message format changed — run your log parser against a sample of CRS 4 output before cutting over.
 
 ## Early Blocking
 
