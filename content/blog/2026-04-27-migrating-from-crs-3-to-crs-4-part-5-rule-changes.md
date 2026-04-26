@@ -25,12 +25,12 @@ The changes fall into four categories:
 
 1. **New rules and new detection categories** — coverage that did not exist in CRS 3
 2. **Modified rules** — rules that exist in both versions but with changed patterns, PL assignments, or IDs
-3. **Removed rules** — rules that were dropped because they were superseded, redundant, or false-positive-prone
+3. **Removed rules** — rules that were dropped because they were superseded, redundant, or prone to false positives
 4. **Reorganized rules** — rules that were split, merged, or renumbered
 
-The authoritative source for all of this is the [CHANGES.md](https://github.com/coreruleset/coreruleset/blob/main/CHANGES.md) in the CRS 4.0 release. This post walks through the most significant categories. For a full audit of your specific exclusions, you will need to cross-reference CHANGES.md with your existing configuration.
+The authoritative source for all of these changes is the [CHANGES.md](https://github.com/coreruleset/coreruleset/blob/main/CHANGES.md) in the CRS 4.0 release. This post walks through the most significant categories. For a full audit of your specific exclusions, you will need to cross-reference CHANGES.md with your existing configuration.
 
-### A note on the CRS 4.25 LTS cadence
+### A Note on the CRS 4.25 LTS Cadence
 
 CRS 4.25 is a Long-Term Support release. After the initial release, the 4.25 line receives periodic patch releases (4.25.1, 4.25.2, …) that carry targeted fixes and selected backports from main. This means "CRS 4.25 LTS" is a moving target for the better: your migration baseline is 4.25.0, and you will apply patch releases on your existing deployment over time. Throughout this post, when a change is described as "coming in 4.25.1", it will reach you on the next quarterly LTS patch — no major version upgrade required.
 
@@ -59,7 +59,7 @@ CRS 4.0 added `HTTP/3` and `HTTP/3.0` to the default `tx.allowed_http_versions` 
 HTTP/0.9 has been progressively removed from CRS over several releases. The protocol is obsolete per RFC 9110 and is absent from the default `tx.allowed_http_versions` list — but because HTTP/0.9 requests carry no protocol string at all, the version-list check in rule `920430` only catches them when the engine populates `REQUEST_PROTOCOL` with a default. Two other rules did the real work of blocking HTTP/0.9, and both have been tightened:
 
 - **CRS 4.0** — response-splitting detection (rule `921110`) used to carve out an HTTP/0.9 pattern to avoid false positives on legacy clients, and that carve-out was removed. See the "drop HTTP/0.9 support" change in [CHANGES.md](https://github.com/coreruleset/coreruleset/blob/main/CHANGES.md) (PR #1966).
-- **CRS 4.25.1** (first quarterly LTS backport, scheduled) — request-line validation (rule `920100`) had a dedicated alternative that accepted `GET /path` without any protocol suffix, preserving HTTP/0.9 compatibility. That alternative was removed (PR [#4621](https://github.com/coreruleset/coreruleset/pull/4621)) on main and will be backported to the 4.25 LTS line in the first quarterly 4.25.1 release. After this change, `GET /\r\n\r\n` style requests trigger `920100` and are blocked.
+- **CRS 4.25.1** (first quarterly LTS backport, scheduled) — request-line validation (rule `920100`) had a dedicated alternative that accepted `GET /path` without any protocol suffix, preserving HTTP/0.9 compatibility. That alternative was removed (PR [#4621](https://github.com/coreruleset/coreruleset/pull/4621)) on main and will be backported to the 4.25 LTS line in the first quarterly 4.25.1 release. After this change, `GET /\r\n\r\n` style requests  will trigger `920100` and will be blocked.
 
 Once 4.25.1 ships, HTTP/0.9 is effectively blocked by CRS. Adding `HTTP/0.9` to `tx.allowed_http_versions` no longer helps — rule `920100` blocks the request at the request-line level before the protocol-version check in rule `920430` is even reached. If you have monitoring agents or legacy clients that still speak HTTP/0.9, they must be updated to HTTP/1.0 or later before you deploy 4.25.1, or they will start getting blocked.
 
@@ -122,7 +122,7 @@ After updating your exclusions for renamed and removed rules, run CRS 4 in detec
 - Exclusions that are no longer needed (the underlying false positive was fixed)
 - Score changes at your paranoia level due to PL redistribution
 
-This step cannot be skipped. The combination of rule reorganization and PL redistribution means your anomaly score baseline will be different from CRS 3, even if you carefully map every exclusion.
+This step must not be skipped. The combination of rule reorganization and PL redistribution means your anomaly score baseline will be different from CRS 3, even if you carefully map every exclusion.
 
 ## What's Next
 
