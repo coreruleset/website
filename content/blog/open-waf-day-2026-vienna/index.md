@@ -24,7 +24,7 @@ Following the success of our Barcelona 2025 event, we're bringing the community 
 
 Registration is now open! Please register using the form below to secure your spot:
 
-{{< button link="/register/open-waf-day-2026-viena" text="Register now!" >}}
+{{< button link="/register/open-waf-day-2026-vienna" text="Register now!" >}}
 
 ## Call for Presentations
 
