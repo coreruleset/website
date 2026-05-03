@@ -24,21 +24,11 @@ Following the success of our Barcelona 2025 event, we're bringing the community 
 
 Registration is now open! Please register using the form below to secure your spot:
 
-{{< button link="https://forms.gle/UckehAUPdR8xZVkd8" text="Register now!" >}}
+{{< button link="/register/open-waf-day-2026-viena" text="Register now!" >}}
 
 ## Call for Presentations
 
-We're looking for speakers to share their experiences, research, and insights on topics including:
-
-- Web Application Firewalls (ModSecurity, Coraza, and others)
-- OWASP CRS
-- WAF deployment strategies and best practices
-- Security automation and testing
-- Real-world WAF use cases and lessons learned
-- WAF performance and optimization
-- Integration with observability and monitoring tools
-
-{{< button link="https://forms.gle/PoBKhza7YcRLFdFU6" text="Send your presentation here" >}}
+**The Call for Presentations is now closed.** Thank you to everyone who submitted a proposal! We'll be in touch with speakers soon.
 
 ## What to Expect
 
