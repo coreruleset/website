@@ -21,6 +21,8 @@ This is Part 6 of the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026
 
 There are two approaches to handling false positive tuning during the migration. Neither is universally better — choose based on the size and complexity of your existing setup.
 
+Both strategies describe how you build the CRS 4 exclusion set. They are independent of how you roll the new rule set out to production: you do **not** have to turn your existing WAF off to run either of them. The parallel rollout options that let you keep CRS 3 blocking while you validate CRS 4 are covered in [Running a Safe Production Migration](#running-a-safe-production-migration) below.
+
 ### Strategy A: Start Fresh
 
 Discard your existing CRS 3 exclusions entirely and retune from scratch with CRS 4.
@@ -65,15 +67,15 @@ The advantage: less manual re-testing of application workflows. The disadvantage
 
 Regardless of which strategy you choose, the migration sequence for production should be:
 
-### Phase 1: Parallel Detection (1-2 weeks)
+### Phase 1: Detection-Mode Validation (1-2 weeks)
 
-Run CRS 4 in detection mode in parallel with your existing CRS 3 blocking setup. There are a few ways to achieve this:
+Run CRS 4 in detection mode for one to two weeks (or until you have observed peak traffic and exercised every critical workflow at least once) so you can review what it would have blocked before any of it actually blocks. There are three ways to set this up; only the first is truly parallel — the others swap CRS 3 for CRS 4 in a single engine and rely on the engine not to block.
 
-**Dual WAF deployment.** Route a copy of your traffic (via mirroring or a dedicated logging endpoint) through CRS 4 in detection mode, while CRS 3 continues blocking for real traffic. Compare the CRS 4 detection results against known good requests in your access logs.
+**Option A: Dual WAF deployment (true parallel).** Route a copy of your traffic — via traffic mirroring, a sidecar engine, or a dedicated logging endpoint — through a second WAF instance running CRS 4 in detection mode, while your production WAF continues to run CRS 3 in blocking mode. CRS 3 keeps protecting real users; CRS 4 sees the same requests and records what it would have done. Compare the CRS 4 detection log against your access logs to find false positives. This is the safest option and the one to prefer when your environment supports it.
 
-**Single WAF, detection mode.** If a parallel setup is not practical, swap CRS 3 for CRS 4 in pure detection mode. You lose blocking during this phase, so only do this if your threat model allows a temporary blocking gap (e.g. you have another upstream protection layer).
+**Option B: Single WAF, detection mode.** If you cannot run a second engine, swap CRS 3 for CRS 4 on your existing WAF and put it in pure detection mode (CRS 3 is no longer active — running both rule sets in the same engine is not supported because of rule ID conflicts). You lose blocking for this phase, so only choose this if your threat model allows a temporary gap, for example because you have another upstream protection layer (CDN WAF, edge proxy, application-level controls).
 
-**WAF-engine anomaly logging.** Some WAF engine setups allow you to log anomaly score results without blocking, even when blocking is technically enabled, by setting the anomaly threshold very high (e.g. `9999`). Set your CRS 4 thresholds to `9999` during the detection phase so that nothing is blocked even if the score exceeds the normal threshold.
+**Option C: Single WAF, anomaly-threshold override.** Some engines do not have a clean detection-only switch, or you want CRS 4 fully wired into the production engine (alerting, audit logs, plugin loading) without it actually blocking. Swap CRS 3 for CRS 4 as in option B, but instead of toggling detection mode, raise the inbound and outbound anomaly score thresholds to a value the score will never reach in practice (for example `9999`). Blocking is technically enabled but functionally disabled — the engine evaluates every rule, you get the score breakdown in your logs, and nothing is rejected. Restore the normal thresholds when you cut over.
 
 ### Phase 2: Validation
 
@@ -96,7 +98,7 @@ Based on the changes covered in earlier posts in this series, these are the area
 
 **Response-phase web shell rules.** Applications that return debugging output or verbose error messages containing shell-like text. Check your application's error pages, debug endpoints, and admin panels.
 
-**Restricted headers — basic list.** Requests that include `Content-Encoding`, `X-HTTP-Method-Override`, or `Expect`. These are blocked at all paranoia levels. Common sources: upload clients that set `Content-Encoding`, JavaScript frameworks using `X-HTTP-Method-Override` for form method override, and .NET clients using `Expect: 100-continue`.
+**Restricted headers — basic list.** Requests that include `Content-Encoding`, `X-HTTP-Method-Override`, or `Expect`. These are blocked at all paranoia levels. Common sources: upload clients that set `Content-Encoding`, JavaScript frameworks using `X-HTTP-Method-Override` for form method override, and .NET clients using `Expect: 100-continue`. Before adding a WAF exclusion, check whether the client itself can be configured not to send the header — `Expect: 100-continue` from .NET, for example, is controlled by `ServicePointManager.Expect100Continue` (or `HttpClientHandler` in newer code), and adjusting the application is usually preferable to weakening the rule.
 
 **Restricted headers — extended list.** Requests that include `Accept-Charset`. This is only blocked at higher paranoia levels (PL2+) since it still appears in some legitimate clients. If you run at PL1, this will not trigger.
 
@@ -118,7 +120,7 @@ For real false positives, write the exclusion as narrowly as possible. The CRS-r
 # In REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
 # Exclude rule 941100 (XSS via libinjection) for the /editor/save path
 SecRule REQUEST_URI "@beginsWith /editor/save" \
-    "id:1001,phase:2,pass,nolog,\
+    "id:1001,phase:1,pass,nolog,\
     ctl:ruleRemoveTargetById=941100;ARGS:content"
 ```
 
