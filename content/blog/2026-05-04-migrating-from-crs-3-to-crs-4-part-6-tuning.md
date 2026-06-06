@@ -136,6 +136,6 @@ When a new LTS point release ships (quarterly), review the release notes before 
 
 ## What's Next
 
-[Part 7]({{< ref "blog/2026-05-11-migrating-from-crs-3-to-crs-4-part-7-engines.md" >}}) covers engine-specific considerations — the support matrix for ModSecurity v2, ModSecurity v3, and Coraza, differences in plugin compatibility across engines, and the new Docker image tagging scheme.
+[Part 7]({{< ref "blog/2026-05-11-migrating-from-crs-3-to-crs-4-part-7-engines.md" >}}) covers engine-specific considerations — the support matrix for ModSecurity v2, ModSecurity v3, and Coraza, differences in plugin compatibility across engines, and the new container image tagging scheme.
 
 {{< related-pages "Migration" "CRS-v4" >}}
