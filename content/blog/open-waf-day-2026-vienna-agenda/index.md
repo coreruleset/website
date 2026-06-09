@@ -15,18 +15,17 @@ All times are local (CEST).
 
 | Time | Speaker(s) | Title |
 |------|------------|-------|
-| 09:30 – 10:00 | — | Registration & Welcome |
+| 09:45 – 10:00 | — | Registration & Welcome |
 | 10:00 – 10:45 | Matteo Pace | Embracing Envoy's Dynamic Modules: Meet the new Coraza connector |
 | 10:45 – 11:00 | — | Coffee break |
-| 11:00 – 11:45 | Ervin Hegedüs | *Title TBA* |
-| 11:45 – 12:00 | — | Short break |
-| 12:00 – 13:30 | — | Lunch break |
-| 13:30 – 14:15 | Juan Pablo Tosso | Coraza Center: bringing your WAF closer to GitOps |
-| 14:15 – 14:30 | — | Coffee break |
-| 14:30 – 15:15 | Lukas Funk | Ingress NGINX is retired – now what about my WAF rules?! |
-| 15:15 – 15:30 | — | Coffee break |
-| 15:30 – 16:15 | Adrian Winckles & Gautam Juvarajiya | CHAMELEON-REN: Instrumenting Adaptive Honeypots with CRS for Education-Sector Threat Intelligence |
-| 16:15 – 17:00 | — | Closing & Networking |
+| 11:00 – 11:45 | Ervin Hegedüs | WAF error log analysis at the highest level: ultra-fast filtering and multi-level aggregation with minimal resources |
+| 11:45 – 12:45 | — | Lunch break |
+| 12:45 – 13:30 | Juan Pablo Tosso | Coraza Center: bringing your WAF closer to GitOps |
+| 13:30 – 13:45 | — | Coffee break |
+| 13:45 – 14:30 | Lukas Funk | Ingress NGINX is retired – now what about my WAF rules?! |
+| 14:30 – 14:45 | — | Coffee break |
+| 14:45 – 15:30 | Adrian Winckles & Gautam Juvarajiya | CHAMELEON-REN: Instrumenting Adaptive Honeypots with CRS for Education-Sector Threat Intelligence |
+| 15:30 – 16:00 | — | Closing & Networking |
 
 ## Talks
 
@@ -38,11 +37,13 @@ A deep dive into the new Coraza connector built on Envoy's Dynamic Modules API �
 
 ---
 
-### *Title TBA*
+### WAF error log analysis at the highest level: ultra-fast filtering and multi-level aggregation with minimal resources
 
 **Ervin Hegedüs**
 
-Details to be announced.
+The biggest challenge when using a WAF is still knowing what is happening in the traffic passing through the firewall. Many have already built dashboards for analysing logs, but the universal "perfect" log analyzer remains a dream: every WAF administrator approaches the challenge differently, and the needs vary from application to application.
+
+This talk presents a command-line solution that is fast — comparable to the runtime of collected and indexed databases — yet capable of arbitrary, even multi-level aggregation. The program, written in C, currently processes a row in 1 μs on average, regardless of what aggregation is extracted from the log. The tool is useful for quickly processing daily files or preparing indexes for larger databases.
 
 ---
 
@@ -79,7 +80,7 @@ The talk will share early architectural decisions, initial telemetry findings, a
 ## Event Details
 
 - **Date:** Wednesday, June 24, 2026
-- **Time:** 09:30 – 16:30 (CEST)
+- **Time:** 09:45 – 16:00 (CEST)
 - **Venue:** Austria Center · Bruno-Kreisky-Platz 1 · 1220 Wien · Austria
 - **Cost:** Free
 
