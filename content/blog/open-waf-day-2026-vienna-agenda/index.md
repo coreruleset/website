@@ -69,7 +69,7 @@ With the retirement of Ingress NGINX, many teams face a double challenge: findin
 
 **Adrian Winckles & Gautam Juvarajiya**
 
-The OWASP CRS is widely deployed as a defensive layer protecting web applications from known attack patterns — but what happens when CRS is turned outward, configured not to block, but to listen, log, and learn?
+OWASP CRS is widely deployed as a defensive layer protecting web applications from known attack patterns — but what happens when CRS is turned outward, configured not to block, but to listen, log, and learn?
 
 CHAMELEON-REN is an in-progress research project that investigates whether adaptive, stimulus-driven honeypots can generate higher-fidelity, education-specific attack intelligence and whether CRS, operating in a capture-first detection-only configuration, is the right instrument to collect it. CRS anomaly scoring and rule-match data are used to characterise and classify inbound interactions, distinguishing opportunistic scanning from targeted probing and mapping which rule groups are most frequently triggered against different simulated personas — virtual learning environments, student record systems, ERP and finance portals, and research data platforms.
 
