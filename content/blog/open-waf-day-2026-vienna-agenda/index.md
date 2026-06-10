@@ -57,11 +57,9 @@ Details to be announced.
 
 ### Ingress NGINX is retired – now what about my WAF rules?!
 
-**Lukas Funk** · Security Solution Architect, United Security Providers
+**Lukas Funk**
 
 With the retirement of Ingress NGINX, many teams face a double challenge: finding a new ingress controller, and preserving their hard-earned WAF rules built on OWASP ModSecurity and OWASP CRS. Lukas will walk through the available options and make the case for the best open-source alternative: Envoy Gateway combined with the OWASP Coraza WAF Envoy go-filter. He will show how to achieve the migration and share the techniques and tools that make day-two operations — tuning rules in production — manageable for a seasoned WAF operator.
-
-*Lukas brings 10+ years of hands-on experience designing, integrating, and operating web application firewalls at scale. He specialises in OWASP-aligned controls, policy-as-code, and GitOps for Kubernetes.*
 
 ---
 
