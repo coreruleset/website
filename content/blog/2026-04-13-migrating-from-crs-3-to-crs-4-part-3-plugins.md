@@ -167,7 +167,7 @@ Beyond rule exclusions, the registry includes capability plugins that add functi
 
 | Plugin | Rule ID range | Description |
 |---|---|---|
-| [antivirus-plugin](https://github.com/coreruleset/antivirus-plugin) | 9,502,000–9,502,999 | Integrates ClamAV to scan uploaded files and optionally request bodies. Blocks on detection without raising the anomaly score. |
+| [antivirus-plugin](https://github.com/coreruleset/antivirus-plugin) | 9,502,000–9,502,999 | Integrates ClamAV to scan uploaded files and optionally request bodies. Blocks on detection without raising the anomaly score. Requires Lua. |
 | [fake-bot-plugin](https://github.com/coreruleset/fake-bot-plugin) | 9,504,000–9,504,999 | DNS PTR verification for requests claiming to be Google, Bing, Amazon, Facebook, Apple, LinkedIn, and Twitter. Requires Lua. |
 | [body-decompress-plugin](https://github.com/coreruleset/body-decompress-plugin) | 9,503,000–9,503,999 | Decompresses gzip/deflate response bodies for inspection by CRS rules. |
 | [auto-decoding-plugin](https://github.com/coreruleset/auto-decoding-plugin) | 9,501,000–9,501,999 | Applies additional decode transformations at PL3/PL4 to catch evasions through double-encoding. |

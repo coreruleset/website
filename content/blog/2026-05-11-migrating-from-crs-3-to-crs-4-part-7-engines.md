@@ -13,7 +13,7 @@ title: 'Migrating from CRS 3.3 to CRS 4.25 LTS — Part 7: Engine-Specific Notes
 slug: 'migrating-crs-3-to-4-part-7-engines'
 ---
 
-This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). The previous six posts covered configuration, plugins, anomaly scoring, rule changes, and tuning. This post covers the engine layer: what WAF engines CRS 4 supports, how support differs across them, and the changes to Docker-based deployments.
+This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). The previous six posts covered the overview, configuration, plugins, anomaly scoring, rule changes, and tuning. This post covers the engine layer: what WAF engines CRS 4 supports, how support differs across them, and the changes to Docker-based deployments.
 
 {{< figure src="/images/2026/04/pexels-brett-sayles-4508751.jpg" caption="Choosing the right engine for CRS 4" attr="Brett Sayles on Pexels" attrlink="https://www.pexels.com" >}}
 
@@ -100,7 +100,7 @@ The trade-off is operational familiarity. If your team knows ModSecurity v2 well
 
 **`WebAppID` not supported.** As of the time of writing, Coraza does not support `SecWebAppID`. For per-virtual-host plugin scoping on Coraza, use the `Host` header match pattern shown in Part 3.
 
-**RE2/Hyperscan.** Coraza can be built with RE2 or Go's native `regexp` package. CRS 4's RE2 compatibility (covered in Part 5) means that CRS rules work correctly regardless of which regex backend Coraza uses.
+**RE2/Hyperscan.** Coraza can be built with RE2 or Go's native `regexp` package. CRS 4's RE2 compatibility (covered in Part 5) means that CRS rules work correctly regardless of which regular expression engine Coraza uses.
 
 **Plugin compatibility.** Lua-based plugins (fake-bot, antivirus) require Lua support in the WAF engine. Coraza's Lua support depends on the build configuration. If Lua is not available, these plugins are not compatible — consider alternatives or use detection-only mode for those use cases.
 
