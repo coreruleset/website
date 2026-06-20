@@ -21,11 +21,11 @@ This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration ser
 
 CRS 4 officially supports three WAF engines:
 
-| Engine | Status | Notes |
-|---|---|---|
-| ModSecurity v2 (Apache) | Supported | Reference implementation for most operators; full feature support |
-| ModSecurity v3 (libmodsecurity) + Nginx | Supported | Some Lua-based plugins require additional compilation steps |
-| Coraza | Supported | Actively maintained; recommended for new deployments |
+| Engine | Notes |
+|---|---|
+| ModSecurity v2 (Apache) | Reference implementation for most operators; full feature support |
+| ModSecurity v3 (libmodsecurity) + Nginx | Some Lua-based plugins require additional compilation steps |
+| Coraza | Actively maintained; recommended for new deployments |
 
 Two configurations that worked in some CRS 3 deployments are explicitly **not supported** in CRS 4:
 
