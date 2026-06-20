@@ -22,14 +22,14 @@ This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration ser
 CRS 4 officially supports three WAF engines:
 
 | Engine | Notes |
-|---|---|
-| ModSecurity v2 (Apache) | Reference implementation for most operators; full feature support |
-| ModSecurity v3 (libmodsecurity) + Nginx | Some Lua-based plugins require additional compilation steps |
-| Coraza | Actively maintained; recommended for new deployments |
+| --- | --- |
+| [ModSecurity v2 (Apache)](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v2.x%29) | Reference implementation for most operators; full feature support |
+| [ModSecurity v3 (libmodsecurity) + Nginx](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-%28v3.x%29) | Some Lua-based plugins require additional compilation steps |
+| [Coraza](https://www.coraza.io/docs/tutorials/introduction/) | Golang based, widely used in new deployments (e.g. K8s) |
 
 Two configurations that worked in some CRS 3 deployments are explicitly **not supported** in CRS 4:
 
-- **Nginx + ModSecurity v2**: This combination never had official support and is known to behave incorrectly.
+- **Nginx + ModSecurity v2**: This combination never had official support and is known to behave incorrectly. In fact, support for it has been removed.
 - **Apache + ModSecurity v3**: This combination has known connector issues that affect rule processing.
 
 If you are running either of these unsupported combinations with CRS 3, the migration to CRS 4 is a good time to correct the engine setup.
