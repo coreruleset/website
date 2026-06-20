@@ -42,7 +42,7 @@ ModSecurity v2 is the most mature engine and the one where CRS has historically 
 
 The core behaviour is unchanged. The same `SecRule`, `SecAction`, `SecRuleRemoveById`, and related directives work identically. The main operational differences are:
 
-**Plugin Include ordering.** As covered in Part 3, you must add three new `Include` lines to your Apache configuration for the plugin `*-config.conf`, `*-before.conf`, and `*-after.conf` files. Apache's `mod_security2.so` processes these without any modification.
+**Plugin Include ordering.** As covered in [Part 3]({{< ref "blog/2026-04-13-migrating-from-crs-3-to-crs-4-part-3-plugins.md">}}), you must add three new `Include` lines to your Apache configuration for the plugin `*-config.conf`, `*-before.conf`, and `*-after.conf` files. Apache's `mod_security2.so` processes these without any modification.
 
 **Lua plugins.** Some CRS 4 plugins — notably the fake-bot plugin — require Lua support. ModSecurity v2 supports Lua via the `SecRuleScript` directive, but it must be compiled with Lua support. Verify with:
 
@@ -54,7 +54,7 @@ grep -r LUA /path/to/modsecurity.conf
 
 If Lua is not compiled in and you want to use a Lua-dependent plugin, you will need to recompile or use an alternative package. DigitalWave ([modsecurity.digitalwave.hu](https://modsecurity.digitalwave.hu)) maintains updated ModSecurity v2 packages for Debian/Ubuntu that include Lua support.
 
-**`SecCollectionTimeout` removal.** As noted in Part 2, this directive was removed from `crs-setup.conf` in CRS 4. If you have it in your global `modsecurity.conf` (not in `crs-setup.conf`), it continues to work. If you had it in `crs-setup.conf`, move it to your global ModSecurity configuration.
+**`SecCollectionTimeout` removal.** As noted in [Part 2]({{< ref "blog/2026-04-06-migrating-from-crs-3-to-crs-4-part-2-configuration.md" >}}), this directive was removed from `crs-setup.conf` in CRS 4. If you have it in your global `modsecurity.conf` (not in `crs-setup.conf`), it continues to work. If you had it in `crs-setup.conf`, move it to your global ModSecurity configuration.
 
 ### Version Requirements
 
@@ -66,7 +66,7 @@ apachectl -M 2>&1 | grep -i modsec
 
 ## ModSecurity v3 (libmodsecurity)
 
-ModSecurity v3 is the rewritten C++ library implementation. CRS 4 supports it for Nginx (using the `ngx_http_modsecurity_module` connector). The Apache + ModSecurity v3 combination is not supported.
+ModSecurity v3 is the rewritten C++ library implementation. CRS 4 supports it for Nginx (using the `ngx_http_modsecurity_module` [connector](https://github.com/owasp-modsecurity/ModSecurity-nginx)). The Apache + ModSecurity v3 combination is not supported.
 
 ### Key Differences from v2
 
@@ -74,7 +74,7 @@ ModSecurity v3 is the rewritten C++ library implementation. CRS 4 supports it fo
 
 **Some v2-specific directives are absent.** Directives that are Apache-specific (like `SecUploadDir`) behave differently or do not apply. Review the [ModSecurity v3 compatibility notes](https://github.com/owasp-modsecurity/ModSecurity/wiki/Reference-Manual-(v3.x)) for your connector version.
 
-**`WebAppID` support.** ModSecurity v3's Nginx connector supports `SecWebAppID`, which is used for per-virtual-host plugin scoping (described in Part 3). Verify your connector version supports it before relying on it.
+**`WebAppID` support.** ModSecurity v3's Nginx connector supports `SecWebAppID`, which is used for per-virtual-host plugin scoping (described in [Part 3]({{< ref "blog/2026-04-13-migrating-from-crs-3-to-crs-4-part-3-plugins.md">}}])). Verify your connector version supports it before relying on it.
 
 **Lua.** Lua support in ModSecurity v3 is available but requires the library to be compiled with Lua. If you use Lua-dependent plugins, verify your build:
 
@@ -98,9 +98,9 @@ The trade-off is operational familiarity. If your team knows ModSecurity v2 well
 
 ### Coraza-Specific Notes
 
-**`WebAppID` not supported.** As of the time of writing, Coraza does not support `SecWebAppID`. For per-virtual-host plugin scoping on Coraza, use the `Host` header match pattern shown in Part 3.
+**`WebAppID` not supported.** As of the time of writing, Coraza does not support `SecWebAppID`. For per-virtual-host plugin scoping on Coraza, use the `Host` header match pattern shown in [Part 3]({{< ref "blog/2026-04-13-migrating-from-crs-3-to-crs-4-part-3-plugins.md">}}).
 
-**RE2/Hyperscan.** Coraza can be built with RE2 or Go's native `regexp` package. CRS 4's RE2 compatibility (covered in Part 5) means that CRS rules work correctly regardless of which regular expression engine Coraza uses.
+**RE2** Coraza can be built with RE2 or Go's native `regexp` package. CRS 4's RE2 compatibility (covered in [Part 5]({{< ref "blog/2026-04-27-migrating-from-crs-3-to-crs-4-part-5-rule-changes.md" >}})) means that CRS rules work correctly regardless of which regular expression engine Coraza uses.
 
 **Plugin compatibility.** Lua-based plugins (fake-bot, antivirus) require Lua support in the WAF engine. Coraza's Lua support depends on the build configuration. If Lua is not available, these plugins are not compatible — consider alternatives or use detection-only mode for those use cases.
 
@@ -141,7 +141,7 @@ docker run \
   owasp/modsecurity-crs:4.25-lts-nginx
 ```
 
-The environment variable names correspond directly to the `crs-setup.conf` variable names, uppercased. Check the image's README on Docker Hub or GitHub for the full list.
+The environment variable names correspond directly to the `crs-setup.conf` variable names, uppercased. Check the [image's README](https://github.com/coreruleset/modsecurity-crs-docker/blob/main/README.md) on Docker Hub or GitHub for the full list.
 
 For plugin installation in Docker, the recommended approach is to build a derived image that adds plugin files into the container's `plugins/` directory:
 
