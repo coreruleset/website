@@ -13,7 +13,7 @@ title: 'Migrating from CRS 3.3 to CRS 4.25 LTS — Part 7: Engine-Specific Notes
 slug: 'migrating-crs-3-to-4-part-7-engines'
 ---
 
-This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). The previous six posts covered the overview, configuration, plugins, anomaly scoring, rule changes, and tuning. This post covers the engine layer: what WAF engines CRS 4 supports, how support differs across them, and the changes to Docker-based deployments.
+This is Part 7 — the final post — in the [CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-migrating-from-crs-3-to-crs-4-part-1-overview.md" >}}). The previous six posts covered the overview, configuration, plugins, anomaly scoring, rule changes, and tuning. This post covers the engine layer: what WAF engines CRS 4 supports, how support differs across them, and the changes to container-based deployments.
 
 {{< figure src="/images/2026/04/pexels-brett-sayles-4508751.jpg" caption="Choosing the right engine for CRS 4" attr="Brett Sayles on Pexels" attrlink="https://www.pexels.com" >}}
 
@@ -47,7 +47,7 @@ The core behaviour is unchanged. The same `SecRule`, `SecAction`, `SecRuleRemove
 **Lua plugins.** Some CRS 4 plugins — notably the fake-bot plugin — require Lua support. ModSecurity v2 supports Lua via the `SecRuleScript` directive, but it must be compiled with Lua support. Verify with:
 
 ```bash
-apachectl -M | grep security
+apachectl -M 2>&1 | grep security
 # Then check ModSecurity build flags:
 grep -r LUA /path/to/modsecurity.conf
 ```
@@ -106,7 +106,7 @@ The trade-off is operational familiarity. If your team knows ModSecurity v2 well
 
 ## Docker Images
 
-CRS 4 ships official Docker images that bundle the WAF engine, the web server, and CRS 4 rules in a single container. The image tagging scheme changed significantly from the unofficial CRS 3 images.
+CRS 4 ships official container images that bundle the WAF engine, the web server, and CRS 4 rules in a single container. The image tagging scheme changed significantly from the unofficial CRS 3 images.
 
 ### CRS 4.25.0 LTS Images
 
