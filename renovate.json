@@ -8,13 +8,12 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["coreruleset-v3"],
-      "rangeStrategy": "bump-minor",
+      "matchDepNames": ["coreruleset-v3"],
       "allowedVersions": "<4.0.0",
       "groupName": "CRS v3 updates"
     },
     {
-      "matchPackageNames": ["coreruleset-v4"],
+      "matchDepNames": ["coreruleset-v4"],
       "allowedVersions": ">=4.0.0",
       "groupName": "CRS v4 updates"
     }
