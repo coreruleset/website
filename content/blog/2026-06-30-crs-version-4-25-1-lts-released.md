@@ -47,6 +47,23 @@ SecRuleUpdateTargetByTag "attack-fixation"  "XML://@*"
 
 This change is purely additive — it inspects an additional XPath axis without altering existing matches or transformations.
 
+#### Opt-in gate: `tx.crs_xml_attr_inspect`
+
+To allow operators to stage the rollout, XML attribute inspection ships behind a runtime gate on the LTS branch. It is **enabled by default** — no action is needed to get the protection. Operators who need to disable it temporarily (e.g. to work around false positives while tuning) can add the following to their local configuration:
+
+```apache
+SecAction "id:900130,phase:1,nolog,pass,\
+    setvar:tx.crs_xml_attr_inspect=0"
+```
+
+Setting `tx.crs_xml_attr_inspect=0` strips the `XML://@*` target from all affected rules for the duration of that transaction.
+
+#### Known limitation on ModSecurity v2 (Apache)
+
+On **ModSecurity v2/Apache**, the opt-out mechanism (`tx.crs_xml_attr_inspect=0`) cannot fully suppress XML attribute inspection due to an upstream engine bug: `ctl:ruleRemoveTargetByTag` does not correctly remove `XML://@*` selectors at runtime on that engine. Detection of XML-attribute payloads therefore remains active even with the gate disabled.
+
+This has been reported upstream as [ModSecurity#3591](https://github.com/owasp-modsecurity/ModSecurity/issues/3591). **libmodsecurity v3 (nginx) is unaffected** — the opt-out works correctly there. ModSecurity v2 users who need to suppress XML attribute inspection entirely should use the `SecRuleUpdateTargetByTag` workaround directives listed above (which operate at config-load time, not per-transaction).
+
 #### Full advisory
 
 The full advisory will be published at [GHSA-6jp8-c2w2-x7wr](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-6jp8-c2w2-x7wr) once the associated CVE has been assigned and published. We will update this post with the CVE number at that time.
@@ -98,7 +115,7 @@ Three rules carrying structurally ambiguous alternations that could lead to cata
 - **Rule 942200** — SQL injection detection: a regression introduced by an earlier false-positive fix caused user-agent strings containing a comma but no surrounding whitespace to be blocked incorrectly. The rule's comment-handling logic has been refined to cover these cases. ([#4608](https://github.com/coreruleset/coreruleset/pull/4608))
 - **Parameter name `.history`** — Matching against the string `.history` was producing substring false positives, e.g. triggering on the parameter name `history.history`. A word boundary has been added to restrict the match to actual `.history` file access attempts. ([#4614](https://github.com/coreruleset/coreruleset/pull/4614))
 - **Unix RCE (PL1) — `pg` command** — The `pg` command has been removed from the PL1 Unix command list. It is not installed by default on most Linux distributions and was causing false positives in application traffic. ([#4613](https://github.com/coreruleset/coreruleset/pull/4613))
-- **Internal bug fix 4RI-250413** — An additional bug fix addresses an internally tracked issue. ([#4672](https://github.com/coreruleset/coreruleset/pull/4672))
+- **Rules 932171 and 942361** — A JSON-body SQLi detection fix (a `(?:json\.)?` prefix on the `ARGS_NAMES` check) was silently lost during conflict resolution when backporting to the LTS branch, because both rules carry hand-written regexes with no `.ra` source file and were therefore invisible to the `crs-toolchain` regeneration pass used to resolve conflicts. The fix was caught by re-testing against a live nginx/libmodsecurity3 engine and has been restored. ([#4672](https://github.com/coreruleset/coreruleset/pull/4672))
 
 ## Protocol enforcement
 
@@ -112,7 +129,7 @@ Three rules carrying structurally ambiguous alternations that could lead to cata
 
 The release is available on [GitHub](https://github.com/coreruleset/coreruleset/releases/tag/v4.25.1). Given the two high-severity security fixes included in this release, all deployments on the CRS 4.25.x LTS line should update promptly. Users on the CRS 4.x main branch will receive the same security fixes in a forthcoming release.
 
-**nginx + libmodsecurity3 users:** update libmodsecurity3 to **v3.0.16** alongside this CRS release. v3.0.16 is required for the XML attribute bypass fix (GHSA-6jp8-c2w2-x7wr) to take full effect on that stack.
+**nginx + libmodsecurity3 users:** update libmodsecurity3 to **v3.0.16** alongside this CRS release. The opt-in gate introduced by GHSA-6jp8-c2w2-x7wr uses `ctl:ruleRemoveTargetByTag` with an `XML://@*` target; versions of libmodsecurity3 prior to 3.0.16 reject the `@` character in that position at parse time, preventing the configuration from loading at all ([ModSecurity#3589](https://github.com/owasp-modsecurity/ModSecurity/pull/3589)).
 
 If you have questions or concerns, please reach out via the [CRS GitHub repository](https://github.com/coreruleset/coreruleset), in our Slack channel (#coreruleset on [owasp.slack.com](https://owasp.slack.com/)), or on our [mailing list](https://groups.google.com/a/owasp.org/g/modsecurity-core-rule-set-project).
 
