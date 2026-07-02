@@ -17,7 +17,7 @@ For downloads and installation instructions, please refer to the [Installation](
 
 Both vulnerabilities affect all three release lines. The security advisories will be published once the associated CVEs have been assigned; this post will be updated with CVE numbers at that time.
 
-### XML attribute value bypass (GHSA-6jp8-c2w2-x7wr)
+### XML attribute value bypass ([GHSA-6jp8-c2w2-x7wr](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-6jp8-c2w2-x7wr))
 
 **Severity:** HIGH — CVSS 3.1 score 7.2 (`AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N`)  
 **CWE:** CWE-138 — Improper Neutralization of Special Elements
@@ -59,13 +59,9 @@ SecRuleUpdateTargetByTag "attack-sqli"      "!XML://@*"
 SecRuleUpdateTargetByTag "attack-fixation"  "!XML://@*"
 ```
 
-#### Full advisory
-
-The full advisory will be published at [GHSA-6jp8-c2w2-x7wr](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-6jp8-c2w2-x7wr) once the associated CVE has been assigned and published.
-
 Credit goes to [@HackingRepo](https://github.com/HackingRepo) for reporting this issue and to [@theseion](https://github.com/theseion) for the fix.
 
-### Unix RCE ReDoS in shared regex-assembly include (GHSA-f5qm-3h4p-8qhg)
+### Unix RCE ReDoS in shared regex-assembly include ([GHSA-f5qm-3h4p-8qhg](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-f5qm-3h4p-8qhg))
 
 **Severity:** HIGH — CVSS score pending  
 **CWE:** CWE-1333 — Inefficient Regular Expression Complexity
@@ -94,7 +90,7 @@ There is no workaround that fully preserves detection without applying the patch
 
 #### Full advisory
 
-The full advisory will be published at [GHSA-f5qm-3h4p-8qhg](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-f5qm-3h4p-8qhg) once the associated CVE has been assigned and published.
+The full advisory is available at [GHSA-f5qm-3h4p-8qhg](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-f5qm-3h4p-8qhg).
 
 ## Changes in v4.28.0
 
