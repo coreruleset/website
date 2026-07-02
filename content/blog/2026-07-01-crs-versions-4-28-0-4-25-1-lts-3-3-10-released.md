@@ -168,5 +168,4 @@ All three releases are available on the [CRS GitHub releases page](https://githu
 
 If you have questions or concerns, please reach out via the [CRS GitHub repository](https://github.com/coreruleset/coreruleset), in our Slack channel (#coreruleset on [owasp.slack.com](https://owasp.slack.com/)), or on our [mailing list](https://groups.google.com/a/owasp.org/g/modsecurity-core-rule-set-project).
 
-Sincerely,  
-Felipe Zipitria on behalf of the CRS development team
+
