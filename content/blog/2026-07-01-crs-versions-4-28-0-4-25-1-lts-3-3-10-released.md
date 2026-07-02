@@ -7,7 +7,6 @@ categories:
 tags:
     - CRS-News
     - Release
-draft: true
 ---
 
 The OWASP CRS team is pleased to announce three coordinated releases today: **v4.28.0** (main branch), **v4.25.1** (v4 LTS), and **v3.3.10** (v3 LTS). All three fix the same two high-severity security vulnerabilities. Users on any supported branch are strongly encouraged to update.
