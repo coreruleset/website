@@ -41,11 +41,11 @@ SecAction "id:900130,phase:1,nolog,pass,\
 
 **v4.28.0** ships the fix unconditionally with no gate.
 
-#### Known limitation on ModSecurity v2 (Apache) — LTS branches
+#### ModSecurity v2 (Apache) — LTS branches
 
-On **ModSecurity v2/Apache**, the opt-out (`tx.crs_xml_attr_inspect=0`) cannot fully suppress XML attribute inspection. The `ctl:ruleRemoveTargetByTag` directive does not correctly remove `XML://@*` selectors at runtime on that engine, even though the same mechanism works correctly for ordinary variables and works correctly on libmodsecurity v3. Detection of XML-attribute payloads therefore remains active even with the gate disabled.
+**ModSecurity 2.9.14** (released 2026-07-02) fixes the `ctl:ruleRemoveTargetByTag` bug that prevented the opt-out gate from working on that engine ([owasp-modsecurity/ModSecurity#3592](https://github.com/owasp-modsecurity/ModSecurity/issues/3592)). ModSecurity v2/Apache users on 2.9.14 or later can use the `tx.crs_xml_attr_inspect` gate normally.
 
-This has been reported upstream as [ModSecurity#3591](https://github.com/owasp-modsecurity/ModSecurity/issues/3591). ModSecurity v2 users who need to suppress XML attribute inspection entirely should use config-load-time directives instead:
+Users on **ModSecurity v2 older than 2.9.14** should update ModSecurity alongside this CRS release. If that is not immediately possible, the gate's opt-out will not take effect; use config-load-time directives instead to suppress attribute inspection:
 
 ```apache
 SecRuleUpdateTargetByTag "attack-protocol"  "!XML://@*"
@@ -161,6 +161,8 @@ The `tx.crs_xml_attr_inspect` opt-in gate (rules 901180 and 901181 in `REQUEST-9
 ## Upgrading
 
 All three releases are available on the [CRS GitHub releases page](https://github.com/coreruleset/coreruleset/releases).
+
+**ModSecurity v2/Apache users on v4.25.1 or v3.3.10:** update ModSecurity to **v2.9.14** alongside this CRS release to ensure the `tx.crs_xml_attr_inspect` opt-out gate works correctly.
 
 **nginx + libmodsecurity3 users on v4.25.1 or v3.3.10:** update libmodsecurity3 to **v3.0.16** alongside this CRS release. The opt-in gate on these branches uses `ctl:ruleRemoveTargetByTag` with an `XML://@*` target; versions of libmodsecurity3 prior to 3.0.16 reject the `@` character in that position at parse time, preventing the configuration from loading at all ([ModSecurity#3589](https://github.com/owasp-modsecurity/ModSecurity/pull/3589)). v4.28.0 does not use this syntax and has no additional engine version requirement.
 
