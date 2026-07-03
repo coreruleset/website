@@ -1,6 +1,6 @@
 ---
 title: 'CRS versions 4.28.0, 4.25.1 LTS, and 3.3.10 released'
-date: '2026-07-01'
+date: '2026-07-02'
 author: fzipi
 categories:
     - Blog
@@ -9,13 +9,13 @@ tags:
     - Release
 ---
 
-The OWASP CRS team is pleased to announce three coordinated releases today: **v4.28.0** (main branch), **v4.25.1** (v4 LTS), and **v3.3.10** (v3 LTS). All three fix the same two high-severity security vulnerabilities. Users on any supported branch are strongly encouraged to update.
+The OWASP CRS team is pleased to announce three coordinated releases today: **v4.28.0** (main branch), **v4.25.1** (v4 LTS), and **v3.3.10** (v3 LTS). All three fix the same two high-severity security vulnerabilities that affect all previous CRS releases. Users on any supported branch are strongly encouraged to update.
 
 For downloads and installation instructions, please refer to the [Installation](https://coreruleset.org/docs/deployment/install/) page.
 
 ## Security fixes
 
-Both vulnerabilities affect all three release lines. The security advisories will be published once the associated CVEs have been assigned; this post will be updated with CVE numbers at that time.
+Both vulnerabilities affect all three release lines.
 
 ### XML attribute value bypass ([GHSA-6jp8-c2w2-x7wr](https://github.com/coreruleset/coreruleset/security/advisories/GHSA-6jp8-c2w2-x7wr))
 
@@ -24,7 +24,7 @@ Both vulnerabilities affect all three release lines. The security advisories wil
 
 #### Impact
 
-CRS rules in the 921 (protocol-attack), 930 (LFI), 931 (RFI), 932 (RCE), 933 (PHP), 934 (generic), 941 (XSS), 942 (SQLi), and 943 (session-fixation) families inspect XML request bodies using the XPath expression `XML:/*`. That expression matches element text nodes only — it does **not** match XML attribute values. An attacker who places an attack payload inside an XML attribute (e.g. `<a href="javascript:alert(1)=window.name"></a>` or `<a value="' OR 1=1 --"></a>`) bypasses CRS detection entirely.
+CRS rules in the 921 (attacks targeting HTTP protocol), 930 (LFI - Local File Inclusion), 931 (RFI - Remote File Inclusion), 932 (RCE), 933 (PHP), 934 (generic), 941 (XSS), 942 (SQLi), and 943 (session-fixation) families inspect XML request bodies using the XPath expression `XML:/*`. That expression matches element text nodes only — it does **not** match XML attribute values. An attacker who places an attack payload inside an XML attribute (e.g. `<a href="javascript:alert(1)=window.name"></a>` or `<a value="' OR 1=1 --"></a>`) bypasses CRS detection entirely.
 
 The bypass affects approximately 159 rules across nine rule files and applies at **every paranoia level (PL1 through PL4)**. The 944 (Java) family already correctly includes `XML://@*` and is therefore unaffected.
 
@@ -72,7 +72,7 @@ A regular-expression denial of service (ReDoS) affects the shared include `regex
 
 A single unauthenticated crafted request drives PCRE2 past its backtracking limit. When PCRE2 exceeds that limit, the `@rx` operator returns an error rather than a match result, which has two consequences:
 
-- **Detection bypass** — the affected rule fails to evaluate, so the RCE payload is not inspected.
+- **Detection bypass** — the affected rule fails to evaluate for the given parameter, so the RCE payload is not inspected.
 - **CPU denial of service** — the engine burns CPU exploring the ambiguous pattern on every such request.
 
 **Root cause:** The commands-prefix group contained an ambiguous whitespace-handling alternation inside a `*` quantifier. A whitespace run between prefix tokens could be consumed by more than one quantifier, so the number of parse paths grew combinatorially with the length of the run. This has been confirmed reproducible with `pcre2test` 10.47.
