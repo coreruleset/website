@@ -10,12 +10,14 @@
     {
       "matchDepNames": ["coreruleset-v3"],
       "allowedVersions": "<4.0.0",
-      "groupName": "CRS v3 updates"
+      "groupName": "CRS v3 updates",
+      "minimumReleaseAge": "0 days"
     },
     {
       "matchDepNames": ["coreruleset-v4"],
       "allowedVersions": ">=4.0.0",
-      "groupName": "CRS v4 updates"
+      "groupName": "CRS v4 updates",
+      "minimumReleaseAge": "0 days"
     }
   ],
   "customManagers": [
