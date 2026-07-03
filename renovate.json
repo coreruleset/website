@@ -16,6 +16,12 @@
       "matchDepNames": ["coreruleset-v4"],
       "allowedVersions": ">=4.0.0",
       "groupName": "CRS v4 updates"
+    },
+    {
+      "matchDepNames": ["coreruleset-v4-lts"],
+      "allowedVersions": ">=4.25.0 <4.26.0",
+      "minimumReleaseAge": "0 days",
+      "groupName": "CRS v4 LTS updates"
     }
   ],
   "customManagers": [
@@ -44,6 +50,20 @@
         "prev_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
       ],
       "depNameTemplate": "coreruleset-v3",
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "coreruleset/coreruleset"
+    },
+    {
+      "description": "CRS: Update v4 LTS release",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^config/_default/params\\.yaml$/"
+      ],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "lts_v4_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+      ],
+      "depNameTemplate": "coreruleset-v4-lts",
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "coreruleset/coreruleset"
     }
