@@ -1,0 +1,31 @@
+{{- $crs := $.Site.Params.crs -}}
+<div class="columns hero-grid">
+  <div class="hero-grid__col1">
+    <h1 class="title">
+      {{ i18n "hero1" }}<br /><span class="darker">{{ i18n "hero2" }}</span>
+    </h1>
+
+    <h2 class="subhero">{{ i18n "subhero" }}</h2>
+
+    <p class="shortened-width">{{ i18n "explainerText" | markdownify }}</p>
+
+    {{ with $crs }}
+    <div class="hero-buttons">
+      <a href="{{ printf "%s/v%s" .release_url_prefix .latest_v4 }}" class="button">Get latest: {{ .latest_v4 }}</a>
+      <a href="{{ printf "%s/v%s" .release_url_prefix .lts_v3_version }}" class="button button--outline">Get previous: {{ .lts_v3_version }}</a>
+    </div>
+    {{ end }}
+  </div>
+  <div class="hero-grid__col2">
+    <div class="hero-image">
+      <img
+        width="585"
+        height="530"
+        src="{{ "images/plugged.jpg" | relURL }}"
+        alt="Rules protecting a safe"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </div>
+</div>

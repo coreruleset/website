@@ -29,7 +29,7 @@
       ],
       "matchStringsStrategy": "any",
       "matchStrings": [
-        "latest_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+        "latest_v4: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
       ],
       "depNameTemplate": "coreruleset-v4",
       "datasourceTemplate": "github-releases",
@@ -43,7 +43,7 @@
       ],
       "matchStringsStrategy": "any",
       "matchStrings": [
-        "prev_major_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+        "lts_v3_version: \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
       ],
       "depNameTemplate": "coreruleset-v3",
       "datasourceTemplate": "github-releases",

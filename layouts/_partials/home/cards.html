@@ -1,0 +1,24 @@
+{{- $crs := $.Site.Params.crs -}}
+<h3 class="h4">{{ i18n "sectionTitle" | markdownify }}</h3>
+
+<div class="cards columns-3 box-grid">
+  <div class="card">
+    <h2>{{ i18n "sectionTitle1" }}</h2>
+    <p>{{ i18n "sectionText1" | markdownify }}</p>
+    <a href="{{ printf "%s/v%s" $crs.release_url_prefix $crs.latest_v4 }}" class="button">{{ i18n "sectionButton1" }}</a>
+  </div>
+
+  <div class="card">
+    <h2>{{ i18n "sectionTitle2" }}</h2>
+    <p>{{ i18n "sectionText2" | markdownify }}</p>
+    <a href="https://coreruleset.org/docs/2-how-crs-works/" class="button"
+      >{{ i18n "sectionButton2" }}</a
+    >
+  </div>
+
+  <div class="card">
+    <h2>{{ i18n "sectionTitle3" }}</h2>
+    <p>{{ i18n "sectionText3" | markdownify }}</p>
+    <a href="https://coreruleset.org/docs/8-additional-resources/#free-and-open-source-community-help" class="button">{{ i18n "sectionButton3" }}</a>
+  </div>
+</div>
