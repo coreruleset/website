@@ -2,59 +2,35 @@
 author: fzipi
 categories:
   - Blog
-date: '2026-02-25T10:00:00+01:00'
-title: 'Join Us at Open WAF Day 2026 - Vienna, Austria'
+date: '2026-06-29T10:00:00+02:00'
+title: 'Open WAF Day Vienna 2026'
 slug: 'open-waf-day-2026-vienna'
 ---
 
 {{< figure src="open-waf-day-header.png" >}}
 
-We are excited to announce the **Open WAF Day 2026** in Vienna, Austria!
+{{< figure src="images/attendees.jpg" >}}
 
-Following the success of our Barcelona 2025 event, we're bringing the community together again for a full day of presentations, discussions, and networking centered around Web Application Firewalls, CRS, and related technologies.
+Open WAF Day Vienna 2026 is behind us, and it's time to look back at a great day of talks and discussions at the Austria Center.
 
-## Event Details
+We had around 20-30 people join us in the room, catching up between talks, comparing notes on running WAFs in production, and asking the kind of pointed questions that only come from people who actually operate these systems. The agenda ended up being:
 
-- **Date:** Wednesday, June 24, 2026
-- **Time:** 09:00 - 18:00 (CEST)
-- **Location:** Vienna, Austria
-- **Cost:** Free attendance
+| Time          | Title                                                                                                       | Presenter(s)                          |
+|---------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| 09:45 - 10:00 | Registration & Welcome                                                                                       |                                         |
+| 10:00 - 10:45 | Embracing Envoy's Dynamic Modules: Meet the new Coraza connector                                              | Matteo Pace                            |
+| 10:45 - 11:00 | Coffee Break                                                                                                  |                                         |
+| 11:00 - 11:45 | WAF error log analysis at the highest level: ultra-fast filtering and multi-level aggregation with minimal resources | Ervin Hegedüs                    |
+| 11:45 - 12:45 | Lunch                                                                                                         |                                         |
+| 12:45 - 13:30 | Coraza Center: bringing your WAF closer to GitOps                                                             | Juan Pablo Tosso                       |
+| 13:30 - 13:45 | Coffee Break                                                                                                  |                                         |
+| 13:45 - 14:30 | Ingress NGINX is retired – now what about my WAF rules?!                                                     | Lukas Funk                             |
+| 14:30 - 14:45 | Coffee Break                                                                                                  |                                         |
+| 14:45 - 15:30 | CHAMELEON-REN: Instrumenting Adaptive Honeypots with CRS for Education-Sector Threat Intelligence            | Adrian Winckles & Gautam Juvarajiya    |
+| 15:30 - 16:00 | Closing & Networking                                                                                          |                                         |
 
-## Registration
+From a new Coraza connector built on Envoy's Dynamic Modules, to log analysis tools written in C that process a million rows a second, to a research project turning CRS into an adaptive honeypot, the range of topics was a good reminder of how many different directions this community is pulling in — all pointed at the same goal of making WAFs easier to run and trust.
 
-Registration is now open! Please register using the form below to secure your spot:
+Thank you to everyone who joined us in Vienna, presented a talk, or just stopped by to say hello. See you at the next Open WAF Day! :wave:
 
-{{< button link="/register/open-waf-day-2026-vienna" text="Register now!" >}}
-
-## Call for Presentations
-
-**The Call for Presentations is now closed.** Thank you to everyone who submitted a proposal! We'll be in touch with speakers soon.
-
-## What to Expect
-
-Open WAF Day brings together developers, security professionals, integrators, and users to:
-
-- Learn about the latest developments in WAF technology
-- Share experiences from production deployments
-- Network with the community
-- Contribute to the future direction of open source WAF projects
-
-Whether you're a long-time contributor or just getting started with WAFs, this is a great opportunity to connect with like-minded professionals and learn from each other.
-
-## More Information Coming Soon
-
-We'll be sharing more details about:
-- The full agenda and schedule
-- Confirmed speakers and presentations
-- Venue information
-- Social events
-
-## Stay Connected
-
-Follow our blog and social media channels for updates. If you have any questions, don't hesitate to reach out.
-
-We look forward to seeing you in Vienna!
-
-Cheers,
-
-Felipe Zipitría for the CRS team
+{{< gallery title="Gallery" >}}

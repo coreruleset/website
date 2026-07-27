@@ -2,7 +2,7 @@
   <h4>{{ . }}</h4>
 {{ end }}
   <div class="gallery" itemscope itemtype="https://schema.org/ImageGallery">
-  {{- range (.Page.Resources.Match "images/*.jpeg") }}
+  {{- range (.Page.Resources.Match "images/*.{jpg,jpeg}") }}
   {{ $thumbnail := .Resize "320x" }}
     <figure itemscope itemtype="https://schema.org/ImageObject" class="image gallery-item">
     <a href="{{ .Permalink }}" itemprop="contentUrl" data-size="{{ .Width }}x{{ .Height }}" >
