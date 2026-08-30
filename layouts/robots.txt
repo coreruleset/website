@@ -1,0 +1,13 @@
+# As a condition of accessing this website, you agree to abide by the
+# following content signals:
+# (a) If a content signal is "yes", you may collect content for the
+#     corresponding purpose.
+# (b) If a content signal is "no", you may not collect content for the
+#     corresponding purpose.
+# See https://contentsignals.org/ for details.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}
