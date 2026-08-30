@@ -1,0 +1,7 @@
+# hugo-extended re-downloads its binary on first run, so its install script is not needed.
+allowBuilds:
+  hugo-extended: false
+
+# Hugo's css.PostCSS requires node_modules/.bin/postcss to be a Node script;
+# pnpm's default isolated linker installs a /bin/sh shim there, which it rejects.
+nodeLinker: hoisted

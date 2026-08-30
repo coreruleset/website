@@ -10,10 +10,10 @@ The generated website is automatically updated at https://coreruleset.org/. If y
 ## Requirements
 
 You can edit the documentation on your local system. You will need:
-- [Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing dependencies
+- [Node.js and pnpm](https://pnpm.io) for installing dependencies
 - [dart-sass](https://github.com/sass/dart-sass) for transpiling to CSS
 
-`npm install` pulls in Hugo _extended_ as the `hugo-extended` package, so the npm scripts below work without a system-wide install. If you prefer your own [Hugo binary](https://gohugo.io/getting-started/installing/), it must be the **extended** build.
+`pnpm install` pulls in Hugo _extended_ as the `hugo-extended` package, so the pnpm scripts below work without a system-wide install. If you prefer your own [Hugo binary](https://gohugo.io/getting-started/installing/), it must be the **extended** build.
 
 **Important: You need Hugo _extended_ >= 0.163.0** — the version CI builds with is pinned in `package.json` and `.github/workflows/test.yml`.
 
@@ -40,7 +40,7 @@ If you just want to edit documentation (not the website), you can do it in the [
 Install the dependencies once:
 
 ```sh
-npm install
+pnpm install
 ```
 
 Now you have all in place to perform your local edits.
@@ -52,7 +52,7 @@ The theme has shortcodes that can be used to simplify editing. You can get more 
 Then start the development server — while you edit and save, your changes are refreshed in the browser:
 
 ```sh
-npm run dev
+pnpm dev
 ```
 
 Then check your edits on http://localhost:1313/. Drafts and future-dated posts are included, so you can preview a post before its publication date.
@@ -61,10 +61,10 @@ Other scripts:
 
 | command | what it does |
 |---------|--------------|
-| `npm run dev` | development server with drafts and future posts |
-| `npm run dev:start:with-pagefind` | same, but builds the [Pagefind](https://pagefind.app/) index first so site search works locally |
-| `npm run dev:build` | one-off build, no server |
-| `npm run build` | production build (`--gc --minify`), output in `public/` |
+| `pnpm dev` | development server with drafts and future posts |
+| `pnpm dev:start:with-pagefind` | same, but builds the [Pagefind](https://pagefind.app/) index first so site search works locally |
+| `pnpm dev:build` | one-off build, no server |
+| `pnpm build` | production build (`--gc --minify`), output in `public/` |
 
 The documentation subsite is a separate Hugo site and is not part of these builds. CI builds it with `hugo -s subsite/docs` and merges the output into `public/docs`.
 
