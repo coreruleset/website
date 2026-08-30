@@ -6,3 +6,5 @@ node_modules/
 .netlify
 hugo_stats.json
 
+# local tool version pins (mise / asdf)
+.tool-versions
