@@ -1,5 +1,5 @@
 # CRS Project Website Repository
-[![Check Links](https://github.com/coreruleset/website/actions/workflows/test.yml/badge.svg)](https://github.com/coreruleset/website/actions/workflows/test.yml)
+[![Build and link check](https://github.com/coreruleset/website/actions/workflows/test.yml/badge.svg)](https://github.com/coreruleset/website/actions/workflows/test.yml)
 
 This repository contains the website for the OWASP CRS Project.
 
@@ -10,15 +10,18 @@ The generated website is automatically updated at https://coreruleset.org/. If y
 ## Requirements
 
 You can edit the documentation on your local system. You will need:
-- the latest [Hugo binary](https://gohugo.io/getting-started/installing/) for your OS (Windows, Linux, Mac)
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing dependencies
+- [Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) for installing dependencies
 - [dart-sass](https://github.com/sass/dart-sass) for transpiling to CSS
 
-**Important: You need a modern version of Hugo, _extended_ version >= 0.123.0.**
+`npm install` pulls in Hugo _extended_ as the `hugo-extended` package, so the npm scripts below work without a system-wide install. If you prefer your own [Hugo binary](https://gohugo.io/getting-started/installing/), it must be the **extended** build.
+
+**Important: You need Hugo _extended_ >= 0.163.0** — the version CI builds with is pinned in `package.json` and `.github/workflows/test.yml`.
+
+There is also a devcontainer (`.devcontainers/devcontainer.json` plus the `Dockerfile`) if you would rather not install anything locally.
 
 ## Cloning this repository
 
-After getting hugo, just clone this repository to work locally. This way you can edit and verify quickly that everything is working properly before creating a new pull request.
+Clone this repository to work locally. This way you can edit and verify quickly that everything is working properly before creating a new pull request.
 
 To clone, use the *recursive* option so you will be getting also the theme to render the pages properly:
 
@@ -34,20 +37,10 @@ If you just want to edit documentation (not the website), you can do it in the [
 
 ## Editing locally
 
-You will need:
-- hugo binary
-- nodejs (for generating css files)
+Install the dependencies once:
 
-Then do:
 ```sh
-❯ npm install
-
-added 205 packages, and audited 206 packages in 13s
-
-57 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
+npm install
 ```
 
 Now you have all in place to perform your local edits.
@@ -56,18 +49,30 @@ Everything is created using markdown, and you will normally use the `content` su
 
 The theme has shortcodes that can be used to simplify editing. You can get more information about it on [Hugo Dot-Org theme](https://themes.gohugo.io/themes/dot-org-hugo-theme/).
 
-You can run `hugo` to serve the pages, and while you edit and save, your changes will be refreshed in the browser!
+Then start the development server — while you edit and save, your changes are refreshed in the browser:
 
-Use:
-```
-hugo serve
+```sh
+npm run dev
 ```
 
-Then check your edits on http://localhost:1313/.
+Then check your edits on http://localhost:1313/. Drafts and future-dated posts are included, so you can preview a post before its publication date.
+
+Other scripts:
+
+| command | what it does |
+|---------|--------------|
+| `npm run dev` | development server with drafts and future posts |
+| `npm run dev:start:with-pagefind` | same, but builds the [Pagefind](https://pagefind.app/) index first so site search works locally |
+| `npm run dev:build` | one-off build, no server |
+| `npm run build` | production build (`--gc --minify`), output in `public/` |
+
+The documentation subsite is a separate Hugo site and is not part of these builds. CI builds it with `hugo -s subsite/docs` and merges the output into `public/docs`.
 
 ## Online Preview
 
-Any merged updates are pushed to [coreruleset.github.io](coreruleset.github.io/website/) for preview.
+The site is hosted on Cloudflare Pages. Merges to `main` are deployed to https://coreruleset.org/, and every pull request gets its own preview deployment, linked from the PR.
+
+Pull requests also run the [test workflow](.github/workflows/test.yml), which builds both the main site and the docs subsite and runs a [lychee](https://lychee.cli.rs/) link check over `content/`.
 
 ## Authors
 

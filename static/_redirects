@@ -1,3 +1,9 @@
 /register/community-call https://luma.com/8yc1p543
 /redirect/community-call https://meet.google.com/hno-faiv-qmi
 /register/open-waf-day-2026-vienna https://docs.google.com/forms/d/e/1FAIpQLSeq0sAN-yV9Yv0Voxr0rvaFkp9HcHr5UkyQ_5Qavq6s0HAy7w/viewform
+
+# Legacy top-level paths that predate the docs subsite, kept working for old
+# blog posts and external links. Hugo aliases cannot cover these: the docs are
+# a separate build with baseURL /docs/, so an alias there emits under /docs/.
+/installation /docs/1-getting-started/1-1-crs-installation/ 301
+/installation/ /docs/1-getting-started/1-1-crs-installation/ 301
