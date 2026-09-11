@@ -18,7 +18,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@11.24.0",
+  "packageManager": "pnpm@12.4.0",
   "bugs": {
     "url": "https://github.com/coreruleset/website/issues"
   },
@@ -27,7 +27,7 @@
     "autoprefixer": "^10.4.19",
     "hugo-extended": "^0.163.0",
     "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0"
+    "postcss-cli": "^12.0.0"
   },
   "devDependencies": {
     "pagefind": "1.5.2",
