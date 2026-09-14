@@ -20,18 +20,18 @@ explainerButton:
   other: About
 
 ltsBannerTitle:
-  other: "CRS 4.25.0 LTS — First Long-Term Support Release"
+  other: "CRS 4.25.1 LTS — Long-Term Support Release"
 
 ltsBannerText:
   other: |
-    **CRS 4.25.0** is the first **Long-Term Support** release for the CRS 4 line.
-    This release focuses on stability: completing the migration to
-    [regex-assembly](https://github.com/coreruleset/coreruleset/issues/4480),
-    small improvements, and false positive fixes.
-    Organizations running CRS 3.3 should plan their migration now — CRS 3.3.x support ends Q3 2026.
+    **CRS 4.25.1** is the latest **Long-Term Support** release for the CRS 4 line.
+    This release fixes two high-severity security vulnerabilities — an XML attribute
+    value bypass and a Unix RCE ReDoS — along with false positive fixes. See the
+    [release announcement](/20260702/crs-versions-4.28.0-4.25.1-lts-and-3.3.10-released/) for details.
+    Organizations running CRS 3.3 should [plan their migration now](/20260330/migrating-crs-3-to-4-part-1-overview/) — CRS 3.3.x reaches end of life this month.
 
 ltsBannerButton:
-  other: Get CRS 4.25.0 LTS
+  other: Get CRS 4.25.1 LTS
 
 sectionTitle:
   other: Getting Started
