@@ -120,6 +120,8 @@ http {
 
 `mirror_request_body on` copies the request body as well as headers, so CRS 4's body-inspection rules see the same payload CRS 3 saw.
 
+`mirror` duplicates the request itself, not just what CRS sees — if `BACKEND` is your real application, a mirrored `POST`, `PUT`, or `DELETE` reaches it twice, so any non-idempotent side effect (a charge, an email, a row insert) happens twice too. Restrict mirroring in production to read-only/idempotent routes, or point the shadow path at a backend with no side effects (a staging replica, a stub) rather than the live one.
+
 ## Trying it
 
 ```bash
