@@ -26,20 +26,18 @@ Apache has no equivalent to nginx's `mirror` module, so the front door here is a
 
 ## The compose file
 
-CRS 4 is pulled straight from the published, stable `4.25-apache-lts` tag — no build needed. CRS 3 has no equivalent: Docker Hub only carries dated snapshot tags for it (e.g. `3-apache-202609111209`) that rotate every few days, so it's built from the [modsecurity-crs-docker](https://github.com/coreruleset/modsecurity-crs-docker) sources with `CRS_RELEASE` pinned to `3.3.10` — reproducible indefinitely, since it fetches that CRS release directly rather than depending on a tag that will eventually point somewhere else. Both front the same backend (swap `BACKEND` for your real application):
+Both CRS 3 and CRS 4 are now published as statically generated, stable `lts` tags on Docker Hub — `3.3-apache-lts` and `4.25-apache-lts` — so both containers are pulled straight from Docker Hub, no build step needed. Both front the same backend (swap `BACKEND` for your real application):
 
 ```yaml
 # Mirrors live traffic to CRS3 (primary, answers the client) and CRS4 (shadow,
 # fire-and-forget) against the same backend, so you can diff ModSecurity audit
 # logs between versions before upgrading.
 #
-# CRS4 is pulled from the published, stable "lts" tag. CRS3 has no equivalent
-# stable tag on Docker Hub (only dated snapshots that rotate every few days),
-# so it's built from source pinned to CRS_RELEASE instead - reproducible
-# forever, since it fetches the CRS release directly rather than a rotating tag.
+# Both CRS3 and CRS4 are pulled from their published, stable "lts" tags - no
+# build needed.
 #
 # Usage:
-#   docker compose up --build
+#   docker compose up
 #   curl "http://localhost:8080/anything?id=1' OR '1'='1"
 #   docker compose logs crs-apache-v4   # what CRS4 would have done with the same request
 #
@@ -52,17 +50,7 @@ services:
       - "8080"
 
   crs-apache-v3:
-    build:
-      context: ../..
-      dockerfile: apache/Dockerfile
-      additional_contexts:
-        image: docker-image://httpd:2.4.68
-      args:
-        MODSEC2_VERSION: "2.9.14"
-        MODSEC2_FLAGS: "--with-yajl --with-ssdeep --with-pcre2"
-        LUA_VERSION: "5.3"
-        LUA_MODULES: "lua-zlib lua-socket"
-        CRS_RELEASE: "3.3.10"
+    image: owasp/modsecurity-crs:3.3-apache-lts
     environment:
       BACKEND: http://backend:8080
     expose:
@@ -135,7 +123,7 @@ http {
 ## Trying it
 
 ```bash
-docker compose up --build
+docker compose up
 curl "http://localhost:8080/anything?id=1' OR '1'='1"
 docker compose logs crs-apache-v4   # what CRS4 would have done with the same request
 ```
