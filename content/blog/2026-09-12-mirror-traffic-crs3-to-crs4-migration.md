@@ -15,6 +15,8 @@ Our [seven-part CRS 3.3 → 4.25 LTS migration series]({{< ref "blog/2026-03-30-
 
 ## The idea: mirror, don't switch
 
+Keep CRS 3 answering production traffic exactly as it does today, and give CRS 4 a copy of the same requests to evaluate in parallel — without switching anything.
+
 Docker Compose has no built-in way to send one request to two backends — that is not a networking feature, it is an application-layer concern. The standard tool for it is nginx's [`mirror`](https://nginx.org/en/docs/http/ngx_http_mirror_module.html) directive: it sends an async copy of every request to a shadow backend while the client only ever sees the response from the primary. If the shadow request fails, times out, or returns a 500, the client never knows.
 
 That gives you a setup where:
@@ -120,7 +122,7 @@ http {
 
 `mirror_request_body on` copies the request body as well as headers, so CRS 4's body-inspection rules see the same payload CRS 3 saw.
 
-`mirror` duplicates the request itself, not just what CRS sees — if `BACKEND` is your real application, a mirrored `POST`, `PUT`, or `DELETE` reaches it twice, so any non-idempotent side effect (a charge, an email, a row insert) happens twice too. Restrict mirroring in production to read-only/idempotent routes, or point the shadow path at a backend with no side effects (a staging replica, a stub) rather than the live one.
+`mirror` duplicates the request itself, not just what CRS sees. That's harmless in this compose setup, since both CRS containers point at the same stateless `httpbin` backend, which only echoes requests back. It stops being harmless the moment you swap `BACKEND` for your real application: a mirrored `POST`, `PUT`, or `DELETE` now reaches it twice, so any non-idempotent side effect (a charge, an email, a row insert) happens twice too. Restrict production mirroring to read-only/idempotent routes, or point the shadow path at a backend with no side effects (a staging replica, a stub) rather than the live one.
 
 ## Trying it
 
