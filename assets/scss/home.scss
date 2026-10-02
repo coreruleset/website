@@ -78,9 +78,17 @@ $mobile-max: 999px;
         }
 
         .button {
-            margin-bottom: 50px;
+            margin-bottom: 12px;
+        }
+
+        // Small end-of-life note under the hero buttons; it carries the
+        // spacing to the next section that the buttons used to.
+        .hero-legacy {
+            font-size: 14px;
+            margin-block-start: 12px;
+            margin-block-end: 50px;
             @media (min-width: $min-desktop) {
-                margin-bottom: 100px;
+                margin-block-end: 100px;
             }
         }
 
