@@ -30,9 +30,9 @@
   <div class="announcement-banner">
     <div class="announcement-banner__content">
       <span class="announcement-banner__badge">Now Available</span>
-      <h2 class="announcement-banner__title">{{ i18n "ltsBannerTitle" | markdownify }}</h2>
-      <p class="announcement-banner__text">{{ i18n "ltsBannerText" | markdownify }}</p>
-      <a href="{{ printf "%s/v%s" $crs.release_url_prefix $crs.lts_v4_version }}" class="button">{{ i18n "ltsBannerButton" }}</a>
+      <h2 class="announcement-banner__title">{{ i18n "ltsBannerTitle" $crs | markdownify }}</h2>
+      <p class="announcement-banner__text">{{ i18n "ltsBannerText" $crs | markdownify }}</p>
+      <a href="{{ printf "%s/v%s" $crs.release_url_prefix $crs.lts_v4_version }}" class="button">{{ i18n "ltsBannerButton" $crs }}</a>
     </div>
   </div>
 

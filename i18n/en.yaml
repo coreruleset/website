@@ -20,11 +20,11 @@ explainerButton:
   other: About
 
 ltsBannerTitle:
-  other: "CRS 4.25.2 LTS — Long-Term Support Release"
+  other: "CRS {{ .lts_v4_version }} LTS — Long-Term Support Release"
 
 ltsBannerText:
   other: |
-    **CRS 4.25.2** is the latest **Long-Term Support** release for the CRS 4 line.
+    **CRS {{ .lts_v4_version }}** is the latest **Long-Term Support** release for the CRS 4 line.
     This release fixes three security vulnerabilities — a path-based command injection
     bypass, a charset allow-list bypass, and a multipart charset bypass — along with a
     file upload bypass and false positive fixes. See the
@@ -32,7 +32,7 @@ ltsBannerText:
     CRS 3.3.x has reached end of life; organizations still running it should [migrate now](/20260330/migrating-crs-3-to-4-part-1-overview/).
 
 ltsBannerButton:
-  other: Get CRS 4.25.2 LTS
+  other: "Get CRS {{ .lts_v4_version }} LTS"
 
 sectionTitle:
   other: Getting Started
