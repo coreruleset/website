@@ -12,7 +12,8 @@
 
       {{ with $crs }}
       <a href="{{ printf "%s/v%s" .release_url_prefix .latest_major_version }}" class="button">Get latest: {{ .latest_major_version }}</a>
-      <a href="{{ printf "%s/v%s" .release_url_prefix .prev_major_version }}" class="button">Get previous major: {{ .prev_major_version }}</a>
+      <a href="{{ printf "%s/v%s" .release_url_prefix .lts_v4_version }}" class="button">Get LTS: {{ .lts_v4_version }}</a>
+      <p class="hero-legacy">CRS {{ .prev_major_version }} (end of life) is still available from its <a href="{{ printf "%s/v%s" .release_url_prefix .prev_major_version }}">release page</a>.</p>
       {{ end }}
     </div>
     <div class="hero-grid__col2">
