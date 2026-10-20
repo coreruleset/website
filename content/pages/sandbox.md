@@ -47,6 +47,11 @@ CRS tag it runs, so `latest` always resolves to something you can check.
   can use any path and any method.
 - A `403` with a blocking rule (`949110`) in the list means CRS blocked the request. In detection
   mode, or when the anomaly score stays below the threshold, you get the matched rules with a `200`.
+- The form sends what a browser can send. Before the request leaves the browser, `#fragments` are
+  dropped, `..` path segments and backslashes are resolved, control characters are removed and most
+  special characters are percent-encoded; the result shows the URL that was actually sent. Headers
+  such as `Cookie`, `Host` or `Referer` cannot be set from a page at all. For raw bytes use curl
+  (`--path-as-is` keeps `..` segments).
 - Requests are logged in full. Do not send real credentials or personal data.
 - Something broken? [Open an issue](https://github.com/coreruleset/coreruleset/issues) and include the
   `x-unique-id` shown with the result.
