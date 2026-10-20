@@ -4,7 +4,7 @@ description: Send a request to the CRS Sandbox and see which rules it triggers o
 url: /sandbox
 ---
 
-The [CRS Sandbox](https://github.com/coreruleset/crs-sandbox) is a public instance of OWASP CRS running on
+The CRS Sandbox is a public instance of OWASP CRS running on
 three WAF engines ([ModSecurity](https://github.com/owasp-modsecurity/ModSecurity) 2 on Apache,
 ModSecurity 3 on Nginx, and [Coraza](https://coraza.io/)) in several CRS versions. Send it a request,
 pick the engine, version and paranoia level with headers, and get back the rules that matched instead of the page.
@@ -48,6 +48,5 @@ CRS tag it runs, so `latest` always resolves to something you can check.
 - A `403` with a blocking rule (`949110`) in the list means CRS blocked the request. In detection
   mode, or when the anomaly score stays below the threshold, you get the matched rules with a `200`.
 - Requests are logged in full. Do not send real credentials or personal data.
-- Something broken? Open an issue on the
-  [crs-sandbox repository](https://github.com/coreruleset/crs-sandbox/issues) and include the
+- Something broken? [Open an issue](https://github.com/coreruleset/coreruleset/issues) and include the
   `x-unique-id` shown with the result.
