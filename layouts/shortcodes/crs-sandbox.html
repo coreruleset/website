@@ -23,7 +23,7 @@
   #crs-sandbox button{border:1px solid #d0d7de;background:#fff;padding:0.5rem 1rem;border-radius:6px;cursor:pointer;font-size:0.9rem;font-weight:600}
   #crs-sandbox button.sb-primary{background:#0969da;color:#fff;border-color:#0969da;padding:0.55rem 1.4rem}
   #crs-sandbox button:disabled{opacity:0.6;cursor:progress}
-  #crs-sandbox .sb-result{display:none;margin-top:1.5rem;border:1px solid #d0d7de;border-radius:6px;background:#fff;padding:1rem}
+  #crs-sandbox .sb-result{margin-top:1.5rem;border:1px solid #d0d7de;border-radius:6px;background:#fff;padding:1rem}
   #crs-sandbox .sb-verdict{display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap;margin-bottom:0.8rem}
   #crs-sandbox .sb-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:999px;font-weight:700;font-size:0.8rem;letter-spacing:0.02em;color:#fff}
   #crs-sandbox .sb-badge.blocked{background:#cf222e}
@@ -39,7 +39,7 @@
   #crs-sandbox pre{background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;padding:0.75rem;overflow:auto;font-size:0.8em;margin:0.4rem 0}
   #crs-sandbox .sb-error{color:#cf222e;white-space:pre-wrap}
   #crs-sandbox .sb-note{font-size:0.8rem;color:#57606a;margin-top:0.6rem}
-  #crs-sandbox .sb-warn{display:none;margin-top:0.8rem;padding:0.6rem 0.8rem;border:1px solid #d4a72c;border-radius:6px;background:#fff8c5;font-size:0.85rem}
+  #crs-sandbox .sb-warn{margin-top:0.8rem;padding:0.6rem 0.8rem;border:1px solid #d4a72c;border-radius:6px;background:#fff8c5;font-size:0.85rem}
   #crs-sandbox .sb-sent{margin:0.3rem 0 0.8rem;font-size:0.85rem;color:#57606a;word-break:break-all}
 </style>
 
@@ -144,9 +144,9 @@
     <button type="button" class="sb-primary" id="sb-send">Send to the sandbox &#8594;</button>
     <span class="sb-meta" id="sb-status"></span>
   </div>
-  <div class="sb-warn" id="sb-warn"></div>
+  <div class="sb-warn" id="sb-warn" style="display:none"></div>
 
-  <div class="sb-result" id="sb-result">
+  <div class="sb-result" id="sb-result" style="display:none">
     <div class="sb-verdict">
       <span class="sb-badge" id="sb-badge"></span>
       <span id="sb-summary"></span>
