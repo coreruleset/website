@@ -177,7 +177,7 @@
   var PRESETS = {
     lfi:     { method: 'GET',  path: '/get?file=../../etc/passwd' },
     sqli:    { method: 'GET',  path: "/get?id=1' OR '1'='1' --" },
-    xss:     { method: 'GET',  path: '/get?q=<script>alert(1)</script>' },
+    xss:     { method: 'GET',  path: '/get?q=<script>alert(1)<\/script>' },
     rce:     { method: 'GET',  path: '/get?cmd=;cat /etc/passwd' },
     scanner: { method: 'GET',  path: '/get', headers: 'User-Agent: Nikto/2.1.6' },
     json:    { method: 'POST', path: '/post', ctype: 'application/json', body: '{"user":"admin\' OR 1=1--","pass":"x"}' },
