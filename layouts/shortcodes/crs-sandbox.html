@@ -1,0 +1,464 @@
+{{- /*
+  CRS Sandbox playground: sends the visitor's request to sandbox.coreruleset.org
+  with the CRS control headers and renders the json-report answer.
+  Parameters: api (default https://sandbox.coreruleset.org), e.g. for a local
+  sandbox: {{< crs-sandbox api="http://localhost:8088" >}}
+  The sandbox answers CORS for any origin; the site's CSP (static/_headers)
+  must list it under connect-src.
+*/ -}}
+<div id="crs-sandbox" data-api="{{ .Get "api" | default "https://sandbox.coreruleset.org" }}">
+<style>
+  #crs-sandbox{border:1px solid #d0d7de;border-radius:8px;padding:1.5rem;margin:2rem 0;background:#f6f8fa;font-size:0.95rem}
+  #crs-sandbox h3{margin-top:0;font-size:1.1rem}
+  #crs-sandbox .sb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0.9rem 1.2rem;margin:1rem 0}
+  #crs-sandbox label{display:block;font-weight:600;font-size:0.85rem;margin-bottom:0.3rem}
+  #crs-sandbox input[type=text],#crs-sandbox input[type=number],#crs-sandbox select,#crs-sandbox textarea{width:100%;box-sizing:border-box;padding:0.5rem 0.6rem;border:1px solid #d0d7de;border-radius:6px;background:#fff;font-size:0.9rem;font-family:inherit}
+  #crs-sandbox textarea,#crs-sandbox .sb-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em}
+  #crs-sandbox .sb-row{display:flex;gap:0.6rem;align-items:flex-end;flex-wrap:wrap}
+  #crs-sandbox .sb-row > *{flex:1 1 8rem}
+  #crs-sandbox .sb-row .sb-method{flex:0 0 7rem}
+  #crs-sandbox details{margin-top:0.8rem}
+  #crs-sandbox summary{cursor:pointer;font-weight:600;font-size:0.9rem}
+  #crs-sandbox .sb-actions{display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
+  #crs-sandbox button{border:1px solid #d0d7de;background:#fff;padding:0.5rem 1rem;border-radius:6px;cursor:pointer;font-size:0.9rem;font-weight:600}
+  #crs-sandbox button.sb-primary{background:#0969da;color:#fff;border-color:#0969da;padding:0.55rem 1.4rem}
+  #crs-sandbox button:disabled{opacity:0.6;cursor:progress}
+  #crs-sandbox .sb-result{margin-top:1.5rem;border:1px solid #d0d7de;border-radius:6px;background:#fff;padding:1rem}
+  #crs-sandbox .sb-verdict{display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap;margin-bottom:0.8rem}
+  #crs-sandbox .sb-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:999px;font-weight:700;font-size:0.8rem;letter-spacing:0.02em;color:#fff}
+  #crs-sandbox .sb-badge.blocked{background:#cf222e}
+  #crs-sandbox .sb-badge.detected{background:#bf8700}
+  #crs-sandbox .sb-badge.clean{background:#1a7f37}
+  #crs-sandbox .sb-badge.error{background:#57606a}
+  #crs-sandbox .sb-meta{color:#57606a;font-size:0.85rem}
+  #crs-sandbox table{width:100%;border-collapse:collapse;font-size:0.85rem;margin:0.6rem 0}
+  #crs-sandbox th,#crs-sandbox td{text-align:left;padding:0.35rem 0.5rem;border-bottom:1px solid #eaeef2;vertical-align:top}
+  #crs-sandbox th{background:#f6f8fa;font-weight:600}
+  #crs-sandbox td.sb-id{white-space:nowrap}
+  #crs-sandbox td.sb-data{word-break:break-all;color:#57606a}
+  #crs-sandbox pre{background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;padding:0.75rem;overflow:auto;font-size:0.8em;margin:0.4rem 0}
+  #crs-sandbox .sb-error{color:#cf222e;white-space:pre-wrap}
+  #crs-sandbox .sb-note{font-size:0.8rem;color:#57606a;margin-top:0.6rem}
+  #crs-sandbox .sb-warn{margin-top:0.8rem;padding:0.6rem 0.8rem;border:1px solid #d4a72c;border-radius:6px;background:#fff8c5;font-size:0.85rem}
+  #crs-sandbox .sb-sent{margin:0.3rem 0 0.8rem;font-size:0.85rem;color:#57606a;word-break:break-all}
+</style>
+
+  <h3>Try a request against CRS</h3>
+  <p>Pick a payload, an engine and a paranoia level. The request is sent from your browser to
+  <code>sandbox.coreruleset.org</code>; what comes back is the list of rules that matched.</p>
+
+  <div class="sb-row">
+    <div class="sb-method">
+      <label for="sb-method">Method</label>
+      <select id="sb-method">
+        <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option>
+        <option>DELETE</option><option>HEAD</option><option>OPTIONS</option>
+      </select>
+    </div>
+    <div>
+      <label for="sb-path">Path and query</label>
+      <input type="text" id="sb-path" class="sb-mono" value="/get?file=../../etc/passwd" spellcheck="false" autocomplete="off">
+    </div>
+    <div style="flex:0 0 12rem">
+      <label for="sb-preset">Preset</label>
+      <select id="sb-preset">
+        <option value="">Choose a payload…</option>
+        <option value="lfi">Path traversal</option>
+        <option value="sqli">SQL injection</option>
+        <option value="xss">Cross-site scripting</option>
+        <option value="rce">Command injection</option>
+        <option value="scanner">Scanner user agent</option>
+        <option value="json">JSON body with SQLi</option>
+        <option value="benign">Benign request</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="sb-body-wrap" class="sb-grid" style="display:none">
+    <div style="grid-column:1/-1">
+      <label for="sb-body">Request body</label>
+      <textarea id="sb-body" rows="3" spellcheck="false"></textarea>
+    </div>
+    <div>
+      <label for="sb-ctype">Content-Type</label>
+      <select id="sb-ctype">
+        <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+        <option value="application/json">application/json</option>
+        <option value="text/plain">text/plain</option>
+        <option value="application/xml">application/xml</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sb-grid">
+    <div>
+      <label for="sb-engine">WAF engine</label>
+      <select id="sb-engine"><option value="apache">apache</option></select>
+    </div>
+    <div>
+      <label for="sb-version">CRS version</label>
+      <select id="sb-version"><option value="v4-lts">v4-lts</option></select>
+    </div>
+    <div>
+      <label for="sb-pl">Paranoia level</label>
+      <select id="sb-pl">
+        <option value="1">1 (default)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+      </select>
+    </div>
+    <div>
+      <label for="sb-mode">Mode</label>
+      <select id="sb-mode">
+        <option value="">Blocking (default)</option>
+        <option value="detection">Detection only</option>
+      </select>
+    </div>
+    <div id="sb-target-wrap" style="display:none">
+      <label for="sb-target">Application behind the WAF</label>
+      <select id="sb-target"></select>
+    </div>
+  </div>
+
+  <details>
+    <summary>More options</summary>
+    <div class="sb-grid">
+      <div>
+        <label for="sb-dpl">Detection paranoia level</label>
+        <select id="sb-dpl">
+          <option value="">Same as paranoia level</option>
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+        </select>
+      </div>
+      <div>
+        <label for="sb-threshold">Inbound anomaly score threshold</label>
+        <input type="number" id="sb-threshold" min="1" placeholder="5">
+      </div>
+      <div style="grid-column:1/-1">
+        <label for="sb-headers">Extra request headers, one <code>Name: value</code> per line</label>
+        <textarea id="sb-headers" rows="2" spellcheck="false" placeholder="X-Forwarded-For: 10.0.0.1&#10;User-Agent: Nikto/2.1.6"></textarea>
+        <div class="sb-note">Browsers refuse to send some headers from a page (<code>Cookie</code>, <code>Host</code>, <code>Referer</code>, <code>Origin</code>, <code>Sec-*</code>…); those are dropped silently, and Safari also drops <code>User-Agent</code>. Use curl for them.</div>
+      </div>
+    </div>
+  </details>
+
+  <div class="sb-actions">
+    <button type="button" class="sb-primary" id="sb-send">Send to the sandbox &#8594;</button>
+    <span class="sb-meta" id="sb-status"></span>
+  </div>
+  <div class="sb-warn" id="sb-warn" style="display:none"></div>
+
+  <div class="sb-result" id="sb-result" style="display:none">
+    <div class="sb-verdict">
+      <span class="sb-badge" id="sb-badge"></span>
+      <span id="sb-summary"></span>
+    </div>
+    <div class="sb-meta" id="sb-meta"></div>
+    <div class="sb-sent" id="sb-sent"></div>
+    <div id="sb-rules"></div>
+    <details>
+      <summary>Reproduce with curl</summary>
+      <pre class="sb-mono" id="sb-curl"></pre>
+      <button type="button" id="sb-copy">Copy</button>
+    </details>
+    <details>
+      <summary>Raw json-report</summary>
+      <pre class="sb-mono" id="sb-raw"></pre>
+    </details>
+  </div>
+  <p class="sb-note">Requests are logged in full on the sandbox. Do not send real credentials or personal data.</p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.getElementById('crs-sandbox');
+  var API = root.getAttribute('data-api').replace(/\/+$/, '');
+  var $ = function (id) { return document.getElementById(id); };
+
+  var PRESETS = {
+    lfi:     { method: 'GET',  path: '/get?file=../../etc/passwd' },
+    sqli:    { method: 'GET',  path: "/get?id=1' OR '1'='1' --" },
+    xss:     { method: 'GET',  path: '/get?q=<script>alert(1)<\/script>' },
+    rce:     { method: 'GET',  path: '/get?cmd=;cat /etc/passwd' },
+    scanner: { method: 'GET',  path: '/get', headers: 'User-Agent: Nikto/2.1.6' },
+    json:    { method: 'POST', path: '/post', ctype: 'application/json', body: '{"user":"admin\' OR 1=1--","pass":"x"}' },
+    benign:  { method: 'GET',  path: '/get?page=2&sort=name' }
+  };
+
+  // CRS 4 rule files by id prefix, for the links in the result table.
+  var RULE_FILES = {
+    '911': 'REQUEST-911-METHOD-ENFORCEMENT', '913': 'REQUEST-913-SCANNER-DETECTION',
+    '920': 'REQUEST-920-PROTOCOL-ENFORCEMENT', '921': 'REQUEST-921-PROTOCOL-ATTACK',
+    '922': 'REQUEST-922-MULTIPART-ATTACK', '930': 'REQUEST-930-APPLICATION-ATTACK-LFI',
+    '931': 'REQUEST-931-APPLICATION-ATTACK-RFI', '932': 'REQUEST-932-APPLICATION-ATTACK-RCE',
+    '933': 'REQUEST-933-APPLICATION-ATTACK-PHP', '934': 'REQUEST-934-APPLICATION-ATTACK-GENERIC',
+    '941': 'REQUEST-941-APPLICATION-ATTACK-XSS', '942': 'REQUEST-942-APPLICATION-ATTACK-SQLI',
+    '943': 'REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION', '944': 'REQUEST-944-APPLICATION-ATTACK-JAVA',
+    '949': 'REQUEST-949-BLOCKING-EVALUATION', '950': 'RESPONSE-950-DATA-LEAKAGES',
+    '951': 'RESPONSE-951-DATA-LEAKAGES-SQL', '952': 'RESPONSE-952-DATA-LEAKAGES-JAVA',
+    '953': 'RESPONSE-953-DATA-LEAKAGES-PHP', '954': 'RESPONSE-954-DATA-LEAKAGES-IIS',
+    '955': 'RESPONSE-955-WEB-SHELLS', '959': 'RESPONSE-959-BLOCKING-EVALUATION',
+    '980': 'RESPONSE-980-CORRELATION'
+  };
+
+  var engines = {};   // name -> [versions]
+
+  // Request headers a page is not allowed to set (Fetch "forbidden request
+  // header"); the browser drops them without a word.
+  var FORBIDDEN = ['accept-charset', 'accept-encoding', 'access-control-request-headers',
+    'access-control-request-method', 'connection', 'content-length', 'cookie', 'cookie2', 'date',
+    'dnt', 'expect', 'host', 'keep-alive', 'origin', 'referer', 'set-cookie', 'te', 'trailer',
+    'transfer-encoding', 'upgrade', 'via'];
+  function isForbidden(name) {
+    var n = name.toLowerCase();
+    return FORBIDDEN.indexOf(n) >= 0 || n.indexOf('proxy-') === 0 || n.indexOf('sec-') === 0;
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function hasBody(method) { return !/^(GET|HEAD|OPTIONS)$/.test(method); }
+
+  function fillVersions() {
+    var sel = $('sb-version'), current = sel.value;
+    var versions = engines[$('sb-engine').value] || ['v4-lts'];
+    sel.innerHTML = '';
+    versions.forEach(function (v) {
+      var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o);
+    });
+    sel.value = versions.indexOf(current) >= 0 ? current : versions[0];
+  }
+
+  // /backends tells us what the sandbox supports today; the markup above is
+  // the fallback when it cannot be reached.
+  function discover() {
+    fetch(API + '/backends').then(function (r) { return r.json(); }).then(function (info) {
+      var sel = $('sb-engine'); sel.innerHTML = '';
+      (info.engines || []).forEach(function (e) {
+        engines[e.name] = e.crs_versions;
+        var o = document.createElement('option'); o.value = e.name; o.textContent = e.name; sel.appendChild(o);
+      });
+      sel.value = (info.defaults && info.defaults.backend) || sel.options[0].value;
+      fillVersions();
+      if (info.targets && info.targets.length > 1) {
+        var t = $('sb-target'); t.innerHTML = '';
+        info.targets.forEach(function (tg) {
+          var o = document.createElement('option'); o.value = tg.name;
+          o.textContent = tg.name + (tg.engines === 'all' ? '' : ' (' + tg.engines.map(function (e) {
+            return e.name + ' ' + e.crs_versions.join('/');
+          }).join(', ') + ')');
+          t.appendChild(o);
+        });
+        $('sb-target-wrap').style.display = '';
+      }
+    }).catch(function () { /* keep the static defaults */ });
+  }
+
+  function parseExtraHeaders() {
+    var out = [];
+    $('sb-headers').value.split('\n').forEach(function (line) {
+      var i = line.indexOf(':');
+      if (i > 0) out.push([line.slice(0, i).trim(), line.slice(i + 1).trim()]);
+    });
+    return out;
+  }
+
+  function updateWarnings() {
+    var dropped = [], ua = false;
+    parseExtraHeaders().forEach(function (h) {
+      if (isForbidden(h[0])) dropped.push(h[0]);
+      if (h[0].toLowerCase() === 'user-agent') ua = true;
+    });
+    var msgs = [];
+    if (dropped.length) msgs.push('The browser will not send ' + dropped.map(function (n) { return '<code>' + esc(n) + '</code>'; }).join(', ') + ': pages are not allowed to set these headers. Use curl.');
+    if (ua) msgs.push('<code>User-Agent</code> is sent by Chrome and Firefox but dropped by Safari.');
+    var w = $('sb-warn');
+    w.innerHTML = msgs.join('<br>');
+    w.style.display = msgs.length ? '' : 'none';
+  }
+
+  function buildRequest() {
+    var method = $('sb-method').value;
+    var path = $('sb-path').value.trim() || '/';
+    if (path[0] !== '/') path = '/' + path;
+    var headers = [
+      ['x-backend', $('sb-engine').value],
+      ['x-crs-version', $('sb-version').value],
+      ['x-format-output', 'json-report']
+    ];
+    if ($('sb-pl').value !== '1') headers.push(['x-crs-paranoia-level', $('sb-pl').value]);
+    if ($('sb-dpl').value) headers.push(['x-crs-detection-paranoia-level', $('sb-dpl').value]);
+    if ($('sb-threshold').value) headers.push(['x-crs-inbound-anomaly-score-threshold', $('sb-threshold').value]);
+    if ($('sb-mode').value) headers.push(['x-crs-mode', $('sb-mode').value]);
+    if ($('sb-target-wrap').style.display !== 'none' && $('sb-target').value && $('sb-target').value !== 'httpbin') {
+      headers.push(['x-target', $('sb-target').value]);
+    }
+    var body = null;
+    if (hasBody(method)) {
+      body = $('sb-body').value;
+      headers.push(['Content-Type', $('sb-ctype').value]);
+    }
+    parseExtraHeaders().forEach(function (h) { headers.push(h); });
+    // The browser normalises the URL before sending it: "..", backslashes,
+    // control characters and "#fragments" never reach the WAF, and most
+    // special characters get percent-encoded. Keep both forms to show the
+    // difference and to make the curl line reproduce the real request.
+    var url = new URL(API + path);
+    return { method: method, path: path, sent: url.pathname + url.search, url: url.href, headers: headers, body: body };
+  }
+
+  function shellQuote(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
+
+  function curlFor(req) {
+    var parts = ['curl -i'];
+    if (req.method !== 'GET') parts.push('-X ' + req.method);
+    req.headers.forEach(function (h) {
+      if (h[0].toLowerCase() === 'x-format-output') h = ['x-format-output', 'txt-matched-rules'];
+      parts.push('-H ' + shellQuote(h[0] + ': ' + h[1]));
+    });
+    if (req.body !== null && req.body !== '') parts.push('--data ' + shellQuote(req.body));
+    parts.push(shellQuote(req.url));
+    return parts.join(' \\\n     ');
+  }
+
+  function ruleLink(id) {
+    var file = RULE_FILES[String(id).slice(0, 3)];
+    if (!file) return esc(id);
+    return '<a href="https://github.com/coreruleset/coreruleset/blob/main/rules/' + file + '.conf" target="_blank" rel="noopener">' + esc(id) + '</a>';
+  }
+
+  function showSent(req) {
+    var el = $('sb-sent');
+    if (req.sent !== req.path) {
+      el.innerHTML = 'Sent as <code>' + esc(req.sent) + '</code>: the browser normalised what you typed before sending it.';
+    } else {
+      el.innerHTML = '';
+    }
+  }
+
+  function render(req, resp, report) {
+    var status = resp.status, headers = resp.headers;
+    var badge = $('sb-badge'), summary = $('sb-summary'), rules = $('sb-rules');
+    $('sb-result').style.display = '';
+    $('sb-curl').textContent = curlFor(req);
+    $('sb-raw').textContent = JSON.stringify(report, null, 2);
+    showSent(req);
+    var meta = [];
+    if (resp.redirected) meta.push('the browser followed a redirect to ' + resp.url + ', this is the verdict for that request');
+    if (headers.get('x-backend')) meta.push('answered by ' + headers.get('x-backend'));
+    if (headers.get('x-crs-version')) meta.push('CRS ' + headers.get('x-crs-version'));
+    if (headers.get('x-unique-id')) meta.push('x-unique-id ' + headers.get('x-unique-id'));
+    $('sb-meta').textContent = meta.join(' · ');
+
+    if (report && report.error && report.error.source === 'sandbox-edge') {
+      badge.className = 'sb-badge error'; badge.textContent = 'EDGE ERROR';
+      summary.textContent = 'HTTP ' + status + ': ' + report.error.detail;
+      rules.innerHTML = '';
+      return;
+    }
+    if (!report || !Array.isArray(report.matched_rules)) {
+      badge.className = 'sb-badge error'; badge.textContent = 'NO VERDICT';
+      summary.textContent = 'HTTP ' + status + ': ' + (report && report.error ? report.error : 'unexpected answer from the sandbox');
+      rules.innerHTML = '';
+      return;
+    }
+
+    var matched = report.matched_rules;
+    if (report.blocked) {
+      badge.className = 'sb-badge blocked'; badge.textContent = 'BLOCKED';
+    } else if (matched.length) {
+      badge.className = 'sb-badge detected'; badge.textContent = 'DETECTED, NOT BLOCKED';
+    } else {
+      badge.className = 'sb-badge clean'; badge.textContent = 'NO RULES MATCHED';
+    }
+    var s = 'HTTP ' + report.status + ' from ' + report.engine + ' with CRS ' + (report.crs_version_tag || report.crs_version);
+    if (report.anomaly_scores && report.anomaly_scores.inbound) {
+      var ib = report.anomaly_scores.inbound;
+      s += ', inbound anomaly score ' + (ib.blocking !== undefined ? ib.blocking : ib.detection);
+    }
+    if (report.paranoia_level) s += ', lowest paranoia level ' + report.paranoia_level;
+    summary.textContent = s + '.';
+
+    if (!matched.length) { rules.innerHTML = ''; return; }
+    var html = '<table><thead><tr><th>Rule</th><th>PL</th><th>Message</th><th>Matched data</th></tr></thead><tbody>';
+    matched.forEach(function (m) {
+      html += '<tr><td class="sb-id">' + ruleLink(m.id) + '</td><td>' + esc(m.paranoia_level || '') + '</td><td>' +
+        esc(m.message || '') + '</td><td class="sb-data">' + esc((m.data || '').replace(/^Matched Data:\s*/, '')) + '</td></tr>';
+    });
+    rules.innerHTML = html + '</tbody></table>';
+  }
+
+  function failed(req, badgeText, message, explanation) {
+    $('sb-result').style.display = '';
+    $('sb-badge').className = 'sb-badge error'; $('sb-badge').textContent = badgeText;
+    $('sb-summary').innerHTML = '<span class="sb-error">' + esc(message) + '</span>';
+    $('sb-meta').textContent = explanation;
+    $('sb-sent').innerHTML = '';
+    $('sb-rules').innerHTML = '';
+    $('sb-curl').textContent = req ? curlFor(req) : '';
+    $('sb-raw').textContent = '';
+    $('sb-status').textContent = '';
+  }
+
+  function send() {
+    updateWarnings();
+    var btn = $('sb-send'), req;
+    try {
+      req = buildRequest();
+    } catch (e) {
+      failed(null, 'BROWSER REFUSED', e.message, 'The browser could not turn that into a URL, so nothing was sent.');
+      return;
+    }
+    btn.disabled = true; $('sb-status').textContent = 'Sending…';
+    var init = { method: req.method, headers: {}, cache: 'no-store', redirect: 'follow' };
+    req.headers.forEach(function (h) { init.headers[h[0]] = h[1]; });
+    if (req.body !== null) init.body = req.body;
+    var promise;
+    try { promise = fetch(req.url, init); } catch (e) { promise = Promise.reject(e); }
+    promise.then(function (r) {
+      return r.text().then(function (text) {
+        var report = null;
+        try { report = JSON.parse(text); } catch (e) { report = { error: text.slice(0, 300) || ('empty body, HTTP ' + r.status) }; }
+        render(req, r, report);
+        $('sb-status').textContent = '';
+      });
+    }).catch(function (err) {
+      // A network failure reads "Failed to fetch" / "NetworkError…" / "Load
+      // failed" depending on the browser; anything else is the browser
+      // refusing to build the request (bad header value, forbidden method).
+      if (/failed to fetch|fetch failed|networkerror|load failed|network/i.test(err.message)) {
+        failed(req, 'NO ANSWER', err.message, 'The browser could not reach ' + API + '. The request never got a response (the sandbox may be down, or something between you and it dropped it).');
+      } else {
+        failed(req, 'BROWSER REFUSED', err.message, 'The browser refused to build this request, so nothing was sent. Header values cannot contain line breaks or non-Latin-1 characters; use curl for those.');
+      }
+    }).then(function () { btn.disabled = false; });
+  }
+
+  $('sb-method').addEventListener('change', function () {
+    $('sb-body-wrap').style.display = hasBody(this.value) ? '' : 'none';
+  });
+  $('sb-engine').addEventListener('change', fillVersions);
+  $('sb-preset').addEventListener('change', function () {
+    var p = PRESETS[this.value]; if (!p) return;
+    $('sb-method').value = p.method;
+    $('sb-path').value = p.path;
+    $('sb-body').value = p.body || '';
+    if (p.ctype) $('sb-ctype').value = p.ctype;
+    $('sb-headers').value = p.headers || '';
+    $('sb-body-wrap').style.display = hasBody(p.method) ? '' : 'none';
+  });
+  $('sb-path').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); send(); } });
+  $('sb-headers').addEventListener('input', updateWarnings);
+  $('sb-send').addEventListener('click', send);
+  $('sb-copy').addEventListener('click', function () {
+    var b = this;
+    navigator.clipboard.writeText($('sb-curl').textContent).then(function () {
+      b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500);
+    });
+  });
+
+  discover();
+})();
+</script>

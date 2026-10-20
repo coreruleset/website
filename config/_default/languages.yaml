@@ -75,6 +75,12 @@ en:
       weight: 3
       post: "Learn how to contribute"
       parent: "docs"
+    - identifier: "sandbox"
+      name: "Sandbox"
+      url: "/sandbox/"
+      weight: 4
+      post: "Try payloads against CRS live"
+      parent: "docs"
     - identifier: "faq"
       name: "FAQs"
       url: "/faq/"
