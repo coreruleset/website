@@ -17,8 +17,6 @@
   #crs-sandbox .sb-row{display:flex;gap:0.6rem;align-items:flex-end;flex-wrap:wrap}
   #crs-sandbox .sb-row > *{flex:1 1 8rem}
   #crs-sandbox .sb-row .sb-method{flex:0 0 7rem}
-  #crs-sandbox .sb-checks{display:flex;flex-wrap:wrap;gap:0.3rem 1rem;font-weight:400}
-  #crs-sandbox .sb-checks label{display:inline-flex;align-items:center;gap:0.3rem;font-weight:400;margin:0}
   #crs-sandbox details{margin-top:0.8rem}
   #crs-sandbox summary{cursor:pointer;font-weight:600;font-size:0.9rem}
   #crs-sandbox .sb-actions{display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
@@ -131,17 +129,6 @@
       <div>
         <label for="sb-threshold">Inbound anomaly score threshold</label>
         <input type="number" id="sb-threshold" min="1" placeholder="5">
-      </div>
-      <div style="grid-column:1/-1">
-        <label>Application exclusions (CRS plugins)</label>
-        <div class="sb-checks" id="sb-exclusions">
-          <label><input type="checkbox" value="wordpress">wordpress</label>
-          <label><input type="checkbox" value="drupal">drupal</label>
-          <label><input type="checkbox" value="nextcloud">nextcloud</label>
-          <label><input type="checkbox" value="dokuwiki">dokuwiki</label>
-          <label><input type="checkbox" value="cpanel">cpanel</label>
-          <label><input type="checkbox" value="xenforo">xenforo</label>
-        </div>
       </div>
       <div style="grid-column:1/-1">
         <label for="sb-headers">Extra request headers, one <code>Name: value</code> per line</label>
@@ -278,9 +265,6 @@
     if ($('sb-target-wrap').style.display !== 'none' && $('sb-target').value && $('sb-target').value !== 'httpbin') {
       headers.push(['x-target', $('sb-target').value]);
     }
-    root.querySelectorAll('#sb-exclusions input:checked').forEach(function (c) {
-      headers.push(['x-crs-exclusions-' + c.value, '1']);
-    });
     var body = null;
     if (hasBody(method)) {
       body = $('sb-body').value;
