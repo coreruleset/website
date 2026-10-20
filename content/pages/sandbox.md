@@ -34,7 +34,6 @@ curl -H "x-backend: nginx" \
 | `x-crs-detection-paranoia-level` | `1` to `4`, detection only | same as above |
 | `x-crs-inbound-anomaly-score-threshold` | number | `5` |
 | `x-crs-mode` | `detection` for DetectionOnly, never blocks | blocking |
-| `x-crs-exclusions-<app>` | `1` for `cpanel`, `drupal`, `dokuwiki`, `nextcloud`, `wordpress`, `xenforo` | off |
 | `x-format-output` | `json-matched-rules`, `json-report`, `csv-matched-rules`, `txt-matched-rules`, `txt-matched-rules-extended`, `html-matched-rules` | raw audit log |
 
 `GET https://sandbox.coreruleset.org/backends` returns the supported combinations as JSON.
