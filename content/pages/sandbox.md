@@ -9,6 +9,12 @@ three WAF engines ([ModSecurity](https://github.com/owasp-modsecurity/ModSecurit
 ModSecurity 3 on Nginx, and [Coraza](https://coraza.io/)) in several CRS versions. Send it a request,
 pick the engine, version and paranoia level with headers, and get back the rules that matched instead of the page.
 
+It is there for integrators who need to know how CRS reacts to a fresh exploit, for researchers who
+want to check whether a payload is caught and from which paranoia level on, and for rule writers
+who want to try a variant without setting up a WAF. The sandbox is a shared public resource: read the
+[security policy](/docs/crs-sandbox-policy/) before you use it, and the
+[documentation](/docs/6-development/6-4-using-the-crs-sandbox/) for the architecture behind it.
+
 Use the form below, or the headers directly from the command line further down.
 
 {{< crs-sandbox >}}
@@ -40,6 +46,10 @@ curl -H "x-backend: nginx" \
 The response carries `x-backend` with the service that answered and `x-crs-version` with the exact
 CRS tag it runs, so `latest` always resolves to something you can check.
 
+`txt-matched-rules-extended` wraps the list in a paragraph you can paste into an advisory or a
+publication ("This payload has been tested against the OWASP CRS... CRS therefore detects this
+payload starting with paranoia level 1"). The JSON formats pair well with `jq`.
+
 ## Good to know
 
 - The response body is the WAF's verdict, not the page you asked for. Behind every WAF is a small
@@ -52,6 +62,12 @@ CRS tag it runs, so `latest` always resolves to something you can check.
   special characters are percent-encoded; the result shows the URL that was actually sent. Headers
   such as `Cookie`, `Host` or `Referer` cannot be set from a page at all. For raw bytes use curl
   (`--path-as-is` keeps `..` segments).
-- Requests are logged in full. Do not send real credentials or personal data.
+- A `400` with `"source": "sandbox-edge"` in the body comes from the sandbox's own HTTP parser or
+  from the backend web server, not from CRS: the request was malformed and was never scanned. A `502`
+  after a long wait usually means the request made a regular expression time out (ReDoS).
+- Please keep it under 10 requests per second.
+- Requests are logged in full and may be kept and analysed by the CRS team to improve the rules and
+  the sandbox, see the [security policy](/docs/crs-sandbox-policy/). Do not send real credentials or
+  personal data.
 - Something broken? [Open an issue](https://github.com/coreruleset/coreruleset/issues) and include the
   `x-unique-id` shown with the result.
