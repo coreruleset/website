@@ -1,0 +1,52 @@
+# Loki, single binary, local filesystem storage. Good for a lab, not for
+# production (no replication, no object storage, no retention).
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+  log_level: warn
+
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /loki
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks
+      rules_directory: /loki/rules
+  replication_factor: 1
+  ring:
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: "2024-04-01"
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
+
+ingester:
+  # Lab convenience: no write-ahead log. With the WAL enabled Loki
+  # throttles (and silently loses) writes when the disk holding /loki is
+  # more than 90% full, which is surprisingly common on laptops. In
+  # production keep the WAL on and give Loki a disk of its own.
+  wal:
+    enabled: false
+
+limits_config:
+  # Structured metadata lets us attach high cardinality fields (URI, client
+  # address, unique ID) to log lines without turning them into labels.
+  allow_structured_metadata: true
+  volume_enabled: true
+
+compactor:
+  working_directory: /loki/compactor
+
+pattern_ingester:
+  enabled: true
+
+analytics:
+  reporting_enabled: false
