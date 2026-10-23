@@ -1,0 +1,40 @@
+/**/
+/* SERIES NAV: list of the parts of a blog series (layouts/_shortcodes/series-nav.html) */
+/**/
+
+.content .series-nav,
+.series-nav {
+  max-width: var(--content-width);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 4px solid var(--crs-blue-dark);
+  border-radius: 4px;
+  background-color: var(--gray-200);
+
+  &__title {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  &__item {
+    margin: 0.2rem 0;
+
+    &--current {
+      font-weight: 700;
+    }
+
+    &--soon {
+      color: var(--gray-700);
+    }
+  }
+
+  &__soon {
+    font-size: 0.9em;
+    font-style: italic;
+  }
+}
