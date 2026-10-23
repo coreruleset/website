@@ -1094,7 +1094,7 @@
       "id": 51,
       "type": "logs",
       "title": "Transactions (JSON audit log)",
-      "description": "Expand a line to see the full ModSecurity audit log entry, including request headers and every rule that matched.",
+      "description": "Expand a line to see the full Coraza audit log entry, including request headers and every rule that matched.",
       "gridPos": {
         "x": 0,
         "y": 53,
