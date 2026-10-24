@@ -204,6 +204,8 @@ The summary line from Part 1 is parsed with one regular expression into integers
 
 The script also removes `transaction.response.body`. The lab already leaves part `E` out of the audit log, so there is nothing to remove there, but you may point the pipeline at a WAF that logs it. The response body is either the 403 page or your application's answer to a request that was not blocked, and neither belongs in a log index.
 
+The filter also redacts authorization, cookie, and API-key request and response headers. This is not a complete sanitization pass: matched rule data and other audit-log fields may still contain sensitive values, so review what you retain and where you send it.
+
 ### The index template
 
 The {{< resource-link text="template" file="elk/logstash/templates/modsec-audit.json" >}} does three things. It maps the flat fields with the right types (`ip` for addresses, `keyword` for everything you aggregate on, `integer` for scores). It maps the request and response headers as `flattened`, so that arbitrary header names do not create new fields in the mapping. And it marks `transaction.messages`, `transaction.producer` and `modsec.matches` as not indexed: they are in the document for you to read in Discover, but they do not cost anything to store beyond the source. Logstash installs it as a composable index template on startup; Logstash 9 uses the `_index_template` API for that, which is why the file has the `template` wrapper.

@@ -22,6 +22,8 @@ SUMMARY_INT_KEYS = %w[
   sqli xss rfi lfi rce phpi http sess
 ].freeze
 
+SENSITIVE_HEADER_PATTERN = /(?:authorization|cookie|api[-_]?key)/i
+
 def register(params)
 end
 
@@ -31,6 +33,14 @@ def header(headers, name)
   key ? headers[key] : nil
 end
 
+def redact_sensitive_headers(headers)
+  return unless headers.is_a?(Hash)
+
+  headers.each_key do |name|
+    headers[name] = "[REDACTED]" if name.to_s.match?(SENSITIVE_HEADER_PATTERN)
+  end
+end
+
 def filter(event)
   tx = event.get("[transaction]")
   return [event] unless tx.is_a?(Hash)
@@ -38,6 +48,9 @@ def filter(event)
   req     = tx["request"]  || {}
   resp    = tx["response"] || {}
   headers = req["headers"] || {}
+
+  redact_sensitive_headers(req["headers"])
+  redact_sensitive_headers(resp["headers"])
 
   # --- Transaction level -------------------------------------------------
   event.set("[modsec][unique_id]", tx["unique_id"])

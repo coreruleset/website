@@ -88,13 +88,17 @@ crs-logging/
 
 - These are labs. Authentication is disabled on Kibana, Elasticsearch and
   Grafana, Elasticsearch ignores the disk watermark and Loki runs without a
-  write-ahead log. Only bind them to an address you trust, and do not copy
-  those settings into production.
+  write-ahead log. Keep the default loopback bindings unless you need remote
+  access. If you set `BIND_ADDR` to a non-loopback address, limit access to a
+  controlled network with firewall rules; do not expose the stacks to the
+  public internet. Do not copy these settings into production.
 - The traffic generator sends textbook payloads; it is not a scanner and
   does not try to evade anything. Every request is sent with a fake
-  `X-Forwarded-For`, which the stacks trust from private address ranges
+  `X-Forwarded-For`, which the stacks trust from broad lab-only address ranges
   (`waf/nginx-realip.conf`), so the "top clients" panels have something to
-  show. It runs on bash 3.2 or later, so the macOS default works.
+  show. A peer in those ranges can spoof client addresses. Do not use this
+  trust list in production; trust only controlled load balancers.
+  It runs on bash 3.2 or later, so the macOS default works.
 - Tested with the image tags pinned in the compose files. Newer tags should
   work; if Kibana refuses the dashboard import after an upgrade, update the
   migration versions at the end of `elk/kibana/build-dashboard.py` and
