@@ -1,0 +1,47 @@
+/**/
+/* RESOURCES: list of downloadable page bundle files (layouts/_shortcodes/resources.html) */
+/**/
+
+// `.content div` is full width in the theme; keep the box (a <div> when it
+// is not collapsible) in the text column like everything else.
+.content .resources,
+.resources {
+  max-width: var(--content-width);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 4px solid var(--crs-blue);
+  border-radius: 4px;
+  background-color: var(--gray-200);
+
+  &__title {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+
+  summary.resources__title {
+    cursor: pointer;
+  }
+
+  &:not([open]) > summary.resources__title {
+    margin-bottom: 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    li {
+      margin: 0.2rem 0;
+    }
+
+    code {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__size {
+    color: var(--gray-700);
+    font-size: 0.9em;
+    white-space: nowrap;
+  }
+}

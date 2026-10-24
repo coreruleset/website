@@ -1,0 +1,103 @@
+# OWASP CRS logging series, part 3: Coraza + CRS logs in Grafana + Loki
+#
+#   docker compose up -d
+#   ../generate-traffic.sh 300
+#   open http://localhost:3000/dashboards
+#
+# Needs about 1 GB of free memory. Grafana runs without a login on purpose:
+# this is a lab, not a deployment. Every port is published on 127.0.0.1
+# only; set BIND_ADDR (for example to a Tailscale or LAN address) to reach
+# the stack from another machine.
+
+name: crs-grafana-loki
+
+services:
+  # ---------------------------------------------------------------------
+  # The WAF: Caddy + Coraza + OWASP CRS, from the CRS project's Coraza image.
+  # ---------------------------------------------------------------------
+  waf:
+    image: ghcr.io/coreruleset/coraza-crs:4.30.0-caddy-alpine-202610110510
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:${WAF_PORT:-8080}:8080"
+    environment:
+      # Block at PL1, but evaluate (and log) the PL2 rules as well.
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "2"
+      # Audit log: one JSON document per relevant transaction.
+      CORAZA_AUDIT_ENGINE: RelevantOnly
+      CORAZA_AUDIT_LOG_FORMAT: JSON
+      CORAZA_AUDIT_LOG_TYPE: Serial
+      CORAZA_AUDIT_LOG: /var/log/coraza/audit.log
+      # Request headers and body, response headers, matched rules. No part E
+      # (response body): it is either the block page or the application's
+      # answer, which can contain personal data.
+      CORAZA_AUDIT_LOG_PARTS: ABIJFHZ
+    volumes:
+      - waf-logs:/var/log/coraza
+      # Replaces the generated Caddyfile: log to a file, trust X-Forwarded-For
+      # from the lab network (see coraza/Caddyfile).
+      - ./coraza/Caddyfile:/config/caddy/Caddyfile:ro
+      # The per-transaction score summary rule, shared with Part 2 (see ../waf/).
+      - ../waf/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf:/opt/coraza/rules.d/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf:ro
+      # Audit log every transaction that scored, like ModSecurity does.
+      - ./coraza/audit-relevant.conf:/opt/coraza/rules.d/audit-relevant.conf:ro
+    depends_on:
+      - backend
+
+  # A tiny backend that echoes the request it received.
+  backend:
+    image: traefik/whoami:v1.12.0
+
+  # ---------------------------------------------------------------------
+  # Grafana stack
+  # ---------------------------------------------------------------------
+  loki:
+    image: grafana/loki:3.7.9
+    command: -config.file=/etc/loki/loki-config.yaml
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/loki-config.yaml:ro
+      - loki-data:/loki
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:3100:3100"
+    # No healthcheck: the Loki image is distroless (no shell, no wget).
+    # Alloy and Grafana both retry until Loki answers.
+
+  # Alloy tails the two WAF log files, parses them and pushes to Loki.
+  alloy:
+    image: grafana/alloy:v1.21.1
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+    volumes:
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - waf-logs:/var/log/coraza:ro
+      - alloy-data:/var/lib/alloy/data
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:12345:12345"   # Alloy's debugging UI
+    depends_on:
+      - loki
+
+  grafana:
+    image: grafana/grafana:13.2.4
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_NEWS_NEWS_FEED_ENABLED: "false"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:3000:3000"
+    depends_on:
+      - loki
+
+volumes:
+  waf-logs:
+  loki-data:
+  alloy-data:
+  grafana-data:

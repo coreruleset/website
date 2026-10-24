@@ -1,0 +1,33 @@
+{{- /*
+  series-nav: box listing every part of a blog series. Parts that are in
+  the build are linked, the current one is highlighted, and parts that are
+  not published yet (drafts, future dates) are listed as "coming soon".
+
+  Parameters:
+    series  name of the data file in data/series/ (default: the page's
+            `series` front matter)
+
+  Usage:
+    {{< series-nav >}}
+*/ -}}
+{{- $series := .Get "series" | default .Page.Params.series }}
+{{- $data := index site.Data.series $series }}
+{{- if not $data }}
+  {{- errorf "%q: series-nav: unknown series %q (no data/series/%s.yaml)" .Page.File.Filename $series $series }}
+{{- end }}
+{{- $current := .Page }}
+<nav class="series-nav" aria-label="{{ $data.title }}">
+  <p class="series-nav__title">This post is part of a series: {{ $data.title }}</p>
+  <ol class="series-nav__list">
+  {{- range $data.parts }}
+    {{- $p := site.GetPage .page }}
+    {{- if not $p }}
+    <li class="series-nav__item series-nav__item--soon">{{ .title }} <span class="series-nav__soon">(coming soon)</span></li>
+    {{- else if eq $p $current }}
+    <li class="series-nav__item series-nav__item--current" aria-current="page">{{ .title }}</li>
+    {{- else }}
+    <li class="series-nav__item"><a href="{{ $p.RelPermalink }}">{{ .title }}</a></li>
+    {{- end }}
+  {{- end }}
+  </ol>
+</nav>

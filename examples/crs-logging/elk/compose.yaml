@@ -1,0 +1,133 @@
+# OWASP CRS logging series, part 2: ModSecurity + CRS logs in the Elastic Stack
+#
+#   docker compose up -d
+#   ../generate-traffic.sh 300
+#   open http://localhost:5601/app/dashboards
+#
+# Requires roughly 4 GB of free memory. Security is disabled on
+# Elasticsearch and Kibana on purpose: this is a lab, not a deployment.
+# Every port is published on 127.0.0.1 only; set BIND_ADDR (for example to
+# a Tailscale or LAN address) to reach the stack from another machine.
+
+name: crs-elk
+
+services:
+  # ---------------------------------------------------------------------
+  # The WAF: NGINX + ModSecurity v3 + OWASP CRS, from the official image.
+  # ---------------------------------------------------------------------
+  waf:
+    image: owasp/modsecurity-crs:4.30.0-nginx-alpine-202610180210
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:${WAF_PORT:-8080}:8080"
+    environment:
+      BACKEND: http://backend:80
+      PORT: "8080"
+      # Block at PL1, but evaluate (and log) the PL2 rules as well.
+      BLOCKING_PARANOIA: "1"
+      DETECTION_PARANOIA: "2"
+      # Audit log: one JSON document per relevant transaction, on a shared
+      # volume so that Logstash can tail it.
+      MODSEC_AUDIT_ENGINE: RelevantOnly
+      MODSEC_AUDIT_LOG_FORMAT: JSON
+      MODSEC_AUDIT_LOG_TYPE: Serial
+      MODSEC_AUDIT_LOG: /var/log/modsecurity/audit/modsec_audit.log
+      # Request headers and body, response headers, matched rules. No part E
+      # (response body): it is either the block page or the application's
+      # answer, which can contain personal data.
+      MODSEC_AUDIT_LOG_PARTS: ABIJFHZ
+    volumes:
+      - waf-logs:/var/log/modsecurity/audit
+      # Adds the per-transaction score summary rule (see ../waf/).
+      - ../waf/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf:/etc/modsecurity.d/owasp-crs/rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf:ro
+      # Lets ModSecurity log the client address from X-Forwarded-For (see ../waf/).
+      - ../waf/nginx-realip.conf:/etc/nginx/conf.d/realip.conf:ro
+    depends_on:
+      - backend
+
+  # A tiny backend that echoes the request it received.
+  backend:
+    image: traefik/whoami:v1.12.0
+
+  # ---------------------------------------------------------------------
+  # Elastic Stack
+  # ---------------------------------------------------------------------
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.5
+    environment:
+      discovery.type: single-node
+      cluster.name: crs-logging
+      xpack.security.enabled: "false"
+      xpack.ml.enabled: "false"
+      # Lab convenience: do not refuse to index when the host disk is
+      # nearly full. Never do this in production.
+      cluster.routing.allocation.disk.threshold_enabled: "false"
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:9200:9200"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf 'http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=5s' || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:9.5.5
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      TELEMETRY_OPTIN: "false"
+      TELEMETRY_ENABLED: "false"
+      XPACK_SECURITY_SHOWINSECURECLUSTERWARNING: "false"
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:5601:5601"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:5601/api/status || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 60
+      start_period: 30s
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:9.5.5
+    environment:
+      LS_JAVA_OPTS: -Xms512m -Xmx512m
+      XPACK_MONITORING_ENABLED: "false"
+      PIPELINE_ECS_COMPATIBILITY: disabled
+      CONFIG_RELOAD_AUTOMATIC: "true"
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/scripts:/usr/share/logstash/scripts:ro
+      - ./logstash/templates:/usr/share/logstash/templates:ro
+      - waf-logs:/var/log/modsecurity/audit:ro
+      - logstash-data:/usr/share/logstash/data
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  # One-shot job: imports the data view and the dashboard into Kibana.
+  kibana-setup:
+    image: curlimages/curl:8.23.0
+    volumes:
+      - ./kibana:/kibana:ro
+    depends_on:
+      kibana:
+        condition: service_healthy
+    restart: "no"
+    command: >
+      sh -c 'curl -sf -X POST "http://kibana:5601/api/saved_objects/_import?overwrite=true"
+      -H "kbn-xsrf: true" --form file=@/kibana/crs-dashboard.ndjson
+      && echo && echo "Kibana dashboard imported: http://localhost:5601/app/dashboards"'
+
+volumes:
+  waf-logs:
+  es-data:
+  logstash-data:
