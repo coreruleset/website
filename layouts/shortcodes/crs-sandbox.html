@@ -142,9 +142,11 @@
 
   <div class="sb-actions">
     <button type="button" class="sb-primary" id="sb-send">Send to the sandbox &#8594;</button>
+    <button type="button" id="sb-copy">Copy curl command</button>
     <span class="sb-meta" id="sb-status"></span>
   </div>
   <div class="sb-warn" id="sb-warn" style="display:none"></div>
+  <pre class="sb-mono" id="sb-curl" aria-label="Equivalent curl command"></pre>
 
   <div class="sb-result" id="sb-result" style="display:none">
     <div class="sb-verdict">
@@ -154,11 +156,6 @@
     <div class="sb-meta" id="sb-meta"></div>
     <div class="sb-sent" id="sb-sent"></div>
     <div id="sb-rules"></div>
-    <details>
-      <summary>Reproduce with curl</summary>
-      <pre class="sb-mono" id="sb-curl"></pre>
-      <button type="button" id="sb-copy">Copy</button>
-    </details>
     <details>
       <summary>Raw json-report</summary>
       <pre class="sb-mono" id="sb-raw"></pre>
@@ -229,6 +226,7 @@
       var o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o);
     });
     sel.value = versions.indexOf(current) >= 0 ? current : versions[0];
+    updateCurl();
   }
 
   // /backends tells us what the sandbox supports today; the markup above is
@@ -242,6 +240,7 @@
       });
       sel.value = (info.defaults && info.defaults.backend) || sel.options[0].value;
       fillVersions();
+      updateCurl();
       if (info.targets && info.targets.length > 1) {
         var t = $('sb-target'); t.innerHTML = '';
         info.targets.forEach(function (tg) {
@@ -252,6 +251,7 @@
           t.appendChild(o);
         });
         $('sb-target-wrap').style.display = '';
+        updateCurl();
       }
     }).catch(function () { /* keep the static defaults */ });
   }
@@ -312,8 +312,8 @@
   function shellQuote(s) { return "'" + String(s).replace(/'/g, "'\\''") + "'"; }
 
   function curlFor(req) {
-    var parts = ['curl -i'];
-    if (req.method !== 'GET') parts.push('-X ' + req.method);
+    var parts = [req.method === 'HEAD' ? 'curl -I' : 'curl -i'];
+    if (req.method !== 'GET' && req.method !== 'HEAD') parts.push('-X ' + req.method);
     req.headers.forEach(function (h) {
       if (h[0].toLowerCase() === 'x-format-output') h = ['x-format-output', 'txt-matched-rules'];
       parts.push('-H ' + shellQuote(h[0] + ': ' + h[1]));
@@ -321,6 +321,19 @@
     if (req.body !== null && req.body !== '') parts.push('--data ' + shellQuote(req.body));
     parts.push(shellQuote(req.url));
     return parts.join(' \\\n     ');
+  }
+
+  // Keeps the curl box in step with the form; the request is built the same
+  // way as in send(), so the command reproduces what the button would send.
+  function updateCurl() {
+    var el = $('sb-curl');
+    try {
+      el.textContent = curlFor(buildRequest());
+      el.classList.remove('sb-error');
+    } catch (e) {
+      el.textContent = 'No curl command: ' + e.message;
+      el.classList.add('sb-error');
+    }
   }
 
   function ruleLink(id) {
@@ -342,7 +355,6 @@
     var status = resp.status, headers = resp.headers;
     var badge = $('sb-badge'), summary = $('sb-summary'), rules = $('sb-rules');
     $('sb-result').style.display = '';
-    $('sb-curl').textContent = curlFor(req);
     $('sb-raw').textContent = JSON.stringify(report, null, 2);
     showSent(req);
     var meta = [];
@@ -397,7 +409,6 @@
     $('sb-meta').textContent = explanation;
     $('sb-sent').innerHTML = '';
     $('sb-rules').innerHTML = '';
-    $('sb-curl').textContent = req ? curlFor(req) : '';
     $('sb-raw').textContent = '';
     $('sb-status').textContent = '';
   }
@@ -452,13 +463,21 @@
   $('sb-path').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); send(); } });
   $('sb-headers').addEventListener('input', updateWarnings);
   $('sb-send').addEventListener('click', send);
+  // Any change to a form control refreshes the curl box. Listeners on the
+  // controls themselves (preset, method) run first because events bubble.
+  root.addEventListener('input', updateCurl);
+  root.addEventListener('change', updateCurl);
   $('sb-copy').addEventListener('click', function () {
-    var b = this;
+    var b = this, label = 'Copy curl command';
+    function flash(text) { b.textContent = text; setTimeout(function () { b.textContent = label; }, 1500); }
+    if ($('sb-curl').classList.contains('sb-error')) { flash('Nothing to copy'); return; }
+    if (!navigator.clipboard) { flash('Copy not available'); return; }
     navigator.clipboard.writeText($('sb-curl').textContent).then(function () {
-      b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1500);
-    });
+      flash('Copied');
+    }, function () { flash('Copy failed'); });
   });
 
+  updateCurl();
   discover();
 })();
 </script>
