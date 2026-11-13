@@ -1,0 +1,69 @@
+{{- /*
+  resources: list the resources of the current page bundle as downloads.
+
+  Ported from the `resources` shortcode of the Hugo Relearn theme
+  (https://mcshelby.github.io/hugo-theme-relearn/shortcodes/resources/),
+  Copyright (c) 2021 Sören Weber, MIT License. Simplified for this site:
+  no callout/icon system, styles in assets/scss/shortcodes/_resources.scss.
+
+  Parameters (all optional):
+    title     heading of the box                    (default "Files")
+    pattern   regular expression matched against the resource name, which
+              is the path inside the bundle, e.g. "^elk/"   (default: all)
+    sort      "asc" or "desc", by name              (default "asc")
+    expanded  "true":  collapsible box, initially open
+              "false": collapsible box, initially closed
+              unset:   plain box, not collapsible
+
+  Usage:
+    {{< resources title="Elastic Stack files" pattern="^elk/" >}}
+*/ -}}
+{{- $page := .Page }}
+{{- $title := .Get "title" | default "Files" }}
+{{- $pattern := .Get "pattern" | default "" }}
+{{- $sort := .Get "sort" | default "asc" }}
+{{- $expanded := .Get "expanded" | default "" }}
+{{- $collapsible := ne (printf "%v" $expanded) "" }}
+{{- $open := eq (printf "%v" $expanded) "true" }}
+
+{{- if eq $page.BundleType "" }}
+  {{- warnf "%q: the 'resources' shortcode only works in a page bundle (a folder with an index.md)" $page.File.Filename }}
+{{- end }}
+
+{{- $items := slice }}
+{{- range sort $page.Resources "Name" $sort }}
+  {{- if and (findRE $pattern .Name) (ne .ResourceType "page") }}
+    {{- $items = $items | append . }}
+  {{- end }}
+{{- end }}
+
+{{- /* a box without any resource to list is not shown at all */}}
+{{- with $items }}
+{{- $list := partial "inline/resources-list" . }}
+{{- if $collapsible }}
+<details class="resources"{{ if $open }} open{{ end }}>
+  <summary class="resources__title">{{ $title }}</summary>
+  {{ $list }}
+</details>
+{{- else }}
+<div class="resources">
+  <p class="resources__title">{{ $title }}</p>
+  {{ $list }}
+</div>
+{{- end }}
+{{- end }}
+
+{{- define "_partials/inline/resources-list" }}
+<ul class="resources__list">
+  {{- range . }}
+    {{- $size := len .Content }}
+    {{- $human := printf "%d B" $size }}
+    {{- if ge $size 1048576 }}
+      {{- $human = printf "%.1f MB" (div (float $size) 1048576) }}
+    {{- else if ge $size 1024 }}
+      {{- $human = printf "%.1f KB" (div (float $size) 1024) }}
+    {{- end }}
+  <li><a href="{{ .RelPermalink }}" download><code>{{ .Name }}</code></a> <span class="resources__size">({{ $human }})</span></li>
+  {{- end }}
+</ul>
+{{- end }}

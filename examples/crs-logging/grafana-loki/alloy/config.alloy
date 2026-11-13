@@ -1,0 +1,233 @@
+// Grafana Alloy pipeline for OWASP CRS / Coraza logs.
+//
+// Two sources, two streams:
+//
+//   job="waf-alerts"  one line per rule match, from Caddy's log
+//   job="waf-audit"   one JSON document per transaction, from the audit log
+//
+// Both carry the Coraza transaction ID (unique_id), so you can jump from an
+// alert to the full transaction that produced it.
+
+// ------------------------------------------------------------------------
+// 1. Per-rule alerts from Caddy's log
+// ------------------------------------------------------------------------
+
+local.file_match "waf_alerts" {
+	path_targets = [{
+		__path__ = "/var/log/coraza/caddy.log",
+		job      = "waf-alerts",
+	}]
+}
+
+loki.source.file "waf_alerts" {
+	targets    = local.file_match.waf_alerts.targets
+	forward_to = [loki.process.waf_alerts.receiver]
+}
+
+loki.process "waf_alerts" {
+	// Caddy writes one JSON object per line. Coraza's messages come from the
+	// "http.handlers.waf" logger; everything else is Caddy housekeeping.
+	stage.json {
+		expressions = {
+			ts     = "ts",
+			logger = "logger",
+			alert  = "msg",
+		}
+	}
+
+	stage.match {
+		selector = "{job=\"waf-alerts\"} != \"http.handlers.waf\""
+		action   = "drop"
+	}
+
+	// The WAF logger also reports its own housekeeping (deprecation notices
+	// and the like); keep only rule matches and blocking decisions.
+	stage.match {
+		selector = "{job=\"waf-alerts\"} != \"Coraza: \""
+		action   = "drop"
+	}
+
+	stage.timestamp {
+		source = "ts"
+		format = "RFC3339Nano"
+	}
+
+	// From here on the log line is the Coraza alert itself, which is the
+	// same bracketed format ModSecurity uses.
+	stage.output {
+		source = "alert"
+	}
+
+	// "Warning" is a rule match, "Access denied" is the blocking decision.
+	stage.regex {
+		expression = "^\\[client \\\"(?P<client_ip>[^\\\"]*)\\\"\\] Coraza: (?P<kind>Warning|Access denied)"
+	}
+
+	// The bracketed key/value pairs every alert carries. One regex per field
+	// keeps them independent: a field missing on a line simply stays empty.
+	stage.regex {
+		expression = "\\[id \\\"(?P<rule_id>\\d+)\\\"\\]"
+	}
+
+	stage.regex {
+		expression = "\\[msg \\\"(?P<msg>[^\\\"]*)\\\"\\]"
+	}
+
+	stage.regex {
+		expression = "\\[data \\\"(?P<data>[^\\\"]*)\\\"\\]"
+	}
+
+	// Coraza writes the severity as a word ("critical"); "unknown" for rules
+	// without one, such as the blocking evaluation and our summary.
+	stage.regex {
+		expression = "\\[severity \\\"(?P<severity_word>[a-z]+)\\\"\\]"
+	}
+
+	// CRS tags: the attack-* tag is the attack category, and the
+	// paranoia-level/N tag tells you which level the rule belongs to.
+	stage.regex {
+		expression = "\\[tag \\\"attack-(?P<attack>[^\\\"]+)\\\"\\]"
+	}
+
+	stage.regex {
+		expression = "\\[tag \\\"paranoia-level/(?P<paranoia_level>\\d)\\\"\\]"
+	}
+
+	// Coraza's [uri] includes the query string (ModSecurity's is the path
+	// only), so keep both: uri for reading, path for grouping.
+	stage.regex {
+		expression = "\\[uri \\\"(?P<uri>(?P<path>[^\\\"?]*)[^\\\"]*)\\\"\\]"
+	}
+
+	stage.regex {
+		expression = "\\[unique_id \\\"(?P<unique_id>[^\\\"]*)\\\"\\]"
+	}
+
+	// Blocking rule 949110: "Inbound Anomaly Score Exceeded (Total Score: 5)"
+	stage.regex {
+		expression = "Total Score: (?P<total_score>\\d+)"
+	}
+
+	// Our summary rule 99901 (see ../../waf/)
+	stage.regex {
+		expression = "inbound_blocking=(?P<inbound_blocking>\\d+) inbound_detection=(?P<inbound_detection>\\d+) inbound_pl=(?P<pl1>\\d+)-(?P<pl2>\\d+)-(?P<pl3>\\d+)-(?P<pl4>\\d+) inbound_threshold=(?P<inbound_threshold>\\d+) outbound_blocking=(?P<outbound_blocking>\\d+) outbound_detection=(?P<outbound_detection>\\d+)"
+	}
+
+	// Classify the line: alert (a rule matched), block (the request was
+	// denied), summary (our phase 5 score summary) or report (CRS's own
+	// score report, rule 980170, which Coraza does log).
+	stage.template {
+		source   = "event"
+		template = "{{ if eq .kind \"Access denied\" }}block{{ else if eq .rule_id \"99901\" }}summary{{ else if eq .rule_id \"980170\" }}report{{ else }}alert{{ end }}"
+	}
+
+	stage.template {
+		source   = "severity"
+		template = "{{ if and .severity_word (ne .severity_word \"unknown\") }}{{ ToUpper .severity_word }}{{ end }}"
+	}
+
+	// Labels: low cardinality only. There are a few hundred CRS rule IDs,
+	// which is fine for a lab; on a busy production WAF consider moving
+	// rule_id to structured metadata as well.
+	stage.labels {
+		values = {
+			event          = "",
+			rule_id        = "",
+			attack         = "",
+			paranoia_level = "",
+			severity       = "",
+		}
+	}
+
+	// Everything else travels as structured metadata: queryable, but it
+	// does not create new streams.
+	stage.structured_metadata {
+		values = {
+			msg                = "",
+			data               = "",
+			uri                = "",
+			path               = "",
+			unique_id          = "",
+			client_ip          = "",
+			total_score        = "",
+			inbound_blocking   = "",
+			inbound_detection  = "",
+			inbound_threshold  = "",
+			outbound_blocking  = "",
+			outbound_detection = "",
+			pl1                = "",
+			pl2                = "",
+			pl3                = "",
+			pl4                = "",
+		}
+	}
+
+	forward_to = [loki.write.default.receiver]
+}
+
+// ------------------------------------------------------------------------
+// 2. Full transactions from the JSON audit log
+// ------------------------------------------------------------------------
+
+local.file_match "waf_audit" {
+	path_targets = [{
+		__path__ = "/var/log/coraza/audit.log",
+		job      = "waf-audit",
+	}]
+}
+
+loki.source.file "waf_audit" {
+	targets    = local.file_match.waf_audit.targets
+	forward_to = [loki.process.waf_audit.receiver]
+}
+
+loki.process "waf_audit" {
+	stage.json {
+		expressions = {
+			ts        = "transaction.timestamp",
+			unique_id = "transaction.id",
+			client_ip = "transaction.client_ip",
+			method    = "transaction.request.method",
+			uri       = "transaction.request.uri",
+			status    = "transaction.response.status",
+			blocked   = "transaction.is_interrupted",
+		}
+	}
+
+	// e.g. "2026/10/23 15:51:57", in the WAF's time zone (UTC in the image)
+	stage.timestamp {
+		source   = "ts"
+		format   = "2006/01/02 15:04:05"
+		location = "UTC"
+	}
+
+	// Coraza reports status 0 for a transaction it interrupted (the 403 is
+	// written by Caddy afterwards), so "blocked" is the field to group by.
+	stage.labels {
+		values = {
+			blocked = "",
+			method  = "",
+		}
+	}
+
+	stage.structured_metadata {
+		values = {
+			unique_id = "",
+			client_ip = "",
+			uri       = "",
+			status    = "",
+		}
+	}
+
+	forward_to = [loki.write.default.receiver]
+}
+
+// ------------------------------------------------------------------------
+// 3. Ship to Loki
+// ------------------------------------------------------------------------
+
+loki.write "default" {
+	endpoint {
+		url = "http://loki:3100/loki/api/v1/push"
+	}
+}

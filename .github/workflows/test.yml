@@ -35,6 +35,9 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Check example archives are up to date
+        run: python3 examples/crs-logging/build-archives.py --check
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
