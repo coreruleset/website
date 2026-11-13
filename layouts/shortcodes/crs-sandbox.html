@@ -318,7 +318,7 @@
       if (h[0].toLowerCase() === 'x-format-output') h = ['x-format-output', 'txt-matched-rules'];
       parts.push('-H ' + shellQuote(h[0] + ': ' + h[1]));
     });
-    if (req.body !== null && req.body !== '') parts.push('--data ' + shellQuote(req.body));
+    if (req.body !== null && req.body !== '') parts.push('--data-raw ' + shellQuote(req.body));
     parts.push(shellQuote(req.url));
     return parts.join(' \\\n     ');
   }
@@ -367,6 +367,19 @@
     if (report && report.error && report.error.source === 'sandbox-edge') {
       badge.className = 'sb-badge error'; badge.textContent = 'EDGE ERROR';
       summary.textContent = 'HTTP ' + status + ': ' + report.error.detail;
+      rules.innerHTML = '';
+      return;
+    }
+    if (req.method === 'HEAD') {
+      // A HEAD answer has no body, so there is no report: the status is all we get.
+      if (status === 403) {
+        badge.className = 'sb-badge blocked'; badge.textContent = 'BLOCKED';
+      } else if (status < 400) {
+        badge.className = 'sb-badge clean'; badge.textContent = 'NOT BLOCKED';
+      } else {
+        badge.className = 'sb-badge error'; badge.textContent = 'NO VERDICT';
+      }
+      summary.textContent = 'HTTP ' + status + '. HEAD responses have no body, so the sandbox cannot say which rules matched; send the same request as GET to see them.';
       rules.innerHTML = '';
       return;
     }
@@ -429,13 +442,17 @@
     var promise;
     try { promise = fetch(req.url, init); } catch (e) { promise = Promise.reject(e); }
     promise.then(function (r) {
+      // A response arrived: anything that goes wrong from here on is ours,
+      // not the browser refusing to send, so it must not reach the handler below.
       return r.text().then(function (text) {
         var report = null;
         try { report = JSON.parse(text); } catch (e) { report = { error: text.slice(0, 300) || ('empty body, HTTP ' + r.status) }; }
         render(req, r, report);
         $('sb-status').textContent = '';
+      }).catch(function (err) {
+        failed(req, 'NO VERDICT', err.message, 'The sandbox answered with HTTP ' + r.status + ', but its report could not be read or displayed.');
       });
-    }).catch(function (err) {
+    }, function (err) {
       // A network failure reads "Failed to fetch" / "NetworkError…" / "Load
       // failed" depending on the browser; anything else is the browser
       // refusing to build the request (bad header value, forbidden method).
