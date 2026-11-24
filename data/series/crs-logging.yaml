@@ -1,0 +1,12 @@
+# The "Logging with OWASP CRS" blog series, in reading order.
+# Used by the series-nav and series-link shortcodes. A part whose page is
+# not in the build (a draft, or dated in the future) is shown as
+# "coming soon" instead of a link, so parts can be published one by one.
+title: "Logging with OWASP CRS"
+parts:
+  - page: /blog/2026-11-03-crs-logging-part-1-what-your-waf-is-telling-you
+    title: "Part 1: What Your WAF Is Telling You"
+  - page: /blog/2026-11-10-crs-logging-part-2-elastic-stack
+    title: "Part 2: A CRS Dashboard on the Elastic Stack"
+  - page: /blog/2026-11-17-crs-logging-part-3-grafana-loki
+    title: "Part 3: Coraza Logs on Grafana and Loki"

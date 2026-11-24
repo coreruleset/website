@@ -43,3 +43,39 @@ markup:
           enable: true
         superscript:
           enable: true
+######################## module mounts ####################
+# Declaring any mount replaces Hugo's defaults, so the default project
+# mounts are listed first, unchanged.
+#
+# The remaining mounts publish the runnable example stacks under
+# examples/ as page resources of the blog posts that use them, so the
+# files live in one place and each post can list them with the
+# `resources` shortcode. Paths inside a bundle mirror the examples
+# directory (for example `elk/compose.yaml`).
+module:
+  mounts:
+    - source: content
+      target: content
+    - source: static
+      target: static
+    - source: layouts
+      target: layouts
+    - source: data
+      target: data
+    - source: assets
+      target: assets
+    - source: i18n
+      target: i18n
+    - source: archetypes
+      target: archetypes
+
+    # CRS logging series
+    - source: examples/crs-logging
+      target: content/blog/2026-11-03-crs-logging-part-1-what-your-waf-is-telling-you
+      includeFiles: ["generate-traffic.sh", "waf/**"]
+    - source: examples/crs-logging
+      target: content/blog/2026-11-10-crs-logging-part-2-elastic-stack
+      includeFiles: ["generate-traffic.sh", "waf/**", "elk/**"]
+    - source: examples/crs-logging
+      target: content/blog/2026-11-17-crs-logging-part-3-grafana-loki
+      includeFiles: ["generate-traffic.sh", "waf/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf", "grafana-loki/**"]

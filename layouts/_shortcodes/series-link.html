@@ -1,0 +1,29 @@
+{{- /*
+  series-link: link to another part of a blog series, but only if that
+  part is in the build. A draft or future-dated part renders as plain text,
+  so a published post never links to a page that does not exist yet, and
+  the link appears by itself once the target part is published.
+
+  Parameters:
+    part    1-based number of the part in data/series/<series>.yaml (required)
+    series  name of the data file (default: the page's `series` front matter)
+
+  Usage:
+    {{< series-link part="2" >}}Part 2{{< /series-link >}}
+*/ -}}
+{{- $series := .Get "series" | default .Page.Params.series }}
+{{- $data := index site.Data.series $series }}
+{{- if not $data }}
+  {{- errorf "%q: series-link: unknown series %q (no data/series/%s.yaml)" .Page.File.Filename $series $series }}
+{{- end }}
+{{- $n := int (.Get "part") }}
+{{- if or (lt $n 1) (gt $n (len $data.parts)) }}
+  {{- errorf "%q: series-link: part %d is not in series %q" .Page.File.Filename $n $series }}
+{{- end }}
+{{- $entry := index $data.parts (sub $n 1) }}
+{{- $text := .Inner | .Page.RenderString }}
+{{- with site.GetPage $entry.page -}}
+<a href="{{ .RelPermalink }}">{{ $text }}</a>
+{{- else -}}
+{{ $text }}
+{{- end -}}

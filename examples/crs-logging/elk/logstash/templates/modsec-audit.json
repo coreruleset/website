@@ -1,0 +1,150 @@
+{
+  "index_patterns": ["modsec-audit-*"],
+  "priority": 200,
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.mapping.total_fields.limit": 2000
+    },
+    "mappings": {
+      "dynamic": true,
+      "dynamic_templates": [
+        {
+          "strings_as_keywords": {
+            "match_mapping_type": "string",
+            "mapping": { "type": "keyword", "ignore_above": 1024 }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "tags": { "type": "keyword" },
+
+        "client": {
+          "properties": {
+            "ip": { "type": "ip" },
+            "port": { "type": "integer" }
+          }
+        },
+        "server": {
+          "properties": {
+            "ip": { "type": "ip" },
+            "port": { "type": "integer" }
+          }
+        },
+        "http": {
+          "properties": {
+            "version": { "type": "keyword" },
+            "request": {
+              "properties": {
+                "method": { "type": "keyword" },
+                "referrer": { "type": "keyword", "ignore_above": 2048 },
+                "content_type": { "type": "keyword" }
+              }
+            },
+            "response": {
+              "properties": {
+                "status_code": { "type": "integer" }
+              }
+            }
+          }
+        },
+        "url": {
+          "properties": {
+            "original": { "type": "keyword", "ignore_above": 4096 },
+            "path": { "type": "keyword", "ignore_above": 2048 },
+            "query": { "type": "keyword", "ignore_above": 4096 },
+            "domain": { "type": "keyword" }
+          }
+        },
+        "user_agent": {
+          "properties": {
+            "original": { "type": "keyword", "ignore_above": 1024 }
+          }
+        },
+
+        "modsec": {
+          "properties": {
+            "unique_id": { "type": "keyword" },
+            "blocked": { "type": "boolean" },
+            "engine": { "type": "keyword" },
+            "connector": { "type": "keyword" },
+            "crs_version": { "type": "keyword" },
+            "attack": { "type": "keyword" },
+            "paranoia_level": { "type": "keyword" },
+            "rule": {
+              "properties": {
+                "ids": { "type": "keyword" },
+                "messages": { "type": "keyword", "ignore_above": 512 },
+                "severities": { "type": "keyword" },
+                "top_severity": { "type": "keyword" },
+                "tags": { "type": "keyword" },
+                "files": { "type": "keyword" },
+                "data": { "type": "text" },
+                "count": { "type": "integer" }
+              }
+            },
+            "anomaly": {
+              "properties": {
+                "source": { "type": "keyword" },
+                "inbound_blocking": { "type": "integer" },
+                "inbound_detection": { "type": "integer" },
+                "inbound_threshold": { "type": "integer" },
+                "inbound_pl1": { "type": "integer" },
+                "inbound_pl2": { "type": "integer" },
+                "inbound_pl3": { "type": "integer" },
+                "inbound_pl4": { "type": "integer" },
+                "outbound_blocking": { "type": "integer" },
+                "outbound_detection": { "type": "integer" },
+                "outbound_threshold": { "type": "integer" },
+                "sqli": { "type": "integer" },
+                "xss": { "type": "integer" },
+                "rfi": { "type": "integer" },
+                "lfi": { "type": "integer" },
+                "rce": { "type": "integer" },
+                "phpi": { "type": "integer" },
+                "http": { "type": "integer" },
+                "sess": { "type": "integer" }
+              }
+            },
+            "paranoia": {
+              "properties": {
+                "blocking": { "type": "integer" },
+                "detection": { "type": "integer" }
+              }
+            },
+            "matches": { "type": "object", "enabled": false }
+          }
+        },
+
+        "transaction": {
+          "properties": {
+            "client_ip": { "type": "ip" },
+            "unique_id": { "type": "keyword" },
+            "time_stamp": { "type": "keyword" },
+            "is_interrupted": { "type": "boolean" },
+            "request": {
+              "properties": {
+                "method": { "type": "keyword" },
+                "uri": { "type": "keyword", "ignore_above": 4096 },
+                "hostname": { "type": "keyword" },
+                "http_version": { "type": "keyword" },
+                "body": { "type": "text" },
+                "headers": { "type": "flattened" }
+              }
+            },
+            "response": {
+              "properties": {
+                "http_code": { "type": "integer" },
+                "headers": { "type": "flattened" }
+              }
+            },
+            "producer": { "type": "object", "enabled": false },
+            "messages": { "type": "object", "enabled": false }
+          }
+        }
+      }
+    }
+  }
+}
