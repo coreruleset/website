@@ -128,6 +128,24 @@ setvar:'tx.allowed_methods=|GET| |HEAD| |POST| |OPTIONS|'
 setvar:'tx.allowed_http_versions=|HTTP/1.0| |HTTP/1.1| |HTTP/2| |HTTP/2.0| |HTTP/3| |HTTP/3.0|'
 ```
 
+But the pipes in the list are only half of the fix: `POS` would still be found in `|POST|`. So rule 911100 now also wraps the request method in pipes before it checks it. `|POS|` is not part of `|POST|`, so only whole methods match:
+
+```apache
+SecRule REQUEST_METHOD "@rx ^.*$" \
+    "id:911100,\
+    phase:1,\
+    block,\
+    capture,\
+    t:none,\
+    setvar:'tx.request_method=|%{tx.0}|',\
+    chain"
+    SecRule TX:request_method "!@within %{tx.allowed_methods}" \
+        "t:none,\
+        setvar:'tx.inbound_anomaly_score_pl1=+%{tx.critical_anomaly_score}'"
+```
+
+Rule 920430 does the same for the HTTP version.
+
 We first tried something else: padding the values with spaces (` POST `). But ModSecurity v2 removes leading spaces from `setvar` values (see the table above), and then `OST` matches `POST` again. Pipes are cleaner, and they work the same on all engines.
 
 Thanks to Neha for the fix of rule 911100 ([#4960](https://github.com/coreruleset/coreruleset/pull/4960))! The HTTP versions and rule 920430 followed in [#4970](https://github.com/coreruleset/coreruleset/pull/4970).
@@ -140,11 +158,12 @@ The full rules are in [PLUGIN-CONTRACT.md](https://github.com/coreruleset/coreru
 
 - Set your variables in your `-before.conf` file and in phase 1.
 - Use the name `tx.plugin_<list>_<rule id>` and the format of the list: `|METHOD|`, `|type/subtype|`, `.ext/`, `/header-name/`.
+- Write content types, charsets, extensions and header names in lowercase. Methods and HTTP versions use the exact case that is sent. An entry in the wrong case never matches, and CRS reports no error.
 - Never change `tx.allowed_methods` and the other CRS lists directly.
 - Limit your additions to the paths where they are needed.
-- When you add a content type, also select the matching body processor (`JSON`, `XML` or `URLENCODED`). Otherwise the body is not parsed, and CRS can't see attacks in it.
+- When you add a content type, also select the matching body processor (`JSON`, `XML` or `URLENCODED`). Otherwise the body is not parsed, and CRS can't see attacks in it. The only exception is a body without any structure, like a binary upload (`application/octet-stream`). Forcing a processor there makes parsing fail (`REQBODY_ERROR`). In this case, don't force a processor, and limit the addition as narrowly as possible (path, method and content type).
 
-But what about plugins that also support the current LTS release? Older CRS releases don't have the collect rules, so they ignore the `tx.plugin_*` variables. For a transition period, these plugins may still set `tx.allowed_methods` directly, but only in the pipe format. This works with both versions: the new 911100 compares whole entries, and the old one only checks for a substring, so `GET` is also found in `|GET|`. As soon as all supported CRS releases contain the contract, plugins switch to the `tx.plugin_*` variables.
+But what about plugins that also support the current LTS release? Older CRS releases don't have the collect rules, so they ignore the `tx.plugin_*` variables. For a transition period, these plugins may still set `tx.allowed_methods` directly, but only in the pipe format. Careful: such a plugin must never replace the list the administrator has configured. It only copies the CRS default if the variable is not set yet (`&TX:allowed_methods "@eq 0"`), and otherwise only appends its own methods, limited to the paths it covers. If a plugin overwrote the list, it could allow methods the administrator excluded on purpose. This works with both versions: the new 911100 compares whole entries, and the old one only checks for a substring, so `GET` is also found in `|GET|`. As soon as all supported CRS releases contain the contract, plugins switch to the `tx.plugin_*` variables.
 
 That's exactly what we did for the three plugins that were affected: [Nextcloud](https://github.com/coreruleset/nextcloud-rule-exclusions-plugin/pull/180), [SOGo](https://github.com/EsadCetiner/sogo-rule-exclusions-plugin/pull/42) and [Plausible](https://github.com/EsadCetiner/plausible-rule-exclusions-plugin/pull/11). Their CI tests against CRS `main` and the LTS release, so we see right away if something breaks. If you maintain a plugin that sets `tx.allowed_methods`, please check it too!
 
