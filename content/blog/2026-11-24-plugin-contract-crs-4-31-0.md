@@ -167,7 +167,13 @@ But what about plugins that also support the current LTS release? Older CRS rele
 
 That's exactly what we did for the three plugins that were affected: [Nextcloud](https://github.com/coreruleset/nextcloud-rule-exclusions-plugin/pull/180), [SOGo](https://github.com/EsadCetiner/sogo-rule-exclusions-plugin/pull/42) and [Plausible](https://github.com/EsadCetiner/plausible-rule-exclusions-plugin/pull/11). Their CI tests against CRS `main` and the LTS release, so we see right away if something breaks. If you maintain a plugin that sets `tx.allowed_methods`, please check it too!
 
-**If you use one of these plugins:** with the current plugin versions, CRS 4.31.0 flags **every request**, because the plugins still write the method list in the old format. The fixes are on the way: as soon as new plugin releases are available, they work with CRS 4.31.0 and with the LTS release. So please wait for the new plugin release, update the plugin first and CRS afterwards. Until then, stay on CRS 4.30.0 or the LTS release.
+**If you use one of these plugins:** update the plugin **before** you upgrade to CRS 4.31.0. With older plugin versions, CRS 4.31.0 flags **every request**, because these versions still write the method list in the old format. The fixed versions are:
+
+- [Nextcloud plugin 1.8.1](https://github.com/coreruleset/nextcloud-rule-exclusions-plugin/releases/tag/v1.8.1)
+- [SOGo plugin 1.0.5](https://github.com/EsadCetiner/sogo-rule-exclusions-plugin/releases/tag/v1.0.5)
+- [Plausible plugin 1.0.1](https://github.com/EsadCetiner/plausible-rule-exclusions-plugin/releases/tag/v1.0.1)
+
+They work with CRS 4.31.0 and with the LTS release, so you can update the plugin first and CRS afterwards.
 
 ### What the contract does not do
 
